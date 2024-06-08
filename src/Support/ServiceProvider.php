@@ -4,6 +4,7 @@ namespace Mlbrgn\LaravelFormComponents\Support;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 use Mlbrgn\LaravelFormComponents\FormDataBinder;
 use Mlbrgn\LaravelFormComponents\View\Components\Captcha;
 use Mlbrgn\LaravelFormComponents\View\Components\Checkbox;
@@ -24,43 +25,27 @@ use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
 
 class ServiceProvider extends BaseServiceProvider
 {
+
+    private const PATH_VIEWS = __DIR__ . '/../../resources/views/';
+
     /**
      * Bootstrap the application services.
      */
     public function boot(): void
     {
 
-
-
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../../config/config.php' => config_path('form-components.php'),
             ], 'config');
-
-            $this->publishes([
-                __DIR__ . '/../../resources/views' => base_path('resources/View/vendor/form-components'),
-            ], 'View');
+//
+//            $this->publishes([
+//                __DIR__ . '/../../resources/views' => base_path('resources/View/vendor/form-components'),
+//            ], 'View');
         }
 
-        $this->loadViewComponentsAs('form', [
-            Captcha::class,
-            Checkbox::class,
-            Errors::class,
-            Form::class,
-            Group::class,
-            HtmlEditor::class,
-            Inline::class,
-            Input::class,
-            InputGroup::class,
-            InputGroupText::class,
-            Label::class,
-            Radio::class,
-            Range::class,
-            Select::class,
-            Submit::class,
-            TextArea::class
-        ]);
-//        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'form-components');
+        $this->loadViewsFrom(realpath(self::PATH_VIEWS), 'laravel-form-components');
+        $this->configureComponents();
 
         Blade::directive('bind', function ($bind) {
             return '<?php app(\Mlbrgn\LaravelFormComponents\FormDataBinder::class)->bind(' . $bind . '); ?>';
@@ -70,15 +55,34 @@ class ServiceProvider extends BaseServiceProvider
             return '<?php app(\Mlbrgn\LaravelFormComponents\FormDataBinder::class)->pop(); ?>';
         });
 
-        //
-
-//        $prefix = config('form-components.prefix');
-//
-//        Collection::make(config('form-components.components'))->each(
-//            fn ($component, $alias) => Blade::component($alias, $component['class'], $prefix)
-//        );
     }
 
+    protected function configureComponents(): void
+    {
+        $this->callAfterResolving(BladeCompiler::class, function () {
+            $this->registerComponent('captcha', Captcha::class);
+            $this->registerComponent('checkbox', Checkbox::class);
+            $this->registerComponent('errors', Errors::class);
+            $this->registerComponent('form', Form::class);
+            $this->registerComponent('group', Group::class);
+            $this->registerComponent('html-editor', HtmlEditor::class);
+            $this->registerComponent('inline', Inline::class);
+            $this->registerComponent('input', Input::class);
+            $this->registerComponent('input-group', InputGroup::class);
+            $this->registerComponent('input-group-text', InputGroupText::class);
+            $this->registerComponent('label', Label::class);
+            $this->registerComponent('radio', Radio::class);
+            $this->registerComponent('range', Range::class);
+            $this->registerComponent('select', Select::class);
+            $this->registerComponent('submit', Submit::class);
+            $this->registerComponent('textarea', Textarea::class);
+        });
+    }
+
+    protected function registerComponent(string $component, string $class): void
+    {
+        Blade::component($component, $class);
+    }
     /**
      * Register the application services.
      */

@@ -19,7 +19,7 @@ abstract class FormBaseComponent extends BaseComponent
      */
     public function render()
     {
-        return view("components.form." . Str::kebab(class_basename($this)));
+        return view("laravel-form-components::" . Str::kebab(class_basename($this)));
     }
 
     /**
