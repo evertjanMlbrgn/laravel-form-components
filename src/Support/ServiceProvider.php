@@ -29,11 +29,11 @@ class ServiceProvider extends BaseServiceProvider
         //
 
         Blade::directive('bind', function ($bind) {
-            return '<?php app(\ProtoneMedia\LaravelFormComponents\FormDataBinder::class)->bind(' . $bind . '); ?>';
+            return '<?php app(\Mlbrgn\LaravelFormComponents\FormDataBinder::class)->bind(' . $bind . '); ?>';
         });
 
         Blade::directive('endbind', function () {
-            return '<?php app(\ProtoneMedia\LaravelFormComponents\FormDataBinder::class)->pop(); ?>';
+            return '<?php app(\Mlbrgn\LaravelFormComponents\FormDataBinder::class)->pop(); ?>';
         });
 
         //
