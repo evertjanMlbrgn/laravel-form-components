@@ -1,6 +1,6 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\Components;
+namespace Mlbrgn\LaravelFormComponents\View\Components;
 
 use Mlbrgn\LaravelFormComponents\Traits\HandlesBoundValues;
 use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;

@@ -16,82 +16,82 @@ return [
     'components' => [
         'form' => [
             'view'  => 'form-components::{framework}.form',
-            'class' => Components\Form::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Form::class,
         ],
 
         'form-checkbox' => [
             'view'  => 'form-components::{framework}.checkbox',
-            'class' => Components\Checkbox::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Checkbox::class,
         ],
 
         'form-errors' => [
             'view'  => 'form-components::{framework}.errors',
-            'class' => Components\Errors::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Errors::class,
         ],
 
         'form-group' => [
             'view'  => 'form-components::{framework}.group',
-            'class' => Components\Group::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Group::class,
         ],
 
         'form-input' => [
             'view'  => 'form-components::{framework}.input',
-            'class' => Components\Input::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Input::class,
         ],
 
         'html-editor' => [
             'view'  => 'form-components::{framework}.html-editor',
-            'class' => Components\HtmlEditor::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\HtmlEditor::class,
         ],
 
         'inline' => [
             'view'  => 'form-components::{framework}.inline',
-            'class' => Components\Inline::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Inline::class,
         ],
 
         'captcha' => [
             'view'  => 'form-components::{framework}.captcha',
-            'class' => Components\Captcha::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Captcha::class,
         ],
 
         'form-input-group' => [
             'view'  => 'form-components::{framework}.input-group',
-            'class' => Components\InputGroup::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\InputGroup::class,
         ],
 
         'form-input-group-text' => [
             'view'  => 'form-components::{framework}.input-group-text',
-            'class' => Components\InputGroupText::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\InputGroupText::class,
         ],
 
         'form-label' => [
             'view'  => 'form-components::{framework}.label',
-            'class' => Components\Label::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Label::class,
         ],
 
         'form-radio' => [
             'view'  => 'form-components::{framework}.radio',
-            'class' => Components\Radio::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Radio::class,
         ],
 
         'form-range' => [
             'view'  => 'form-components::{framework}.range',
-            'class' => Components\Range::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Range::class,
         ],
 
         'form-select' => [
             'view'  => 'form-components::{framework}.select',
-            'class' => Components\Select::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Select::class,
         ],
 
         'form-submit' => [
             'view'  => 'form-components::{framework}.submit',
-            'class' => Components\Submit::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Submit::class,
         ],
 
         'form-textarea' => [
             'view'  => 'form-components::{framework}.textarea',
-            'class' => Components\Textarea::class,
+            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Textarea::class,
         ],
     ],
 ];

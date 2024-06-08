@@ -1,17 +1,19 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\Components;
+namespace Mlbrgn\LaravelFormComponents\View\Components;
 
 use Mlbrgn\LaravelFormComponents\Traits\HandlesDefaultAndOldValue;
 use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;
 
-class Range extends FormBaseComponent
+class Input extends FormBaseComponent
 {
     use HandlesValidationErrors;
     use HandlesDefaultAndOldValue;
 
     public string $name;
     public string $label;
+    public string $type;
+    public bool $floating;
 
     public $value;
 
@@ -23,14 +25,18 @@ class Range extends FormBaseComponent
     public function __construct(
         string $name,
         string $label = '',
+        string $type = 'text',
         $bind = null,
         $default = null,
         $language = null,
-        bool $showErrors = true
+        bool $showErrors = true,
+        bool $floating = false
     ) {
         $this->name       = $name;
         $this->label      = $label;
+        $this->type       = $type;
         $this->showErrors = $showErrors;
+        $this->floating   = $floating && $type !== 'hidden';
 
         if ($language) {
             $this->name = "{$name}[{$language}]";
