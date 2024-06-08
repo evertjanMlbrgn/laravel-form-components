@@ -18,8 +18,18 @@
     "type": "library",
     "authors": [
         {
-            "name": "Nick D. Evertjan G.",
+            "name": "Nick D.",
             "email": "info@mlbrgn.nl",
+            "role": "Developer"
+        },
+        {
+            "name": "Evertjan G.",
+            "email": "info@mlbrgn.nl",
+            "role": "Developer"
+        },
+        {
+            "name": "Pascal Baljet",
+            "email": "pascal@protone.media",
             "role": "Developer"
         }
     ],
