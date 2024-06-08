@@ -5,6 +5,8 @@ namespace Mlbrgn\LaravelFormComponents\Components;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Mlbrgn\LaravelFormComponents\Traits\HandlesBoundValues;
+use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;
 
 class Checkbox extends FormBaseComponent
 {

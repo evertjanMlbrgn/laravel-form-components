@@ -2,6 +2,8 @@
 
 namespace Mlbrgn\LaravelFormComponents\Components;
 
+use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;
+
 class InputGroup extends FormBaseComponent
 {
     use HandlesValidationErrors;

@@ -2,6 +2,9 @@
 
 namespace Mlbrgn\LaravelFormComponents\Components;
 
+use Mlbrgn\LaravelFormComponents\Traits\HandlesDefaultAndOldValue;
+use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;
+
 class Input extends FormBaseComponent
 {
     use HandlesValidationErrors;

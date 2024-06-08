@@ -1,6 +1,6 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\Components;
+namespace Mlbrgn\LaravelFormComponents\Traits;
 
 use Illuminate\Contracts\Support\MessageBag;
 use Illuminate\Support\Facades\View;

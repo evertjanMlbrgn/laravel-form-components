@@ -1,6 +1,6 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\Components;
+namespace Mlbrgn\LaravelFormComponents\Traits;
 
 trait HandlesDefaultAndOldValue
 {

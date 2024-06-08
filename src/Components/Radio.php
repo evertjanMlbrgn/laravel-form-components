@@ -2,6 +2,9 @@
 
 namespace Mlbrgn\LaravelFormComponents\Components;
 
+use Mlbrgn\LaravelFormComponents\Traits\HandlesBoundValues;
+use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;
+
 class Radio extends FormBaseComponent
 {
     use HandlesValidationErrors;

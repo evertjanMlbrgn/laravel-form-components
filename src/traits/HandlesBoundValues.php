@@ -1,14 +1,14 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\Components;
+namespace Mlbrgn\LaravelFormComponents\Traits;
 
-use Mlbrgn\LaravelFormComponents\FormDataBinder;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+use Mlbrgn\LaravelFormComponents\FormDataBinder;
 
 trait HandlesBoundValues
 {

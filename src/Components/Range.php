@@ -2,6 +2,9 @@
 
 namespace Mlbrgn\LaravelFormComponents\Components;
 
+use Mlbrgn\LaravelFormComponents\Traits\HandlesDefaultAndOldValue;
+use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;
+
 class Range extends FormBaseComponent
 {
     use HandlesValidationErrors;
