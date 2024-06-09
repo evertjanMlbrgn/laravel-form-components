@@ -27,24 +27,24 @@ class ServiceProvider extends BaseServiceProvider
 {
 
     private const PATH_VIEWS = __DIR__ . '/../../resources/views/';
+    private const CONFIG_FILE = __DIR__ . '/../../config/config.php';
+    public static string $VIEW_NAMESPACE = 'laravel-form-components';
 
-    /**
-     * Bootstrap the application services.
-     */
     public function boot(): void
     {
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../../config/config.php' => config_path('form-components.php'),
+               self::CONFIG_FILE => config_path('form-components.php'),
             ], 'config');
-//
+
+//  Don't want to publish views should all be in vendor package
 //            $this->publishes([
 //                __DIR__ . '/../../resources/views' => base_path('resources/View/vendor/form-components'),
 //            ], 'View');
         }
 
-        $this->loadViewsFrom(realpath(self::PATH_VIEWS), 'laravel-form-components');
+        $this->loadViewsFrom(realpath(self::PATH_VIEWS), self::VIEW_NAMESPACE);
         $this->configureComponents();
 
         Blade::directive('bind', function ($bind) {
@@ -79,16 +79,16 @@ class ServiceProvider extends BaseServiceProvider
         });
     }
 
-    protected function registerComponent(string $component, string $class): void
+    protected function registerComponent(string $componentName, string $class): void
     {
-        Blade::component($component, $class);
+        Blade::component($componentName, $class);
     }
     /**
      * Register the application services.
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'form-components');
+        $this->mergeConfigFrom(self::CONFIG_FILE, 'form-components');
 
         $this->app->singleton(FormDataBinder::class, fn () => new FormDataBinder);
     }

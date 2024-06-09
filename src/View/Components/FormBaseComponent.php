@@ -3,9 +3,10 @@
 namespace Mlbrgn\LaravelFormComponents\View\Components;
 
 use Illuminate\Support\Str;
-use Illuminate\View\Component as BaseComponent;
+use Illuminate\View\Component;
+use Mlbrgn\LaravelFormComponents\Support\ServiceProvider;
 
-abstract class FormBaseComponent extends BaseComponent
+abstract class FormBaseComponent extends Component
 {
     /**
      * ID for this component.
@@ -19,7 +20,7 @@ abstract class FormBaseComponent extends BaseComponent
      */
     public function render()
     {
-        return view("laravel-form-components::" . Str::kebab(class_basename($this)));
+        return view(ServiceProvider::$VIEW_NAMESPACE . "::" . Str::kebab(class_basename($this)));
     }
 
     /**
