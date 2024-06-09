@@ -20,7 +20,7 @@ abstract class FormBaseComponent extends Component
      */
     public function render()
     {
-        return view(ServiceProvider::$VIEW_NAMESPACE . "::" . Str::kebab(class_basename($this)));
+        return view(config('form-components.view_namespace') . "::" . Str::kebab(class_basename($this)));
     }
 
     /**

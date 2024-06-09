@@ -44,7 +44,7 @@ class ServiceProvider extends BaseServiceProvider
 //            ], 'View');
         }
 
-        $this->loadViewsFrom(realpath(self::PATH_VIEWS), self::VIEW_NAMESPACE);
+        $this->loadViewsFrom(realpath(self::PATH_VIEWS), config('form-components.view_namespace'));
         $this->configureComponents();
 
         Blade::directive('bind', function ($bind) {
