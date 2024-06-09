@@ -39,7 +39,7 @@ class ServiceProvider extends BaseServiceProvider
             ], 'config');
 
             $this->publishes([
-                self::PATH_VIEWS => base_path('resources/views/vendor/components/form-components'),
+                self::PATH_VIEWS => base_path('resources/views/components/form'),
             ], 'mlbrgn-form-components');
         }
 
