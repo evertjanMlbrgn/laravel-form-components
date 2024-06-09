@@ -4,7 +4,7 @@
             <div class="form-floating"> @endif
 
                 @if(!$floating)
-                    <x-form.label :label="$label" :for="$attributes->get('id') ?: $id()"/>
+                    <x-form::label :label="$label" :for="$attributes->get('id') ?: $id()"/>
                 @endif
 
                 <input
@@ -27,7 +27,7 @@
                 >
 
                 @if($floating)
-                    <x-form.label :label="$label" :for="$attributes->get('id') ?: $id()"/>
+                    <x-form::label :label="$label" :for="$attributes->get('id') ?: $id()"/>
                 @endif
 
                 @if($floating) </div>
@@ -36,7 +36,7 @@
         {!! $help ?? null !!}
 
         @if($hasErrorAndShow($name))
-            <x-form.errors :name="$name"/>
+            <x-form::errors :name="$name"/>
         @endif
 
         @if($type === 'hidden') </div>

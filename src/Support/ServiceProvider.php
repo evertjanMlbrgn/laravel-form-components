@@ -52,6 +52,9 @@ class ServiceProvider extends BaseServiceProvider
         // method 2 of loading view components
         $this->loadViewComponentsAs('mlbrgn', $this->viewComponents());
 
+        // method 3 of registering view components
+        Blade::componentNamespace('Mlbrgn\LaravelFormComponents\View\Components', config('form-components.tag_prefix'));
+
         Blade::directive('bind', function ($bind) {
             return '<?php app(\Mlbrgn\LaravelFormComponents\FormDataBinder::class)->bind(' . $bind . '); ?>';
         });
@@ -84,9 +87,10 @@ class ServiceProvider extends BaseServiceProvider
         });
     }
 
-    protected function registerComponent(string $componentName, string $class): void
+    // tagAlias will become tag name (e.g. $tagAlias = 'abc' -> tag will be <x-abc/>)
+    protected function registerComponent(string $tagAlias, string $class): void
     {
-        Blade::component($componentName, $class);
+        Blade::component($tagAlias, $class);
     }
 
     protected function viewComponents(): array

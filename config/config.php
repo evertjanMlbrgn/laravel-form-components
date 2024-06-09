@@ -9,7 +9,7 @@ return [
 //    'framework' => 'bootstrap-5',
 
     'view_namespace' => 'form-components',
-
+    'tag_prefix' => 'form',
     'use_eloquent_date_casting' => false,
 
 //    'components' => [
