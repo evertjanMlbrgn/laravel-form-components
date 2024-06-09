@@ -1,4 +1,4 @@
-<x-form::label :label="$label" :for="$attributes->get('id') ?: $id()" />
+<x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" />
 
 <input
     {!! $attributes->merge(['class' => 'form-range' . ($hasError($name) ? ' is-invalid' : '')]) !!}
@@ -17,5 +17,5 @@
 {!! $help ?? null !!}
 
 @if($hasErrorAndShow($name))
-    <x-form::errors :name="$name" />
+    <x-form-errors :name="$name" />
 @endif
