@@ -1,10 +1,9 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\View\Components;
+namespace Mlbrgn\LaravelFormComponents\View;
 
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
-use Mlbrgn\LaravelFormComponents\Support\ServiceProvider;
 
 abstract class FormBaseComponent extends Component
 {

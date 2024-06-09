@@ -7,6 +7,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Mlbrgn\LaravelFormComponents\Traits\HandlesBoundValues;
 use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;
+use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class Select extends FormBaseComponent
 {

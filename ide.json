@@ -4,7 +4,8 @@
         "components": {
             "viewPaths": [
                 {
-                    "path": "vendor/mlbrgn/laravel-form-components/resources/views"
+                    "path": "vendor/mlbrgn/laravel-form-components/resources/views",
+                    "namespace": ""
                 },
                 {
                     "path": "vendor/mlbrgn/laravel-form-components/src/View/Components",

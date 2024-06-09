@@ -4,6 +4,7 @@ namespace Mlbrgn\LaravelFormComponents\View\Components;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ViewErrorBag;
+use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class Form extends FormBaseComponent
 {

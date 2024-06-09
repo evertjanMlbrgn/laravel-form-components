@@ -3,6 +3,7 @@
 namespace Mlbrgn\LaravelFormComponents\View\Components;
 
 use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;
+use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class InputGroup extends FormBaseComponent
 {

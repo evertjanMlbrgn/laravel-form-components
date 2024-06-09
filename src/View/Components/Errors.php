@@ -3,6 +3,7 @@
 namespace Mlbrgn\LaravelFormComponents\View\Components;
 
 use Illuminate\Support\Str;
+use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class Errors extends FormBaseComponent
 {

@@ -2,6 +2,8 @@
 
 namespace Mlbrgn\LaravelFormComponents\View\Components;
 
+use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
+
 class InputGroupText extends FormBaseComponent
 {
     public string $text;
