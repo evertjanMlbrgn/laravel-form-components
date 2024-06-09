@@ -8,6 +8,6 @@
     {!! $help ?? null !!}
 
     @if($hasErrorAndShow($name))
-        <x-form-rrors :name="$name" class="d-block" />
+        <x-form-errors :name="$name" class="d-block" />
     @endif
 </div>
