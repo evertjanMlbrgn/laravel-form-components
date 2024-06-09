@@ -1,5 +1,5 @@
 {
-    "$schema": "http://laravel-ide.com/schema/laravel-ide-v1.json",
+    "$schema": "http://laravel-ide.com/schema/laravel-ide-v2.json",
     "blade": {
         "components": {
             "viewPaths": [
@@ -7,8 +7,20 @@
                     "path": "vendor/mlbrgn/laravel-form-components/resources/views"
                 },
                 {
-                    "path": "vendor/mlbrgn/laravel-form-components/src/Components",
+                    "path": "vendor/mlbrgn/laravel-form-components/src/View/Components",
                     "prefix": "form-"
+                }
+            ],
+            "directives": [
+                {
+                    "name": "bind",
+                    "prefix": "<?php app(\\Mlbrgn\\LaravelFormComponents\\FormDataBinder::class)->bind(",
+                    "suffix": "); ?>"
+                },
+                {
+                    "name": "endbind",
+                    "prefix": "<?php app(\\Mlbrgn\\LaravelFormComponents\\FormDataBinder::class)->pop();",
+                    "suffix": "?>"
                 }
             ]
         }

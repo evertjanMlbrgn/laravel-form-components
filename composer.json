@@ -39,6 +39,7 @@
         "symfony/http-foundation": "^6.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^3.0",
         "mockery/mockery": "^1.4.4",
         "nesbot/carbon": "^2.66",
         "orchestra/testbench": "^8.23",
