@@ -4,6 +4,12 @@
 - [Evertjan Garretsen, Nick D.](https://github.com/MLBRGN)
 - [All Contributors](../../contributors)
 
+## General
+
+Adaptation of https://github.com/protonemedia/laravel-form-components
+
+- Stripped down code (now only supports Bootstrap 5 views) 
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
