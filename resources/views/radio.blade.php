@@ -17,7 +17,7 @@
         @endif
     />
 
-    <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" class="form-check-label" />
+    <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" class="form-check-label" :required="$attributes->has('required')"/>
 
     {!! $help ?? null !!}
 

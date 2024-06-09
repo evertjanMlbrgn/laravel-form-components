@@ -21,7 +21,6 @@ use Mlbrgn\LaravelFormComponents\View\Components\Radio;
 use Mlbrgn\LaravelFormComponents\View\Components\Range;
 use Mlbrgn\LaravelFormComponents\View\Components\Select;
 use Mlbrgn\LaravelFormComponents\View\Components\Submit;
-use Mlbrgn\LaravelFormComponents\View\Components\Test;
 use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
 
 class ServiceProvider extends BaseServiceProvider
@@ -29,7 +28,7 @@ class ServiceProvider extends BaseServiceProvider
 
     private const PATH_VIEWS = __DIR__ . '/../../resources/views/';
     private const CONFIG_FILE = __DIR__ . '/../../config/config.php';
-    public static string $VIEW_NAMESPACE = 'laravel-form-components';
+//    public static string $VIEW_NAMESPACE = 'laravel-form-components';
 
     public function boot(): void
     {
@@ -102,7 +101,6 @@ class ServiceProvider extends BaseServiceProvider
     {
         return [
             Input::class,
-            Test::class
         ];
     }
 

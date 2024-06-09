@@ -1,7 +1,7 @@
 @if($floating) <div class="form-floating"> @endif
 
     @if(!$floating)
-        <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" />
+        <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" :required="$attributes->has('required')"/>
     @endif
 
     <select
@@ -38,7 +38,7 @@
     </select>
 
     @if($floating)
-        <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" />
+        <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" :required="$attributes->has('required')"/>
     @endif
 
 @if($floating) </div> @endif

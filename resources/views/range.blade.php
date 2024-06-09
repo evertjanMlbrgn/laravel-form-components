@@ -1,4 +1,4 @@
-<x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" />
+<x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" :required="$attributes->has('required')"/>
 
 <input
     {!! $attributes->merge(['class' => 'form-range' . ($hasError($name) ? ' is-invalid' : '')]) !!}

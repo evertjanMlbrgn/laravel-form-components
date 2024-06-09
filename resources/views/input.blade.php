@@ -4,11 +4,7 @@
             <div class="form-floating"> @endif
 
                 @if(!$floating)
-                    <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()"
-                      @if ($attributes->has('class'))
-                          required="required"
-                        @endif
-                    />
+                    <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" :required="$attributes->has('required')"/>
                 @endif
 
                 <input
@@ -31,11 +27,7 @@
                 >
 
                 @if($floating)
-                    <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()"
-                      @if ($attributes->has('class'))
-                          required="required"
-                      @endif
-                    />
+                    <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" :required="$attributes->has('required')"/>
                 @endif
 
                 @if($floating) </div>
