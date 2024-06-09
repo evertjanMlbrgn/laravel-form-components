@@ -90,7 +90,12 @@ class ServiceProvider extends BaseServiceProvider
     // tagAlias will become tag name (e.g. $tagAlias = 'abc' -> tag will be <x-abc/>)
     protected function registerComponent(string $tagAlias, string $class): void
     {
+        // with dash syntax. e.g. <x-form-input>
         Blade::component(config('form-components.tag_prefix') . '-' . $tagAlias, $class);
+
+        // with dot syntax. e.g. <x-form.input>
+        Blade::component(config('form-components.tag_prefix') . '.' . $tagAlias, $class);
+
     }
 
     protected function viewComponents(): array
