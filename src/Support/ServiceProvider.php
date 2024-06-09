@@ -44,8 +44,12 @@ class ServiceProvider extends BaseServiceProvider
 //            ], 'View');
         }
 
+        // method 1 of loading view components
         $this->loadViewsFrom(realpath(self::PATH_VIEWS), config('form-components.view_namespace'));
         $this->configureComponents();
+
+        // method 2 of loading view components
+        $this->loadViewComponentsAs('mlbrgn', $this->viewComponents());
 
         Blade::directive('bind', function ($bind) {
             return '<?php app(\Mlbrgn\LaravelFormComponents\FormDataBinder::class)->bind(' . $bind . '); ?>';
@@ -83,9 +87,14 @@ class ServiceProvider extends BaseServiceProvider
     {
         Blade::component($componentName, $class);
     }
-    /**
-     * Register the application services.
-     */
+
+    protected function viewComponents(): array
+    {
+        return [
+            Input::class,
+        ];
+    }
+
     public function register(): void
     {
         $this->mergeConfigFrom(self::CONFIG_FILE, 'form-components');

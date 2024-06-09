@@ -5,6 +5,7 @@
       <data directive="@append" />
       <data directive="@auth" injection="true" prefix="&lt;?php&#10;if(auth()-&gt;guard(" suffix=")-&gt;check()): ?&gt;" />
       <data directive="@aware" injection="true" prefix="&lt;?php $attributes = $attributes-&gt;exceptProps(" suffix="); ?&gt;" />
+      <data directive="@bind" injection="true" prefix="&lt;?php _bladeDirective(" suffix="); ?&gt;" />
       <data directive="@break" injection="true" prefix="&lt;?php&#10;if(" suffix=") break; ?&gt;" />
       <data directive="@can" injection="true" prefix="&lt;?php&#10;if (app(\Illuminate\Contracts\Auth\Access\Gate::class)-&gt;check(" suffix=")): ?&gt;" />
       <data directive="@canany" injection="true" prefix="&lt;?php&#10;if (app(\Illuminate\Contracts\Auth\Access\Gate::class)-&gt;any(" suffix=")): ?&gt;" />
@@ -31,6 +32,7 @@
       <data directive="@elseif" injection="true" prefix="&lt;?php&#10;elseif(" suffix="): ?&gt;" />
       <data directive="@empty" injection="true" prefix="&lt;?php&#10;if(empty(" suffix=")): ?&gt;" />
       <data directive="@endauth" />
+      <data directive="@endbind" />
       <data directive="@endcan" />
       <data directive="@endcanany" />
       <data directive="@endcannot" />
