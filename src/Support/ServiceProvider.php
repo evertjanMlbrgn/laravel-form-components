@@ -38,10 +38,9 @@ class ServiceProvider extends BaseServiceProvider
                self::CONFIG_FILE => config_path('form-components.php'),
             ], 'config');
 
-//  Don't want to publish views should all be in vendor package
-//            $this->publishes([
-//                __DIR__ . '/../../resources/views' => base_path('resources/View/vendor/form-components'),
-//            ], 'View');
+            $this->publishes([
+                self::PATH_VIEWS => base_path('resources/views/vendor/components/form-components'),
+            ], 'mlbrgn-form-components');
         }
 
         // method 1 of loading view components
