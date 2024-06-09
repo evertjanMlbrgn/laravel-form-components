@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) Protone Media B.V.
+Copyright (c) Protone Media B.V.  
 Copyright (c) 2024 Buro Mlbrgn B.V.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
