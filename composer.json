@@ -45,7 +45,7 @@
         "nesbot/carbon": "^2.66",
         "orchestra/testbench": "^8.23",
         "orchestra/testbench-browser-kit": "^7.0 || ^8.0",
-        "phpunit/phpunit": "^9.5",
+        "pestphp/pest": "^1.23",
         "spatie/laravel-translatable": "^6.0",
         "symfony/dom-crawler": "^6.0"
     },
@@ -64,7 +64,10 @@
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
