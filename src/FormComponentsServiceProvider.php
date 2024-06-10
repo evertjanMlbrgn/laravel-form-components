@@ -70,14 +70,13 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         }
 
         // method 1 of loading view components
-        $this->loadViewsFrom(realpath(self::PATH_VIEWS), config('form-components.view_namespace'));
         $this->configureComponents();
 
         // method 2 of loading view components
-        $this->loadViewComponentsAs('mlbrgn', $this->viewComponents());
+        //$this->loadViewComponentsAs('mlbrgn', $this->viewComponents());
 
         // method 3 of registering view components
-        Blade::componentNamespace('Mlbrgn\LaravelFormComponents\View\Components', config('form-components.tag_prefix'));
+        //Blade::componentNamespace('Mlbrgn\LaravelFormComponents\View\Components', config('form-components.tag_prefix'));
 
         Blade::directive('bind', function ($bind) {
             return '<?php app(\Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder::class)->bind('.$bind.'); ?>';
@@ -91,6 +90,9 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
     protected function configureComponents(): void
     {
+
+        $this->loadViewsFrom(realpath(self::PATH_VIEWS), config('form-components.view_namespace'));
+
         $this->callAfterResolving(BladeCompiler::class, function () {
             $this->registerComponent('captcha', Captcha::class);
             $this->registerComponent('checkbox', Checkbox::class);
