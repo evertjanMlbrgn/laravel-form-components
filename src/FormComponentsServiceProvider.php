@@ -26,15 +26,15 @@ use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
 class FormComponentsServiceProvider extends BaseServiceProvider
 {
 
-    private const PATH_VIEWS = __DIR__.'/../../resources/views/';
-    private const PATH_VIEW_CLASSES = __DIR__.'/../../src/View/';
-    private const PATH_TRAITS = __DIR__.'/../../src/Traits/';
+    private const PATH_VIEWS = __DIR__.'/../resources/views/';
+    private const PATH_VIEW_CLASSES = __DIR__.'/../src/View/';
+    private const PATH_TRAITS = __DIR__.'/../src/Traits/';
 
-    private const PATH_SERVICE_PROVIDER = __DIR__.'/../../src/Support/FormComponentsServiceProvider.php';
+    private const PATH_SERVICE_PROVIDER = __DIR__.'/../src/Support/FormComponentsServiceProvider.php';
     private const PATH_FORM_DATA_BINDER = __DIR__.'/../../src/FormDataBinder.php';
 
 
-    private const CONFIG_FILE = __DIR__.'/../../config/config.php';
+    private const CONFIG_FILE = __DIR__.'/../config/config.php';
 
     public function boot(): void
     {
