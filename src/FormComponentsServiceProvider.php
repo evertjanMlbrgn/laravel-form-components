@@ -5,7 +5,7 @@ namespace Mlbrgn\LaravelFormComponents;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
-use Mlbrgn\LaravelFormComponents\FormDataBinder;
+use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
 use Mlbrgn\LaravelFormComponents\View\Components\Captcha;
 use Mlbrgn\LaravelFormComponents\View\Components\Checkbox;
 use Mlbrgn\LaravelFormComponents\View\Components\Errors;
@@ -27,10 +27,10 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 {
 
     private const PATH_VIEWS = __DIR__ . '/../resources/views/';
-    private const PATH_VIEW_CLASSES = __DIR__ . '/../src/View/';
-    private const PATH_TRAITS = __DIR__ . '/../src/Traits/';
-    private const PATH_SERVICE_PROVIDER = __DIR__ . '/../src/Support/FormComponentsServiceProvider.php';
-    private const PATH_FORM_DATA_BINDER = __DIR__ . '/../src/FormDataBinder.php';
+    private const PATH_VIEW_CLASSES = __DIR__ . '/View/';
+    private const PATH_TRAITS = __DIR__ . '/Traits/';
+    private const PATH_SERVICE_PROVIDER = __DIR__ . '/FormComponentsServiceProvider.php';
+    private const PATH_HELPERS = __DIR__ . '/Helpers';
     private const CONFIG_FILE = __DIR__ . '/../config/config.php';
 
     public function boot(): void
@@ -58,7 +58,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             ], 'mlbrgn-form-components-service-provider');
 
             $this->publishes([
-                self::PATH_FORM_DATA_BINDER => base_path('app/Helpers'),
+                self::PATH_HELPERS => base_path('app/Helpers'),
             ], 'mlbrgn-form-components-helpers');
         }
 
@@ -73,11 +73,11 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         Blade::componentNamespace('Mlbrgn\LaravelFormComponents\View\Components', config('form-components.tag_prefix'));
 
         Blade::directive('bind', function ($bind) {
-            return '<?php app(\Mlbrgn\LaravelFormComponents\FormDataBinder::class)->bind(' . $bind . '); ?>';
+            return '<?php app(\Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder::class)->bind('. $bind . '); ?>';
         });
 
         Blade::directive('endbind', function () {
-            return '<?php app(\Mlbrgn\LaravelFormComponents\FormDataBinder::class)->pop(); ?>';
+            return '<?php app(\Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder::class)->pop(); ?>';
         });
 
     }

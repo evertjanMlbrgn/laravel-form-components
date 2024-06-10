@@ -1,6 +1,6 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents;
+namespace Mlbrgn\LaravelFormComponents\Helpers;
 
 use Illuminate\Support\Arr;
 
