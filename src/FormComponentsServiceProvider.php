@@ -1,6 +1,6 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\Support;
+namespace Mlbrgn\LaravelFormComponents;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
@@ -31,6 +31,8 @@ class FormComponentsServiceProvider extends BaseServiceProvider
     private const PATH_TRAITS = __DIR__.'/../../src/Traits/';
 
     private const PATH_SERVICE_PROVIDER = __DIR__.'/../../src/Support/FormComponentsServiceProvider.php';
+    private const PATH_FORM_DATA_BINDER = __DIR__.'/../../src/FormDataBinder.php';
+
 
     private const CONFIG_FILE = __DIR__.'/../../config/config.php';
 
@@ -57,6 +59,10 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $this->publishes([
                 self::PATH_SERVICE_PROVIDER => base_path('app/Providers'),
             ], 'mlbrgn-form-components-service-provider');
+
+            $this->publishes([
+                self::PATH_FORM_DATA_BINDER => base_path('app/Helpers'),
+            ], 'mlbrgn-form-components-helpers');
         }
 
         // method 1 of loading view components
