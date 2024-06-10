@@ -11,14 +11,6 @@ class Input extends FormBaseComponent
     use HandlesDefaultAndOldValue;
     use HandlesValidationErrors;
 
-    public string $name;
-
-    public string $label;
-
-    public string $type;
-
-    public bool $floating;
-
     public $value;
 
     /**
@@ -27,20 +19,18 @@ class Input extends FormBaseComponent
      * @return void
      */
     public function __construct(
-        string $name,
-        string $label = '',
-        string $type = 'text',
+        public string $name,
+        public string $label = '',
+        public string $type = 'text',
         $bind = null,
         $default = null,
         $language = null,
         bool $showErrors = true,
-        bool $floating = false
+        public bool $floating = false,
+        public bool $horizontal = false,
+
     ) {
-        $this->name = $name;
-        $this->label = $label;
-        $this->type = $type;
         $this->showErrors = $showErrors;
-        $this->floating = $floating && $type !== 'hidden';
 
         if ($language) {
             $this->name = "{$name}[{$language}]";
