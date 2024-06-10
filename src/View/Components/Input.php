@@ -8,12 +8,15 @@ use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class Input extends FormBaseComponent
 {
-    use HandlesValidationErrors;
     use HandlesDefaultAndOldValue;
+    use HandlesValidationErrors;
 
     public string $name;
+
     public string $label;
+
     public string $type;
+
     public bool $floating;
 
     public $value;
@@ -33,11 +36,11 @@ class Input extends FormBaseComponent
         bool $showErrors = true,
         bool $floating = false
     ) {
-        $this->name       = $name;
-        $this->label      = $label;
-        $this->type       = $type;
+        $this->name = $name;
+        $this->label = $label;
+        $this->type = $type;
         $this->showErrors = $showErrors;
-        $this->floating   = $floating && $type !== 'hidden';
+        $this->floating = $floating && $type !== 'hidden';
 
         if ($language) {
             $this->name = "{$name}[{$language}]";

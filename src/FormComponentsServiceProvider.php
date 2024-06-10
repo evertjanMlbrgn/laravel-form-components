@@ -25,20 +25,27 @@ use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
 
 class FormComponentsServiceProvider extends BaseServiceProvider
 {
+    // TODO consider using https://github.com/spatie/laravel-package-tools, makes installing package easier
+    // READ https://dcblog.dev/my-process-for-writing-laravel-packages#heading-serviceprovider about github cli and packagist
 
-    private const PATH_VIEWS = __DIR__ . '/../resources/views/';
-    private const PATH_VIEW_CLASSES = __DIR__ . '/View/';
-    private const PATH_TRAITS = __DIR__ . '/Traits/';
-    private const PATH_SERVICE_PROVIDER = __DIR__ . '/FormComponentsServiceProvider.php';
-    private const PATH_HELPERS = __DIR__ . '/Helpers';
-    private const CONFIG_FILE = __DIR__ . '/../config/config.php';
+    private const PATH_VIEWS = __DIR__.'/../resources/views/';
+
+    private const PATH_VIEW_CLASSES = __DIR__.'/View/';
+
+    private const PATH_TRAITS = __DIR__.'/Traits/';
+
+    private const PATH_SERVICE_PROVIDER = __DIR__.'/FormComponentsServiceProvider.php';
+
+    private const PATH_HELPERS = __DIR__.'/Helpers';
+
+    private const CONFIG_FILE = __DIR__.'/../config/config.php';
 
     public function boot(): void
     {
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-               self::CONFIG_FILE => config_path('form-components.php'),
+                self::CONFIG_FILE => config_path('form-components.php'),
             ], 'mlbrgn-form-components-config');
 
             $this->publishes([
@@ -73,7 +80,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         Blade::componentNamespace('Mlbrgn\LaravelFormComponents\View\Components', config('form-components.tag_prefix'));
 
         Blade::directive('bind', function ($bind) {
-            return '<?php app(\Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder::class)->bind('. $bind . '); ?>';
+            return '<?php app(\Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder::class)->bind('.$bind.'); ?>';
         });
 
         Blade::directive('endbind', function () {
@@ -108,10 +115,10 @@ class FormComponentsServiceProvider extends BaseServiceProvider
     protected function registerComponent(string $tagAlias, string $class): void
     {
         // with dash syntax. e.g. <x-form-input>
-        Blade::component(config('form-components.tag_prefix') . '-' . $tagAlias, $class);
+        Blade::component(config('form-components.tag_prefix').'-'.$tagAlias, $class);
 
         // with dot syntax. e.g. <x-form.input>
-        Blade::component(config('form-components.tag_prefix') . '.'. $tagAlias, $class);
+        Blade::component(config('form-components.tag_prefix').'.'.$tagAlias, $class);
 
     }
 

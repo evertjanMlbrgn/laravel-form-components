@@ -8,6 +8,7 @@ use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 class Errors extends FormBaseComponent
 {
     public string $name;
+
     public string $bag;
 
     /**

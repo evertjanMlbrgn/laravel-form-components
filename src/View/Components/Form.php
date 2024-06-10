@@ -34,8 +34,7 @@ class Form extends FormBaseComponent
     /**
      * Returns a boolean wether the error bag is not empty.
      *
-     * @param string $bag
-     * @return boolean
+     * @param  string  $bag
      */
     public function hasError($bag = 'default'): bool
     {

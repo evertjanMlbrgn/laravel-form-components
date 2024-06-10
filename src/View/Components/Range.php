@@ -8,10 +8,11 @@ use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class Range extends FormBaseComponent
 {
-    use HandlesValidationErrors;
     use HandlesDefaultAndOldValue;
+    use HandlesValidationErrors;
 
     public string $name;
+
     public string $label;
 
     public $value;
@@ -29,8 +30,8 @@ class Range extends FormBaseComponent
         $language = null,
         bool $showErrors = true
     ) {
-        $this->name       = $name;
-        $this->label      = $label;
+        $this->name = $name;
+        $this->label = $label;
         $this->showErrors = $showErrors;
 
         if ($language) {

@@ -11,15 +11,21 @@ use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class Select extends FormBaseComponent
 {
-    use HandlesValidationErrors;
     use HandlesBoundValues;
+    use HandlesValidationErrors;
 
     public string $name;
+
     public string $label;
+
     public $options;
+
     public $selectedKey;
+
     public bool $multiple;
+
     public bool $floating;
+
     public string $placeholder;
 
     /**
@@ -39,11 +45,11 @@ class Select extends FormBaseComponent
         bool $floating = false,
         string $placeholder = ''
     ) {
-        $this->name         = $name;
-        $this->label        = $label;
-        $this->options      = $options;
+        $this->name = $name;
+        $this->label = $label;
+        $this->options = $options;
         $this->manyRelation = $manyRelation;
-        $this->placeholder  = $placeholder;
+        $this->placeholder = $placeholder;
 
         $inputName = static::convertBracketsToDots(Str::before($name, '[]'));
 
@@ -57,9 +63,9 @@ class Select extends FormBaseComponent
             $this->selectedKey = $this->selectedKey->toArray();
         }
 
-        $this->multiple   = $multiple;
+        $this->multiple = $multiple;
         $this->showErrors = $showErrors;
-        $this->floating   = $floating && !$multiple;
+        $this->floating = $floating && ! $multiple;
     }
 
     public function isSelected($key): bool
