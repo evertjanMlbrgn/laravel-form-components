@@ -23,12 +23,16 @@ use Mlbrgn\LaravelFormComponents\View\Components\Select;
 use Mlbrgn\LaravelFormComponents\View\Components\Submit;
 use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
 
-class ServiceProvider extends BaseServiceProvider
+class FormComponentsServiceProvider extends BaseServiceProvider
 {
 
-    private const PATH_VIEWS = __DIR__ . '/../../resources/views/';
-    private const CONFIG_FILE = __DIR__ . '/../../config/config.php';
-//    public static string $VIEW_NAMESPACE = 'laravel-form-components';
+    private const PATH_VIEWS = __DIR__.'/../../resources/views/';
+    private const PATH_VIEW_CLASSES = __DIR__.'/../../src/View/';
+    private const PATH_TRAITS = __DIR__.'/../../src/Traits/';
+
+    private const PATH_SERVICE_PROVIDER = __DIR__.'/../../src/Support/FormComponentsServiceProvider.php';
+
+    private const CONFIG_FILE = __DIR__.'/../../config/config.php';
 
     public function boot(): void
     {
@@ -36,11 +40,23 @@ class ServiceProvider extends BaseServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                self::CONFIG_FILE => config_path('form-components.php'),
-            ], 'config');
+            ], 'mlbrgn-form-components-config');
 
             $this->publishes([
                 self::PATH_VIEWS => base_path('resources/views/components/form'),
-            ], 'mlbrgn-form-components');
+            ], 'mlbrgn-form-components-views');
+
+            $this->publishes([
+                self::PATH_TRAITS => base_path('app/Traits'),
+            ], 'mlbrgn-form-components-traits');
+
+            $this->publishes([
+                self::PATH_VIEW_CLASSES => base_path('app/View'),
+            ], 'mlbrgn-form-components-view-classes');
+
+            $this->publishes([
+                self::PATH_SERVICE_PROVIDER => base_path('app/Providers'),
+            ], 'mlbrgn-form-components-service-provider');
         }
 
         // method 1 of loading view components
@@ -92,7 +108,7 @@ class ServiceProvider extends BaseServiceProvider
         Blade::component(config('form-components.tag_prefix') . '-' . $tagAlias, $class);
 
         // with dot syntax. e.g. <x-form.input>
-        Blade::component(config('form-components.tag_prefix') . '.' . $tagAlias, $class);
+        Blade::component(config('form-components.tag_prefix').'Support'. $tagAlias, $class);
 
     }
 
