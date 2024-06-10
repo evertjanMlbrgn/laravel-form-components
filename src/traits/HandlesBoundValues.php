@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use Mlbrgn\LaravelFormComponents\FormDataBinder;
+use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
 
 trait HandlesBoundValues
 {
