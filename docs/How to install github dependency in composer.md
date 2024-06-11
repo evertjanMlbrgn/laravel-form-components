@@ -6,12 +6,15 @@ Open the project in which you want to include the form-components.
 
 Add the following to composer.json
 
-"repositories": [
-{
-"type": "vcs",
-"url": "https://github.com/MLBRGN/laravel-form-components.git"
-}
-],
+```json
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:MLBRGN/laravel-form-components.git",
+            "no-api": true
+        }
+    ],
+```
 
 And add
 
@@ -23,15 +26,15 @@ After this your composer.json file will look something like this
 "license": "MIT",
 "repositories": [
     {
-      "type": "vcs",
-      "url": "https://github.com/MLBRGN/laravel-form-components.git"
+    "type": "vcs",
+    "url": "git@github.com:MLBRGN/laravel-form-components.git",
+    "no-api": true
     }
 ],
 "require": {
-"php": "^8.1",
-"...":"...",
-"...":"...",
-"mlbrgn/laravel-form-components": "@dev",
+    "...":"...",
+    "mlbrgn/laravel-form-components": "@dev",
+    "...":"...",
 },
 ```
 
@@ -43,7 +46,7 @@ composer update
 
 ## When asked for a token
 
-If asked for a token you need to create a GitHub personal token
+When "no-api": true is present, you shouldn't be asked for a token, but if you are you need to create a GitHub personal token
 
 ### Create GitHub personal token
 * Go to GitHub
