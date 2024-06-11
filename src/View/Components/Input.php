@@ -20,21 +20,21 @@ class Input extends FormBaseComponent
      */
     public function __construct(
         public string $name,
-        public string $label = '',
-        public string $type = 'text',
         $bind = null,
         $default = null,
         $language = null,
+        public string $label = '',
+        public string $type = 'text',
         bool $showErrors = true,
-        public bool $floating = false,
         public bool $horizontal = false,
-
+        public bool $floating = false,
+        public bool $required = false,
+        public bool $hidden = false
     ) {
+
         $this->showErrors = $showErrors;
 
-        if ($language) {
-            $this->name = "{$name}[{$language}]";
-        }
+        if ($language) $this->name = "{$name}[{$language}]";
 
         $this->setValue($name, $bind, $default, $language);
     }

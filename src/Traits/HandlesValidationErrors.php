@@ -12,14 +12,12 @@ trait HandlesValidationErrors
     public $showErrors = true;
 
     /**
-     * Returns a boolean wether the given attribute has an error
+     * Returns a boolean whether the given attribute has an error
      * and the should be shown.
      */
-    public function hasErrorAndShow(string $name, string $bag = 'default'): bool
+    public function shouldShowError(string $name, string $bag = 'default'): bool
     {
-        return $this->showErrors
-            ? $this->hasError($name, $bag)
-            : false;
+        return $this->showErrors && $this->hasError($name, $bag);
     }
 
     /**
@@ -33,7 +31,7 @@ trait HandlesValidationErrors
     }
 
     /**
-     * Returns a boolean wether the given attribute has an error.
+     * Returns a boolean whether the given attribute has an error.
      */
     public function hasError(string $name, string $bag = 'default'): bool
     {

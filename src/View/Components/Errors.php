@@ -8,18 +8,18 @@ use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 class Errors extends FormBaseComponent
 {
     public string $name;
-
     public string $bag;
 
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
     public function __construct(string $name, string $bag = 'default')
     {
         $this->name = static::convertBracketsToDots(Str::before($name, '[]'));
-
         $this->bag = $bag;
     }
+
+    // TODO?
+//    public function shouldRender(): bool
+//    {
+////        return $this->hasErrors;
+//        return true;
+//    }
 }

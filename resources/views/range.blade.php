@@ -1,21 +1,19 @@
-<x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" :required="$attributes->has('required')"/>
+<x-form-control-wrapper :id="$getId()">
 
-<input
-    {!! $attributes->merge(['class' => 'form-range' . ($hasError($name) ? ' is-invalid' : '')]) !!}
+    <input
+        {{ $attributes->class([
+            'form-range', 'is-invalid' => $hasError($name)
+            ]) }}
+        type="range"
+        value="{{ $value }}"
+        name="{{ $name }}"
+        @if($label)
+            id="{{ $getId() }}"
+        @endif
+    />
 
-    type="range"
-
-    value="{{ $value }}"
-
-    name="{{ $name }}"
-
-    @if($label && !$attributes->get('id'))
-        id="{{ $id() }}"
+    @if($shouldShowError($name))
+        <x-form-errors :name="$name" />
     @endif
-/>
 
-{!! $help ?? null !!}
-
-@if($hasErrorAndShow($name))
-    <x-form-errors :name="$name" />
-@endif
+</x-form-control-wrapper>

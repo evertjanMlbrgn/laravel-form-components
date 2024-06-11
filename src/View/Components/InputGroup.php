@@ -10,7 +10,6 @@ class InputGroup extends FormBaseComponent
     use HandlesValidationErrors;
 
     public string $name;
-
     public string $label;
 
     /**

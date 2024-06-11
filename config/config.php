@@ -45,7 +45,7 @@ return [
     //
     //        'inline' => [
     //            'view'  => 'form-components::{framework}.inline',
-    //            'class' => \Mlbrgn\LaravelFormComponents\View\Components\Inline::class,
+    //            'class' => \Mlbrgn\LaravelFormComponents\View\Components\FormInline::class,
     //        ],
     //
     //        'captcha' => [

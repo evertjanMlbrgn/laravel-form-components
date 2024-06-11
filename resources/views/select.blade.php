@@ -1,11 +1,11 @@
-@if($floating) <div class="form-floating"> @endif
-
-    @if(!$floating)
-        <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" :required="$attributes->has('required')"/>
-    @endif
+<x-form-control-wrapper :id="$getId()">
 
     <select
+        {{ $attributes->class([
+            'form-select', 'is-invalid' => $hasError($name)
+        ]) }}
         name="{{ $name }}"
+        id="{{ $getId() }}"
 
         @if($multiple)
             multiple
@@ -14,12 +14,6 @@
         @if($placeholder)
             placeholder="{{ $placeholder }}"
         @endif
-
-        @if($label && !$attributes->get('id'))
-            id="{{ $id() }}"
-        @endif
-
-        {!! $attributes->merge(['class' => 'form-select' . ($hasError($name) ? ' is-invalid' : '')]) !!}
     >
 
         @if($placeholder)
@@ -37,14 +31,7 @@
         @endforelse
     </select>
 
-    @if($floating)
-        <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" :required="$attributes->has('required')"/>
+    @if($shouldShowError($name))
+        <x-form-errors :name="$name" />
     @endif
-
-@if($floating) </div> @endif
-
-{!! $help ?? null !!}
-
-@if($hasErrorAndShow($name))
-    <x-form-errors :name="$name" />
-@endif
+</x-form-control-wrapper>

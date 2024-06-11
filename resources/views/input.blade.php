@@ -1,37 +1,43 @@
-<x-form-control-wrapper :hidden="$type" :floating="$floating" :horizontal="$horizontal">
+@props([
+    'hidden' => false,
+    'required' => false,
+    'floating' => false,
+    'horizontal' => false,
+])
 
-        @if(!$floating)
-            <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" :required="$attributes->has('required')"/>
-        @endif
+{{--<samp>--}}
+{{--    <p> inside input</p>--}}
+{{--    <p>--}}
+{{--        name {{ $name }}--}}
+{{--        hidden {{ $hidden ? 'yes' : 'no' }},--}}
+{{--        required {{ $required ? 'yes' : 'no'}},--}}
+{{--        floating {{ $floating ? 'yes' : 'no' }}--}}
+{{--        horizontal {{ $horizontal ? 'yes' : 'no' }}--}}
+{{--        errors {{ $errors ?? $errors }}--}}
+{{--    </p>--}}
+{{--</samp>--}}
 
+<x-form-control-wrapper :id="$getId()" >
         <input
-            {!! $attributes->merge(['class' => 'form-control' . ($type === 'color' ? ' form-control-color' : '') . ($hasError($name) ? ' is-invalid' : '')]) !!}
-
+            {{ $attributes->class([
+            'form-control',
+            'form-control-color' => ($type === 'color'),
+            'is-invalid' => ($hasError($name))
+            ]) }}
             type="{{ $type }}"
-
             value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
-
             name="{{ $name }}"
-
-            @if($label && !$attributes->get('id'))
-                id="{{ $id() }}"
+            id="{{ $getId() }}"
+            {{-- floating labels won't work without placeholder, yet they never display placeholder either --}}
+            @if($floating && !$attributes->has('placeholder'))
+                    placeholder="&nbsp;"
             @endif
-
-            {{--  Placeholder is required as of writing  --}}
-            @if($floating && !$attributes->get('placeholder'))
-                placeholder="&nbsp;"
-            @endif
+            {{-- don't understand why placeholder is automatically added to this input when not floating label --}}
         >
 
-        @if($floating)
-            <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" :required="$attributes->has('required')"/>
-        @endif
-
-        {!! $help ?? null !!}
-
-        @if($hasErrorAndShow($name))
-            <x-form-errors :name="$name"/>
-        @endif
+    @if($shouldShowError($name))
+        <x-form-errors :name="$name" />
+    @endif
 
 </x-form-control-wrapper>
 

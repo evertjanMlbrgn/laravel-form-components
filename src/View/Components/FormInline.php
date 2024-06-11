@@ -7,7 +7,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
-class Inline extends Component
+class FormInline extends Component
 {
     /**
      * Create a new component instance.
@@ -26,7 +26,7 @@ class Inline extends Component
     {
         $buttonType = Str::lower($this->method) === 'delete' ? 'danger' : 'primary';
 
-        return view('components.form.inline', [
+        return view('components.form.form-inline', [
             'buttonType' => $buttonType,
         ]);
     }

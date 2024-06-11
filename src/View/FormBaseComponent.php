@@ -7,34 +7,28 @@ use Illuminate\View\Component;
 
 abstract class FormBaseComponent extends Component
 {
-    /**
-     * ID for this component.
-     *
-     * @var string
-     */
-    private $id;
+
+    public $showErrors = true;
 
     /**
      * {@inheritDoc}
      */
     public function render()
     {
-        return view(config('form-components.view_namespace').'::'.Str::kebab(class_basename($this)));
+        return view(config('form-components.view_namespace').'::' . Str::kebab(class_basename($this)));
     }
 
     /**
      * Generates an ID, once, for this component.
      */
-    public function id(): string
+    public function getId(): string
     {
-        if ($this->id) {
-            return $this->id;
+        if ($this->attributes->has('id') && !empty($this->attributes->get('id'))) {
+            return $this->id = $this->attributes->get('id');
         }
-
         if ($this->name) {
             return $this->id = $this->generateIdByName();
         }
-
         return $this->id = Str::random(4);
     }
 

@@ -8,11 +8,12 @@ use Illuminate\View\Compilers\BladeCompiler;
 use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
 use Mlbrgn\LaravelFormComponents\View\Components\Captcha;
 use Mlbrgn\LaravelFormComponents\View\Components\Checkbox;
+use Mlbrgn\LaravelFormComponents\View\Components\ControlWrapper;
 use Mlbrgn\LaravelFormComponents\View\Components\Errors;
 use Mlbrgn\LaravelFormComponents\View\Components\Form;
 use Mlbrgn\LaravelFormComponents\View\Components\Group;
 use Mlbrgn\LaravelFormComponents\View\Components\HtmlEditor;
-use Mlbrgn\LaravelFormComponents\View\Components\Inline;
+use Mlbrgn\LaravelFormComponents\View\Components\FormInline;
 use Mlbrgn\LaravelFormComponents\View\Components\Input;
 use Mlbrgn\LaravelFormComponents\View\Components\InputGroup;
 use Mlbrgn\LaravelFormComponents\View\Components\InputGroupText;
@@ -100,7 +101,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $this->registerComponent('form', Form::class);
             $this->registerComponent('group', Group::class);
             $this->registerComponent('html-editor', HtmlEditor::class);
-            $this->registerComponent('inline', Inline::class);
+            $this->registerComponent('form-inline', FormInline::class);
             $this->registerComponent('input', Input::class);
             $this->registerComponent('input-group', InputGroup::class);
             $this->registerComponent('input-group-text', InputGroupText::class);
@@ -110,6 +111,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $this->registerComponent('select', Select::class);
             $this->registerComponent('submit', Submit::class);
             $this->registerComponent('textarea', Textarea::class);
+            $this->registerComponent('control-wrapper', ControlWrapper::class);
         });
     }
 
@@ -117,10 +119,10 @@ class FormComponentsServiceProvider extends BaseServiceProvider
     protected function registerComponent(string $tagAlias, string $class): void
     {
         // with dash syntax. e.g. <x-form-input>
-        Blade::component(config('form-components.tag_prefix').'-'.$tagAlias, $class);
+        Blade::component(config('form-components.tag_prefix') . '-' . $tagAlias, $class);
 
         // with dot syntax. e.g. <x-form.input>
-        Blade::component(config('form-components.tag_prefix').'.'.$tagAlias, $class);
+        Blade::component(config('form-components.tag_prefix') . '.' . $tagAlias, $class);
 
     }
 

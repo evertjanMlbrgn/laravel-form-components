@@ -1,7 +1,11 @@
-@props([
-    "required" => false
+@aware([
+    'required'
 ])
-@if($label)
-    <label {{ $attributes->class(['form-label', 'required' => $required]) }}>{{ $label }}</label>
+@if ($slot->isNotEmpty())
+    <label {{ $attributes->class([
+        'form-label',
+        'required' => $attributes->has('required')
+    ]) }}>
+        {{ $slot }}
+    </label>
 @endif
-

@@ -1,6 +1,7 @@
 <?php
 
-//namespace Mlbrgn\LaravelFormComponents\Tests;
+namespace Mlbrgn\LaravelFormComponents\Tests;
+
 use Orchestra\Testbench\TestCase;
 
 class InitialTest extends TestCase

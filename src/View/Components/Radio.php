@@ -50,7 +50,7 @@ class Radio extends FormBaseComponent
     }
 
     /**
-     * Generates an ID by the name and value attributes.
+     * Override
      */
     protected function generateIdByName(): string
     {

@@ -7,7 +7,7 @@
 
     {!! $help ?? null !!}
 
-    @if($hasErrorAndShow($name))
+    @if($shouldShowError($name))
         <x-form-errors :name="$name" />
     @endif
 </div>

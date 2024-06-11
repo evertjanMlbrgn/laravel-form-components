@@ -64,7 +64,7 @@ class Checkbox extends FormBaseComponent
     }
 
     /**
-     * Generates an ID by the name and value attributes.
+     * override
      */
     protected function generateIdByName(): string
     {

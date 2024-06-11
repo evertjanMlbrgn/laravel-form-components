@@ -1,27 +1,20 @@
-<div class="form-check @if(null !== $attributes->get('inline')) form-check-inline @endif">
+<x-form-control-wrapper class="form-check @if(null !== $attributes->get('inline')) form-check-inline @endif" :id="$getId()" >
+
     <input
-        {!! $attributes->merge(['class' => 'form-check-input' . ($hasError($name) ? ' is-invalid' : '')]) !!}
-
+        {{ $attributes->class([
+            'form-check-input', 'is-invalid' => $hasError($name)
+        ]) }}
         type="radio"
-
         value="{{ $value }}"
-
         name="{{ $name }}"
-
-        @if($label && !$attributes->get('id'))
-            id="{{ $id() }}"
-        @endif
-
+        id="{{ $getId() }}"
         @if($checked)
             checked="checked"
         @endif
     />
 
-    <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" class="form-check-label" :required="$attributes->has('required')"/>
-
-    {!! $help ?? null !!}
-
-    @if($hasErrorAndShow($name))
+    @if($shouldShowError($name))
         <x-form-errors :name="$name" />
     @endif
-</div>
+
+</x-form-control-wrapper>
