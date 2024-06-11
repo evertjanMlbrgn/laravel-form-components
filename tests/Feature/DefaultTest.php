@@ -1,21 +1,13 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\Tests\Feature;
+uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
+it('can set a default value', function () {
+    $this->registerTestRoute('default-values');
 
-use Mlbrgn\LaravelFormComponents\Tests\TestCase;
-
-class DefaultTest extends TestCase
-{
-    /** @test */
-    public function it_can_set_a_default_value()
-    {
-        $this->registerTestRoute('default-values');
-
-        $this->visit('/default-values')
-            ->seeElement('input[name="input"][value="a"]')
-            ->seeInElement('textarea[name="textarea"]', 'b')
-            ->seeElement('option[value="c"]:selected')
-            ->seeElement('input[name="checkbox"]:checked')
-            ->seeElement('input[name="radio"]:checked');
-    }
-}
+    $this->visit('/default-values')
+        ->seeElement('input[name="input"][value="a"]')
+        ->seeInElement('textarea[name="textarea"]', 'b')
+        ->seeElement('option[value="c"]:selected')
+        ->seeElement('input[name="checkbox"]:checked')
+        ->seeElement('input[name="radio"]:checked');
+});

@@ -16,7 +16,7 @@ abstract class TestCase extends BaseTestCase
         return version_compare(app()->version(), '10.0', '>=');
     }
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -34,7 +34,7 @@ abstract class TestCase extends BaseTestCase
         return [FormComponentsServiceProvider::class];
     }
 
-    protected function registerTestRoute($uri, callable $post = null): self
+    public function registerTestRoute($uri, callable $post = null): self
     {
         Route::middleware('web')->group(function () use ($uri, $post) {
             Route::view($uri, $uri);

@@ -1,28 +1,18 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\Tests\Feature;
+uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
+it('shows the select field', function () {
+    $this->registerTestRoute('select-boolean-value');
 
-use Mlbrgn\LaravelFormComponents\Tests\TestCase;
+    $this->visit('/select-boolean-value')
+        ->seeElement('option[value="1"]')
+        ->seeElement('option[value="0"]');
+});
 
-class SelectBooleanValueTest extends TestCase
-{
-    /** @test */
-    public function it_shows_the_select_field()
-    {
-        $this->registerTestRoute('select-boolean-value');
+it('shows the false value selected', function () {
+    $this->registerTestRoute('select-boolean-value');
 
-        $this->visit('/select-boolean-value')
-            ->seeElement('option[value="1"]')
-            ->seeElement('option[value="0"]');
-    }
-
-    /** @test */
-    public function it_shows_the_false_value_selected()
-    {
-        $this->registerTestRoute('select-boolean-value');
-
-        $this->visit('/select-boolean-value')
-            ->seeElement('option[value="1"]')
-            ->seeElement('option[value="0"][selected="selected"]');
-    }
-}
+    $this->visit('/select-boolean-value')
+        ->seeElement('option[value="1"]')
+        ->seeElement('option[value="0"][selected="selected"]');
+});

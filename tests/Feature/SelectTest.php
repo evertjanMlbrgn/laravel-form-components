@@ -1,30 +1,20 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\Tests\Feature;
+uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
+it('shows the slot if the options are empty', function () {
+    $this->registerTestRoute('select-slot');
 
-use Mlbrgn\LaravelFormComponents\Tests\TestCase;
+    $this->visit('/select-slot')
+        ->seeElement('option[value="a"]')
+        ->seeElement('option[value="b"]')
+        ->seeElement('option[value="c"]');
+});
 
-class SelectTest extends TestCase
-{
-    /** @test */
-    public function it_shows_the_slot_if_the_options_are_empty()
-    {
-        $this->registerTestRoute('select-slot');
+it('can render a placeholder', function () {
+    $this->registerTestRoute('select-placeholder');
 
-        $this->visit('/select-slot')
-            ->seeElement('option[value="a"]')
-            ->seeElement('option[value="b"]')
-            ->seeElement('option[value="c"]');
-    }
-
-    /** @test */
-    public function it_can_render_a_placeholder()
-    {
-        $this->registerTestRoute('select-placeholder');
-
-        $this->visit('/select-placeholder')
-            ->seeElement('option[value=""][selected="selected"]')
-            ->seeElement('option[value="a"]')
-            ->seeElement('option[value="b"]');
-    }
-}
+    $this->visit('/select-placeholder')
+        ->seeElement('option[value=""][selected="selected"]')
+        ->seeElement('option[value="a"]')
+        ->seeElement('option[value="b"]');
+});

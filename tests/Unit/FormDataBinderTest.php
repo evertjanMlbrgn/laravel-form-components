@@ -1,36 +1,27 @@
 <?php
 
 
+uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
-use Mlbrgn\LaravelFormComponents\Tests\TestCase;
+it('can bind targets', function () {
+    $binder = new FormDataBinder;
+    expect($binder->get())->toBeNull();
 
-class FormDataBinderTest extends TestCase
-{
-    /** @test */
-    public function it_can_bind_targets()
-    {
-        $binder = new FormDataBinder;
-        $this->assertNull($binder->get());
+    $binder->bind($array = ['foo' => 'bar']);
+    expect($binder->get())->toEqual($array);
+});
 
-        $binder->bind($array = ['foo' => 'bar']);
-        $this->assertEquals($array, $binder->get());
-    }
+it('can bind multiple targets', function () {
+    $binder = new FormDataBinder;
 
-    /** @test */
-    public function it_can_bind_multiple_targets()
-    {
-        $binder = new FormDataBinder;
+    $binder->bind($targetA = ['foo' => 'bar']);
+    $binder->bind($targetB = ['bar' => 'foo']);
 
-        $binder->bind($targetA = ['foo' => 'bar']);
-        $binder->bind($targetB = ['bar' => 'foo']);
+    expect($binder->get())->toEqual($targetB);
+    $binder->pop();
 
-        $this->assertEquals($targetB, $binder->get());
-        $binder->pop();
+    expect($binder->get())->toEqual($targetA);
+    $binder->pop();
 
-        $this->assertEquals($targetA, $binder->get());
-        $binder->pop();
-
-        $this->assertNull($binder->get());
-    }
-
-}
+    expect($binder->get())->toBeNull();
+});
