@@ -1,8 +1,8 @@
 <?php
 
-
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
+
 it('can bind targets', function () {
     $binder = new FormDataBinder;
     expect($binder->get())->toBeNull();

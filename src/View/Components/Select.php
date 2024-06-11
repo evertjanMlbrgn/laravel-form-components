@@ -15,11 +15,17 @@ class Select extends FormBaseComponent
     use HandlesValidationErrors;
 
     public string $name;
+
     public string $label;
+
     public $options;
+
     public $selectedKey;
+
     public bool $multiple;
+
     public bool $floating;
+
     public string $placeholder;
 
     /**

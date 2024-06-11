@@ -22,7 +22,7 @@ it('supports bound collections', function () {
 it('does check the right input element after a validation error', function () {
     $this->registerTestRoute('checkbox-validation', function (Request $request) {
         $request->validate([
-            'checkbox'   => 'required|array',
+            'checkbox' => 'required|array',
             'checkbox.*' => 'in:a',
         ]);
     });

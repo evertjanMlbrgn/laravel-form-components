@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 it('shows the validation errors for each component', function () {
     $this->registerTestRoute('validation-errors', function (Request $request) {
         $request->validate([
-            'input'    => 'required',
+            'input' => 'required',
             'textarea' => 'required',
-            'select'   => 'required',
+            'select' => 'required',
             'checkbox' => 'required',
-            'radio'    => 'required',
+            'radio' => 'required',
         ]);
     });
 
@@ -26,11 +26,11 @@ it('shows the validation errors for each component', function () {
 it('has an option to hide the validation errors', function () {
     $this->registerTestRoute('hidden-validation-errors', function (Request $request) {
         $request->validate([
-            'input'    => 'required',
+            'input' => 'required',
             'textarea' => 'required',
-            'select'   => 'required',
+            'select' => 'required',
             'checkbox' => 'required',
-            'radio'    => 'required',
+            'radio' => 'required',
         ]);
     });
 
@@ -46,11 +46,11 @@ it('has an option to hide the validation errors', function () {
 it('uses the old values', function () {
     $this->registerTestRoute('validation-errors', function (Request $request) {
         $request->validate([
-            'input'    => 'required|in:d',
+            'input' => 'required|in:d',
             'textarea' => 'required|in:d',
-            'select'   => 'required|in:d',
+            'select' => 'required|in:d',
             'checkbox' => 'required',
-            'radio'    => 'required',
+            'radio' => 'required',
         ]);
     });
 

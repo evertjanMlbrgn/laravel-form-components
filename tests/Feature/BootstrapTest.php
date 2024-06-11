@@ -2,7 +2,7 @@
 
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 beforeEach(function () {
-    if (!in_array(config('form-components.framework'), ['bootstrap-4', 'bootstrap-5'])) {
+    if (! in_array(config('form-components.framework'), ['bootstrap-4', 'bootstrap-5'])) {
         $this->markTestSkipped('Other framework configured');
     }
 });

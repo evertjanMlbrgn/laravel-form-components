@@ -8,6 +8,7 @@ use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 class Errors extends FormBaseComponent
 {
     public string $name;
+
     public string $bag;
 
     public function __construct(string $name, string $bag = 'default')
@@ -17,9 +18,9 @@ class Errors extends FormBaseComponent
     }
 
     // TODO?
-//    public function shouldRender(): bool
-//    {
-////        return $this->hasErrors;
-//        return true;
-//    }
+    //    public function shouldRender(): bool
+    //    {
+    ////        return $this->hasErrors;
+    //        return true;
+    //    }
 }

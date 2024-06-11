@@ -4,8 +4,8 @@ namespace Mlbrgn\LaravelFormComponents\Tests;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-use Orchestra\Testbench\BrowserKit\TestCase as BaseTestCase;
 use Mlbrgn\LaravelFormComponents\FormComponentsServiceProvider;
+use Orchestra\Testbench\BrowserKit\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -26,7 +26,7 @@ abstract class TestCase extends BaseTestCase
 
         $this->app['config']->set('form-components.framework', env('FORM_COMPONENTS_FRAMEWORK', 'bootstrap-5'));
 
-        View::addLocation(__DIR__ . '/Feature/views');
+        View::addLocation(__DIR__.'/Feature/views');
     }
 
     protected function getPackageProviders($app)
@@ -34,7 +34,7 @@ abstract class TestCase extends BaseTestCase
         return [FormComponentsServiceProvider::class];
     }
 
-    public function registerTestRoute($uri, callable $post = null): self
+    public function registerTestRoute($uri, ?callable $post = null): self
     {
         Route::middleware('web')->group(function () use ($uri, $post) {
             Route::view($uri, $uri);

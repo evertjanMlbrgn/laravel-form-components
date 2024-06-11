@@ -12,15 +12,15 @@ trait InteractsWithDatabase
 
         $this->app['config']->set('database.default', 'sqlite');
         $this->app['config']->set('database.connections.sqlite', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
 
-        include_once __DIR__ . '/database/create_posts_table.php';
-        include_once __DIR__ . '/database/create_comments_table.php';
-        include_once __DIR__ . '/database/create_comment_post_table.php';
-        include_once __DIR__ . '/database/create_commentables_table.php';
+        include_once __DIR__.'/database/create_posts_table.php';
+        include_once __DIR__.'/database/create_comments_table.php';
+        include_once __DIR__.'/database/create_comment_post_table.php';
+        include_once __DIR__.'/database/create_commentables_table.php';
 
         (new \CreatePostsTable)->up();
         (new \CreateCommentsTable)->up();

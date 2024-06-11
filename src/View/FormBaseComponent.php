@@ -7,7 +7,6 @@ use Illuminate\View\Component;
 
 abstract class FormBaseComponent extends Component
 {
-
     public $showErrors = true;
 
     /**
@@ -15,7 +14,7 @@ abstract class FormBaseComponent extends Component
      */
     public function render()
     {
-        return view(config('form-components.view_namespace').'::' . Str::kebab(class_basename($this)));
+        return view(config('form-components.view_namespace').'::'.Str::kebab(class_basename($this)));
     }
 
     /**
@@ -23,12 +22,13 @@ abstract class FormBaseComponent extends Component
      */
     public function getId(): string
     {
-        if ($this->attributes->has('id') && !empty($this->attributes->get('id'))) {
+        if ($this->attributes->has('id') && ! empty($this->attributes->get('id'))) {
             return $this->id = $this->attributes->get('id');
         }
         if ($this->name) {
             return $this->id = $this->generateIdByName();
         }
+
         return $this->id = Str::random(4);
     }
 

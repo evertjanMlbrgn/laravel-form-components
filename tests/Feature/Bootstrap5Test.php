@@ -11,7 +11,7 @@ it('can group elements', function () {
     $this->registerTestRoute('bootstrap-input-group');
 
     $this->visit('/bootstrap-input-group')
-        ->within('.input-group', function() {
+        ->within('.input-group', function () {
             return $this->seeElementCount('.form-control', 2)
                 ->seeElementCount('.input-group-text', 1)
                 ->seeInElement('.input-group-text', '@');

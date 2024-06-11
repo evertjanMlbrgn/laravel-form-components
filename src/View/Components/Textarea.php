@@ -29,7 +29,9 @@ class Textarea extends FormBaseComponent
 
         $this->showErrors = $showErrors;
 
-        if ($language) $this->name = "{$name}[{$language}]";
+        if ($language) {
+            $this->name = "{$name}[{$language}]";
+        }
 
         $this->setValue($name, $bind, $default, $language);
     }

@@ -27,11 +27,11 @@ it('sets the right value if the value is zero', function () {
 it('overrides the bound target with the old request data', function () {
     $this->registerTestRoute('bound-with-validation-errors', function (Request $request) {
         $request->validate([
-            'input'    => 'required',
+            'input' => 'required',
             'textarea' => 'required',
-            'select'   => 'required',
+            'select' => 'required',
             'checkbox' => 'required',
-            'radio'    => 'required',
+            'radio' => 'required',
         ]);
     });
 
@@ -53,11 +53,11 @@ it('overrides the bound target with the old request data', function () {
 it('handles old nested data', function () {
     $this->registerTestRoute('nested-validation-errors', function (Request $request) {
         $request->validate([
-            'input.nested'    => 'required',
+            'input.nested' => 'required',
             'textarea.nested' => 'required',
-            'select.nested'   => 'required',
+            'select.nested' => 'required',
             'checkbox.nested' => 'required',
-            'radio.nested'    => 'required',
+            'radio.nested' => 'required',
         ]);
     });
 
