@@ -11,24 +11,18 @@ class Radio extends FormBaseComponent
     use HandlesBoundValues;
     use HandlesValidationErrors;
 
-    public string $name;
-
-    public string $label;
-
     public $value;
 
     public bool $checked = false;
 
     public function __construct(
-        string $name,
-        string $label = '',
+        public string $name = '',
+        public string $label = '',
         $value = 1,
         $bind = null,
         bool $default = false,
         bool $showErrors = false
     ) {
-        $this->name = $name;
-        $this->label = $label;
         $this->value = $value;
         $this->showErrors = $showErrors;
 

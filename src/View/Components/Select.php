@@ -14,10 +14,6 @@ class Select extends FormBaseComponent
     use HandlesBoundValues;
     use HandlesValidationErrors;
 
-    public string $name;
-
-    public string $label;
-
     public $options;
 
     public $selectedKey;
@@ -34,8 +30,8 @@ class Select extends FormBaseComponent
      * @return void
      */
     public function __construct(
-        string $name,
-        string $label = '',
+        public string $name = '',
+        public string $label = '',
         $options = [],
         $bind = null,
         $default = null,
@@ -45,8 +41,6 @@ class Select extends FormBaseComponent
         bool $floating = false,
         string $placeholder = ''
     ) {
-        $this->name = $name;
-        $this->label = $label;
         $this->options = $options;
         $this->manyRelation = $manyRelation;
         $this->placeholder = $placeholder;

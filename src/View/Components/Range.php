@@ -11,10 +11,6 @@ class Range extends FormBaseComponent
     use HandlesDefaultAndOldValue;
     use HandlesValidationErrors;
 
-    public string $name;
-
-    public string $label;
-
     public $value;
 
     /**
@@ -23,15 +19,13 @@ class Range extends FormBaseComponent
      * @return void
      */
     public function __construct(
-        string $name,
-        string $label = '',
+        public string $name = '',
+        public string $label = '',
         $bind = null,
         $default = null,
         $language = null,
         bool $showErrors = true
     ) {
-        $this->name = $name;
-        $this->label = $label;
         $this->showErrors = $showErrors;
 
         if ($language) {

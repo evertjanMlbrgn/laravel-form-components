@@ -19,13 +19,13 @@ class Input extends FormBaseComponent
      * @return void
      */
     public function __construct(
-        public string $name,
+        public string $name = '',
         $bind = null,
         $default = null,
         $language = null,
+        bool $showErrors = true,
         public string $label = '',
         public string $type = 'text',
-        bool $showErrors = true,
         public bool $horizontal = false,
         public bool $floating = false,
         public bool $required = false,

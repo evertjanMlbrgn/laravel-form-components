@@ -14,7 +14,7 @@ class Textarea extends FormBaseComponent
     public $value;
 
     public function __construct(
-        public string $name,
+        public string $name = '',
         $bind = null,
         $default = null,
         $language = null,

@@ -14,12 +14,7 @@ class Checkbox extends FormBaseComponent
     use HandlesBoundValues;
     use HandlesValidationErrors;
 
-    public string $name;
-
-    public string $label;
-
     public $value;
-
     public bool $checked = false;
 
     /**
@@ -28,15 +23,13 @@ class Checkbox extends FormBaseComponent
      * @return void
      */
     public function __construct(
-        string $name,
-        string $label = '',
+        public string $name = '',
         $value = 1,
         $bind = null,
         bool $default = false,
-        bool $showErrors = true
+        bool $showErrors = true,
+        public string $label = ''
     ) {
-        $this->name = $name;
-        $this->label = $label;
         $this->value = $value;
         $this->showErrors = $showErrors;
 
