@@ -6,7 +6,6 @@ use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class ControlWrapper extends FormBaseComponent
 {
-
     public function __construct(
     ) {
     }

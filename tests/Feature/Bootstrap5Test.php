@@ -43,7 +43,6 @@ it('does show required asterisk when field required', function () {
     $this->visit('/bootstrap-required')
         ->seeElement('div.input-required label.required')
         ->seeElement('div.input-not-required label');
-//        ->seeElementCount('.form-switch', 1) // fails
-//        ->seeElement('.form-range', ['type' => 'range']);
+    //        ->seeElementCount('.form-switch', 1) // fails
+    //        ->seeElement('.form-range', ['type' => 'range']);
 });
-

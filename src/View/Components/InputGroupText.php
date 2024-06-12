@@ -6,7 +6,6 @@ use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class InputGroupText extends FormBaseComponent
 {
-
     /**
      * Create a new component instance.
      *
@@ -14,7 +13,6 @@ class InputGroupText extends FormBaseComponent
      */
     public function __construct(
         public string $text = ''
-    )
-    {
+    ) {
     }
 }

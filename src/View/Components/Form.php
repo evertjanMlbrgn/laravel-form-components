@@ -24,8 +24,9 @@ class Form extends FormBaseComponent
      *
      * @return void
      */
-    public function __construct(string $method = 'POST')
-    {
+    public function __construct(
+        string $method = 'POST'
+    ) {
         $this->method = strtoupper($method);
 
         $this->spoofMethod = in_array($this->method, ['PUT', 'PATCH', 'DELETE']);

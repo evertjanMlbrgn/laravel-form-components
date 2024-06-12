@@ -16,5 +16,4 @@ class Errors extends FormBaseComponent
         $this->name = static::convertBracketsToDots(Str::before($name, '[]'));
         $this->bag = $bag;
     }
-
 }
