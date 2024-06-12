@@ -14,12 +14,12 @@
 
 <div {{ $attributes->class(['form-control-wrapper', 'form-floating' => $floating, 'd-none' => $hidden]) }}>
     @if(!$floating)
-        <x-form-label :for="$id" :required="$attributes->has('required')">{{ $label }}</x-form-label>
+        <x-form-label :for="$id">{{ $label }}</x-form-label>
     @endif
     {{ $slot }}
 
     @if($floating)
-            <x-form-label :for="$id" :required="$attributes->has('required')">{{ $label }}</x-form-label>
+            <x-form-label :for="$id">{{ $label }}</x-form-label>
     @endif
 
     {!! $help ?? null !!}
