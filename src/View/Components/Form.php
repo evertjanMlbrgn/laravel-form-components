@@ -32,7 +32,7 @@ class Form extends FormBaseComponent
     }
 
     /**
-     * Returns a boolean wether the error bag is not empty.
+     * Returns a boolean whether the error bag is not empty.
      *
      * @param  string  $bag
      */

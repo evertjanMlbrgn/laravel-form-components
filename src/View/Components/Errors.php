@@ -17,10 +17,4 @@ class Errors extends FormBaseComponent
         $this->bag = $bag;
     }
 
-    // TODO?
-    //    public function shouldRender(): bool
-    //    {
-    ////        return $this->hasErrors;
-    //        return true;
-    //    }
 }

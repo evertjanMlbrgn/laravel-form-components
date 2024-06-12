@@ -14,15 +14,7 @@ class Select extends FormBaseComponent
     use HandlesBoundValues;
     use HandlesValidationErrors;
 
-    public $options;
-
     public $selectedKey;
-
-    public bool $multiple;
-
-    public bool $floating;
-
-    public string $placeholder;
 
     /**
      * Create a new component instance.
@@ -32,18 +24,16 @@ class Select extends FormBaseComponent
     public function __construct(
         public string $name = '',
         public string $label = '',
-        $options = [],
+        public array $options = [],
         $bind = null,
         $default = null,
-        bool $multiple = false,
+        public bool $multiple = false,
         bool $showErrors = true,
         bool $manyRelation = false,
-        bool $floating = false,
-        string $placeholder = ''
+        public bool $floating = false,
+        public string $placeholder = ''
     ) {
-        $this->options = $options;
         $this->manyRelation = $manyRelation;
-        $this->placeholder = $placeholder;
 
         $inputName = static::convertBracketsToDots(Str::before($name, '[]'));
 
@@ -57,7 +47,6 @@ class Select extends FormBaseComponent
             $this->selectedKey = $this->selectedKey->toArray();
         }
 
-        $this->multiple = $multiple;
         $this->showErrors = $showErrors;
         $this->floating = $floating && ! $multiple;
     }
