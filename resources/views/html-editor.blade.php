@@ -13,10 +13,6 @@
         {{ $value }}
     </textarea>
 
-    @if($shouldShowError($name))
-        <x-form-errors :name="$name" />
-    @endif
-
 </x-form-control-wrapper>
 
 @once

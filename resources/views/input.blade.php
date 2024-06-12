@@ -35,9 +35,5 @@
             {{-- don't understand why placeholder is automatically added to this input when not floating label --}}
         >
 
-    @if($shouldShowError($name))
-        <x-form-errors :name="$name" />
-    @endif
-
 </x-form-control-wrapper>
 

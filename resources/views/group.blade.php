@@ -8,8 +8,4 @@
             {!! $slot !!}
         </div>
 
-        @if($shouldShowError($name))
-            <x-form-errors :name="$name" class="d-block" />
-        @endif
-
 </x-form-control-wrapper>

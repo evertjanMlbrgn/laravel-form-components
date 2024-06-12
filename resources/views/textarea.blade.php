@@ -8,10 +8,6 @@
     id="{{ $getId() }}">{!! $value !!}</textarea>
     {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 
-    @if($shouldShowError($name))
-        <x-form-errors :name="$name" />
-    @endif
-
 </x-form-control-wrapper>
 
 
