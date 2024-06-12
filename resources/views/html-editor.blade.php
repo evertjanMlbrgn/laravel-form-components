@@ -1,4 +1,4 @@
-<x-form-control-wrapper {{ $attributes->merge() }} :id="$getId()" :should-show-error="$shouldShowError">
+<x-form-control-wrapper {{ $attributes->merge() }} :id="$getId()">
     <textarea
         {{ $attributes->class(['form-control html-editor', 'is-invalid' => $hasError($name) ]) }}
         name="{{ $name }}"
