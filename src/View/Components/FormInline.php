@@ -10,13 +10,27 @@ use Illuminate\View\Component;
 class FormInline extends Component
 {
     /**
+     * Request method.
+     */
+    public string $method;
+
+    /**
+     * Form method spoofing to support PUT, PATCH and DELETE actions.
+     * https://laravel.com/docs/master/routing#form-method-spoofing
+     */
+    public bool $spoofMethod = false;
+
+    /**
      * Create a new component instance.
      */
     public function __construct(
         public string $action,
         public string $tooltip,
-        public string $method = 'POST',
+        string $method = 'POST',
+        public string $label = ''
     ) {
+        $this->method = strtoupper($method);
+        $this->spoofMethod = in_array($this->method, ['PUT', 'PATCH', 'DELETE']);
     }
 
     /**
@@ -26,8 +40,11 @@ class FormInline extends Component
     {
         $buttonType = Str::lower($this->method) === 'delete' ? 'danger' : 'primary';
 
-        return view('components.form.form-inline', [
+        return view(config('form-components.view_namespace').'::'.Str::kebab(class_basename($this)), [
             'buttonType' => $buttonType,
         ]);
+        //        return view('components.form.form-inline', [
+        //            'buttonType' => $buttonType,
+        //        ]);
     }
 }

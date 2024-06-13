@@ -1,19 +1,89 @@
-<x-form-control-wrapper :parentClasses="$attributes->get('class')" :id="$getId()" >
-        <input
-            {{ $attributes->class([
-            'form-control',
-            'form-control-color' => ($type === 'color'),
-            'is-invalid' => ($hasError($name))
-            ]) }}
-            type="{{ $type }}"
-            value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
-            name="{{ $name }}"
-            id="{{ $getId() }}"
+{{-- Only add a wrapper element when floating label, hidden or horizontal control --}}
+{{-- Label position should always be before control, except when floating, ignore floating when horizontal control --}}
 
-            {{-- floating labels won't work without placeholder, yet they never display placeholder either --}}
-            @if($floating && !$attributes->has('placeholder'))
-                    placeholder="&nbsp;"
-            @endif
+@if($floating || $hidden || $horizontal)
+    <div @class([
+    'row' => $horizontal,
+    'form-floating' => $floating,
+    'd-none' => $hidden
+    ])  >
+@endif
+    @if(!$floating || $horizontal)
+        <x-form-label
+            :parentClasses="$attributes->get('class')"
+            @class([
+               'col-4' => empty($classLabel),
+               $classLabel
+            ])
+            :for="$getId()">
+            {{ $label }}
+        </x-form-label>
+    @endif
+
+    @if($horizontal)
+        <div
+            @class([
+                'col-8' => empty($classControl),
+                $classControl => !empty($classControl)
+            ])
         >
-</x-form-control-wrapper>
+    @endif
+            <input
+                {{ $attributes->class([
+                'form-control' => $type !== 'range',
+                'form-range' => $type === 'range',
+                'form-control-color' => ($type === 'color'),
+                'is-invalid' => ($hasError($name))
+                ])->merge() }}
+                type="{{ $type }}"
+                value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
+                name="{{ $name }}"
+                @if($required) required @endif
+                id="{{ $getId() }}"
 
+                {{-- floating labels won't work without placeholder, yet they never display placeholder either --}}
+                @if($floating && !$attributes->has('placeholder')) placeholder="&nbsp;"@endif
+            >
+
+            @if(!empty($validFeedback))
+                <div @class([
+                    'valid-feedback' => !$tooltipFeedback,
+                    'valid-tooltip' => $tooltipFeedback,
+                ])>
+                    {{ $validFeedback }}
+                </div>
+            @endif
+
+            @if(!empty($invalidFeedback))
+                <div @class([
+                    'invalid-feedback' => !$tooltipFeedback,
+                    'invalid-tooltip' => $tooltipFeedback,
+                ])>
+                    {{ $invalidFeedback }}
+                </div>
+            @endif
+
+    @if($horizontal)
+            </div>
+    @endif
+
+    @if($floating && !$horizontal)
+        <x-form-label
+            :parentClasses="$attributes->get('class')"
+            @class([
+               $classLabel
+           ])
+            :for="$getId()">
+            {{ $label }}
+        </x-form-label>
+    @endif
+
+    {{ $help ?? null }}
+
+    @if($shouldShowError($name))
+        <x-form-errors :name="$name" />
+    @endif
+
+@if($floating || $hidden || $horizontal)
+    </div>
+@endif

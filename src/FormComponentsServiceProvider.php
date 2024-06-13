@@ -19,7 +19,6 @@ use Mlbrgn\LaravelFormComponents\View\Components\InputGroup;
 use Mlbrgn\LaravelFormComponents\View\Components\InputGroupText;
 use Mlbrgn\LaravelFormComponents\View\Components\Label;
 use Mlbrgn\LaravelFormComponents\View\Components\Radio;
-use Mlbrgn\LaravelFormComponents\View\Components\Range;
 use Mlbrgn\LaravelFormComponents\View\Components\Select;
 use Mlbrgn\LaravelFormComponents\View\Components\Submit;
 use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
@@ -107,7 +106,6 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $this->registerComponent('input-group-text', InputGroupText::class);
             $this->registerComponent('label', Label::class);
             $this->registerComponent('radio', Radio::class);
-            $this->registerComponent('range', Range::class);
             $this->registerComponent('select', Select::class);
             $this->registerComponent('submit', Submit::class);
             $this->registerComponent('textarea', Textarea::class);

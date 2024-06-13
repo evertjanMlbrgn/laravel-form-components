@@ -29,7 +29,13 @@ class Checkbox extends FormBaseComponent
         $bind = null,
         bool $default = false,
         bool $showErrors = true,
-        public string $label = ''
+        public string $label = '',
+        public bool $toggle = false,
+        public string $classButton = 'btn-primary',
+        public string $classLabel = '',
+        public string $validFeedback = '',
+        public string $invalidFeedback = '',
+        public bool $tooltipFeedback = false
     ) {
         $this->value = $value;
         $this->showErrors = $showErrors;

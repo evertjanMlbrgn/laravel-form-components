@@ -6,5 +6,5 @@
         ])
     }}
     >
-    {!! trim($slot) ?: __('Submit') !!}
+    {{ trim($slot) ?: __('Submit') }}
 </button>

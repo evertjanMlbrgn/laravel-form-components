@@ -5,7 +5,7 @@
         <x-form-label :label="$label" :required="$attributes->has('required')" />
 
         <div class="@if($inline) d-flex flex-row flex-wrap gap-3 @endif">
-            {!! $slot !!}
+            {{ $slot }}
         </div>
 
 </x-form-control-wrapper>

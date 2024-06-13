@@ -1,6 +1,7 @@
 @aware([
     'required',
     'horizontal',
+    'toggle'
 ])
 
 @php
@@ -10,7 +11,7 @@
 
 @if ($slot->isNotEmpty())
     <label {{ $attributes->class([
-        'form-label' => !$horizontal,
+        'form-label' => !$horizontal && !$toggle, // TODO not needed for checkbox and radio
         'col-form-label' => $horizontal && !$containsFormControlLg && !$containsFormControlSm,
         'required' => $required,
         'col-form-label-sm' => $horizontal && $containsFormControlSm,

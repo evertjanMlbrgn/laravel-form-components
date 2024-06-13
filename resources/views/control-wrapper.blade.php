@@ -1,3 +1,4 @@
+{{--TODO deprecate--}}
 @aware([
     'name',
     'help',
@@ -14,7 +15,7 @@
 'id'
 ])
 
-{{-- NOTE: A form control can either be horizontal or vertical. --}}
+{{-- NOTE: A form control can either be horizontal or vertical --}}
 {{-- Vertical means label is above control --}}
 {{-- horizontal means label is next to control, horizontal controls cannot have floating labels as far as i know --}}
 
@@ -25,7 +26,7 @@
 
             {{ $slot }}
 
-            {!! $help ?? null !!}
+            {{ $help ?? null }}
 
             @if($shouldShowError($name))
                 <x-form-errors :name="$name" />
@@ -44,7 +45,7 @@
             <x-form-label :parentClasses="$attributes->get('parentClasses')" :class="(isset($labelClasses) ? $labelClasses->attributes->get('class') : '')" :for="$id">{{ $label }}</x-form-label>
         @endif
 
-        {!! $help ?? null !!}
+        {{ $help ?? null }}
 
         @if($shouldShowError($name))
             <x-form-errors :name="$name" />

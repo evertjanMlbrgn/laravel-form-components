@@ -28,7 +28,6 @@ class Form extends FormBaseComponent
         string $method = 'POST'
     ) {
         $this->method = strtoupper($method);
-
         $this->spoofMethod = in_array($this->method, ['PUT', 'PATCH', 'DELETE']);
     }
 

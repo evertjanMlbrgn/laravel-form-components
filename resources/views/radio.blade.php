@@ -1,16 +1,45 @@
-<x-form-control-wrapper class="form-check @if(null !== $attributes->get('inline')) form-check-inline @endif" :id="$getId()" >
+@if(!$toggle)
+<div @class([
+    'form-check',
+    'form-check-inline' => $attributes->get('inline'),
+    ])>
+@endif
 
     <input
         {{ $attributes->class([
-            'form-check-input', 'is-invalid' => $hasError($name)
+            'form-check-input' => !$toggle,
+            'btn-check' => $toggle,
+            'is-invalid' => $hasError($name),
+            'test-class'
         ]) }}
         type="radio"
         value="{{ $value }}"
         name="{{ $name }}"
-        id="{{ $getId() }}"
+        @if($label)
+            id="{{ $getId() }}"
+        @endif
         @if($checked)
             checked="checked"
         @endif
     />
 
-</x-form-control-wrapper>
+    <x-form-label :parentClasses="$attributes->get('class')"
+        @class([
+        'form-check-label' => !$toggle,
+        'btn' => $toggle,
+        $classButton,
+        $classLabel
+        ])
+        :for="$getId()">
+        {{ $label }}
+    </x-form-label>
+
+    {{ $help ?? null }}
+
+    @if($shouldShowError($name))
+        <x-form-errors :name="$name" />
+    @endif
+
+@if(!$toggle)
+</div>
+@endif

@@ -13,5 +13,5 @@
         @method($method)
     @endif
 
-    {!! $slot !!}
+    {{ $slot }}
 </form>

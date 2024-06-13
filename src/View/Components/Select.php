@@ -31,7 +31,13 @@ class Select extends FormBaseComponent
         bool $showErrors = true,
         bool $manyRelation = false,
         public bool $floating = false,
-        public string $placeholder = ''
+        public string $placeholder = '',
+        public bool $horizontal = false,
+        public string $classLabel = '',
+        public string $classControl = '',
+        public string $validFeedback = '',
+        public string $invalidFeedback = '',
+        public bool $tooltipFeedback = false
     ) {
         $this->manyRelation = $manyRelation;
 
