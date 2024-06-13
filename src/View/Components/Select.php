@@ -24,7 +24,7 @@ class Select extends FormBaseComponent
     public function __construct(
         public string $name = '',
         public string $label = '',
-        public array $options = [],
+        public mixed $options = [],
         $bind = null,
         $default = null,
         public bool $multiple = false,
