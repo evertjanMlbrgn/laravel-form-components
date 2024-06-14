@@ -28,7 +28,8 @@ class FormComponentsServiceProvider extends BaseServiceProvider
     // TODO consider using https://github.com/spatie/laravel-package-tools, makes installing package easier
     // READ https://dcblog.dev/my-process-for-writing-laravel-packages#heading-serviceprovider about github cli and packagist
 
-    private const PATH_VIEWS = __DIR__.'/../resources/views/';
+    private const PATH_TO_BLADE_COMPONENT_VIEWS = __DIR__.'/../resources/views/components';
+    private const PATH_TO_OTHER_BLADE_VIEWS = __DIR__.'/../resources/views/';
 
     private const PATH_VIEW_CLASSES = __DIR__.'/View/';
 
@@ -49,7 +50,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             ], 'mlbrgn-form-components-config');
 
             $this->publishes([
-                self::PATH_VIEWS => base_path('resources/views/components/form'),
+                self::PATH_TO_BLADE_COMPONENT_VIEWS => base_path('resources/views/components/form'),
             ], 'mlbrgn-form-components-views');
 
             $this->publishes([
@@ -78,6 +79,9 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         // method 3 of registering view components
         //Blade::componentNamespace('Mlbrgn\LaravelFormComponents\View\Components', config('form-components.tag_prefix'));
 
+        $this->loadViewsFrom(realpath(self::PATH_TO_OTHER_BLADE_VIEWS), 'test-views');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+
         Blade::directive('bind', function ($bind) {
             return '<?php app(\Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder::class)->bind('.$bind.'); ?>';
         });
@@ -91,7 +95,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
     protected function configureComponents(): void
     {
 
-        $this->loadViewsFrom(realpath(self::PATH_VIEWS), config('form-components.view_namespace'));
+        $this->loadViewsFrom(realpath(self::PATH_TO_BLADE_COMPONENT_VIEWS), config('form-components.view_namespace'));
 
         $this->callAfterResolving(BladeCompiler::class, function () {
             $this->registerComponent('captcha', Captcha::class);
