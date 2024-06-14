@@ -365,6 +365,235 @@
         <textarea class="form-control" aria-label="With textarea"></textarea>
     </div>
 
+    <h3 class="mt-3">Wrapping</h3>
+
+    <x-form-input-group class="flex-nowrap">
+        <x-form-input-group-text id="addon-wrapping">@</x-form-input-group-text>
+        <x-form-input placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"/>
+    </x-form-input-group>
+
+    <h3 class="mt-3">Sizing</h3>
+
+    <x-form-input-group class="input-group-sm mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+        <x-form-input aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"/>
+    </x-form-input-group>
+
+    <x-form-input-group class="mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+        <x-form-input aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"/>
+    </x-form-input-group>
+
+    <x-form-input-group class="input-group-lg">
+        <span class="input-group-text" id="inputGroup-sizing-lg">Large</span>
+        <x-form-input aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
+    </x-form-input-group>
+
+    <h3 class="mt-3">Checkboxes and radios</h3>
+    <p><span class="text-danger">TODO: </span>Alignment not correct</p>
+    <x-form-input-group class="mb-3">
+        <x-form-input-group-text class="">
+            <x-form-checkbox class="mt-0" value="" aria-label="Checkbox for following text input"/>
+        </x-form-input-group-text>
+        <x-form-input aria-label="Text input with checkbox"/>
+    </x-form-input-group>
+
+    <x-form-input-group class="">
+        <x-form-input-group-text class="input-group-text">
+            <x-form-radio class="mt-0" value="" aria-label="Radio button for following text input"/>
+        </x-form-input-group-text>
+        <x-form-input aria-label="Text input with radio button"/>
+    </x-form-input-group>
+
+    <h3 class="mt-3">Multiple inputs</h3>
+    <x-form-input-group class="input-group">
+        <x-form-input-group-text>Name</x-form-input-group-text>
+        <x-form-input aria-label="First name" placeholder="First name"/>
+        <x-form-input aria-label="Last name" placeholder="Last name"/>
+    </x-form-input-group>
+
+    <h3 class="mt-3">Multiple addons</h3>
+
+    <x-form-input-group class=" mb-3">
+        <x-form-input-group-text>$</x-form-input-group-text>
+        <x-form-input-group-text>0.00</x-form-input-group-text>
+        <x-form-input aria-label="Dollar amount (with dot and two decimal places)"/>
+    </x-form-input-group>
+
+    <x-form-input-group>
+        <x-form-input aria-label="Dollar amount (with dot and two decimal places)"/>
+        <x-form-input-group-text>$</x-form-input-group-text>
+        <x-form-input-group-text>0.00</x-form-input-group-text>
+    </x-form-input-group>
+
+    <h3 class="mt-3">Button addons</h3>
+
+    <x-form-input-group class="mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Button</button>
+        <x-form-input placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"/>
+    </x-form-input-group>
+
+    <x-form-input-group class="mb-3">
+        <x-form-input placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+    </x-form-input-group>
+
+    <x-form-input-group class="mb-3">
+        <button class="btn btn-outline-secondary" type="button">Button</button>
+        <button class="btn btn-outline-secondary" type="button">Button</button>
+        <x-form-input placeholder="" aria-label="Example text with two button addons"/>
+    </x-form-input-group>
+
+    <x-form-input-group class="">
+        <x-form-input placeholder="Recipient's username" aria-label="Recipient's username with two button addons"/>
+        <button class="btn btn-outline-secondary" type="button">Button</button>
+        <button class="btn btn-outline-secondary" type="button">Button</button>
+    </x-form-input-group>
+
+    <h3 class="mt-3">Buttons with dropdowns</h3>
+    <x-form-input-group class="mb-3">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+        <x-form-input aria-label="Text input with dropdown button"/>
+    </x-form-input-group>
+
+    <x-form-input-group class="mb-3">
+        <x-form-input aria-label="Text input with dropdown button"/>
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+    </x-form-input-group>
+
+    <x-form-input-group class="">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action before</a></li>
+            <li><a class="dropdown-item" href="#">Another action before</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+        <x-form-input aria-label="Text input with 2 dropdown buttons"/>
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+    </x-form-input-group>
+
+    <h3 class="mt-3">Segmented buttons</h3>
+
+    <x-form-input-group class="mb-3">
+        <button type="button" class="btn btn-outline-secondary">Action</button>
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+        <x-form-input aria-label="Text input with segmented dropdown button"/>
+    </x-form-input-group>
+
+    <x-form-input-group class="">
+        <x-form-input aria-label="Text input with segmented dropdown button"/>
+        <button type="button" class="btn btn-outline-secondary">Action</button>
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+    </x-form-input-group>
+
+    <h3 class="mt-3">Custom select</h3>
+
+    <p><span class="text-danger">TODO: </span>Label elements in first 2 examples</p>
+
+    <x-form-input-group class="mb-3">
+        <label class="input-group-text" for="inputGroupSelect01">Options</label>
+        <x-form-select id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </x-form-select>
+    </x-form-input-group>
+
+    <x-form-input-group class="mb-3">
+        <x-form-select id="inputGroupSelect02">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </x-form-select>
+        <label class="input-group-text" for="inputGroupSelect02">Options</label>
+    </x-form-input-group>
+
+    <x-form-input-group class="mb-3">
+        <button class="btn btn-outline-secondary" type="button">Button</button>
+        <x-form-select id="inputGroupSelect03" aria-label="Example select with button addon">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </x-form-select>
+    </x-form-input-group>
+
+    <x-form-input-group class="">
+        <x-form-select id="inputGroupSelect04" aria-label="Example select with button addon">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </x-form-select>
+        <button class="btn btn-outline-secondary" type="button">Button</button>
+    </x-form-input-group>
+
+    <h3 class="mt-3">Custom file input</h3>
+
+    <p><span class="text-danger">TODO: </span>Label elements in first 2 examples</p>
+
+    <x-form-input-group class="mb-3">
+        <label class="input-group-text" for="inputGroupFile01">Upload</label>
+        <x-form-input type="file" id="inputGroupFile01"/>
+    </x-form-input-group>
+
+    <x-form-input-group class="mb-3">
+        <x-form-input type="file" id="inputGroupFile02"/>
+        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+    </x-form-input-group>
+
+    <x-form-input-group class="mb-3">
+        <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Button</button>
+        <x-form-input type="file" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload"/>
+    </x-form-input-group>
+
+    <x-form-input-group class="">
+        <x-form-input type="file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload"/>
+        <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+    </x-form-input-group>
 
     <h2 id="form-floating-label" class="mt-5" style="color:green !important">Floating labels</h2>
     <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/floating-labels/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
