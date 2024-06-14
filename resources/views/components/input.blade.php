@@ -8,6 +8,7 @@
     'd-none' => $hidden
     ])  >
 @endif
+
     @if(!$floating || $horizontal)
         <x-form-label
             :parentClasses="$attributes->get('class')"

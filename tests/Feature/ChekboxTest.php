@@ -33,7 +33,7 @@ it('Assert checkbox labels do not contain "form-label" classes', function () {
     $this->visit('/default-checkbox')
         ->seeElement('input[value="a"] ~ label:not(.form-label)')
         ->seeElement('input[value="b"] ~ label:not(.form-label)');
-})->todo();
+});
 
 it('supports bound collections', function () {
     $this->registerTestRoute('checkbox-collection');

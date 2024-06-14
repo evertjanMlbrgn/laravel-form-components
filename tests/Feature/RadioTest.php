@@ -33,7 +33,7 @@ it('Assert radio labels do not contain "form-label" classes"', function () {
     $this->visit('/default-radio')
         ->seeElement('input[value="1"] ~ label:not(.form-label)')
         ->seeElement('input[value="0"] ~ label:not(.form-label)');
-})->todo();
+});
 
 it('check the right element as default with a bound target', function () {
     $this->registerTestRoute('default-radio-bind');

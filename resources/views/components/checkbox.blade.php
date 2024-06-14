@@ -26,10 +26,10 @@
     <x-form-label
         :parentClasses="$attributes->get('class')"
         @class([
-        'form-check-label' => !$toggle,
-        'btn' => $toggle,
-        $classButton,
-        $classLabel
+            'form-check-label' => !$toggle,
+            'btn' => $toggle,
+            $classButton,
+            $classLabel
         ])
         :for="$getId()">
         {{ $label }}

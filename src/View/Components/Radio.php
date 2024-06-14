@@ -12,6 +12,7 @@ class Radio extends FormBaseComponent
     use HandlesValidationErrors;
 
     public bool $checked = false;
+    public $type = 'radio';
 
     public function __construct(
         public string $name = '',
