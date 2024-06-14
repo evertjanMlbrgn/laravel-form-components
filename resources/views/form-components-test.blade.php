@@ -316,8 +316,58 @@
     <h2 id="form-floating-label" class="mt-5" style="color:green !important">Floating labels</h2>
     <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/floating-labels/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
-    <p><span class="text-danger">TODO:</span> finish</p>
+    <h3>Example</h3>
+    <x-form-input class="mb-3" id="floatingInput" placeholder="name@example.com" floating label="Email address"/>
+    <x-form-input id="floatingPassword" placeholder="Password" floating label="Password"/>
 
+    <h3 class="mt-3">Value already present</h3>
+    <x-form-form class="form-floating">
+        <x-form-input id="floatingInputValue" label="Input with value" placeholder="name@example.com" floating value="test@example.com"/>
+    </x-form-form>
+
+    <h3 class="mt-3">Form validation styles</h3>
+    <x-form-form class="form-floating">
+        <x-form-input class="is-invalid" id="floatingInputInvalid" placeholder="name@example.com" value="test@example.com" label="Invalid input" floating/>
+    </x-form-form>
+
+    <h3 class="mt-3">Textareas</h3>
+    <div class="form-floating">
+        <x-form-textarea placeholder="Leave a comment here" id="floatingTextarea" label="Comments" floating></x-form-textarea>
+    </div>
+
+    <h3 class="mt-3">Explicit height</h3>
+    <div class="form-floating">
+        <x-form-textarea placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" label="Comments" floating></x-form-textarea>
+    </div>
+
+    <h3>Selects</h3>
+    <div class="form-floating">
+        <x-form-select id="floatingSelect" aria-label="Floating label select example" label="Works with selects" floating>
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </x-form-select>
+    </div>
+
+    <h3 class="mt-3">Layout</h3>
+    <div class="row g-2">
+        <div class="col-md">
+            <div class="form-floating">
+                <x-form-input id="floatingInputGrid" placeholder="name@example.com" value="mdo@example.com" floating label="Email address"/>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-floating">
+                <x-form-select id="floatingSelectGrid" aria-label="Floating label select example" floating label="Works with selects">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </x-form-select>
+            </div>
+        </div>
+    </div>
 
     <h2 id="form-layout" class="mt-5" style="color:green !important">Layout</h2>
     <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/layout/" target="_blank">bootstrap documentation</a>. Adjusted to use our form-components.</p>
