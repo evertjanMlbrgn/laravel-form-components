@@ -88,6 +88,9 @@
             <div class="mb-3">
                 <x-form-select id="disabledSelect" label="Disabled select menu">
                     <option>Disabled select</option>
+                    @slot('help')
+                        Just to see if helptext appears and has id and is refered to by aria-describedby
+                    @endslot
                 </x-form-select>
             </div>
             <div class="mb-3">
@@ -119,7 +122,7 @@
 
     <h3 class="mt-3">Form text</h3>
 
-    <x-form-input type="password" id="inputPassword5" label="password" aria-describedby="passwordHelpBlock">
+    <x-form-input type="password" id="inputPassword5" label="password">
     @slot('help')
         Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
     @endslot
@@ -245,7 +248,11 @@
 
     <h3 class="mt-3">Checks</h3>
 
-    <x-form-checkbox value="" label="Default checkbox" id="flexCheckDefault"/>
+    <x-form-checkbox value="" label="Default checkbox" id="flexCheckDefault">
+        @slot('help')
+            Just some help text
+        @endslot
+    </x-form-checkbox>
     <x-form-checkbox value="" label="Checked checkbox" id="flexCheckChecked" checked/>
 
     <h3 class="mt-3">Indeterminate</h3>
@@ -259,7 +266,11 @@
 
     <h3 class="mt-3">Radios</h3>
 
-    <x-form-radio name="flexRadioDefault" id="flexRadioDefault1" label="Default radio"/>
+    <x-form-radio name="flexRadioDefault" id="flexRadioDefault1" label="Default radio">
+        @slot('help')
+            Just some help text
+        @endslot
+    </x-form-radio>
     <x-form-radio name="flexRadioDefault" id="flexRadioDefault1" label="Default checked radio" checked/>
 
     <h3 class="mt-3">Disabled</h3>
@@ -370,7 +381,11 @@
 
     <div class="input-group">
         <span class="input-group-text">With textarea</span>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
+        <x-form-textarea class="form-control" aria-label="With textarea" name="test">
+            @slot('help')
+                Just some help text
+            @endslot
+        </x-form-textarea>
     </div>
 
     <h3 class="mt-3">Wrapping</h3>

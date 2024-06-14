@@ -80,7 +80,7 @@
         @endif
 
         @if(isset($help))
-            <x-form-text>{{ $help }}</x-form-text>
+            <x-form-text :id="$getId()">{{ $help }}</x-form-text>
         @endif
 
         @if($shouldShowError($name))

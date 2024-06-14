@@ -21,6 +21,9 @@
         @if($checked)
             checked="checked"
         @endif
+        @if(isset($help))
+            aria-describedby="{{ $getId() }}-help-text"
+        @endif
     />
 
     <x-form-label :parentClasses="$attributes->get('class')"
@@ -30,12 +33,13 @@
         $classButton,
         $classLabel
         ])
-        :for="$getId()">
+        :for="$getId()"
+        >
         {{ $label }}
     </x-form-label>
 
     @if(isset($help))
-        <x-form-text>{{ $help }}</x-form-text>
+        <x-form-text :id="$getId()">{{ $help }}</x-form-text>
     @endif
 
     @if($shouldShowError($name))

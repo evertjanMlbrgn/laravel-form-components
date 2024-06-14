@@ -34,6 +34,9 @@
         @if($floating && !$attributes->get('placeholder'))
             placeholder="&nbsp;"
         @endif
+        @if(isset($help))
+            aria-describedby="{{ $getId() }}-help-text"
+        @endif
         id="{{ $getId() }}">{{ $value }}</textarea>
         {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 
@@ -71,7 +74,7 @@
     @endif
 
     @if(isset($help))
-        <x-form-text>{{ $help }}</x-form-text>
+        <x-form-text :id="$getId()">{{ $help }}</x-form-text>
     @endif
 
     @if($shouldShowError($name))

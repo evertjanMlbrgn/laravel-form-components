@@ -41,7 +41,9 @@
                 name="{{ $name }}"
                 @if($required) required @endif
                 id="{{ $getId() }}"
-
+                @if(isset($help))
+                aria-describedby="{{ $getId() }}-help-text"
+                @endif
                 {{-- floating labels won't work without placeholder, yet they never display placeholder either --}}
                 @if($floating && !$attributes->has('placeholder')) placeholder="&nbsp;"@endif
             >
@@ -80,7 +82,7 @@
     @endif
 
     @if(isset($help))
-        <x-form-text>{{ $help }}</x-form-text>
+        <x-form-text :id="$getId()">{{ $help }}</x-form-text>
     @endif
 
     @if($shouldShowError($name))
