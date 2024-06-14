@@ -1,4 +1,14 @@
-<div {{ $attributes->class(['input-group']) }}>
+@aware([
+    'hasClientSideValidation',
+    'hasCustomClientSideValidation'
+]
+)
+<div {{ $attributes->class([
+    'input-group',
+    'has-validation' => $hasCustomClientSideValidation || $hasClientSideValidation// needs to be added for rounded border when validation messages show
+    ]) }}
+>
+
     @if (isset($slot1) && $slot1 != null)
         {{ $slot1 }}
     @endif

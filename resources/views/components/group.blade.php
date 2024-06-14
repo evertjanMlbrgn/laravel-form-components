@@ -1,3 +1,4 @@
+{{--Bootstrap 4, deprecated --}}
 <x-form-control-wrapper {{ $attributes->class([
                         'form-group',
         'is-invalid' => $hasError($name)

@@ -17,6 +17,7 @@ trait HandlesValidationErrors
      */
     public function shouldShowError(string $name, string $bag = 'default'): bool
     {
+        echo 'name ' . $name . ' showErrors ' . ($this->showErrors ? 'yes' : 'no');
         return $this->showErrors && $this->hasError($name, $bag);
     }
 

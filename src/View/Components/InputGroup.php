@@ -17,7 +17,8 @@ class InputGroup extends FormBaseComponent
     public function __construct(
         public string $name = '',
         public string $label = '',
-        bool $showErrors = true)
+        bool $showErrors = true,
+    )
     {
         $this->showErrors = $name && $showErrors;
     }

@@ -31,6 +31,9 @@
         <li>
             <a href="#form-validation">Validation</a>
         </li>
+        <li>
+            <a href="#form-custom-tests">Custom tests</a>
+        </li>
     </ul>
 
     <h2 id="form-overview" class="mt-5" style="color:green !important">Overview</h2>
@@ -869,7 +872,7 @@
     <h2 id="form-validation" class="mt-5" style="color:green !important">Validation</h2>
     <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/validation/" target="_blank">bootstrap documentation</a>. Adjusted to use our form-components.</p>
 
-    <p>No all controls support validation styles, see Bootstrap validation. Input, select and checkboxes do. As well as up to 1 form control in an input-group.</p>
+    <p>Not all controls support validation styles, see Bootstrap validation. Input, select and checkboxes do. As well as up to 1 form control in an input-group.</p>
 
     <x-form-form class="row g-3 needs-validation" novalidate>
         <div class="col-md-4 position-relative">
@@ -916,6 +919,7 @@
     </x-form-form>
 
     <h3 class="mt-5">Browser defaults</h3>
+
     <x-form-form class="row g-3">
         <div class="col-md-4">
             <x-form-input id="validationDefault01" value="Mark" required label="First name"/>
@@ -1060,7 +1064,7 @@
     </x-form-form>
 
     <h3 class="mt-3">Tooltips</h3>
-    <form class="row g-3 needs-validation" novalidate>
+    <x-form-form class="row g-3 needs-validation" novalidate>
         <div class="col-md-4 position-relative">
             <x-form-input id="validationTooltip01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Aweful!" tooltip-feedback/>
         </div>
@@ -1089,7 +1093,102 @@
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Submit form</button>
         </div>
-    </form>
+    </x-form-form>
+
+    <h2 id="form-validation" class="mt-5" style="color:green !important">Custom tests</h2>
+    <p>Custom tests not based on Bootstrap documentation</p>
+
+    <h3>Setting "has-client-side-validation" and "has-custom-client-side-validation" attribute on form component with custom validation</h3>
+
+    <x-form-form class="row g-3" has-client-side-validation has-custom-client-side-validation>
+        <div class="col-md-4 position-relative">
+            <x-form-input id="validationCustom01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
+        </div>
+        <div class="col-md-4">
+            <x-form-input id="validationCustom02" value="Otto" label="Last name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">Username</label>
+            <x-form-input-group class="has-validation">
+                <x-form-input-group-text id="inputGroupPrepend">@</x-form-input-group-text>
+                <x-form-input id="validationCustomUsername" aria-describedby="inputGroupPrepend" required valid-feedback="Yes!" invalid-feedback="Please choose a username."/>
+            </x-form-input-group>
+        </div>
+        <div class="col-md-12">
+            <x-form-textarea id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
+        </div>
+        <div class="col-md-12">
+            <x-form-input type="range" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
+        </div>
+        <div class="col-md-6">
+            <x-form-input id="validationCustom03" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
+        </div>
+        <div class="col-md-3">
+            <x-form-select id="validationCustom04" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state.">
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+            </x-form-select>
+        </div>
+        <div class="col-md-3">
+            <x-form-input id="validationCustom05" required label="Zip" valid-feedback="All your base are belong to us" invalid-feedback="Please provide a valid zip."/>
+        </div>
+        <div class="col-12">
+            <x-form-checkbox value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+        </div>
+        <div class="col-12">
+            <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+            <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+    </x-form-form>
+
+    <h3>Setting "has-client-side-validation" attribute on form component with custom validation</h3>
+
+    <x-form-form class="row g-3" has-client-side-validation>
+        <div class="col-md-4 position-relative">
+            <x-form-input id="validationCustom01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
+        </div>
+        <div class="col-md-4">
+            <x-form-input id="validationCustom02" value="Otto" label="Last name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">Username</label>
+            <x-form-input-group class="has-validation">
+                <x-form-input-group-text id="inputGroupPrepend">@</x-form-input-group-text>
+                <x-form-input id="validationCustomUsername" aria-describedby="inputGroupPrepend" required valid-feedback="Yes!" invalid-feedback="Please choose a username."/>
+            </x-form-input-group>
+        </div>
+        <div class="col-md-12">
+            <x-form-textarea id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
+        </div>
+        <div class="col-md-12">
+            <x-form-input type="range" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
+        </div>
+        <div class="col-md-6">
+            <x-form-input id="validationCustom03" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
+        </div>
+        <div class="col-md-3">
+            <x-form-select id="validationCustom04" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state.">
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+            </x-form-select>
+        </div>
+        <div class="col-md-3">
+            <x-form-input id="validationCustom05" required label="Zip" valid-feedback="All your base are belong to us" invalid-feedback="Please provide a valid zip."/>
+        </div>
+        <div class="col-12">
+            <x-form-checkbox value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+        </div>
+        <div class="col-12">
+            <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+            <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+    </x-form-form>
 
     {{--    <h1>Complete form</h1>--}}
 
@@ -1297,7 +1396,7 @@
         'use strict'
 
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
+        var forms = document.querySelectorAll('form[novalidate]')
 
         // Loop over them and prevent submission
         Array.prototype.slice.call(forms)

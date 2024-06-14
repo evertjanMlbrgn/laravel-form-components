@@ -11,6 +11,30 @@ it('check the right element as default', function () {
         ->seeElement('input[value="b"]:not(:checked)');
 });
 
+it('check checkbox labels work', function () {
+    $this->registerTestRoute('default-checkbox');
+
+    $this->visit('/default-checkbox')
+        ->seeElement('input[value="a"] ~ label')
+        ->seeElement('input[value="b"] ~ label');
+});
+
+it('Assert checkbox labels contain correct classes"', function () {
+    $this->registerTestRoute('default-checkbox');
+
+    $this->visit('/default-checkbox')
+        ->seeElement('input[value="a"] ~ label.form-check-label')
+        ->seeElement('input[value="b"] ~ label.form-check-label');
+});
+
+it('Assert checkbox labels do not contain "form-label" classes', function () {
+    $this->registerTestRoute('default-checkbox');
+
+    $this->visit('/default-checkbox')
+        ->seeElement('input[value="a"] ~ label:not(.form-label)')
+        ->seeElement('input[value="b"] ~ label:not(.form-label)');
+})->todo();
+
 it('supports bound collections', function () {
     $this->registerTestRoute('checkbox-collection');
 

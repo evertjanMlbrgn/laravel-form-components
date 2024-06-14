@@ -1,4 +1,3 @@
-{{--$toggle: {{ $toggle ? 'yes' : 'no' }}--}}
 @if(!$toggle)
 <div @class([
     'form-check',

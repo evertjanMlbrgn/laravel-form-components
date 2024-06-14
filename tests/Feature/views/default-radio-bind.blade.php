@@ -4,13 +4,9 @@ $target = ['radio' => 'a'];
 
 <x-form-form>
     @bind($target)
-    <x-form-group>
-        <x-form-radio name="radio" value="a" />
-    </x-form-group>
+    <x-form-radio name="radio" value="a" />
 
-    <x-form-group>
-        <x-form-radio name="radio" value="b" />
-    </x-form-group>
+    <x-form-radio name="radio" value="b" />
     @endbind
 
     <x-form-submit />

@@ -1,4 +1,4 @@
-{{-- TODO where is this used in our projects? Not something of bootstrap 5 --}}
+{{-- Bootstrap 4, deprecated --}}
 <form
     action="{{ $action }}"
     method="{{ $spoofMethod ? 'POST' : $method }}"

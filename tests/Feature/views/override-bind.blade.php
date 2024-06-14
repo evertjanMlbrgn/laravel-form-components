@@ -22,11 +22,7 @@
         <x-form-textarea :bind="$targetB" name="textarea" />
         <x-form-select :bind="$targetB" name="select" :options="['c' => 'c', 'f' => 'f']" />
         <x-form-checkbox :bind="$targetB" name="checkbox" />
-
-        <x-form-group name="radio">
-            <x-form-radio :bind="$targetB" name="radio" />
-        </x-form-group>
-
+        <x-form-radio :bind="$targetB" name="radio" />
         <x-form-submit />
     @endbind
 </x-form-form>

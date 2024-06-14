@@ -19,7 +19,7 @@ class Radio extends FormBaseComponent
         public mixed $value = 1,
         $bind = null,
         bool $default = false,
-        bool $showErrors = false,
+        bool $showErrors = true,
         public bool $toggle = false,
         public string $classButton = 'btn-primary',
         public string $classLabel = '',

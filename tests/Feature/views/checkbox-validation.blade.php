@@ -1,11 +1,5 @@
 <x-form-form>
-    <x-form-group>
-        <x-form-checkbox name="checkbox[]" value="a" />
-    </x-form-group>
-
-    <x-form-group>
-        <x-form-checkbox name="checkbox[]" value="b" :default="old() ? false : true" />
-    </x-form-group>
-
+    <x-form-checkbox name="checkbox[]" value="a" label="Checkbox a" />
+    <x-form-checkbox name="checkbox[]" value="b" label="Checkbox b" :default="old() ? false : true" />
     <x-form-submit />
 </x-form-form>

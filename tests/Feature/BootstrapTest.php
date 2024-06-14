@@ -14,18 +14,18 @@ it('can add help text', function () {
         ->seeInElement('.form-text', 'Your username must be 8-20 characters long.');
 });
 
-//it('sets the id on the label or generates one', function () {
-//    $this->registerTestRoute('bootstrap-label-for');
-//
-//    $page = $this->visit('/bootstrap-label-for')
-//        ->seeElement('textarea[id="text_b"]')
-//        ->seeElement('label[for="text_b"]');
-//
-//    $inputId = $page->crawler()->filter('input[type="text"]')->attr('id');
-//
-//    expect($inputId)->toStartWith("auto_id_");
-//
-//    $page
-//        ->seeElement('input[id="' . $inputId . '"]')
-//        ->seeElement('label[for="' . $inputId . '"]');
-//});
+it('sets the id on the label or generates one', function () {
+    $this->registerTestRoute('bootstrap-label-for');
+
+    $page = $this->visit('/bootstrap-label-for')
+        ->seeElement('textarea[id="text_b"]')
+        ->seeElement('label[for="text_b"]');
+
+    $inputId = $page->crawler()->filter('input[type="text"]')->attr('id');
+
+    expect($inputId)->toStartWith("auto_id_");
+
+    $page
+        ->seeElement('input[id="' . $inputId . '"]')
+        ->seeElement('label[for="' . $inputId . '"]');
+});

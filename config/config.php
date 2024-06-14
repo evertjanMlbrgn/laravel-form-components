@@ -6,7 +6,7 @@ return [
     //    'prefix' => '',
 
     /** bootstrap-5 */
-    //    'framework' => 'bootstrap-5',
+    'framework' => 'bootstrap-5',
 
     'view_namespace' => 'form-components',
     'tag_prefix' => 'form',

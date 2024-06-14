@@ -46,3 +46,26 @@ it('does show required asterisk when field required', function () {
     //        ->seeElementCount('.form-switch', 1) // fails
     //        ->seeElement('.form-range', ['type' => 'range']);
 });
+
+// TODO move to custom bootstrap test file
+// tests if setting has-custom-client-side-validation adds class needs-validation to form and attribute no-validate
+// also tests if input-groups get the class has-validation (needed to fix rounded borders on input-groups with
+// validation
+it('handles "has-custom-client-side-validation', function () {
+    $this->registerTestRoute('bootstrap-form-client-side-validation');
+
+    $this->visit('/bootstrap-form-client-side-validation')
+        ->assertResponseOk()
+        ->seeElement('form.needs-validation')
+        ->seeElement('form[novalidate]')
+        ->seeElement('div.input-group.has-validation')
+        ->seeElement('div.input-group-2.has-validation');
+});
+
+it('adds javascript when using attribute "has-client-side-validation"', function() {
+
+})->todo();
+
+it('accepts "classes-label" and "classes-control" on controls"', function() {
+
+})->todo();

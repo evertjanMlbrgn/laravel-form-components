@@ -11,6 +11,30 @@ it('check the right element as default', function () {
         ->seeElement('input[value="0"]:not(:checked)');
 });
 
+it('check radio labels work', function () {
+    $this->registerTestRoute('default-radio');
+
+    $this->visit('/default-radio')
+        ->seeElement('input[value="1"] ~ label')
+        ->seeElement('input[value="0"] ~ label');
+});
+
+it('Assert radio labels contain correct classes"', function () {
+    $this->registerTestRoute('default-radio');
+
+    $this->visit('/default-radio')
+        ->seeElement('input[value="1"] ~ label.form-check-label')
+        ->seeElement('input[value="0"] ~ label.form-check-label');
+});
+
+it('Assert radio labels do not contain "form-label" classes"', function () {
+    $this->registerTestRoute('default-radio');
+
+    $this->visit('/default-radio')
+        ->seeElement('input[value="1"] ~ label:not(.form-label)')
+        ->seeElement('input[value="0"] ~ label:not(.form-label)');
+})->todo();
+
 it('check the right element as default with a bound target', function () {
     $this->registerTestRoute('default-radio-bind');
 
