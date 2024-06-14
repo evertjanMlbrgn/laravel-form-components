@@ -19,6 +19,7 @@ use Mlbrgn\LaravelFormComponents\View\Components\Label;
 use Mlbrgn\LaravelFormComponents\View\Components\Radio;
 use Mlbrgn\LaravelFormComponents\View\Components\Select;
 use Mlbrgn\LaravelFormComponents\View\Components\Submit;
+use Mlbrgn\LaravelFormComponents\View\Components\Text;
 use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
 
 class FormComponentsServiceProvider extends BaseServiceProvider
@@ -108,6 +109,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $this->registerComponent('radio', Radio::class);
             $this->registerComponent('select', Select::class);
             $this->registerComponent('submit', Submit::class);
+            $this->registerComponent('text', Text::class);
             $this->registerComponent('textarea', Textarea::class);
             $this->registerComponent('control-wrapper', ControlWrapper::class);
         });

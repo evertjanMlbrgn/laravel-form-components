@@ -34,7 +34,9 @@
         {{ $label }}
     </x-form-label>
 
-    {{ $help ?? null }}
+    @if(isset($help))
+        <x-form-text>{{ $help }}</x-form-text>
+    @endif
 
     @if($shouldShowError($name))
         <x-form-errors :name="$name" />

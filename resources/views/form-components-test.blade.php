@@ -42,8 +42,11 @@
 
     <x-form-form>
         <div class="mb-3">
-            <x-form-input id="exampleInputEmail1" aria-describedby="emailHelp" label="Email address"/>
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <x-form-input id="exampleInputEmail1" aria-describedby="emailHelp" label="Email address">
+                @slot('help')
+                    We'll never share your email with anyone else.
+                @endslot
+            </x-form-input>
         </div>
         <div class="mb-3">
             <x-form-input type="password" id="exampleInputPassword1" label="Password"/>
@@ -53,13 +56,14 @@
     </x-form-form>
 
     <h3 class="mt-3">Form text</h3>
-    <x-form-input type="password" id="inputPassword5" aria-describedby="passwordHelpBlock" label="Password"/>
-    <div id="passwordHelpBlock" class="form-text">
-        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-    </div>
+    <x-form-input type="password" id="inputPassword5" aria-describedby="passwordHelpBlock" label="Password">
+        @slot('help')
+            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+        @endslot
+    </x-form-input>
 
     <h3 class="mt-3">Inline text</h3>
-    <p><span class="text-danger">TODO: </span>Labels in other col and form text too</p>
+
     <div class="row g-3 align-items-center">
         <div class="col-auto">
             <label for="inputPassword6" class="col-form-label">Password</label>
@@ -68,9 +72,9 @@
             <x-form-input type="password" id="inputPassword6" aria-describedby="passwordHelpInline"/>
         </div>
         <div class="col-auto">
-            <span id="passwordHelpInline" class="form-text">
-              Must be 8-20 characters long.
-            </span>
+            <x-form-text>
+                Must be 8-20 characters long.
+            </x-form-text>
         </div>
     </div>
 
@@ -115,10 +119,11 @@
 
     <h3 class="mt-3">Form text</h3>
 
-    <x-form-input type="password" id="inputPassword5" label="password" aria-describedby="passwordHelpBlock"/>
-    <div id="passwordHelpBlock" class="form-text mb-3">
+    <x-form-input type="password" id="inputPassword5" label="password" aria-describedby="passwordHelpBlock">
+    @slot('help')
         Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-    </div>
+    @endslot
+    </x-form-input>
 
     <h3 class="mt-3">Disabled</h3>
 
