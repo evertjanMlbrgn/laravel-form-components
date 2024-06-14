@@ -26,9 +26,7 @@
             <x-form-checkbox name="checkbox" />
         @endbind
 
-        <x-form-group name="radio">
-            <x-form-radio name="radio" />
-        </x-form-group>
+        <x-form-radio name="radio" />
 
         <x-form-submit />
     @endbind

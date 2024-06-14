@@ -4,10 +4,8 @@ $target = ['permissions' => collect(['read'])]
 
 <x-form-form>
     @bind($target)
-    <x-form-group>
-        <x-form-checkbox name="permissions[]" value="read" />
-        <x-form-checkbox name="permissions[]" value="write" />
-    </x-form-group>
+    <x-form-checkbox name="permissions[]" value="read" />
+    <x-form-checkbox name="permissions[]" value="write" />
     @endbind
 
     <x-form-submit />

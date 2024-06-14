@@ -1215,15 +1215,11 @@
 {{--        <x-form-textarea class="mb-5" name="biography" language="en" placeholder="English Biography" />--}}
 
 {{--        <!-- FormInline radio inputs -->--}}
-{{--        <x-form-group name="newsletter_frequency" label="Newsletter frequency" inline>--}}
 {{--            <x-form-radio name="newsletter_frequency" value="daily" label="Daily" />--}}
 {{--            <x-form-radio name="newsletter_frequency" value="weekly" label="Weekly" />--}}
-{{--        </x-form-group>--}}
 
-{{--        <x-form-group>--}}
 {{--            <x-form-checkbox name="subscribe_to_newsletter" label="Subscribe to newsletter" />--}}
 {{--            <x-form-checkbox name="agree_terms" label="Agree with terms" />--}}
-{{--        </x-form-group>--}}
 
 {{--        <x-form-submit />--}}
 {{--        @endbind--}}
@@ -1241,15 +1237,11 @@
 {{--        <x-form-textarea name="biography" language="en" placeholder="English Biography" />--}}
 
 {{--        <!-- FormInline radio inputs -->--}}
-{{--        <x-form-group name="newsletter_frequency" label="Newsletter frequency" inline>--}}
 {{--            <x-form-radio name="newsletter_frequency" value="daily" label="Daily" />--}}
 {{--            <x-form-radio name="newsletter_frequency" value="weekly" label="Weekly" />--}}
-{{--        </x-form-group>--}}
 
-{{--        <x-form-group>--}}
 {{--            <x-form-checkbox name="subscribe_to_newsletter" label="Subscribe to newsletter" />--}}
 {{--            <x-form-checkbox name="agree_terms" label="Agree with terms" />--}}
-{{--        </x-form-group>--}}
 
 {{--        <x-form-submit />--}}
 {{--        --}}{{--        @endbind--}}
@@ -1356,18 +1348,14 @@
     {{--    <h1>Radio variations</h1>--}}
 
     {{--    <h2>Radio 1</h2>--}}
-    {{--    <x-form-group name="notification_channel" label="How do you want to receive your notifications?">--}}
     {{--        <x-form-radio name="notification_channel" value="mail" label="Mail" default />--}}
     {{--        <x-form-radio name="notification_channel" value="slack" label="Slack" />--}}
-    {{--    </x-form-group>--}}
 
     {{--    <h1>Checkbox variations</h1>--}}
 
     {{--    <h2>Checkbox 1</h2>--}}
-    {{--    <x-form-group name="interests" label="Pick one or more interests">--}}
     {{--        <x-form-checkbox name="interests[]" :show-errors="false" value="laravel" label="Laravel" />--}}
     {{--        <x-form-checkbox name="interests[]" :show-errors="false" value="tailwindcss" label="Tailwind CSS" />--}}
-    {{--    </x-form-group>--}}
 
     {{--    <h1>Range variations</h1>--}}
     {{--    <h2>Range 1</h2>--}}

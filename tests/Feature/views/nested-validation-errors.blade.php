@@ -4,9 +4,7 @@
     <x-form-select name="select[nested]" :options="['c' => 'c', 'f' => 'f']" />
     <x-form-checkbox name="checkbox[nested]" />
 
-    <x-form-group name="radio[nested]">
-        <x-form-radio name="radio[nested]" />
-    </x-form-group>
+    <x-form-radio name="radio[nested]" />
 
     <x-form-submit />
 </x-form-form>

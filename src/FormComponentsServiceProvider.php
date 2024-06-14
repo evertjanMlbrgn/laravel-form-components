@@ -11,8 +11,6 @@ use Mlbrgn\LaravelFormComponents\View\Components\Checkbox;
 use Mlbrgn\LaravelFormComponents\View\Components\ControlWrapper;
 use Mlbrgn\LaravelFormComponents\View\Components\Errors;
 use Mlbrgn\LaravelFormComponents\View\Components\Form;
-use Mlbrgn\LaravelFormComponents\View\Components\FormInline;
-use Mlbrgn\LaravelFormComponents\View\Components\Group;
 use Mlbrgn\LaravelFormComponents\View\Components\HtmlEditor;
 use Mlbrgn\LaravelFormComponents\View\Components\Input;
 use Mlbrgn\LaravelFormComponents\View\Components\InputGroup;
@@ -102,9 +100,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $this->registerComponent('checkbox', Checkbox::class);
             $this->registerComponent('errors', Errors::class);
             $this->registerComponent('form', Form::class);
-            $this->registerComponent('group', Group::class);
             $this->registerComponent('html-editor', HtmlEditor::class);
-            $this->registerComponent('form-inline', FormInline::class);
             $this->registerComponent('input', Input::class);
             $this->registerComponent('input-group', InputGroup::class);
             $this->registerComponent('input-group-text', InputGroupText::class);
