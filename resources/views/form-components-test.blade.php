@@ -34,9 +34,62 @@
     </ul>
 
     <h2 id="form-overview" class="mt-5" style="color:green !important">Overview</h2>
-    <p><span class="text-danger">TODO:</span> finish</p>
 
     <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/overview/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
+
+    <x-form-form>
+        <div class="mb-3">
+            <x-form-input id="exampleInputEmail1" aria-describedby="emailHelp" label="Email address"/>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <x-form-input type="password" id="exampleInputPassword1" label="Password"/>
+        </div>
+        <x-form-checkbox class="mb-3" id="exampleCheck1" label="Check me out"/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </x-form-form>
+
+    <h3 class="mt-3">Form text</h3>
+    <x-form-input type="password" id="inputPassword5" aria-describedby="passwordHelpBlock" label="Password"/>
+    <div id="passwordHelpBlock" class="form-text">
+        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+    </div>
+
+    <h3 class="mt-3">Inline text</h3>
+    <p><span class="text-danger">TODO: </span>Labels in other col and form text too</p>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label for="inputPassword6" class="col-form-label">Password</label>
+        </div>
+        <div class="col-auto">
+            <x-form-input type="password" id="inputPassword6" aria-describedby="passwordHelpInline"/>
+        </div>
+        <div class="col-auto">
+            <span id="passwordHelpInline" class="form-text">
+              Must be 8-20 characters long.
+            </span>
+        </div>
+    </div>
+
+    <h3 class="mt-3">Disabled forms</h3>
+    <x-form-form>
+        <fieldset disabled>
+            <legend>Disabled fieldset example</legend>
+            <div class="mb-3">
+                <x-form-input id="disabledTextInput"  placeholder="Disabled input" label="Disabled input"/>
+            </div>
+            <div class="mb-3">
+                <x-form-select id="disabledSelect" label="Disabled select menu">
+                    <option>Disabled select</option>
+                </x-form-select>
+            </div>
+            <div class="mb-3">
+                <x-form-checkbox id="disabledFieldsetCheck" disabled label="Can't check this"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </x-form-form>
+
 
     <h2 id="form-controls" class="mt-5" style="color:green !important">Form controls</h2>
 
