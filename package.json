@@ -1,0 +1,25 @@
+{
+  "name": "laravel-form-components",
+  "version": "1.0.0",
+  "description": "no",
+  "private": true,
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+    "dependencies": {
+        "tinymce": "^7.1.0"
+    },
+  "devDependencies": {
+    "sass": "^1.77.5",
+      "vite": "^5.0.0",
+      "laravel-vite-plugin": "^1.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
