@@ -1,8 +1,3 @@
-<x-form-control-wrapper {{ $attributes->merge() }} :id="$getId()">
-
-
-</x-form-control-wrapper>
-
 @if($floating || $hidden || $horizontal)
     <div @class(['row' => $horizontal, 'form-floating' => $floating, 'd-none' => $hidden])  >
         @endif
@@ -43,7 +38,7 @@
                         placeholder="&nbsp;"
                     @endif
 
-                >{{ $value }}</textarea>
+                >{{ $slot }}</textarea>
                 {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 
                 @if(!empty($validFeedback))
@@ -92,5 +87,5 @@
 @endif
 
 @once
-    @vite('resources/js/vendor/tinyMCE/tinyMCE.js')
+    <script src="{{ package_asset('js/mlbrgn-html-editor.js') }}"></script>
 @endonce
