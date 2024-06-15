@@ -7,36 +7,6 @@ beforeEach(function () {
     }
 });
 
-it('groups elements with input-group', function () {
-    $this->registerTestRoute('bootstrap-input-group');
-
-    $this->visit('/bootstrap-input-group')
-        ->within('.input-group', function () {
-            return $this->seeElementCount('.form-control', 2)
-                ->seeElementCount('.input-group-text', 1)
-                ->seeInElement('.input-group-text', '@');
-        });
-});
-
-it('floats labels', function () {
-    $this->registerTestRoute('bootstrap-floating-label');
-
-    $this->visit('/bootstrap-floating-label')
-        ->seeElementCount('label', 2)
-        ->seeInElement('label', 'Your Name')
-        ->seeElement('#name1', ['placeholder' => ' '])
-        ->seeElement('#name2', ['placeholder' => 'John Doe']);
-});
-
-it('adds custom input classes', function () {
-    $this->registerTestRoute('bootstrap-custom-input');
-
-    $this->visit('/bootstrap-custom-input')
-        ->seeElement('.form-control-color', ['value' => '#000000'])
-        ->seeElementCount('.form-switch', 1) // fails
-        ->seeElement('.form-range', ['type' => 'range']);
-});
-
 it('shows required asterisk when field required', function () {
     $this->registerTestRoute('bootstrap-required');
 

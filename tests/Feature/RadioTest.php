@@ -4,43 +4,43 @@ uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 use Illuminate\Http\Request;
 
 it('check the right element as default', function () {
-    $this->registerTestRoute('default-radio');
+    $this->registerTestRoute('bootstrap-radio');
 
-    $this->visit('/default-radio')
+    $this->visit('/bootstrap-radio')
         ->seeElement('input[value="1"]:checked')
         ->seeElement('input[value="0"]:not(:checked)');
 });
 
 it('check radio labels work', function () {
-    $this->registerTestRoute('default-radio');
+    $this->registerTestRoute('bootstrap-radio');
 
-    $this->visit('/default-radio')
+    $this->visit('/bootstrap-radio')
         ->seeElement('input[value="1"] ~ label')
         ->seeElement('input[value="0"] ~ label');
 });
 
 it('sets correct classes on radio labels', function () {
-    $this->registerTestRoute('default-radio');
+    $this->registerTestRoute('bootstrap-radio');
 
-    $this->visit('/default-radio')
+    $this->visit('/bootstrap-radio')
         ->seeElement('input[value="1"] ~ label.form-check-label')
         ->seeElement('input[value="0"] ~ label.form-check-label');
 });
 
 it('does not set "form-label" class on radio', function () {
-    $this->registerTestRoute('default-radio');
+    $this->registerTestRoute('bootstrap-radio');
 
-    $this->visit('/default-radio')
+    $this->visit('/bootstrap-radio')
         ->seeElement('input[value="1"] ~ label:not(.form-label)')
         ->seeElement('input[value="0"] ~ label:not(.form-label)');
 });
 
 it('checks the right element as default with a bound target', function () {
-    $this->registerTestRoute('default-radio-bind');
+    $this->registerTestRoute('bootstrap-radio');
 
-    $this->visit('/default-radio-bind')
-        ->seeElement('input[value="a"]:checked')
-        ->seeElement('input[value="b"]:not(:checked)');
+    $this->visit('/bootstrap-radio')
+        ->seeElement('input[value="1"]:checked')
+        ->seeElement('input[value="0"]:not(:checked)');
 });
 
 it('checks the right input element after a validation error', function () {

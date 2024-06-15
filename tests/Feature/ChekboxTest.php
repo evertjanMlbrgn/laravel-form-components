@@ -4,33 +4,33 @@ uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 use Illuminate\Http\Request;
 
 it('check the right element as default', function () {
-    $this->registerTestRoute('default-checkbox');
+    $this->registerTestRoute('bootstrap-checkbox');
 
-    $this->visit('/default-checkbox')
+    $this->visit('/bootstrap-checkbox')
         ->seeElement('input[value="a"]:checked')
         ->seeElement('input[value="b"]:not(:checked)');
 });
 
 it('check checkbox labels work', function () {
-    $this->registerTestRoute('default-checkbox');
+    $this->registerTestRoute('bootstrap-checkbox');
 
-    $this->visit('/default-checkbox')
+    $this->visit('/bootstrap-checkbox')
         ->seeElement('input[value="a"] ~ label')
         ->seeElement('input[value="b"] ~ label');
 });
 
 it('Assert checkbox labels contain correct classes"', function () {
-    $this->registerTestRoute('default-checkbox');
+    $this->registerTestRoute('bootstrap-checkbox');
 
-    $this->visit('/default-checkbox')
+    $this->visit('/bootstrap-checkbox')
         ->seeElement('input[value="a"] ~ label.form-check-label')
         ->seeElement('input[value="b"] ~ label.form-check-label');
 });
 
 it('Assert checkbox labels do not contain "form-label" classes', function () {
-    $this->registerTestRoute('default-checkbox');
+    $this->registerTestRoute('bootstrap-checkbox');
 
-    $this->visit('/default-checkbox')
+    $this->visit('/bootstrap-checkbox')
         ->seeElement('input[value="a"] ~ label:not(.form-label)')
         ->seeElement('input[value="b"] ~ label:not(.form-label)');
 });

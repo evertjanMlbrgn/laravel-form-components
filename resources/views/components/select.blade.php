@@ -35,7 +35,11 @@
                     name="{{ $name }}"
                     id="{{ $getId() }}"
                     @if($multiple) multiple @endif
-                    @if($placeholder) placeholder="{{ $placeholder }}"@endif
+                    @if($floating && empty($placeholder))
+                        placeholder="&nbsp;"
+                    @else
+                        placeholder="{{ $placeholder }}"
+                    @endif
                     @if(isset($help))
                         aria-describedby="{{ $getId() }}-help-text"
                     @endif

@@ -1168,7 +1168,7 @@
         </div>
     </x-form-form>
 
-    <h3 class="mt-3">Setting "has-client-side-validation" attribute on form component with custom validation</h3>
+    <h3 id="form-custom-tests" class="mt-3">Setting "has-client-side-validation" attribute on form component with custom validation</h3>
 
     <x-form-form class="row g-3" has-client-side-validation>
         <div class="col-md-4 position-relative">
