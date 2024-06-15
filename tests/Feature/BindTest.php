@@ -3,7 +3,7 @@
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 use Illuminate\Http\Request;
 
-it('can bind a target to the form', function () {
+it('binds a target to the form', function () {
     $this->registerTestRoute('bind-target');
 
     $this->visit('/bind-target')
@@ -102,7 +102,7 @@ it('overrides the default value when nested', function () {
         ->dontSeeElement('input[name="nested[radio]"]:checked');
 });
 
-it('can bind two targets to the form', function () {
+it('binds two targets to the form', function () {
     $this->registerTestRoute('bind-two-targets');
 
     $this->visit('/bind-two-targets')
@@ -115,7 +115,7 @@ it('can bind two targets to the form', function () {
         ->seeElement('input[name="radio"]:checked');
 });
 
-it('can override the global bind with a bind per element', function () {
+it('overrides the global bind with a bind per element', function () {
     $this->registerTestRoute('override-bind');
 
     $this->visit('/override-bind')
@@ -128,7 +128,7 @@ it('can override the global bind with a bind per element', function () {
         ->dontSeeElement('input[name="radio"]:checked');
 });
 
-it('can disable a global bind per element', function () {
+it('disables a global bind per element', function () {
     $this->registerTestRoute('undo-bind');
 
     $this->visit('/undo-bind')

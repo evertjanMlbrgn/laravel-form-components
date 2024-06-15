@@ -43,7 +43,7 @@ it('supports bound collections', function () {
         ->seeElement('input[value="write"]:not(:checked)');
 });
 
-it('does check the right input element after a validation error', function () {
+it('checks the right input element after a validation error', function () {
     $this->registerTestRoute('checkbox-validation', function (Request $request) {
         $request->validate([
             'checkbox' => 'required|array',

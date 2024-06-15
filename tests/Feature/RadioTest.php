@@ -19,7 +19,7 @@ it('check radio labels work', function () {
         ->seeElement('input[value="0"] ~ label');
 });
 
-it('Assert radio labels contain correct classes"', function () {
+it('sets correct classes on radio labels', function () {
     $this->registerTestRoute('default-radio');
 
     $this->visit('/default-radio')
@@ -27,7 +27,7 @@ it('Assert radio labels contain correct classes"', function () {
         ->seeElement('input[value="0"] ~ label.form-check-label');
 });
 
-it('Assert radio labels do not contain "form-label" classes"', function () {
+it('does not set "form-label" class on radio', function () {
     $this->registerTestRoute('default-radio');
 
     $this->visit('/default-radio')
@@ -35,7 +35,7 @@ it('Assert radio labels do not contain "form-label" classes"', function () {
         ->seeElement('input[value="0"] ~ label:not(.form-label)');
 });
 
-it('check the right element as default with a bound target', function () {
+it('checks the right element as default with a bound target', function () {
     $this->registerTestRoute('default-radio-bind');
 
     $this->visit('/default-radio-bind')
@@ -43,7 +43,7 @@ it('check the right element as default with a bound target', function () {
         ->seeElement('input[value="b"]:not(:checked)');
 });
 
-it('does check the right input element after a validation error', function () {
+it('checks the right input element after a validation error', function () {
     $this->registerTestRoute('radio-validation', function (Request $request) {
         $data = $request->validate([
             'radio' => 'required|in:a',
@@ -57,7 +57,7 @@ it('does check the right input element after a validation error', function () {
         ->seeElement('input[value="b"]:checked');
 });
 
-it('does check the right input element after a validation error of another field', function () {
+it('checks the right input element after a validation error of another field', function () {
     $this->registerTestRoute('radio-with-zero-value', function (Request $request) {
         $data = $request->validate([
             'input' => 'required',

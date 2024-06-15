@@ -1,7 +1,7 @@
 <?php
 
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-it('can set a default value', function () {
+it('sets a default value', function () {
     $this->registerTestRoute('default-values');
 
     $this->visit('/default-values')

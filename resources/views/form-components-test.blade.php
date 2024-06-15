@@ -308,23 +308,23 @@
 
     <h3 class="mt-3">Checkbox toggle buttons</h3>
 
-    <x-form-checkbox id="btn-check" autocomplete="off" label="Single toggle" toggle="a" class-button="btn-secondary" class-label="extra label classes"/>
-    <x-form-checkbox id="btn-check-2" autocomplete="off" label="Checked" toggle="a" checked class-button="btn-tertiary"/>
-    <x-form-checkbox id="btn-check-3" autocomplete="off" label="Disabled" toggle="a" disabled class-button="btn-quaternary"/>
+    <x-form-checkbox id="btn-check" autocomplete="off" label="Single toggle" toggle class-button="btn-secondary" class-label="extra label classes"/>
+    <x-form-checkbox id="btn-check-2" autocomplete="off" label="Checked" toggle checked class-button="btn-tertiary"/>
+    <x-form-checkbox id="btn-check-3" autocomplete="off" label="Disabled" toggle disabled class-button="btn-quaternary"/>
 
     <h3 class="mt-3">Radio toggle buttons</h3>
 
-    <x-form-radio name="options" id="option1" autocomplete="off" checked label="Checked" toggle="a" class-button="btn-secondary" class-label="extra label classes"/>
-    <x-form-radio name="options" id="option2" autocomplete="off" label="Radio" toggle="a" class-button="btn-tertiary"/>
-    <x-form-radio name="options" id="option3" autocomplete="off" checked label="Disabled" toggle="a" disabled class-button="btn-quaternary"/>
-    <x-form-radio name="options" id="option4" autocomplete="off" label="Radio" toggle="a"/>
+    <x-form-radio name="options" id="option1" autocomplete="off" checked label="Checked" toggle class-button="btn-secondary" class-label="extra label classes"/>
+    <x-form-radio name="options" id="option2" autocomplete="off" label="Radio" toggle class-button="btn-tertiary"/>
+    <x-form-radio name="options" id="option3" autocomplete="off" checked label="Disabled" toggle disabled class-button="btn-quaternary"/>
+    <x-form-radio name="options" id="option4" autocomplete="off" label="Radio" toggle/>
 
     <h3 class="mt-3">Outlined styles</h3>
 
-    <x-form-checkbox id="btn-check-outlined" autocomplete="off" label="Single toggle" class-button="bnt-outline-primary" toggle="a"/>
-    <x-form-checkbox id="btn-check-2-outlined" checked autocomplete="off" label="Checked" class-button="bnt-outline-secondary" toggle="a"/>
-    <x-form-radio name="options-outlined" id="success-outlined" autocomplete="off" checked label="Checked succes radio" class-button="btn-outline-success" toggle="a"/>
-    <x-form-radio  name="options-outlined" id="danger-outlined" autocomplete="off" label="Danger radio" class-button="btn-outline-danger" toggle="a"/>
+    <x-form-checkbox id="btn-check-outlined" autocomplete="off" label="Single toggle" class-button="bnt-outline-primary" toggle/>
+    <x-form-checkbox id="btn-check-2-outlined" checked autocomplete="off" label="Checked" class-button="bnt-outline-secondary" toggle/>
+    <x-form-radio name="options-outlined" id="success-outlined" autocomplete="off" checked label="Checked succes radio" class-button="btn-outline-success" toggle/>
+    <x-form-radio  name="options-outlined" id="danger-outlined" autocomplete="off" label="Danger radio" class-button="btn-outline-danger" toggle/>
 
     <h2 id="form-range" class="mt-5" style="color:green !important">Range</h2>
     <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/range/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>

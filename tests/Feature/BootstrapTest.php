@@ -7,7 +7,7 @@ beforeEach(function () {
     }
 });
 
-it('can add help text', function () {
+it('adds help text', function () {
     $this->registerTestRoute('bootstrap-help');
 
     $this->visit('/bootstrap-help')

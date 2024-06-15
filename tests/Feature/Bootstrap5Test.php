@@ -7,7 +7,7 @@ beforeEach(function () {
     }
 });
 
-it('can group elements', function () {
+it('groups elements with input-group', function () {
     $this->registerTestRoute('bootstrap-input-group');
 
     $this->visit('/bootstrap-input-group')
@@ -18,7 +18,7 @@ it('can group elements', function () {
         });
 });
 
-it('can float labels', function () {
+it('floats labels', function () {
     $this->registerTestRoute('bootstrap-floating-label');
 
     $this->visit('/bootstrap-floating-label')
@@ -28,7 +28,7 @@ it('can float labels', function () {
         ->seeElement('#name2', ['placeholder' => 'John Doe']);
 });
 
-it('can add custom input classes', function () {
+it('adds custom input classes', function () {
     $this->registerTestRoute('bootstrap-custom-input');
 
     $this->visit('/bootstrap-custom-input')
@@ -37,7 +37,7 @@ it('can add custom input classes', function () {
         ->seeElement('.form-range', ['type' => 'range']);
 });
 
-it('does show required asterisk when field required', function () {
+it('shows required asterisk when field required', function () {
     $this->registerTestRoute('bootstrap-required');
 
     $this->visit('/bootstrap-required')
@@ -60,6 +60,31 @@ it('handles "has-custom-client-side-validation', function () {
         ->seeElement('form[novalidate]')
         ->seeElement('div.input-group.has-validation')
         ->seeElement('div.input-group-2.has-validation');
+});
+
+// TODO move to custom bootstrap test file
+// tests if setting has-custom-client-side-validation adds class needs-validation to form and attribute no-validate
+// also tests if input-groups get the class has-validation (needed to fix rounded borders on input-groups with
+// validation
+it('adds aria-describedby to control with help text', function () {
+    $this->registerTestRoute('bootstrap-form-help-aria-describedby');
+
+    $this->visit('/bootstrap-form-help-aria-describedby')
+        ->assertResponseOk()
+        ->seeElement('input#input[aria-describedby="input-help-text"]')
+        ->seeElement('input#input ~ div[id="input-help-text"]')
+
+        ->seeElement('select#select[aria-describedby="select-help-text"]')
+        ->seeElement('input#input ~ div[id="select-help-text"]')
+
+        ->seeElement('textarea#textarea[aria-describedby="textarea-help-text"]')
+        ->seeElement('input#input ~ div[id="textarea-help-text"]')
+
+        ->seeElement('input#checkbox[aria-describedby="checkbox-help-text"]')
+        ->seeElement('input#checkbox ~ div[id="checkbox-help-text"]')
+
+        ->seeElement('input#radio[aria-describedby="radio-help-text"]')
+        ->seeElement('input#radio ~ div[id="radio-help-text"]');
 });
 
 it('adds javascript when using attribute "has-client-side-validation"', function() {

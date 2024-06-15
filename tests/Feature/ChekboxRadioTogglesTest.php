@@ -2,7 +2,7 @@
 
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 
-it('checkboxes and radios contain correct classes when toggle', function () {
+it('sets correct classes on toggle checkboxes and radios', function () {
     $this->registerTestRoute('checkbox-radio-toggles');
 
     $this->visit('/checkbox-radio-toggles')
@@ -12,7 +12,7 @@ it('checkboxes and radios contain correct classes when toggle', function () {
         ->seeElement('input[value="0"] ~ label.btn');
 });
 
-it('checkbox and radio labels do not contain "form-check-label" class when toggle', function () {
+it('does not set class "form-check-label" on toggle checkboxes and radios', function () {
     $this->registerTestRoute('checkbox-radio-toggles');
 
     $this->visit('/checkbox-radio-toggles')
@@ -20,7 +20,7 @@ it('checkbox and radio labels do not contain "form-check-label" class when toggl
         ->seeElement('input[value="0"] ~ label:not(.form-check-label)');
 });
 
-it('checkboxes and radios do not contain div wrapper when toggle', function () {
+it('does not use wrapper on toggle checkboxes and radios', function () {
     $this->registerTestRoute('checkbox-radio-toggles');
 
     $this->visit('/checkbox-radio-toggles')
