@@ -3,6 +3,7 @@
 {{--    <link rel="stylesheet" href="{{ vite_asset('resources/scss/main.scss') }}">--}}
     <link rel="stylesheet" href="{{ package_asset('css/mlbrgn-form-components.css') }}">
     <script src="{{ package_asset('js/mlbrgn-form-components.js') }}"></script>
+    <script src="{{ package_asset('js/mlbrgn-html-editor.js') }}"></script>
 
     <h1>Mlbrgn form components test page</h1>
 

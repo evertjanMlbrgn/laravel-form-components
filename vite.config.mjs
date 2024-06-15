@@ -6,7 +6,7 @@ import laravel from 'laravel-vite-plugin';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/js/main.js', 'resources/css/main.scss'],
+            input: ['resources/js/main.js', 'resources/js/html-editor.js', 'resources/css/main.scss'],
             refresh: true,
         }),
     ],
@@ -18,6 +18,9 @@ export default defineConfig({
                 entryFileNames: (chunk) => {
                     if (chunk.facadeModuleId.includes('main.js')) {
                         return `js/mlbrgn-form-components.js`; // Custom filename for JS
+                    }
+                    if (chunk.facadeModuleId.includes('html-editor.js')) {
+                        return `js/mlbrgn-html-editor.js`; // Custom filename for JS
                     }
                     return 'assets/[name].[hash].js';
                 },

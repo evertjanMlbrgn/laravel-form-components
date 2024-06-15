@@ -1,5 +1,3 @@
-import './vendor/tinyMCE/tinyMCE';
-
 document.addEventListener('DOMContentLoaded', function () {
     setupBootstrapClientSideValidation();
 });
