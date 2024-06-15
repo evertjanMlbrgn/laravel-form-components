@@ -56,7 +56,7 @@
             <x-form-input type="password" id="exampleInputPassword1" label="Password"/>
         </div>
         <x-form-checkbox class="mb-3" id="exampleCheck1" label="Check me out"/>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </x-form-form>
 
     <h3 class="mt-3">Form text</h3>
