@@ -1,4 +1,8 @@
 <x-layout>
+{{--    <script src="{{ vite_asset('resources/js/main.js') }}"></script>--}}
+{{--    <link rel="stylesheet" href="{{ vite_asset('resources/scss/main.scss') }}">--}}
+    <link rel="stylesheet" href="{{ package_asset('css/mlbrgn-form-components.css') }}">
+    <script src="{{ package_asset('js/mlbrgn-form-components.js') }}"></script>
 
     <h1>Mlbrgn form components test page</h1>
 
@@ -1210,6 +1214,11 @@
         </div>
     </x-form-form>
 
+    <h3>HTML editor (tinyMCE)</h3>
+    <x-form-html-editor id="test">
+
+    </x-form-html-editor>
+
     {{--    <h1>Complete form</h1>--}}
 
 {{--    @php--}}
@@ -1398,26 +1407,26 @@
 
 
 @once
-    <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function () {
-        'use strict'
+{{--    <script>--}}
+{{--      // Example starter JavaScript for disabling form submissions if there are invalid fields--}}
+{{--      (function () {--}}
+{{--        'use strict'--}}
 
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('form[novalidate]')
+{{--        // Fetch all the forms we want to apply custom Bootstrap validation styles to--}}
+{{--        var forms = document.querySelectorAll('form[novalidate]')--}}
 
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-          .forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-              if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-              }
+{{--        // Loop over them and prevent submission--}}
+{{--        Array.prototype.slice.call(forms)--}}
+{{--          .forEach(function (form) {--}}
+{{--            form.addEventListener('submit', function (event) {--}}
+{{--              if (!form.checkValidity()) {--}}
+{{--                event.preventDefault()--}}
+{{--                event.stopPropagation()--}}
+{{--              }--}}
 
-              form.classList.add('was-validated')
-            }, false)
-          })
-      })()
-    </script>
+{{--              form.classList.add('was-validated')--}}
+{{--            }, false)--}}
+{{--          })--}}
+{{--      })()--}}
+{{--    </script>--}}
 @endonce
