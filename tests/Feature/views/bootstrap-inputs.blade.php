@@ -27,3 +27,28 @@
     <x-form-input name="url" type="url"/>
     <x-form-input name="week" type="week"/>
 </x-form-form>
+
+<x-form-form id="form-3">
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="button" name="button" type="button"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="checkbox" name="checkbox" type="checkbox"/>
+    <x-form-input label="labeltext" required="Required" readonly disabled value="test value" id="color" name="color" type="color"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="date" name="date" type="date"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="datetime-local" name="datetime-local" type="datetime-local"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="email" name="email" type="email"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="file" name="file" type="file"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="hidden" name="hidden" type="hidden"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="image" name="image" type="image"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="month" name="month" type="month"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="number" name="number" type="number"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="password" name="password" type="password"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="radio" name="radio" type="radio"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="range" name="range" type="range"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="reset" name="reset" type="reset"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="search" name="search" type="search"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="submit" name="submit" type="submit"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="tel" name="tel" type="tel"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="text" name="text" type="text"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="time" name="time" type="time"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="url" name="url" type="url"/>
+    <x-form-input label="labeltext" required readonly disabled value="test value" id="week" name="week" type="week"/>
+</x-form-form>

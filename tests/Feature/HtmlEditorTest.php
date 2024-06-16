@@ -7,6 +7,7 @@ it('renders html-editor', function () {
 
     $this->visit('/html-editor')
         ->assertResponseOk()
+//        ->seeElement('textarea[name="html-editor-1"][something][id="auto_id_html-editor-1"].form-control.html-editor')
         ->seeElement('textarea[name="html-editor-1"][required][id="auto_id_html-editor-1"].form-control.html-editor')
         ->seeElement('textarea[name="html-editor-2"][id="html-editor-2"].form-control.html-editor')
         ->seeElement('label[for="auto_id_html-editor-1"].form-label.required')

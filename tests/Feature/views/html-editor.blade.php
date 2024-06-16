@@ -4,6 +4,9 @@ $target = ['checkbox' => ['a']];
 
 <x-form-form>
     @bind($target)
+    <x-form-html-editor name="html-editor-1" label="label 1" something>
+        html-content-1
+    </x-form-html-editor>
         <x-form-html-editor name="html-editor-1" label="label 1" required>
             html-content-1
         </x-form-html-editor>

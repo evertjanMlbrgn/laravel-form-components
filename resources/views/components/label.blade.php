@@ -1,8 +1,12 @@
 @aware([
-    'required',
     'horizontal',
     'toggle',
     'type'
+])
+
+{{-- Don't want attribute required to be added to label, so using prop --}}
+@props([
+    'required' => false,
 ])
 
 @php
@@ -12,7 +16,7 @@
 @endphp
 {{--label has type {{ isset($type) ? $type : 'no type' }}--}}
 @if ($slot->isNotEmpty())
-    <label {{ $attributes->class([
+     <label {{ $attributes->class([
         'form-label' => !$horizontal && !$toggle && !$isCheckboxOrRadio,
         'col-form-label' => $horizontal && !$containsFormControlLg && !$containsFormControlSm,
         'required' => $required,

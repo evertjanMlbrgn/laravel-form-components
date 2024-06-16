@@ -1,3 +1,8 @@
+{{-- cache id, new on generated each time $getId() is called if no name or id attribute --}}
+<?php
+    $id = $getId();
+?>
+
 @if(!$toggle)
 <div @class([
     'form-check',
@@ -16,30 +21,31 @@
         value="{{ $value }}"
         name="{{ $name }}"
         @if($label)
-            id="{{ $getId() }}"
+            id="{{ $id }}"
         @endif
         @if($checked)
             checked="checked"
         @endif
         @if(isset($help))
-            aria-describedby="{{ $getId() }}-help-text"
+            aria-describedby="{{ $id }}-help-text"
         @endif
     >
 
     <x-form-label
         :parentClasses="$attributes->get('class')"
+        :required="$attributes->has('required')"
         @class([
             'form-check-label' => !$toggle,
             'btn' => $toggle,
             $classButton,
             $classLabel
         ])
-        :for="$getId()">
+        :for="$id">
         {{ $label }}
     </x-form-label>
 
     @if(isset($help))
-        <x-form-text :id="$getId()">{{ $help }}</x-form-text>
+        <x-form-text :id="$id">{{ $help }}</x-form-text>
     @endif
 
     @if($shouldShowError($name))

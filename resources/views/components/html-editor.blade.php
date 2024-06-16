@@ -1,3 +1,8 @@
+{{-- cache id, new on generated each time $getId() is called if no name or id attribute --}}
+<?php
+    $id = $getId();
+?>
+
 @if($floating || $hidden || $horizontal)
     <div @class(['row' => $horizontal, 'form-floating' => $floating, 'd-none' => $hidden])  >
         @endif
@@ -5,11 +10,12 @@
         @if(!$floating || $horizontal)
             <x-form-label
                 :parentClasses="$attributes->get('class')"
+                :required="$attributes->has('required')"
                 @class([
                     'col-4' => empty($classLabel),
                     $classLabel
                  ])
-                :for="$getId()">
+                :for="$id">
                 {{ $label }}
             </x-form-label>
         @endif
@@ -21,7 +27,7 @@
                      $classControl => !empty($classControl)
                  ])
             >
-                @endif
+        @endif
 
                 <textarea
                     {{ $attributes->class([
@@ -30,8 +36,8 @@
                         'is-invalid' => $hasError($name)
                         ]) }}
                     name="{{ $name }}"
-                    id="{{ $getId() }}"
-                    @if($required) required @endif
+                    id="{{ $id }}"
+{{--                    @if($required) required @endif--}}
 
                     {{-- Placeholder is required as of writing --}}
                     @if($floating && !$attributes->get('placeholder'))
@@ -66,16 +72,17 @@
         @if($floating && !$horizontal)
             <x-form-label
                 :parentClasses="$attributes->get('class')"
+                :required="$attributes->has('required')"
                 @class([
                    $classLabel
                ])
-                :for="$getId()">
+                :for="$id">
                 {{ $label }}
             </x-form-label>
         @endif
 
         @if(isset($help))
-            <x-form-text :id="$getId()">{{ $help }}</x-form-text>
+            <x-form-text :id="$id">{{ $help }}</x-form-text>
         @endif
 
         @if($shouldShowError($name))

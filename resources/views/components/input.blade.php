@@ -16,6 +16,11 @@
     @include('form-components::button', ['type' => 'submit'])
 @else
 
+    {{-- cache id, new on generated each time $getId() is called if no name or id attribute --}}
+    <?php
+        $id = $getId();
+    ?>
+
     @if($floating || $hidden || $horizontal)
         <div @class([
         'row' => $horizontal,
@@ -27,11 +32,13 @@
         @if(!$floating || $horizontal)
             <x-form-label
                 :parentClasses="$attributes->get('class')"
+                :required="$attributes->has('required')"
                 @class([
                    'col-4' => empty($classLabel),
                    $classLabel
                 ])
-                :for="$getId()">
+
+                :for="$id">
                 {{ $label }}
             </x-form-label>
         @endif
@@ -50,14 +57,13 @@
                     'form-range' => $type === 'range',
                     'form-control-color' => ($type === 'color'),
                     'is-invalid' => ($hasError($name))
-                    ])->merge() }}
+                    ]) }}
                     type="{{ $type }}"
                     value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
                     name="{{ $name }}"
-                    @if($required) required @endif
-                    id="{{ $getId() }}"
+                    id="{{ $id }}"
                     @if(isset($help))
-                    aria-describedby="{{ $getId() }}-help-text"
+                    aria-describedby="{{ $id }}-help-text"
                     @endif
                     {{-- floating labels won't work without placeholder, yet they never display placeholder either --}}
                     @if($floating && !$attributes->has('placeholder')) placeholder="&nbsp;"@endif
@@ -88,16 +94,17 @@
         @if($floating && !$horizontal)
             <x-form-label
                 :parentClasses="$attributes->get('class')"
+                :required="$attributes->has('required')"
                 @class([
                    $classLabel
                ])
-                :for="$getId()">
+                :for="$id">
                 {{ $label }}
             </x-form-label>
         @endif
 
         @if(isset($help))
-            <x-form-text :id="$getId()">{{ $help }}</x-form-text>
+            <x-form-text :id="$id">{{ $help }}</x-form-text>
         @endif
 
         @if($shouldShowError($name))

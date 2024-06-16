@@ -1,5 +1,13 @@
-{{--<x-form-control-wrapper :id="$getId()">--}}
 {{-- TODO don't know if hidden is needed, why does input need it? --}}
+{{--@props([--}}
+{{--    'multiple' => false--}}
+{{--])--}}
+
+{{-- cache id, new on generated each time $getId() is called if no name or id attribute --}}
+<?php
+    $id = $getId();
+?>
+
 @if($floating || $horizontal)
     <div @class([
     'row' => $horizontal,
@@ -10,11 +18,12 @@
         @if(!$floating || $horizontal)
             <x-form-label
                 :parentClasses="$attributes->get('class')"
+                :required="$attributes->has('required')"
                 @class([
                    'col-4' => empty($classLabel),
                    $classLabel
                 ])
-                :for="$getId()">
+                :for="$id">
                 {{ $label }}
             </x-form-label>
         @endif
@@ -33,7 +42,7 @@
                         'is-invalid' => $hasError($name)
                     ]) }}
                     name="{{ $name }}"
-                    id="{{ $getId() }}"
+                    id="{{ $id }}"
                     @if($multiple) multiple @endif
                     @if($floating && empty($placeholder))
                         placeholder="&nbsp;"
@@ -41,7 +50,7 @@
                         placeholder="{{ $placeholder }}"
                     @endif
                     @if(isset($help))
-                        aria-describedby="{{ $getId() }}-help-text"
+                        aria-describedby="{{ $id }}-help-text"
                     @endif
                     >
 
@@ -67,10 +76,11 @@
             @if($floating && !$horizontal)
                 <x-form-label
                     :parentClasses="$attributes->get('class')"
+                    :required="$attributes->has('required')"
                     @class([
                         $classLabel
                     ])
-                    :for="$getId()">
+                    :for="$id">
                     {{ $label }}
                 </x-form-label>
             @endif
@@ -94,7 +104,7 @@
             @endif
 
             @if(isset($help))
-                <x-form-text :id="$getId()">{{ $help }}</x-form-text>
+                <x-form-text :id="$id">{{ $help }}</x-form-text>
             @endif
 
             @if($shouldShowError($name))
@@ -105,5 +115,3 @@
 @if($floating || $horizontal)
     </div>
 @endif
-
-{{--</x-form-control-wrapper>--}}

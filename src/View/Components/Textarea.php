@@ -23,7 +23,7 @@ class Textarea extends FormBaseComponent
         bool $showErrors = true,
         public bool $horizontal = false,
         public bool $floating = false,
-        public bool $required = false,
+//        public bool $required = false,
         public bool $hidden = false,
         public string $classLabel = '',
         public string $classControl = '',

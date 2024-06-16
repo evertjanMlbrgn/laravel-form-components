@@ -56,7 +56,7 @@
             <x-form-input type="password" id="exampleInputPassword1" label="Password"/>
         </div>
         <x-form-checkbox class="mb-3" id="exampleCheck1" label="Check me out"/>
-        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        <x-form-submit class="btn btn-primary mt-3">Submit</x-form-submit>
     </x-form-form>
 
     <h3 class="mt-3">Form text</h3>
@@ -100,7 +100,7 @@
             <div class="mb-3">
                 <x-form-checkbox id="disabledFieldsetCheck" disabled label="Can't check this"/>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <x-form-submit class="btn-primary">Submit</x-form-submit>
         </fieldset>
     </x-form-form>
 
@@ -155,7 +155,7 @@
             <x-form-input type="password" id="inputPassword2" label="Password" placeholder="Password" class-label="visually-hidden"/>
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+            <x-form-submit class="btn-primary mb-3">Confirm identity</x-form-submit>
         </div>
     </x-form-form>
 
@@ -456,30 +456,30 @@
     <h3 class="mt-3">Button addons</h3>
 
     <x-form-input-group class="mb-3">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Button</button>
+        <x-form-button class="btn-outline-secondary" id="button-addon1">Button</x-form-button>
         <x-form-input placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"/>
     </x-form-input-group>
 
     <x-form-input-group class="mb-3">
         <x-form-input placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+        <x-form-button class="btn-outline-secondary" id="button-addon2">Button</x-form-button>
     </x-form-input-group>
 
     <x-form-input-group class="mb-3">
-        <button class="btn btn-outline-secondary" type="button">Button</button>
-        <button class="btn btn-outline-secondary" type="button">Button</button>
+        <x-form-button class="btn-outline-secondary">Button</x-form-button>
+        <x-form-button class="btn-outline-secondary">Button</x-form-button>
         <x-form-input placeholder="" aria-label="Example text with two button addons"/>
     </x-form-input-group>
 
     <x-form-input-group class="">
         <x-form-input placeholder="Recipient's username" aria-label="Recipient's username with two button addons"/>
-        <button class="btn btn-outline-secondary" type="button">Button</button>
-        <button class="btn btn-outline-secondary" type="button">Button</button>
+        <button class="btn-outline-secondary">Button</button>
+        <button class="btn-outline-secondary">Button</button>
     </x-form-input-group>
 
     <h3 class="mt-3">Buttons with dropdowns</h3>
     <x-form-input-group class="mb-3">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+        <x-form-button class="btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -492,7 +492,7 @@
 
     <x-form-input-group class="mb-3">
         <x-form-input aria-label="Text input with dropdown button"/>
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+        <x-form-button class="btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
         <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -503,7 +503,7 @@
     </x-form-input-group>
 
     <x-form-input-group class="">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+        <x-form-button class="btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action before</a></li>
             <li><a class="dropdown-item" href="#">Another action before</a></li>
@@ -512,7 +512,7 @@
             <li><a class="dropdown-item" href="#">Separated link</a></li>
         </ul>
         <x-form-input aria-label="Text input with 2 dropdown buttons"/>
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+        <x-form-button class="btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
         <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -525,10 +525,10 @@
     <h3 class="mt-3">Segmented buttons</h3>
 
     <x-form-input-group class="mb-3">
-        <button type="button" class="btn btn-outline-secondary">Action</button>
-        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+        <x-form-button class="btn-outline-secondary">Action</x-form-button>
+        <x-form-button class="btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
-        </button>
+        </x-form-button>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -542,9 +542,9 @@
     <x-form-input-group class="">
         <x-form-input aria-label="Text input with segmented dropdown button"/>
         <button type="button" class="btn btn-outline-secondary">Action</button>
-        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+        <x-form-button class="btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
-        </button>
+        </x-form-button>
         <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -579,7 +579,7 @@
     </x-form-input-group>
 
     <x-form-input-group class="mb-3">
-        <button class="btn btn-outline-secondary" type="button">Button</button>
+        <x-form-button class="btn-outline-secondary">Button</x-form-button>
         <x-form-select id="inputGroupSelect03" aria-label="Example select with button addon">
             <option selected>Choose...</option>
             <option value="1">One</option>
@@ -595,7 +595,7 @@
             <option value="2">Two</option>
             <option value="3">Three</option>
         </x-form-select>
-        <button class="btn btn-outline-secondary" type="button">Button</button>
+        <x-form-button class="btn-outline-secondary">Button</x-form-button>
     </x-form-input-group>
 
     <h3 class="mt-3">Custom file input</h3>
@@ -613,13 +613,13 @@
     </x-form-input-group>
 
     <x-form-input-group class="mb-3">
-        <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Button</button>
+        <x-form-button class="btn-outline-secondary" id="inputGroupFileAddon03">Button</x-form-button>
         <x-form-input type="file" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload"/>
     </x-form-input-group>
 
     <x-form-input-group class="">
         <x-form-input type="file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload"/>
-        <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+        <x-form-button class="btn-outline-secondary" id="inputGroupFileAddon04">Button</x-form-button>
     </x-form-input-group>
 
     <h2 id="form-floating-label" class="mt-5" style="color:green !important">Floating labels</h2>
@@ -732,14 +732,14 @@
             <x-form-checkbox  label="Check me out" id="gridCheck"/>
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <x-form-submit class="btn-primary">Sign in</x-form-submit>
         </div>
     </x-form-form>
 
     <h3 class="mt-3">Horizontal form</h3>
 
     <x-form-form class="mb-3">
-        <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email test" horizontal class-label="col-2" class-control="col-10"/>
+        <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email test" horizontal class-label="col-2" class-control="col-10" required/>
         <x-form-input type="password" class="mb-3" id="inputPassword3" label="Password" horizontal class-label="col-2" class-control="col-10"/>
         <x-form-input type="range" class="mb-3" id="inputPassword3" label="Password" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10"/>
         <x-form-textarea class="mb-3" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10"/>
@@ -761,7 +761,7 @@
                 <x-form-checkbox  id="gridCheck1" label="Example checkbox"/>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <x-form-submit class="btn-primary">Sign in</x-form-submit>
     </x-form-form>
 
     <h3 class="mt-5">Horizontal form label sizing</h3>
@@ -825,7 +825,7 @@
             <x-form-checkbox label="Remember me" id="autoSizingCheck"/>
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <x-form-submit class="btn-primary">Submit</x-form-submit>
         </div>
     </form>
 
@@ -857,7 +857,7 @@
             <x-form-checkbox  label="Remember me" id="autoSizingCheck"/>
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <x-form-submit class="btn-primary">Submit</x-form-submit>
         </div>
     </form>
 
@@ -889,7 +889,7 @@
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <x-form-submit class="btn-primary">Submit</x-form-submit>
         </div>
     </x-form-form>
 
@@ -938,7 +938,7 @@
             <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <x-form-submit class="btn-primary" type="submit">Submit form</x-form-submit>
         </div>
     </x-form-form>
 
@@ -983,7 +983,7 @@
             </div>
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <x-form-submit class="btn-primary" type="submit">Submit form</x-form-submit>
         </div>
     </x-form-form>
 
@@ -1042,7 +1042,7 @@
             </div>
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <x-form-submit class="btn-primary">Submit form</x-form-submit>
         </div>
     </x-form-form>
 
@@ -1083,7 +1083,7 @@
         </div>
 
         <div class="mb-3">
-            <button class="btn btn-primary" type="submit" disabled>Submit form</button>
+            <x-form-submit class="btn-primary" disabled>Submit form</x-form-submit>
         </div>
     </x-form-form>
 
@@ -1115,7 +1115,7 @@
             <x-form-input type="text" class="form-control" id="validationTooltip05" required label="Zip" valid-feedback="Splendid" invalid-feedback="Please provide a valid zip." tooltip-feedback/>
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <x-form-submit class="btn-primary">Submit form</x-form-submit>
         </div>
     </x-form-form>
 
@@ -1164,7 +1164,7 @@
             <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <x-form-submit class="btn-primary">Submit form</x-form-submit>
         </div>
     </x-form-form>
 
@@ -1210,7 +1210,7 @@
             <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
         </div>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <x-form-submit class="btn-primary">Submit form</x-form-submit>
         </div>
     </x-form-form>
 
@@ -1261,6 +1261,21 @@
         <x-form-submit>
             Submit button using x-form-submit component
         </x-form-submit>
+    </x-form-form>
+
+    <h3 class="mt-3">Input group with more than one control</h3>
+    <x-form-form class="needs-validation" novalidate>
+        <x-form-input-group>
+            <x-form-input-group-text>First and last name</x-form-input-group-text>
+            <x-form-input aria-label="First name" required invalid-feedback="Nope"/>
+            <x-form-input aria-label="Last name" required invalid-feedback="No way"/>
+        </x-form-input-group>
+        <x-form-input-group class="mt-3">
+            <x-form-input-group-text>First name</x-form-input-group-text>
+            <x-form-input aria-label="First name" required invalid-feedback="Nope"/>
+        </x-form-input-group>
+        <x-form-submit class="btn-primary mt-3" type="submit">Submit form</x-form-submit>
+
     </x-form-form>
 
 </x-layout>

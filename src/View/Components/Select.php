@@ -27,7 +27,7 @@ class Select extends FormBaseComponent
         public mixed $options = [],
         $bind = null,
         $default = null,
-        public bool $multiple = false,
+        public bool $multiple = false,// TODO use @props
         bool $showErrors = true,
         bool $manyRelation = false,
         public bool $floating = false,

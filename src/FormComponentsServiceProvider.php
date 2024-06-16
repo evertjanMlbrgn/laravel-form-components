@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
+use Mlbrgn\LaravelFormComponents\View\Components\Button;
 use Mlbrgn\LaravelFormComponents\View\Components\Captcha;
 use Mlbrgn\LaravelFormComponents\View\Components\Checkbox;
-use Mlbrgn\LaravelFormComponents\View\Components\ControlWrapper;
 use Mlbrgn\LaravelFormComponents\View\Components\Errors;
 use Mlbrgn\LaravelFormComponents\View\Components\Form;
 use Mlbrgn\LaravelFormComponents\View\Components\HtmlEditor;
@@ -121,7 +121,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $this->registerComponent('submit', Submit::class);
             $this->registerComponent('text', Text::class);
             $this->registerComponent('textarea', Textarea::class);
-            $this->registerComponent('control-wrapper', ControlWrapper::class);
+            $this->registerComponent('button', Button::class);
         });
     }
 

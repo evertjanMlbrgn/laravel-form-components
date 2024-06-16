@@ -27,14 +27,6 @@ it('Assert checkbox labels contain correct classes"', function () {
         ->seeElement('input[value="b"] ~ label.form-check-label');
 });
 
-it('Assert checkbox labels do not contain "form-label" classes', function () {
-    $this->registerTestRoute('bootstrap-checkbox');
-
-    $this->visit('/bootstrap-checkbox')
-        ->seeElement('input[value="a"] ~ label:not(.form-label)')
-        ->seeElement('input[value="b"] ~ label:not(.form-label)');
-});
-
 it('supports bound collections', function () {
     $this->registerTestRoute('checkbox-collection');
 

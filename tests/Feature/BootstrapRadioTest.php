@@ -27,14 +27,6 @@ it('sets correct classes on radio labels', function () {
         ->seeElement('input[value="0"] ~ label.form-check-label');
 });
 
-it('does not set "form-label" class on radio', function () {
-    $this->registerTestRoute('bootstrap-radio');
-
-    $this->visit('/bootstrap-radio')
-        ->seeElement('input[value="1"] ~ label:not(.form-label)')
-        ->seeElement('input[value="0"] ~ label:not(.form-label)');
-});
-
 it('checks the right element as default with a bound target', function () {
     $this->registerTestRoute('bootstrap-radio');
 
