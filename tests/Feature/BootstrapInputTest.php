@@ -74,3 +74,36 @@ it('honors other attributes', function () {
                 ->seeElement('input[name="week"][type="week"][id="week"][required][readonly][disabled][value="test value"]');
         });
 });
+
+it('honors extra classes', function () {
+    $this->registerTestRoute('bootstrap-inputs');
+
+    $this->visit('/bootstrap-inputs')
+        ->within('#form-4', function() {
+            return $this->seeElement('button[name="button"].extra-1.extra-2')// uses button component
+                ->seeElement('button[name="button"].extra-1.extra-2')// uses button component
+                ->seeElement('input[name="checkbox"].extra-1.extra-2')
+                ->seeElement('input[name="color"].extra-1.extra-2')
+                ->seeElement('input[name="date"].extra-1.extra-2')
+                ->seeElement('input[name="datetime-local"].extra-1.extra-2')
+                ->seeElement('input[name="email"].extra-1.extra-2')
+                ->seeElement('input[name="file"].extra-1.extra-2')
+                ->seeElement('input[name="hidden"].extra-1.extra-2')
+                ->seeElement('input[name="image"].extra-1.extra-2')
+                ->seeElement('input[name="month"].extra-1.extra-2')
+                ->seeElement('input[name="number"].extra-1.extra-2')
+                ->seeElement('input[name="password"].extra-1.extra-2')
+                ->seeElement('input[name="radio"].extra-1.extra-2')
+                ->seeElement('input[name="range"].extra-1.extra-2')
+                ->seeElement('button[name="reset"].extra-1.extra-2')// uses button component
+                ->seeElement('button[name="reset"].extra-1.extra-2')// uses button component
+                ->seeElement('input[name="search"].extra-1.extra-2')
+                ->seeElement('button[name="submit"].extra-1.extra-2')// uses button component
+                ->seeElement('button[name="submit"].extra-1.extra-2')// uses button component
+                ->seeElement('input[name="tel"].extra-1.extra-2')
+                ->seeElement('input[name="text"].extra-1.extra-2')
+                ->seeElement('input[name="time"].extra-1.extra-2')
+                ->seeElement('input[name="url"].extra-1.extra-2')
+                ->seeElement('input[name="week"].extra-1.extra-2');
+        });
+});

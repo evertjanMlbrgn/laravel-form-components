@@ -7,7 +7,8 @@ use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 class Button extends FormBaseComponent
 {
     public function __construct(
-//        public string $name = '',
+        public string $type = 'button',
+        public string $classButton = 'btn-primary'
     ) {
 
     }

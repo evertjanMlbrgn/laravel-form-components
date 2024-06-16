@@ -56,7 +56,7 @@
             <x-form-input type="password" id="exampleInputPassword1" label="Password"/>
         </div>
         <x-form-checkbox class="mb-3" id="exampleCheck1" label="Check me out"/>
-        <x-form-submit class="btn btn-primary mt-3">Submit</x-form-submit>
+        <x-form-submit class="mt-3" class-button="btn-secondary">Submit</x-form-submit>
     </x-form-form>
 
     <h3 class="mt-3">Form text</h3>
@@ -313,14 +313,14 @@
     <h3 class="mt-3">Checkbox toggle buttons</h3>
 
     <x-form-checkbox id="btn-check" autocomplete="off" label="Single toggle" toggle class-button="btn-secondary" class-label="extra label classes"/>
-    <x-form-checkbox id="btn-check-2" autocomplete="off" label="Checked" toggle checked class-button="btn-tertiary"/>
-    <x-form-checkbox id="btn-check-3" autocomplete="off" label="Disabled" toggle disabled class-button="btn-quaternary"/>
+    <x-form-checkbox id="btn-check-2" autocomplete="off" label="Checked" toggle checked class-button="btn-secondary-outline"/>
+    <x-form-checkbox id="btn-check-3" autocomplete="off" label="Disabled" toggle disabled class-button="btn-primary"/>
 
     <h3 class="mt-3">Radio toggle buttons</h3>
 
     <x-form-radio name="options" id="option1" autocomplete="off" checked label="Checked" toggle class-button="btn-secondary" class-label="extra label classes"/>
-    <x-form-radio name="options" id="option2" autocomplete="off" label="Radio" toggle class-button="btn-tertiary"/>
-    <x-form-radio name="options" id="option3" autocomplete="off" checked label="Disabled" toggle disabled class-button="btn-quaternary"/>
+    <x-form-radio name="options" id="option2" autocomplete="off" label="Radio" toggle class-button="btn-primary-outline"/>
+    <x-form-radio name="options" id="option3" autocomplete="off" checked label="Disabled" toggle disabled class-button="btn-secondary"/>
     <x-form-radio name="options" id="option4" autocomplete="off" label="Radio" toggle/>
 
     <h3 class="mt-3">Outlined styles</h3>
@@ -456,25 +456,25 @@
     <h3 class="mt-3">Button addons</h3>
 
     <x-form-input-group class="mb-3">
-        <x-form-button class="btn-outline-secondary" id="button-addon1">Button</x-form-button>
+        <x-form-button class="btn-outline-secondary" id="button-addon1" class-button="btn-secondary">Button</x-form-button>
         <x-form-input placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"/>
     </x-form-input-group>
 
     <x-form-input-group class="mb-3">
         <x-form-input placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-        <x-form-button class="btn-outline-secondary" id="button-addon2">Button</x-form-button>
+        <x-form-button class="btn-outline-secondary" id="button-addon2" class-button="btn-secondary">Button</x-form-button>
     </x-form-input-group>
 
     <x-form-input-group class="mb-3">
-        <x-form-button class="btn-outline-secondary">Button</x-form-button>
-        <x-form-button class="btn-outline-secondary">Button</x-form-button>
+        <x-form-button class="btn-outline-secondary" class-button="btn-primary-outline">Button</x-form-button>
+        <x-form-button class="btn-outline-secondary" class-button="btn-secondary-outline">Button</x-form-button>
         <x-form-input placeholder="" aria-label="Example text with two button addons"/>
     </x-form-input-group>
 
     <x-form-input-group class="">
         <x-form-input placeholder="Recipient's username" aria-label="Recipient's username with two button addons"/>
-        <button class="btn-outline-secondary">Button</button>
-        <button class="btn-outline-secondary">Button</button>
+        <x-form-button class="btn-outline-secondary" class-button="btn-outline-secondary">Button</x-form-button>
+        <x-form-button class="btn-outline-primary" class-button="btn-outline-primary">Button</x-form-button>
     </x-form-input-group>
 
     <h3 class="mt-3">Buttons with dropdowns</h3>
@@ -541,7 +541,7 @@
 
     <x-form-input-group class="">
         <x-form-input aria-label="Text input with segmented dropdown button"/>
-        <button type="button" class="btn btn-outline-secondary">Action</button>
+        <x-form-button class="btn" class-button="btn-outline-secondary">Action</x-form-button>
         <x-form-button class="btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="visually-hidden">Toggle Dropdown</span>
         </x-form-button>
@@ -938,7 +938,7 @@
             <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
         </div>
         <div class="col-12">
-            <x-form-submit class="btn-primary" type="submit">Submit form</x-form-submit>
+            <x-form-submit class="btn-primary">Submit form</x-form-submit>
         </div>
     </x-form-form>
 
@@ -983,7 +983,7 @@
             </div>
         </div>
         <div class="col-12">
-            <x-form-submit class="btn-primary" type="submit">Submit form</x-form-submit>
+            <x-form-submit class="btn-primary">Submit form</x-form-submit>
         </div>
     </x-form-form>
 
@@ -1274,7 +1274,7 @@
             <x-form-input-group-text>First name</x-form-input-group-text>
             <x-form-input aria-label="First name" required invalid-feedback="Nope"/>
         </x-form-input-group>
-        <x-form-submit class="btn-primary mt-3" type="submit">Submit form</x-form-submit>
+        <x-form-submit class="btn-primary mt-3">Submit form</x-form-submit>
 
     </x-form-form>
 

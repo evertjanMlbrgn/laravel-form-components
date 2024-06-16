@@ -3,7 +3,7 @@
 
 {{-- If checkbox or radio use dedicated components --}}
 @if($type === 'button')
-    @include('form-components::button')
+    @include('form-components::button', ['classButton' => 'btn-primary'])
 @elseif($type === 'checkbox')
     @include('form-components::checkbox', ['toggle' => false, 'checked' => $attributes->has('checked'), 'classButton' => '', 'labelButton' => ''])
 {{--@elseif($type === 'image')--}}
@@ -11,9 +11,9 @@
 @elseif($type === "radio")
     @include('form-components::radio', ['toggle' => false, 'checked' => $attributes->has('checked'), 'classButton' => '', 'labelButton' => ''])
 @elseif($type === 'reset')
-    @include('form-components::button', ['type' => 'reset'])
+    @include('form-components::button', ['type' => 'reset', 'classButton' => 'btn-primary'])
 @elseif($type === 'submit')
-    @include('form-components::button', ['type' => 'submit'])
+    @include('form-components::button', ['type' => 'submit', 'classButton' => 'btn-primary'])
 @else
 
     {{-- cache id, new on generated each time $getId() is called if no name or id attribute --}}
