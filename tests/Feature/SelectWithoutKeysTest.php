@@ -25,7 +25,7 @@ it('shows a validation error', function () {
 
     $this->visit('/select-without-keys')
         ->select('2', 'select')
-        ->press('Submit')
+        ->press('Send')
         ->seeElement('option[value="0"]:not(:selected)')
         ->seeElement('option[value="1"]:not(:selected)')
         ->seeElement('option[value="2"]:selected');

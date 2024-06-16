@@ -16,7 +16,7 @@ it('honors type attribute', function () {
 
     $this->visit('/bootstrap-inputs')
         ->within('#form-2', function() {
-            return $this->seeElement('input[name="button"][type="button"]')
+            return $this->seeElement('button[name="button"][type="button"]')// uses button component
                 ->seeElement('input[name="checkbox"][type="checkbox"]')
                 ->seeElement('input[name="color"][type="color"]')
                 ->seeElement('input[name="date"][type="date"]')
@@ -30,9 +30,9 @@ it('honors type attribute', function () {
                 ->seeElement('input[name="password"][type="password"]')
                 ->seeElement('input[name="radio"][type="radio"]')
                 ->seeElement('input[name="range"][type="range"]')
-                ->seeElement('input[name="reset"][type="reset"]')
+                ->seeElement('button[name="reset"][type="reset"]')// uses button component
                 ->seeElement('input[name="search"][type="search"]')
-                ->seeElement('input[name="submit"][type="submit"]')
+                ->seeElement('button[name="submit"][type="submit"]')// uses button component
                 ->seeElement('input[name="tel"][type="tel"]')
                 ->seeElement('input[name="text"][type="text"]')
                 ->seeElement('input[name="time"][type="time"]')

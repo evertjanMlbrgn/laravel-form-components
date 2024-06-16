@@ -15,7 +15,7 @@ it('shows the validation errors for each component', function () {
     });
 
     $this->visit('/validation-errors')
-        ->press('Submit')
+        ->press('Send')
         ->seeText('The input field is required')
         ->seeText('The textarea field is required')
         ->seeText('The select field is required')
@@ -35,7 +35,7 @@ it('has an option to hide the validation errors', function () {
     });
 
     $this->visit('/hidden-validation-errors')
-        ->press('Submit')
+        ->press('Send')
         ->dontSeeText('The input field is required')
         ->dontSeeText('The textarea field is required')
         ->dontSeeText('The select field is required')
@@ -60,7 +60,7 @@ it('uses the old values', function () {
         ->select('c', 'select')
         ->check('checkbox')
         ->check('radio')
-        ->press('Submit')
+        ->press('Send')
         ->seeElement('input[name="input"][value="a"]')
         ->seeInElement('textarea[name="textarea"]', 'b')
         ->seeElement('option[value="c"]:selected')

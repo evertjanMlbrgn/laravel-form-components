@@ -1221,28 +1221,46 @@
 
     <h3 class="mt-3">All input types</h3>
     <x-form-form id="form-2">
-        <x-form-input class="mb-3" name="button" type="button"/>
-        <x-form-input class="mb-3" name="checkbox" type="checkbox"/>
-        <x-form-input class="mb-3" name="color" type="color"/>
-        <x-form-input class="mb-3" name="date" type="date"/>
-        <x-form-input class="mb-3" name="datetime-local" type="datetime-local"/>
-        <x-form-input class="mb-3" name="email" type="email"/>
-        <x-form-input class="mb-3" name="file" type="file"/>
-        <x-form-input class="mb-3" name="hidden" type="hidden"/>
-        <x-form-input class="mb-3" name="month" type="month"/>
-        <x-form-input class="mb-3" name="image" type="image"/>
-        <x-form-input class="mb-3" name="number" type="number"/>
-        <x-form-input class="mb-3" name="password" type="password"/>
-        <x-form-input class="mb-3" name="radio" type="radio"/>
-        <x-form-input class="mb-3" name="range" type="range"/>
-        <x-form-input class="mb-3" name="reset" type="reset"/>
-        <x-form-input class="mb-3" name="search" type="search"/>
-        <x-form-input class="mb-3" name="submit" type="submit"/>
-        <x-form-input class="mb-3" name="tel" type="tel"/>
-        <x-form-input class="mb-3" name="text" type="text"/>
-        <x-form-input class="mb-3" name="time" type="time"/>
-        <x-form-input class="mb-3" name="url" type="url"/>
-        <x-form-input class="mb-3" name="week" type="week"/>
+        <div>
+            <x-form-input class="mb-3" name="button" type="button" label="Button">
+                type button
+            </x-form-input>
+        </div>
+        <x-form-input class="mb-3" name="checkbox" type="checkbox" label="Checkbox"/>
+        <x-form-input class="mb-3" name="color" type="color" label="Color"/>
+        <x-form-input class="mb-3" name="date" type="date" label="Date"/>
+        <x-form-input class="mb-3" name="datetime-local" type="datetime-local" label="Datetime local"/>
+        <x-form-input class="mb-3" name="email" type="email" label="Email"/>
+        <x-form-input class="mb-3" name="file" type="file" label="File"/>
+        <div class="mb-3">
+            <label>Hidden</label>
+            <x-form-input class="mb-3" name="hidden" type="hidden" label="Hidden"/>
+        </div>
+        <x-form-input class="mb-3" name="month" type="month" label="Month"/>
+        <x-form-input class="mb-3" name="image" type="image" label="Image" src="/images/dog-1.png" width="100"/>
+        <x-form-input class="mb-3" name="number" type="number" label="Number"/>
+        <x-form-input class="mb-3" name="password" type="password" label="Password"/>
+        <x-form-input class="mb-3" name="radio" type="radio" label="Radio"/>
+        <x-form-input class="mb-3" name="range" type="range" label="Range"/>
+        <div>
+            <x-form-input class="mb-3" name="reset" type="reset" label="Reset">
+                Reset
+            </x-form-input>
+        </div>
+        <x-form-input class="mb-3" name="search" type="search" label="Search"/>
+        <div>
+            <x-form-input class="mb-3" name="submit" type="submit" label="Submit">
+                Submit
+            </x-form-input>
+        </div>
+        <x-form-input class="mb-3" name="tel" type="tel" label="Tel"/>
+        <x-form-input class="mb-3" name="text" type="text" label="Text"/>
+        <x-form-input class="mb-3" name="time" type="time" label="Time"/>
+        <x-form-input class="mb-3" name="url" type="url" label="Url"/>
+        <x-form-input class="mb-3" name="week" type="week" label="Week"/>
+        <x-form-submit>
+            Submit button using x-form-submit component
+        </x-form-submit>
     </x-form-form>
 
 </x-layout>

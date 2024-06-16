@@ -37,7 +37,7 @@ it('shows the validation errors and old values correctly', function () {
     $this->visit('/translation-with-bind')
         ->type('hoi', 'input[nl]')
         ->type('hey', 'input[en]')
-        ->press('Submit')
+        ->press('Send')
         ->seeElement('input[name="input[nl]"][value="hoi"]')
         ->seeElement('input[name="input[en]"][value="hey"]')
         ->seeText(static::isLaravel10() ? 'The input.nl field must be at least 5 characters' : 'The input.nl must be at least 5 characters')

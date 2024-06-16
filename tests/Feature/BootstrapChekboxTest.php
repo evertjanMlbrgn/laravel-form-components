@@ -52,9 +52,10 @@ it('checks the right input element after a validation error', function () {
     });
 
     $this->visit('/checkbox-validation')
+        ->seeElement('button[type="submit"]')
         ->seeElement('input[value="a"]:not(:checked)')
         ->seeElement('input[value="b"]:checked')
-        ->press('Submit')
+        ->press('Send')
         ->seeElement('input[value="a"]:not(:checked)')
         ->seeElement('input[value="b"]:checked');
 });

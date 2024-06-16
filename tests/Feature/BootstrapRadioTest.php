@@ -52,7 +52,7 @@ it('checks the right input element after a validation error', function () {
 
     $this->visit('/radio-validation')
         ->select('b', 'radio')
-        ->press('Submit')
+        ->press('Send')
         ->seeElement('input[value="a"]:not(:checked)')
         ->seeElement('input[value="b"]:checked');
 });
@@ -66,7 +66,7 @@ it('checks the right input element after a validation error of another field', f
 
     $this->visit('/radio-with-zero-value')
         ->select('0', 'radio')
-        ->press('Submit')
+        ->press('Send')
         ->seeElement('input[value="0"]:checked')
         ->seeElement('input[value="1"]:not(:checked)');
 });

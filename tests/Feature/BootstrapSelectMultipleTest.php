@@ -13,7 +13,7 @@ it('posts all selected options', function () {
     $this->visit('/multiple-select-keys?both=yes')
         ->seeElement('option[value="be"]:selected')
         ->seeElement('option[value="nl"]:selected')
-        ->press('Submit')
+        ->press('Send')
         ->seeElement('option[value="be"]:selected')
         ->seeElement('option[value="nl"]:selected')
         ->seeText(static::isLaravel10() ? 'The select field must be a string.' : 'The select must be a string.');
