@@ -43,8 +43,8 @@ class Comment extends Model
 
 class SelectRelationTest extends TestCase
 {
-    use InteractsWithDatabase;
 
+    use InteractsWithDatabase;
     /** @test */
     public function it_handles_belongs_to_many_relationships()
     {

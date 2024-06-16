@@ -1,6 +1,7 @@
 <?php
 
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
+
 it('spoofs the methods for put patch and delete forms', function () {
     $this->registerTestRoute('spoof-method')
         ->visit('/spoof-method')
@@ -17,7 +18,12 @@ it('spoofs the methods for put patch and delete forms', function () {
         ->dontSeeElement('form[id="form_post"] input[name="_method"]')
         ->seeElement('form[id="form_put"] input[name="_method"][value="PUT"]')
         ->seeElement('form[id="form_patch"] input[name="_method"][value="PATCH"]')
-        ->seeElement('form[id="form_delete"] input[name="_method"][value="DELETE"]')
+        ->seeElement('form[id="form_delete"] input[name="_method"][value="DELETE"]');
+});
+
+it('sets the csrf token to the forms that need it', function () {
+    $this->registerTestRoute('spoof-method')
+        ->visit('/spoof-method')
 
         // csrf
         ->dontSeeElement('form[id="form_get"] input[name="_token"]')
