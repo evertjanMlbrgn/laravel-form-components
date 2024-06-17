@@ -1,1 +1,0 @@
-document.addEventListener("DOMContentLoaded",function(){i()});let i=()=>{var a=document.querySelectorAll("form[novalidate]");Array.prototype.slice.call(a).forEach(function(t){t.addEventListener("submit",function(e){t.checkValidity()||(e.preventDefault(),e.stopPropagation()),t.classList.add("was-validated")},!1)})};

@@ -20,6 +20,7 @@ Route::middleware(['web'])->group(function () {
         return view('preview::form-components-test');
     });
 
+    // Route to serve assets from the package's dist directory
     Route::get('package/assets/{path}', function ($path) {
         $file = __DIR__ . '/../dist/' . $path;
 
@@ -27,7 +28,17 @@ Route::middleware(['web'])->group(function () {
             abort(404);
         }
 
-        $mimeType = File::mimeType($file);
+        // Determine the MIME type based on the file extension
+        $extension = pathinfo($file, PATHINFO_EXTENSION);
+        $mimeTypes = [
+            'css' => 'text/css',
+            'js' => 'application/javascript',
+            // Add other extensions and their MIME types as needed
+        ];
+
+        // Fallback to File::mimeType if extension is not explicitly handled
+        $mimeType = $mimeTypes[$extension] ?? File::mimeType($file);
+
         $content = File::get($file);
 
         return Response::make($content, 200, ['Content-Type' => $mimeType]);
