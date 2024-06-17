@@ -78,7 +78,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Mlbrgn\\LaravelFormComponents\\FormComponentsServiceProvider"
+                "Mlbrgn\\LaravelFormComponents\\Providers\\FormComponentsServiceProvider"
             ]
         }
     }

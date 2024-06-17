@@ -5,12 +5,30 @@
 return [
     //    'prefix' => '',
 
-    /** bootstrap-5 */
+    /** which frontend framework to use, only bootstrap 5 is supported (for now) */
     'framework' => 'bootstrap-5',
 
-    'view_namespace' => 'form-components',
+    /** the component view_namespace is used when accessing views from within this package e.g.
+     * when view_namespace is set to 'my-namespace', then you can call the view with "my-namespace::component-name"
+     * **/
+    'view_namespace' => 'form-components',// TODO rename to component_views_namespace?
+
+    /** the prefix used before the component name
+     * when prefix === 'something' then the component can be used as <x-something-component-name>
+     */
     'tag_prefix' => 'form',
+
+    /**
+     * TODO doc
+     **/
     'use_eloquent_date_casting' => false,
+
+    /**
+     * TODO how to load custom content css?
+     * Path to custom content css for the TinyMCE editor, this css file can be used to style the content within the editor,
+     * e.g. all headings should be read or the font-family of the content should be Arial.
+     **/
+    'tinymce_content_css_path' => ''
 
     //    'components' => [
     //        'form' => [
