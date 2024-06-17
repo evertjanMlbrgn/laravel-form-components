@@ -17,7 +17,7 @@ Route::middleware(['web'])->group(function () {
     Route::get('form-components-test', function () {
 //    return view('form-components-test');
 //    return 'hello form-components';
-        return view('test-views::form-components-test');
+        return view('preview::form-components-test');
     });
 
     Route::get('package/assets/{path}', function ($path) {

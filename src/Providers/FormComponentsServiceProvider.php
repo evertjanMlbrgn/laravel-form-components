@@ -28,7 +28,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
     // READ https://dcblog.dev/my-process-for-writing-laravel-packages#heading-serviceprovider about github cli and packagist
 
     private const PATH_TO_BLADE_COMPONENT_VIEWS = __DIR__.'/../../resources/views/components';
-    private const PATH_TO_OTHER_BLADE_VIEWS = __DIR__.'/../../resources/views/';
+    private const PATH_TO_OTHER_BLADE_VIEWS = __DIR__.'/../../resources/views/preview';
 
     private const PATH_VIEW_CLASSES = __DIR__.'../View/';
 
@@ -89,7 +89,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         // method 3 of registering view components
         //Blade::componentNamespace('Mlbrgn\LaravelFormComponents\View\Components', config('form-components.tag_prefix'));
 
-        $this->loadViewsFrom(realpath(self::PATH_TO_OTHER_BLADE_VIEWS), 'test-views');
+        $this->loadViewsFrom(realpath(self::PATH_TO_OTHER_BLADE_VIEWS), 'preview');
         $this->loadRoutesFrom(self::ROUTES_PATH);
 
         Blade::directive('bind', function ($bind) {
