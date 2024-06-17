@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web'])->group(function () {
     Route::get('form-components-test', function () {
-//    return view('form-components-test');
-//    return 'hello form-components';
-        return view('preview::form-components-test');
+        return view('preview::form-components-preview');
     });
 
     // Route to serve assets from the package's dist directory
