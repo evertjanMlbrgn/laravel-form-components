@@ -94,5 +94,5 @@
 @endif
 
 @once
-    <script src="{{ package_asset('js/mlbrgn-html-editor.js') }}"></script>
+    <script src="{{ package_asset('html-editor.js') }}"></script>
 @endonce

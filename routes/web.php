@@ -14,13 +14,50 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['web'])->group(function () {
-    Route::get('form-components-test', function () {
+    Route::get('form-components-preview', function () {
         return view('preview::form-components-preview');
     });
 
     // Route to serve assets from the package's dist directory
-    Route::get('package/assets/{path}', function ($path) {
-        $file = __DIR__ . '/../dist/' . $path;
+    Route::get('package/assets/{name}', function ($name) {
+
+        $allowedAssets = [
+            'preview.css',
+            'preview.js',
+            'main.css',
+            'main.js',
+            'html-editor.js',
+            'button-image.png'
+        ];
+
+        if (!in_array($name, $allowedAssets)) {
+            abort(404);
+        }
+
+        switch($name) {
+            case 'preview.css':
+                $file = __DIR__ . '/../dist/css/mlbrgn-preview.css';
+                break;
+            case 'preview.js':
+                $file = __DIR__ . '/../dist/js/mlbrgn-preview.js';
+                break;
+            case 'main.css':
+                $file = __DIR__ . '/../dist/css/mlbrgn-form-components.css';
+                break;
+            case 'main.js':
+                $file = __DIR__ . '/../dist/js/mlbrgn-form-components.js';
+                break;
+            case 'html-editor.js':
+                $file = __DIR__ . '/../dist/js/mlbrgn-html-editor.js';
+                break;
+            case 'button-image.png':
+                $file = __DIR__ . '/../public/images/button-image.png';
+                break;
+        }
+
+        if (!isset($file)) {
+            abort(404);
+        }
 
         if (!File::exists($file)) {
             abort(404);
@@ -31,7 +68,6 @@ Route::middleware(['web'])->group(function () {
         $mimeTypes = [
             'css' => 'text/css',
             'js' => 'application/javascript',
-            // Add other extensions and their MIME types as needed
         ];
 
         // Fallback to File::mimeType if extension is not explicitly handled
@@ -39,8 +75,12 @@ Route::middleware(['web'])->group(function () {
 
         $content = File::get($file);
 
-        return Response::make($content, 200, ['Content-Type' => $mimeType]);
+        return Response::make($content, 200, [
+            'Content-Type' => $mimeType,
+            'Cache-Control' => 'public, max-age=86400' // Cache for 1 day
+        ]);
     })->where('path', '.*')->name('package.assets');
+
 });
 
 

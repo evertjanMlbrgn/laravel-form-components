@@ -5,14 +5,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>MLBRGN form components preview page</title>
-        <link rel="stylesheet" href="{{ package_asset('css/preview.css') }}">
-        <script src="{{ package_asset('js/preview.js') }}"></script>
+        <link rel="stylesheet" href="{{ package_asset('preview.css') }}">
+        <script src="{{ package_asset('preview.js') }}"></script>
     </head>
     <body>
         <div class="container-fluid p-0">
             <div class="container-md py-1 py-md-3">
 
-                <h1>Mlbrgn form components test page</h1>
+                <h1>Mlbrgn form components preview page</h1>
 
                 <h2 style="color:green !important">Section links:</h2>
                 <ul>
@@ -1245,7 +1245,7 @@
                         <x-form-input class="mb-3" name="hidden" type="hidden" label="Hidden"/>
                     </div>
                     <x-form-input class="mb-3" name="month" type="month" label="Month"/>
-                    <x-form-input class="mb-3" name="image" type="image" label="Image" src="/images/dog-1.png" width="100"/>
+                    <x-form-input class="mb-3 w-auto" name="image" type="image" label="Image" src="{{ package_asset('button-image.png') }}" height="40px"/>
                     <x-form-input class="mb-3" name="number" type="number" label="Number"/>
                     <x-form-input class="mb-3" name="password" type="password" label="Password"/>
                     <x-form-input class="mb-3" name="radio" type="radio" label="Radio"/>

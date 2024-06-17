@@ -29,18 +29,18 @@ export default defineConfig({
                         return `js/mlbrgn-html-editor.js`; // Custom filename for JS
                     }
                     if (chunk.facadeModuleId.includes('preview.js')) {
-                        return `js/preview.js`; // Custom filename for JS
+                        return `js/mlbrgn-preview.js`; // Custom filename for JS
                     }
-                    return 'assets/[name].[hash].js';
+                    return 'assets/mlbrgn-[name].[hash].js';
                 },
                 assetFileNames: (chunk) => {
                     if (chunk.name === 'main.css') {
                         return `css/mlbrgn-form-components.css`; // Custom filename for CSS
                     }
                     if (chunk.name === 'preview.css') {
-                        return `css/preview.css`; // Custom filename for CSS
+                        return `css/mlbrgn-preview.css`; // Custom filename for CSS
                     }
-                    return 'assets/[name].[hash][extname]';
+                    return 'assets/mlbrgn-[name].[hash][extname]';
                 },
             },
         },
