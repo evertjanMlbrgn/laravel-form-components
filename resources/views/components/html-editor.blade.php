@@ -4,10 +4,13 @@
 ?>
 
 @if($floating || $hidden || $horizontal)
-    <div @class(['row' => $horizontal, 'form-floating' => $floating, 'd-none' => $hidden])  >
+    <div @class([
+    'row' => $horizontal,
+    'form-floating' => $floating,
+    'd-none' => $hidden])  >
         @endif
 
-        @if(!$floating || $horizontal)
+        @if(!$hidden && (!$floating || $horizontal))
             <x-mlbrgn-form-label
                 :parentClasses="$attributes->get('class')"
                 :required="$attributes->has('required')"
@@ -43,7 +46,6 @@
                     @if($floating && !$attributes->get('placeholder'))
                         placeholder="&nbsp;"
                     @endif
-
                 >{{ $slot }}</textarea>
                 {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 
@@ -69,7 +71,7 @@
             </div>
         @endif
 
-        @if($floating && !$horizontal)
+        @if(!$hidden && ($floating && !$horizontal))
             <x-mlbrgn-form-label
                 :parentClasses="$attributes->get('class')"
                 :required="$attributes->has('required')"

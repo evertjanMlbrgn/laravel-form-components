@@ -1,11 +1,6 @@
 <?php
 
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-beforeEach(function () {
-    if (config('form-components.framework') !== 'bootstrap-5') {
-        $this->markTestSkipped('Other framework configured');
-    }
-});
 
 it('adds custom input classes', function () {
     $this->registerTestRoute('bootstrap-input-group-1');

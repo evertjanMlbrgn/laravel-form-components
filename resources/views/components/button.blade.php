@@ -3,11 +3,15 @@
         'type' => $type
     ])->class([
         'btn',
+        'd-none' => $hidden,
         $classButton
         ])->filter(fn (string $value, string $key) => !in_array($key, ['required', 'readonly', 'label']))
     }}
     @if(isset($name))
         name="{{ $name }}"
+    @endif
+    @if(isset($hidden))
+        hidden
     @endif
     id="{{ $getId() }}"
 >

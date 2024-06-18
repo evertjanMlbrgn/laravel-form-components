@@ -1,11 +1,6 @@
 <?php
 
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-beforeEach(function () {
-    if (config('form-components.framework') !== 'bootstrap-5') {
-        $this->markTestSkipped('Other framework configured');
-    }
-});
 
 it('floats labels', function () {
     $this->registerTestRoute('bootstrap-floating-label');

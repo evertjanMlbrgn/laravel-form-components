@@ -19,15 +19,14 @@
         $id = $getId();
     ?>
 
-    @if($floating || $hidden || $horizontal)
+    @if($floating || $horizontal)
         <div @class([
         'row' => $horizontal,
-        'form-floating' => $floating,
-        'd-none' => $hidden
+        'form-floating' => $floating
         ])  >
     @endif
 
-        @if(!$floating || $horizontal)
+        @if(!$hidden && $type !== 'hidden' && (!$floating || $horizontal))
             <x-mlbrgn-form-label
                 :parentClasses="$attributes->get('class')"
                 :required="$attributes->has('required')"
@@ -35,7 +34,6 @@
                    'col-4' => empty($classLabel),
                    $classLabel
                 ])
-
                 :for="$id">
                 {{ $label }}
             </x-mlbrgn-form-label>
@@ -60,6 +58,9 @@
                     value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
                     name="{{ $name }}"
                     id="{{ $id }}"
+                    @if ($hidden)
+                        hidden
+                    @endif
                     @if(isset($help))
                     aria-describedby="{{ $id }}-help-text"
                     @endif
@@ -89,7 +90,7 @@
                 </div>
         @endif
 
-        @if($floating && !$horizontal)
+        @if(!$hidden && $type !== 'hidden' && ($floating && !$horizontal))
             <x-mlbrgn-form-label
                 :parentClasses="$attributes->get('class')"
                 :required="$attributes->has('required')"
@@ -109,7 +110,7 @@
             <x-mlbrgn-form-errors :name="$name" />
         @endif
 
-    @if($floating || $hidden || $horizontal)
+    @if($floating || $horizontal)
         </div>
     @endif
 @endif

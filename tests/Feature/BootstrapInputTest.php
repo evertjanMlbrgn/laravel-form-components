@@ -145,13 +145,29 @@ it('set label of button by using value attribute', function () {
         });
 });
 
-//it('set label of button by using value attribute', function () {
-//    $this->registerTestRoute('bootstrap-inputs');
-//
-//    $this->visit('/bootstrap-inputs')
-//        ->within('#form-5', function() {
-//            return $this->seeInElement('button[name="button"]', 'button label')// uses button component
-//            ->seeInElement('button[name="reset"]', 'button label')// uses button component
-//            ->seeInElement('button[name="submit"]', 'button label');// uses button component
-//        });
-//});
+it('does not render label when control is hidden', function () {
+    $this->registerTestRoute('bootstrap-inputs');
+
+    $this->visit('/bootstrap-inputs')
+        ->within('#form-6', function() {
+            return $this->dontSeeElement('label[for="checkbox"]')
+                ->dontSeeElement('label[for="color"]')
+                ->dontSeeElement('label[for="date"]')
+                ->dontSeeElement('label[for="datetime-local"]')
+                ->dontSeeElement('label[for="email"]')
+                ->dontSeeElement('label[for="file"]')
+                ->dontSeeElement('label[for="hidden"]')
+                ->dontSeeElement('label[for="image"]')
+                ->dontSeeElement('label[for="month"]')
+                ->dontSeeElement('label[for="number"]')
+                ->dontSeeElement('label[for="password"]')
+                ->dontSeeElement('label[for="radio"]')
+                ->dontSeeElement('label[for="range"]')
+                ->dontSeeElement('label[for="search"]')
+                ->dontSeeElement('label[for="tel"]')
+                ->dontSeeElement('label[for="text"]')
+                ->dontSeeElement('label[for="time"]')
+                ->dontSeeElement('label[for="url"]')
+                ->dontSeeElement('label[for="week"]');
+        });
+});

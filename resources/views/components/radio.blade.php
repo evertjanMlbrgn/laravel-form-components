@@ -3,7 +3,7 @@
     $id = $getId();
 ?>
 
-@if(!$toggle)
+@if(!$toggle && !$hidden)
 <div @class([
     'form-check',
     'form-check-inline' => $attributes->get('inline'),
@@ -27,20 +27,25 @@
         @if(isset($help))
             aria-describedby="{{ $id }}-help-text"
         @endif
+        @if(isset($hidden))
+            hidden
+        @endif
     />
 
-    <x-mlbrgn-form-label :parentClasses="$attributes->get('class')"
-        @class([
-        'form-check-label' => !$toggle,
-        'btn' => $toggle,
-        $classButton,
-        $classLabel
-        ])
-        :for="$id"
-        :required="$attributes->has('required')"
-        >
-        {{ $label }}
-    </x-mlbrgn-form-label>
+    @if(!$hidden)
+        <x-mlbrgn-form-label :parentClasses="$attributes->get('class')"
+            @class([
+            'form-check-label' => !$toggle,
+            'btn' => $toggle,
+            $classButton,
+            $classLabel
+            ])
+            :for="$id"
+            :required="$attributes->has('required')"
+            >
+            {{ $label }}
+        </x-mlbrgn-form-label>
+    @endif
 
     @if(isset($help))
         <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
@@ -50,6 +55,6 @@
         <x-mlbrgn-form-errors :name="$name" />
     @endif
 
-@if(!$toggle)
+@if(!$toggle && !$hidden)
 </div>
 @endif

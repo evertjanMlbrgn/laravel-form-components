@@ -1,6 +1,7 @@
 <?php
 
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
+
 beforeEach(function () {
     if (config('form-components.framework') !== 'bootstrap-5') {
         $this->markTestSkipped('Other framework configured');

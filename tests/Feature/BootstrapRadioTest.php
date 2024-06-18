@@ -70,3 +70,13 @@ it('always has an id attribute', function () {
         ->seeElement('input[value="1"][id]')
         ->seeElement('input[value="0"][id]');
 });
+
+it('does not render label when radio is hidden', function () {
+//    $this->registerTestRoute('bootstrap-inputs');
+//
+//    $this->visit('/bootstrap-inputs')
+//        ->within('#form-6', function() {
+//            return $this->dontSeeElement('label[for="checkbox"]')
+//                ->dontSeeElement('label[for="color"]');
+//        });
+})->todo();

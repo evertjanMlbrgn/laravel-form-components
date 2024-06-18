@@ -1242,7 +1242,7 @@
                     hello world!
                 </x-form-html-editor>
 
-                <h3 class="mt-4">All input types</h3>
+                <h3 class="mt-4">All form-input types</h3>
                 <x-form-form id="form-2">
                     <x-form-input class="mb-3 d-block" name="button" type="button" label="Button" value="Button"/>
                     <x-form-input class="mb-3" name="checkbox" type="checkbox" label="Checkbox"/>
@@ -1275,6 +1275,48 @@
                     <x-form-button>
                        Just a button
                     </x-form-button>
+                </x-form-form>
+
+                <h3 class="mt-4">All controls with hidden attribute, shouldn't be visible and not have labels</h3>
+                <x-form-form id="form-2">
+                    <x-form-input class="mb-3 d-block" name="button" type="button" label="Button" value="Button" hidden />
+                    <x-form-input class="mb-3" name="checkbox" type="checkbox" label="Checkbox" hidden />
+                    <x-form-input class="mb-3" name="color" type="color" label="Color" hidden />
+                    <x-form-input class="mb-3" name="date" type="date" label="Date" hidden />
+                    <x-form-input class="mb-3" name="datetime-local" type="datetime-local" label="Datetime local" hidden />
+                    <x-form-input class="mb-3" name="email" type="email" label="Email" autocomplete="username" hidden />
+                    <x-form-input class="mb-3" name="file" type="file" label="File" hidden />
+                    <x-form-input class="mb-3" name="hidden" type="hidden" label="Hidden" /> {{-- no need for hidden attribute --}}
+                    <x-form-input class="mb-3" name="month" type="month" label="Month" hidden />
+                    <x-form-input class="mb-3 w-auto" name="image" type="image" label="Image" src="{{ package_asset('button-image.png') }}" height="40px" hidden />
+                    <x-form-input class="mb-3" name="number" type="number" label="Number" hidden />
+                    <x-form-input class="mb-3" name="password" type="password" label="Password" autocomplete="current-password" hidden />
+                    <x-form-input class="mb-3" name="radio" type="radio" label="Radio" hidden />
+                    <x-form-input class="mb-3" name="range" type="range" label="Range" hidden />
+                    <x-form-input class="mb-3 d-block" name="reset" type="reset" label="Reset" value="Reset" hidden />
+                    <x-form-input class="mb-3" name="search" type="search" label="Search" hidden />
+                    <x-form-input class="mb-3 d-block" name="submit" type="submit" label="Submit" value="Submit" hidden />
+                    <x-form-input class="mb-3" name="tel" type="tel" label="Tel" autocomplete="tel" hidden />
+                    <x-form-input class="mb-3" name="text" type="text" label="Text" hidden />
+                    <x-form-input class="mb-3" name="time" type="time" label="Time" hidden />
+                    <x-form-input class="mb-3" name="url" type="url" label="Url" hidden />
+                    <x-form-input class="mb-3" name="week" type="week" label="Week" hidden />
+                    <x-form-submit hidden>
+                        Submit button using x-form-submit component
+                    </x-form-submit>
+                    <x-form-button hidden>
+                        Just a button
+                    </x-form-button>
+                    <x-form-select hidden label="hidden select">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </x-form-select>
+                    <x-form-checkbox hidden label="hidden checkbox"></x-form-checkbox>
+                    <x-form-radio hidden label="hidden radio"></x-form-radio>
+                    <x-form-textarea hidden label="hidden textarea"></x-form-textarea>
+                    <x-form-html-editor hidden label="hidden html-editor"></x-form-html-editor>
                 </x-form-form>
 
                 <h3 class="mt-4">Input group with more than one control</h3>

@@ -3,11 +3,11 @@
     $id = $getId();
 ?>
 
-@if($floating || $hidden || $horizontal)
+@if($floating || $horizontal)
     <div @class(['row' => $horizontal, 'form-floating' => $floating, 'd-none' => $hidden])  >
 @endif
 
-    @if(!$floating || $horizontal)
+    @if(!$hidden && (!$floating || $horizontal))
         <x-mlbrgn-form-label
             :parentClasses="$attributes->get('class')"
             :required="$attributes->has('required')"
@@ -43,6 +43,9 @@
         @if(isset($help))
             aria-describedby="{{ $id }}-help-text"
         @endif
+        @if ($hidden)
+            hidden
+        @endif
         id="{{ $id }}">{{ $value }}</textarea>
         {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 
@@ -68,7 +71,7 @@
         </div>
     @endif
 
-    @if($floating && !$horizontal)
+    @if(!$hidden && ($floating && !$horizontal))
         <x-mlbrgn-form-label
             :parentClasses="$attributes->get('class')"
             :required="$attributes->has('required')"
@@ -88,6 +91,6 @@
         <x-mlbrgn-form-errors :name="$name" />
     @endif
 
-@if($floating || $hidden || $horizontal)
+@if($floating || $horizontal)
     </div>
 @endif

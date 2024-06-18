@@ -59,3 +59,14 @@ it('always has an id attribute', function () {
         ->seeElement('input[value="a"][id]')
         ->seeElement('input[value="b"][id]');
 });
+
+it('does not render label when checkbox is hidden', function () {
+//    $this->registerTestRoute('bootstrap-inputs');
+//
+//    $this->visit('/bootstrap-inputs')
+//        ->within('#form-6', function() {
+//            return $this->dontSeeElement('label[for="checkbox"]')
+//                ->dontSeeElement('label[for="color"]');
+//        });
+})->todo();
+

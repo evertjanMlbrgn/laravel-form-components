@@ -36,6 +36,7 @@ class Checkbox extends FormBaseComponent
         public string $classLabel = '',
         public string $validFeedback = '',
         public string $invalidFeedback = '',
+        public bool $hidden = false,
         public bool $tooltipFeedback = false
     ) {
         $this->value = $value;

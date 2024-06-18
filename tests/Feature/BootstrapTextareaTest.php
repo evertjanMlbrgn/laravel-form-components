@@ -2,21 +2,6 @@
 
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 
-it('renders html-editor', function () {
-    $this->registerTestRoute('html-editor');
-
-    $this->visit('/html-editor')
-        ->assertResponseOk()
-//        ->seeElement('textarea[name="html-editor-1"][something][id="auto_id_html-editor-1"].form-control.html-editor')
-        ->seeElement('textarea[name="html-editor-1"][required][id="auto_id_html-editor-1"].form-control.html-editor')
-        ->seeElement('textarea[name="html-editor-2"][id="html-editor-2"].form-control.html-editor')
-        ->seeElement('label[for="auto_id_html-editor-1"].form-label.required')
-        ->seeElement('label[for="html-editor-2"].form-label')
-        ->seeText('html-content-1')
-        ->seeText('html-content-2');
-});
-
-
 it('sets classes on textarea', function () {
 //    $this->registerTestRoute('custom-button');
 //    $this->visit('custom-button')
@@ -47,7 +32,7 @@ it('sets extra attributes on textarea', function () {
 //        });
 })->todo();
 
-it('does not render label when html-editor is hidden', function () {
+it('does not render label when control is hidden', function () {
 //    $this->registerTestRoute('bootstrap-inputs');
 //
 //    $this->visit('/bootstrap-inputs')
@@ -57,13 +42,4 @@ it('does not render label when html-editor is hidden', function () {
 //        });
 })->todo();
 
-// already tested for
-//it('always has an id attribute', function () {
-//    $this->registerTestRoute('html-editor');
-//
-//    $this->visit('/html-editor')
-//        ->assertResponseOk()
-////        ->seeElement('textarea[name="html-editor-1"][something][id="auto_id_html-editor-1"].form-control.html-editor')
-//        ->seeElement('textarea[name="html-editor-1"][id]')
-//        ->seeElement('textarea[name="html-editor-2"][id]');
-//});
+

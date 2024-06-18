@@ -15,7 +15,7 @@
     ])>
 @endif
 
-        @if(!$floating || $horizontal)
+        @if(!$hidden && (!$floating || $horizontal))
             <x-mlbrgn-form-label
                 :parentClasses="$attributes->get('class')"
                 :required="$attributes->has('required')"
@@ -52,6 +52,9 @@
                     @if(isset($help))
                         aria-describedby="{{ $id }}-help-text"
                     @endif
+                    @if(isset($hidden))
+                        hidden
+                    @endif
                     >
 
         @if($horizontal)
@@ -73,7 +76,7 @@
                     @endforelse
                 </select>
 
-            @if($floating && !$horizontal)
+            @if(!$hidden && ($floating && !$horizontal))
                 <x-mlbrgn-form-label
                     :parentClasses="$attributes->get('class')"
                     :required="$attributes->has('required')"

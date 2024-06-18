@@ -23,6 +23,7 @@ class Radio extends FormBaseComponent
         bool $showErrors = true,
         public bool $toggle = false,
         public string $classButton = 'btn-primary',
+        public bool $hidden = false,
         public string $classLabel = '',
         public string $validFeedback = '',
         public string $invalidFeedback = '',
