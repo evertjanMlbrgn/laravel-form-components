@@ -69,6 +69,7 @@
 
                 <h3 class="mt-3">Form text</h3>
                 <x-form-form>
+                    <x-form-input id="inputUsername" hidden autocomplete="username"/>
                     <x-form-input type="password" id="inputPassword1" aria-describedby="passwordHelpBlock" label="Password" autocomplete="new-password">
                         @slot('help')
                             Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
@@ -84,6 +85,7 @@
                             <label for="inputPassword2" class="col-form-label" autocomplete="new-password">Password</label>
                         </div>
                         <div class="col-auto">
+                            <x-form-input id="username2" autocomplete="username" hidden/>
                             <x-form-input type="password" id="inputPassword3" aria-describedby="passwordHelpInline" autocomplete="new-password"/>
                         </div>
                         <div class="col-auto">
@@ -139,6 +141,7 @@
                 <h3 class="mt-3">Form text</h3>
 
                 <x-form-form>
+                    <x-form-input id="username3"  autocomplete="username" hidden/>
                     <x-form-input type="password" id="inputPassword4" label="password" autocomplete="new-password">
                     @slot('help')
                         Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
@@ -158,13 +161,13 @@
                 <h3 class="mt-3">Readonly plain text </h3>
 
                 <x-form-form>
-                    <x-form-input readonly class="form-control-plaintext mb-3" id="staticEmail" label="Email" value="email@example.com" horizontal class-label="col-2" class-control="col-10"/>
+                    <x-form-input readonly class="form-control-plaintext mb-3" id="staticEmail" label="Email" value="email@example.com" horizontal class-label="col-2" class-control="col-10" autocomplete="username"/>
                     <x-form-input type="password" class="mb-3" label="Password" id="inputPassword5" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
                 </x-form-form>
 
                 <x-form-form class="row g-3">
                     <div class="col-auto">
-                        <x-form-input readonly class="form-control-plaintext" label="Email" id="staticEmail2" value="email@example.com" class-label="visually-hidden"/>
+                        <x-form-input readonly class="form-control-plaintext" label="Email" id="staticEmail2" value="email@example.com" class-label="visually-hidden" autocomplete="username"/>
                     </div>
                     <div class="col-auto">
                         <x-form-input type="password" id="inputPassword6" label="Password" placeholder="Password" class-label="visually-hidden" autocomplete="new-password"/>
@@ -719,7 +722,7 @@
                 <h3 class="mt-3">Complex form</h3>
                 <x-form-form class="row g-3 mb-3">
                     <div class="col-md-6">
-                        <x-form-input type="email" label="Email" id="inputEmail4"/>
+                        <x-form-input type="email" label="Email" id="inputEmail4" autocomplete="username"/>
                     </div>
                     <div class="col-md-6">
                         <x-form-input type="password" label="Password" id="inputPassword7" autocomplete="new-password"/>
@@ -782,13 +785,13 @@
                 <h3 class="mt-5">Horizontal form label sizing</h3>
 
                 <div class="row mb-3">
-                    <x-form-input type="email" class="form-control-sm" id="colFormLabelSm" label="Email" placeholder="col-form-label-sm" horizontal class-label="col-2" class-control="col-10"/>
+                    <x-form-input type="email" class="form-control-sm" id="colFormLabelSm" label="Email" placeholder="col-form-label-sm" horizontal class-label="col-2" class-control="col-10" autocomplete="username"/>
                 </div>
                 <div class="row mb-3">
-                    <x-form-input type="email" id="colFormLabel" label="Email" placeholder="col-form-label" horizontal class-label="col-2" class-control="col-10"/>
+                    <x-form-input type="email" id="colFormLabel" label="Email" placeholder="col-form-label" horizontal class-label="col-2" class-control="col-10" autocomplete="username"/>
                 </div>
                 <div class="row mb-3">
-                    <x-form-input type="email" class="form-control-lg" id="colFormLabelLg" label="Email" placeholder="col-form-label-lg" horizontal class-label="col-2" class-control="col-10"/>
+                    <x-form-input type="email" class="form-control-lg" id="colFormLabelLg" label="Email" placeholder="col-form-label-lg" horizontal class-label="col-2" class-control="col-10" autocomplete="username"/>
                 </div>
 
                 <h3 class="mb-0">Column sizing</h3>
@@ -1254,7 +1257,7 @@
                     <x-form-input class="mb-3" name="month" type="month" label="Month"/>
                     <x-form-input class="mb-3 w-auto" name="image" type="image" label="Image" src="{{ package_asset('button-image.png') }}" height="40px"/>
                     <x-form-input class="mb-3" name="number" type="number" label="Number"/>
-                    <x-form-input class="mb-3" name="password" type="password" label="Password"/>
+                    <x-form-input class="mb-3" name="password" type="password" label="Password" autocomplete="password"/>
                     <x-form-input class="mb-3" name="radio" type="radio" label="Radio"/>
                     <x-form-input class="mb-3" name="range" type="range" label="Range"/>
                     <div>
