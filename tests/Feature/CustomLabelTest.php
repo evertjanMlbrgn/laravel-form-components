@@ -8,7 +8,7 @@ it('Sets label without required attribute and with correct label class', functio
 
     $this->visit('/custom-label')
         ->within('#form-1', function() {
-            return $this->dontSeeElement('label[for="button"]')// uses button component, has no label
+            return $this->dontSeeElement('label[for="button"]')// uses button component, label is inside button
                 ->seeElement('label[for="checkbox"].form-check-label.required:not([required]):not(.form-label)')
                 ->seeElement('label[for="color"].form-label.required:not([required])')
                 ->seeElement('label[for="date"].form-label.required:not([required])')
@@ -22,9 +22,9 @@ it('Sets label without required attribute and with correct label class', functio
                 ->seeElement('label[for="password"].form-label.required:not([required])')
                 ->seeElement('label[for="radio"].form-check-label.required:not([required]):not(.form-label)')
                 ->seeElement('label[for="range"].form-label.required:not([required])')
-                ->dontSeeElement('label[for="reset"]')// uses button component, has no label
+                ->dontSeeElement('label[for="reset"]')// uses button component, label is inside button
                 ->seeElement('label[for="search"].form-label.required:not([required])')
-                ->dontSeeElement('label[for="submit"]')// uses button component, has no label
+                ->dontSeeElement('label[for="submit"]')// uses button component, label is inside button
                 ->seeElement('label[for="tel"].form-label.required:not([required])')
                 ->seeElement('label[for="text"].form-label.required:not([required])')
                 ->seeElement('label[for="time"].form-label.required:not([required])')
@@ -71,7 +71,6 @@ it('uses correct id for label', function () {
         $textareaId = $page->crawler()->filter('textarea[disabled]')->attr('id');
         $htmlEditorId = $page->crawler()->filter('textarea.html-editor')->attr('id');
 
-        echo('colorId ' . $colorId);
             $page->seeElement('label[for="' . $colorId . '"]')
             ->seeElement('input[type="color"][id="' . $colorId . '"]')
             ->seeElement('label[for="' . $dateId . '"]')

@@ -6,64 +6,79 @@ it('renders html-editor', function () {
     $this->registerTestRoute('html-editor');
 
     $this->visit('/html-editor')
-        ->assertResponseOk()
-//        ->seeElement('textarea[name="html-editor-1"][something][id="auto_id_html-editor-1"].form-control.html-editor')
-        ->seeElement('textarea[name="html-editor-1"][required][id="auto_id_html-editor-1"].form-control.html-editor')
-        ->seeElement('textarea[name="html-editor-2"][id="html-editor-2"].form-control.html-editor')
-        ->seeElement('label[for="auto_id_html-editor-1"].form-label.required')
-        ->seeElement('label[for="html-editor-2"].form-label')
-        ->seeText('html-content-1')
-        ->seeText('html-content-2');
+        ->within('#form-1', function() {
+            $this->seeElement('textarea[name="html-editor-1"]');
+        });
 });
 
-
 it('sets classes on textarea', function () {
-//    $this->registerTestRoute('custom-button');
-//    $this->visit('custom-button')
-//        ->within('#form-2', function() {
-//            $this->seeElement('button[id="button-2"].btn.btn-my-button:not(.btn-primary)')
-//                ->seeElement('button[id="button-submit-2"][type="submit"].btn.btn-something:not(.btn-primary)')
-//                ->seeElement('button[id="button-reset-2"][type="reset"].btn.btn-something-else:not(.btn-primary)');
-//        });
-})->todo();
+    $this->registerTestRoute('html-editor');
+
+    $this->visit('html-editor')
+        ->within('#form-2', function() {
+            $this->seeElement('textarea[name="html-editor-1"].form-control.html-editor');
+        });
+});
 
 it('sets extra classes on textarea', function () {
-//    $this->registerTestRoute('custom-button');
-//    $this->visit('custom-button')
-//        ->within('#form-3', function() {
-//            $this->seeElement('button[id="button-3"].btn.btn-sm')
-//                ->seeElement('button[id="button-submit-3"][type="submit"].btn.btn-lg')
-//                ->seeElement('button[id="button-reset-3"][type="reset"].btn.btn-extra');
-//        });
-})->todo();
+    $this->registerTestRoute('html-editor');
+
+    $this->visit('html-editor')
+        ->within('#form-3', function() {
+            $this->seeElement('textarea[name="html-editor-1"].extra-class.extra-class-2');
+        });
+});
 
 it('sets extra attributes on textarea', function () {
-//    $this->registerTestRoute('custom-button');
-//    $this->visit('custom-button')
-//        ->within('#form-3', function() {
-//            $this->seeElement('button[id="button-3"].btn.btn-sm')
-//                ->seeElement('button[id="button-submit-3"][type="submit"].btn.btn-lg')
-//                ->seeElement('button[id="button-reset-3"][type="reset"].btn.btn-extra');
-//        });
-})->todo();
+    $this->registerTestRoute('html-editor');
+
+    $this->visit('html-editor')
+        ->within('#form-4', function() {
+            $this->seeElement('textarea[name="html-editor-1"][required][disabled][something][readonly]');
+        });
+});
 
 it('does not render label when html-editor is hidden', function () {
-//    $this->registerTestRoute('bootstrap-inputs');
-//
-//    $this->visit('/bootstrap-inputs')
-//        ->within('#form-6', function() {
-//            return $this->dontSeeElement('label[for="checkbox"]')
-//                ->dontSeeElement('label[for="color"]');
-//        });
+    $this->registerTestRoute('html-editor');
+
+    $this->visit('/html-editor')
+        ->within('#form-5', function() {
+           $this->dontSeeElement('label[for="hidden-html-editor"]')
+               ->seeElement('label[for="non-hidden-html-editor"]');
+        });
+});
+
+it('can bind data', function () {
+    $this->registerTestRoute('html-editor');
+
+    $this->visit('/html-editor')
+        ->within('#form-6', function() {
+            $this->seeInElement('textarea[id="bound-html-editor"]', 'html-editor-bound-value');
+        });
 })->todo();
 
-// already tested for
-//it('always has an id attribute', function () {
-//    $this->registerTestRoute('html-editor');
-//
-//    $this->visit('/html-editor')
-//        ->assertResponseOk()
-////        ->seeElement('textarea[name="html-editor-1"][something][id="auto_id_html-editor-1"].form-control.html-editor')
-//        ->seeElement('textarea[name="html-editor-1"][id]')
-//        ->seeElement('textarea[name="html-editor-2"][id]');
-//});
+it('always has an id attribute and label refers to it', function () {
+    $this->registerTestRoute('html-editor');
+
+    $this->visit('/html-editor')
+        ->within('#form-7', function() {
+            $randomId = $this->crawler()->filter('textarea.html-editor-3')->attr('id');
+
+            $this->seeElement('textarea[id="id-using-id"]')
+            ->seeElement('textarea[id="auto_id_id-using-name"]')
+            ->seeElement('textarea.html-editor-3[id="' . $randomId . '"]')
+            ->seeElement('label[for="id-using-id"].form-label.required')
+            ->seeElement('label[for="auto_id_id-using-name"].form-label')
+            ->seeElement('label[for="' . $randomId . '"].form-label');
+        });
+});
+
+it('can set value as slot', function () {
+    $this->registerTestRoute('html-editor');
+
+    $this->visit('/html-editor')
+        ->within('#form-8', function() {
+            $this->seeInElement('textarea[id="content-using-slot"]', 'Sample content');
+        });
+});
+

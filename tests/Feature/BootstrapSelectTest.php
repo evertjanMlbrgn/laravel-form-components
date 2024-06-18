@@ -28,11 +28,9 @@ it('always has an id attribute', function () {
 });
 
 it('does not render label when select is hidden', function () {
-//    $this->registerTestRoute('bootstrap-inputs');
-//
-//    $this->visit('/bootstrap-inputs')
-//        ->within('#form-6', function() {
-//            return $this->dontSeeElement('label[for="checkbox"]')
-//                ->dontSeeElement('label[for="color"]');
-//        });
-})->todo();
+    $this->registerTestRoute('bootstrap-select');
+
+    $this->visit('/bootstrap-select')
+        ->dontSeeElement('label[for="hidden-select"]')
+            ->seeElement('label[for="non-hidden-select"]');
+});

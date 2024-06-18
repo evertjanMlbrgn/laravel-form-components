@@ -52,7 +52,7 @@
                     @if(isset($help))
                         aria-describedby="{{ $id }}-help-text"
                     @endif
-                    @if(isset($hidden))
+                    @if($hidden)
                         hidden
                     @endif
                     >

@@ -221,7 +221,7 @@
 
                 <h3>Default</h3>
 
-                <x-form-select class="mb-3" aria-label="Default select example">
+                <x-form-select class="mb-3" label="Default select example">
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
