@@ -30,13 +30,13 @@ class FormComponentsServiceProvider extends BaseServiceProvider
     private const PATH_TO_BLADE_COMPONENT_VIEWS = __DIR__.'/../../resources/views/components';
     private const PATH_TO_OTHER_BLADE_VIEWS = __DIR__.'/../../resources/views/preview';
 
-    private const PATH_VIEW_CLASSES = __DIR__.'../View/';
+//    private const PATH_VIEW_CLASSES = __DIR__.'../View/';
 
-    private const PATH_TRAITS = __DIR__.'../Traits/';
+//    private const PATH_TRAITS = __DIR__.'../Traits/';
 
-    private const PATH_SERVICE_PROVIDER = __DIR__.'/FormComponentsServiceProvider.php';
+//    private const PATH_SERVICE_PROVIDER = __DIR__.'/FormComponentsServiceProvider.php';
 
-    private const PATH_HELPERS = __DIR__.'../Helpers';
+//    private const PATH_HELPERS = __DIR__.'../Helpers';
 
     private const CONFIG_FILE = __DIR__.'/../../config/config.php';
     private const ROUTES_PATH = __DIR__.'/../../routes/web.php';
@@ -49,25 +49,25 @@ class FormComponentsServiceProvider extends BaseServiceProvider
                 self::CONFIG_FILE => config_path('form-components.php'),
             ], 'mlbrgn-form-components-config');
 
-            $this->publishes([
-                self::PATH_TO_BLADE_COMPONENT_VIEWS => base_path('resources/views/components/form'),
-            ], 'mlbrgn-form-components-views');
+//            $this->publishes([
+//                self::PATH_TO_BLADE_COMPONENT_VIEWS => base_path('resources/views/components/form'),
+//            ], 'mlbrgn-form-components-views');
 
-            $this->publishes([
-                self::PATH_TRAITS => base_path('app/Traits'),
-            ], 'mlbrgn-form-components-traits');
+//            $this->publishes([
+//                self::PATH_TRAITS => base_path('app/Traits'),
+//            ], 'mlbrgn-form-components-traits');
 
-            $this->publishes([
-                self::PATH_VIEW_CLASSES => base_path('app/View'),
-            ], 'mlbrgn-form-components-view-classes');
+//            $this->publishes([
+//                self::PATH_VIEW_CLASSES => base_path('app/View'),
+//            ], 'mlbrgn-form-components-view-classes');
 
-            $this->publishes([
-                self::PATH_SERVICE_PROVIDER => base_path('app/Providers'),
-            ], 'mlbrgn-form-components-service-provider');
+//            $this->publishes([
+//                self::PATH_SERVICE_PROVIDER => base_path('app/Providers'),
+//            ], 'mlbrgn-form-components-service-provider');
 
-            $this->publishes([
-                self::PATH_HELPERS => base_path('app/Helpers'),
-            ], 'mlbrgn-form-components-helpers');
+//            $this->publishes([
+//                self::PATH_HELPERS => base_path('app/Helpers'),
+//            ], 'mlbrgn-form-components-helpers');
 
             // publish js for html editor
             $this->publishes([
@@ -81,7 +81,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         }
 
         // method 1 of loading view components
-        $this->configureComponents();
+        $this->registerComponents();
 
         // method 2 of loading view components
         //$this->loadViewComponentsAs('mlbrgn', $this->viewComponents());
@@ -102,7 +102,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
     }
 
-    protected function configureComponents(): void
+    protected function registerComponents(): void
     {
 
         $this->loadViewsFrom(realpath(self::PATH_TO_BLADE_COMPONENT_VIEWS), config('form-components.view_namespace'));
@@ -132,16 +132,11 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         // with dash syntax. e.g. <x-form-input>
         Blade::component(config('form-components.tag_prefix').'-'.$tagAlias, $class);
 
-        // with dot syntax. e.g. <x-form.input>
-        Blade::component(config('form-components.tag_prefix').'src'.$tagAlias, $class);
+        // with dot syntax. e.g. <x-form.input> TODO deprecate
+        Blade::component(config('form-components.tag_prefix').'.'.$tagAlias, $class);
 
-    }
-
-    protected function viewComponents(): array
-    {
-        return [
-            Input::class,
-        ];
+        // for internal use, so that user can change prefix and we can still find components inside our views
+        Blade::component( 'mlbrgn-form-'.$tagAlias, $class);
     }
 
     public function register(): void

@@ -8,7 +8,7 @@
         @endif
 
         @if(!$floating || $horizontal)
-            <x-form-label
+            <x-mlbrgn-form-label
                 :parentClasses="$attributes->get('class')"
                 :required="$attributes->has('required')"
                 @class([
@@ -17,7 +17,7 @@
                  ])
                 :for="$id">
                 {{ $label }}
-            </x-form-label>
+            </x-mlbrgn-form-label>
         @endif
 
         @if($horizontal)
@@ -70,7 +70,7 @@
         @endif
 
         @if($floating && !$horizontal)
-            <x-form-label
+            <x-mlbrgn-form-label
                 :parentClasses="$attributes->get('class')"
                 :required="$attributes->has('required')"
                 @class([
@@ -78,15 +78,15 @@
                ])
                 :for="$id">
                 {{ $label }}
-            </x-form-label>
+            </x-mlbrgn-form-label>
         @endif
 
         @if(isset($help))
-            <x-form-text :id="$id">{{ $help }}</x-form-text>
+            <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
         @endif
 
         @if($shouldShowError($name))
-            <x-form-errors :name="$name" />
+            <x-mlbrgn-form-errors :name="$name" />
         @endif
 
         @if($floating || $hidden || $horizontal)
