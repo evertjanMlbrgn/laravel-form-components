@@ -54,41 +54,45 @@
 
                 <x-form-form>
                     <div class="mb-3">
-                        <x-form-input id="exampleInputEmail1" aria-describedby="emailHelp" label="Email address">
+                        <x-form-input id="exampleInputEmail1" aria-describedby="emailHelp" label="Email address" autocomplete="username">
                             @slot('help')
                                 We'll never share your email with anyone else.
                             @endslot
                         </x-form-input>
                     </div>
                     <div class="mb-3">
-                        <x-form-input type="password" id="exampleInputPassword1" label="Password"/>
+                        <x-form-input type="password" id="exampleInputPassword" label="Password" autocomplete="new-password"/>
                     </div>
                     <x-form-checkbox class="mb-3" id="exampleCheck1" label="Check me out"/>
                     <x-form-submit class="mt-3" class-button="btn-secondary">Submit</x-form-submit>
                 </x-form-form>
 
                 <h3 class="mt-3">Form text</h3>
-                <x-form-input type="password" id="inputPassword5" aria-describedby="passwordHelpBlock" label="Password">
-                    @slot('help')
-                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                    @endslot
-                </x-form-input>
+                <x-form-form>
+                    <x-form-input type="password" id="inputPassword1" aria-describedby="passwordHelpBlock" label="Password" autocomplete="new-password">
+                        @slot('help')
+                            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                        @endslot
+                    </x-form-input>
+                </x-form-form>
 
                 <h3 class="mt-3">Inline text</h3>
 
-                <div class="row g-3 align-items-center">
-                    <div class="col-auto">
-                        <label for="inputPassword6" class="col-form-label">Password</label>
+                <x-form-form>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="inputPassword2" class="col-form-label" autocomplete="new-password">Password</label>
+                        </div>
+                        <div class="col-auto">
+                            <x-form-input type="password" id="inputPassword3" aria-describedby="passwordHelpInline" autocomplete="new-password"/>
+                        </div>
+                        <div class="col-auto">
+                            <x-form-text>
+                                Must be 8-20 characters long.
+                            </x-form-text>
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        <x-form-input type="password" id="inputPassword6" aria-describedby="passwordHelpInline"/>
-                    </div>
-                    <div class="col-auto">
-                        <x-form-text>
-                            Must be 8-20 characters long.
-                        </x-form-text>
-                    </div>
-                </div>
+                </x-form-form>
 
                 <h3 class="mt-3">Disabled forms</h3>
                 <x-form-form>
@@ -134,11 +138,13 @@
 
                 <h3 class="mt-3">Form text</h3>
 
-                <x-form-input type="password" id="inputPassword5" label="password">
-                @slot('help')
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                @endslot
-                </x-form-input>
+                <x-form-form>
+                    <x-form-input type="password" id="inputPassword4" label="password" autocomplete="new-password">
+                    @slot('help')
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                    @endslot
+                    </x-form-input>
+                </x-form-form>
 
                 <h3 class="mt-3">Disabled</h3>
 
@@ -151,16 +157,17 @@
 
                 <h3 class="mt-3">Readonly plain text </h3>
 
-                <x-form-input readonly class="form-control-plaintext mb-3" id="staticEmail" label="Email" value="email@example.com" horizontal class-label="col-2" class-control="col-10"/>
-
-                <x-form-input type="password" class="mb-3" label="Password" id="inputPassword" horizontal class-label="col-2" class-control="col-10"/>
+                <x-form-form>
+                    <x-form-input readonly class="form-control-plaintext mb-3" id="staticEmail" label="Email" value="email@example.com" horizontal class-label="col-2" class-control="col-10"/>
+                    <x-form-input type="password" class="mb-3" label="Password" id="inputPassword5" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
+                </x-form-form>
 
                 <x-form-form class="row g-3">
                     <div class="col-auto">
                         <x-form-input readonly class="form-control-plaintext" label="Email" id="staticEmail2" value="email@example.com" class-label="visually-hidden"/>
                     </div>
                     <div class="col-auto">
-                        <x-form-input type="password" id="inputPassword2" label="Password" placeholder="Password" class-label="visually-hidden"/>
+                        <x-form-input type="password" id="inputPassword6" label="Password" placeholder="Password" class-label="visually-hidden" autocomplete="new-password"/>
                     </div>
                     <div class="col-auto">
                         <x-form-submit class="btn-primary mb-3">Confirm identity</x-form-submit>
@@ -715,7 +722,7 @@
                         <x-form-input type="email" label="Email" id="inputEmail4"/>
                     </div>
                     <div class="col-md-6">
-                        <x-form-input type="password" label="Password" id="inputPassword4"/>
+                        <x-form-input type="password" label="Password" id="inputPassword7" autocomplete="new-password"/>
                     </div>
                     <div class="col-12">
                         <x-form-input type="text" id="inputAddress" label="Address" placeholder="1234 Main St"/>
@@ -748,10 +755,10 @@
 
                 <x-form-form class="mb-3">
                     <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email test" horizontal class-label="col-2" class-control="col-10" required/>
-                    <x-form-input type="password" class="mb-3" id="inputPassword3" label="Password" horizontal class-label="col-2" class-control="col-10"/>
-                    <x-form-input type="range" class="mb-3" id="inputPassword3" label="Password" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10"/>
+                    <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
+                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Password" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
                     <x-form-textarea class="mb-3" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10"/>
-                    <x-form-select id="inputState" label="State" class="form-select mb-3" horizontal class-label="col-2" class-control="col-10">
+                    <x-form-select id="inputState2" label="State" class="form-select mb-3" horizontal class-label="col-2" class-control="col-10">
                         <option selected>Choose...</option>
                         <option>Kansas</option>
                         <option>Colorado</option>
@@ -862,7 +869,7 @@
                         </x-form-select>
                     </div>
                     <div class="col-auto">
-                        <x-form-checkbox  label="Remember me" id="autoSizingCheck"/>
+                        <x-form-checkbox  label="Remember me" id="autoSizingCheck2"/>
                     </div>
                     <div class="col-auto">
                         <x-form-submit class="btn-primary">Submit</x-form-submit>
@@ -921,10 +928,10 @@
                         </x-form-input-group>
                     </div>
                     <div class="col-md-12">
-                        <x-form-textarea id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
+                        <x-form-textarea id="textarea-horizontal2" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
                     </div>
                     <div class="col-md-12">
-                        <x-form-input type="range" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
+                        <x-form-input type="range" id="textarea-horizontal3" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
                     </div>
                     <div class="col-md-6">
                         <x-form-input id="validationCustom03" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
@@ -942,8 +949,8 @@
                         <x-form-checkbox value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
                     </div>
                     <div class="col-12">
-                        <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
-                        <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+                        <x-form-radio name="validation-form" value="" id="invalidCheck2" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+                        <x-form-radio name="validation-form" value="" id="invalidCheck3" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
                     </div>
                     <div class="col-12">
                         <x-form-submit class="btn-primary">Submit form</x-form-submit>
@@ -984,8 +991,8 @@
                     </div>
                     <div class="col-12">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-                            <label class="form-check-label" for="invalidCheck2">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck4" required>
+                            <label class="form-check-label" for="invalidCheck4">
                                 Agree to terms and conditions
                             </label>
                         </div>
@@ -1043,8 +1050,8 @@
                     </div>
                     <div class="col-12">
                         <div class="form-check">
-                            <x-form-checkbox class="is-invalid" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required label="Agree to terms and conditions"/>
-                            <div id="invalidCheck3Feedback" class="invalid-feedback">
+                            <x-form-checkbox class="is-invalid" value="" id="invalidCheck5" aria-describedby="invalidCheck5Feedback" required label="Agree to terms and conditions"/>
+                            <div id="invalidCheck5Feedback" class="invalid-feedback">
                                 You must agree before submitting.
                             </div>
                         </div>
@@ -1134,42 +1141,42 @@
 
                 <x-form-form class="row g-3" has-client-side-validation has-custom-client-side-validation>
                     <div class="col-md-4 position-relative">
-                        <x-form-input id="validationCustom01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
+                        <x-form-input id="validationCustom06" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
                     <div class="col-md-4">
-                        <x-form-input id="validationCustom02" value="Otto" label="Last name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
+                        <x-form-input id="validationCustom07" value="Otto" label="Last name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
                     <div class="col-md-4">
-                        <label for="validationCustomUsername" class="form-label">Username</label>
+                        <label for="validationCustomUsername2" class="form-label">Username</label>
                         <x-form-input-group class="has-validation">
                             <x-form-input-group-text id="inputGroupPrepend">@</x-form-input-group-text>
-                            <x-form-input id="validationCustomUsername" aria-describedby="inputGroupPrepend" required valid-feedback="Yes!" invalid-feedback="Please choose a username."/>
+                            <x-form-input id="validationCustomUsername2" aria-describedby="inputGroupPrepend" required valid-feedback="Yes!" invalid-feedback="Please choose a username."/>
                         </x-form-input-group>
                     </div>
                     <div class="col-md-12">
-                        <x-form-textarea id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
+                        <x-form-textarea id="textarea-horizontal4" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
                     </div>
                     <div class="col-md-12">
-                        <x-form-input type="range" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
+                        <x-form-input type="range" id="textarea-horizontal5" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
                     </div>
                     <div class="col-md-6">
-                        <x-form-input id="validationCustom03" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
+                        <x-form-input id="validationCustom08" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
                     </div>
                     <div class="col-md-3">
-                        <x-form-select id="validationCustom04" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state.">
+                        <x-form-select id="validationCustom09" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state.">
                             <option selected disabled value="">Choose...</option>
                             <option>...</option>
                         </x-form-select>
                     </div>
                     <div class="col-md-3">
-                        <x-form-input id="validationCustom05" required label="Zip" valid-feedback="All your base are belong to us" invalid-feedback="Please provide a valid zip."/>
+                        <x-form-input id="validationCustom10" required label="Zip" valid-feedback="All your base are belong to us" invalid-feedback="Please provide a valid zip."/>
                     </div>
                     <div class="col-12">
-                        <x-form-checkbox value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+                        <x-form-checkbox value="" id="invalidCheck6" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
                     </div>
                     <div class="col-12">
-                        <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
-                        <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+                        <x-form-radio name="validation-form" value="" id="invalidCheck7" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+                        <x-form-radio name="validation-form" value="" id="invalidCheck8" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
                     </div>
                     <div class="col-12">
                         <x-form-submit class="btn-primary">Submit form</x-form-submit>
@@ -1180,42 +1187,42 @@
 
                 <x-form-form class="row g-3" has-client-side-validation>
                     <div class="col-md-4 position-relative">
-                        <x-form-input id="validationCustom01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
+                        <x-form-input id="validationCustom11" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
                     <div class="col-md-4">
-                        <x-form-input id="validationCustom02" value="Otto" label="Last name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
+                        <x-form-input id="validationCustom12" value="Otto" label="Last name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
                     <div class="col-md-4">
-                        <label for="validationCustomUsername" class="form-label">Username</label>
+                        <label for="validationCustomUsername3" class="form-label">Username</label>
                         <x-form-input-group class="has-validation">
                             <x-form-input-group-text id="inputGroupPrepend">@</x-form-input-group-text>
-                            <x-form-input id="validationCustomUsername" aria-describedby="inputGroupPrepend" required valid-feedback="Yes!" invalid-feedback="Please choose a username."/>
+                            <x-form-input id="validationCustomUsername3" aria-describedby="inputGroupPrepend" required valid-feedback="Yes!" invalid-feedback="Please choose a username."/>
                         </x-form-input-group>
                     </div>
                     <div class="col-md-12">
-                        <x-form-textarea id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
+                        <x-form-textarea id="textarea-horizontal6" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
                     </div>
                     <div class="col-md-12">
-                        <x-form-input type="range" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
+                        <x-form-input type="range" id="textarea-horizontal7" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
                     </div>
                     <div class="col-md-6">
-                        <x-form-input id="validationCustom03" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
+                        <x-form-input id="validationCustom13" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
                     </div>
                     <div class="col-md-3">
-                        <x-form-select id="validationCustom04" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state.">
+                        <x-form-select id="validationCustom14" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state.">
                             <option selected disabled value="">Choose...</option>
                             <option>...</option>
                         </x-form-select>
                     </div>
                     <div class="col-md-3">
-                        <x-form-input id="validationCustom05" required label="Zip" valid-feedback="All your base are belong to us" invalid-feedback="Please provide a valid zip."/>
+                        <x-form-input id="validationCustom15" required label="Zip" valid-feedback="All your base are belong to us" invalid-feedback="Please provide a valid zip."/>
                     </div>
                     <div class="col-12">
-                        <x-form-checkbox value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+                        <x-form-checkbox value="" id="invalidCheck9" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
                     </div>
                     <div class="col-12">
-                        <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
-                        <x-form-radio name="validation-form" value="" id="invalidCheck" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+                        <x-form-radio name="validation-form" value="" id="invalidCheck10" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
+                        <x-form-radio name="validation-form" value="" id="invalidCheck11" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
                     </div>
                     <div class="col-12">
                         <x-form-submit class="btn-primary">Submit form</x-form-submit>
