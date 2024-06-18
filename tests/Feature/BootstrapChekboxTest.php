@@ -51,3 +51,11 @@ it('checks the right input element after a validation error', function () {
         ->seeElement('input[value="a"]:not(:checked)')
         ->seeElement('input[value="b"]:checked');
 });
+
+it('always has an id attribute', function () {
+    $this->registerTestRoute('bootstrap-checkbox');
+
+    $this->visit('/bootstrap-checkbox')
+        ->seeElement('input[value="a"][id]')
+        ->seeElement('input[value="b"][id]');
+});

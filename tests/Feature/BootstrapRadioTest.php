@@ -62,3 +62,11 @@ it('checks the right input element after a validation error of another field', f
         ->seeElement('input[value="0"]:checked')
         ->seeElement('input[value="1"]:not(:checked)');
 });
+
+it('always has an id attribute', function () {
+    $this->registerTestRoute('bootstrap-radio');
+
+    $this->visit('/bootstrap-radio')
+        ->seeElement('input[value="1"][id]')
+        ->seeElement('input[value="0"][id]');
+});

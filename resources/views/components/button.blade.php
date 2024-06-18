@@ -4,11 +4,12 @@
     ])->class([
         'btn',
         $classButton
-        ])
+        ])->filter(fn (string $value, string $key) => !in_array($key, ['required', 'readonly']))
     }}
     @if(isset($name))
         name="{{ $name }}"
     @endif
+    id="{{ $getId() }}"
 >
     {{ trim($slot) ?: 'Send' }}
 </button>

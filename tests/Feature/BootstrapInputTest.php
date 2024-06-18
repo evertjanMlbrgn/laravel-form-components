@@ -41,16 +41,14 @@ it('honors type attribute', function () {
         });
 });
 
-
-it('honors other attributes', function () {
+it('honors extra attributes', function () {
     $this->registerTestRoute('bootstrap-inputs');
 
     $this->visit('/bootstrap-inputs')
         ->within('#form-3', function() {
-//            return $this->seeElement('button[name="button"][id="button"][required][readonly][disabled][value="test value"]')// uses button component
-//            return $this->seeElement('button[name="button"][id="button"][readonly][disabled][value="test value"]')// uses button component
-//            $this->seeElement('input[name="checkbox"][type="checkbox"][id="checkbox"][required][readonly][disabled][value="test value"]')
-                $this->seeElement('input[name="color"][type="color"][id="color"][required][readonly][disabled][value="test value"]')
+            return $this->seeElement('button[name="button"][id="button"][disabled][value="test value"]:not([required]):not([readonly])')// uses button component
+                ->seeElement('input[name="checkbox"][type="checkbox"][id="checkbox"][required][readonly][disabled][value="test value"]')
+                ->seeElement('input[name="color"][type="color"][id="color"][required][readonly][disabled][value="test value"]')
                 ->seeElement('input[name="date"][type="date"][id="date"][required][readonly][disabled][value="test value"]')
                 ->seeElement('input[name="datetime-local"][type="datetime-local"][id="datetime-local"][required][readonly][disabled][value="test value"]')
                 ->seeElement('input[name="email"][type="email"][id="email"][required][readonly][disabled][value="test value"]')
@@ -60,13 +58,11 @@ it('honors other attributes', function () {
                 ->seeElement('input[name="month"][type="month"][id="month"][required][readonly][disabled][value="test value"]')
                 ->seeElement('input[name="number"][type="number"][id="number"][required][readonly][disabled][value="test value"]')
                 ->seeElement('input[name="password"][type="password"][id="password"][required][readonly][disabled][value="test value"]')
-//                ->seeElement('input[name="radio"][type="radio"][id="radio"][required][readonly][disabled][value="test value"]')
+                ->seeElement('input[name="radio"][type="radio"][id="radio"][required][readonly][disabled][value="test value"]')
                 ->seeElement('input[name="range"][type="range"][id="range"][required][readonly][disabled][value="test value"]')
-                ->seeElement('button[name="reset"][type="reset"][id="reset"][required][readonly][disabled][value="test value"]')// uses button component
-//                ->seeElement('button[name="reset"][type="reset"][id="reset"][readonly][disabled][value="test value"]')// uses button component
+                ->seeElement('button[name="reset"][type="reset"][id="reset"][disabled][value="test value"]:not([required]):not([readonly])')// uses button component
                 ->seeElement('input[name="search"][type="search"][id="search"][required][readonly][disabled][value="test value"]')
-//                ->seeElement('button[name="submit"][type="submit"][id="submit"][required][readonly][disabled][value="test value"]')// uses button component
-//                ->seeElement('button[name="submit"][type="submit"][id="submit"][readonly][disabled][value="test value"]')// uses button component
+                ->seeElement('button[name="submit"][type="submit"][id="submit"][disabled][value="test value"]:not([required]):not([readonly])')// uses button component
                 ->seeElement('input[name="tel"][type="tel"][id="tel"][required][readonly][disabled][value="test value"]')
                 ->seeElement('input[name="text"][type="text"][id="text"][required][readonly][disabled][value="test value"]')
                 ->seeElement('input[name="time"][type="time"][id="time"][required][readonly][disabled][value="test value"]')
@@ -105,5 +101,38 @@ it('honors extra classes', function () {
                 ->seeElement('input[name="time"].extra-1.extra-2')
                 ->seeElement('input[name="url"].extra-1.extra-2')
                 ->seeElement('input[name="week"].extra-1.extra-2');
+        });
+});
+
+it('always has an id attribute', function () {
+    $this->registerTestRoute('bootstrap-inputs');
+
+    $this->visit('/bootstrap-inputs')
+        ->within('#form-4', function() {
+            return $this->seeElement('button[name="button"][id]')// uses button component
+            ->seeElement('button[name="button"][id]')// uses button component
+            ->seeElement('input[name="checkbox"][id]')
+                ->seeElement('input[name="color"][id]')
+                ->seeElement('input[name="date"][id]')
+                ->seeElement('input[name="datetime-local"][id]')
+                ->seeElement('input[name="email"][id]')
+                ->seeElement('input[name="file"][id]')
+                ->seeElement('input[name="hidden"][id]')
+                ->seeElement('input[name="image"][id]')
+                ->seeElement('input[name="month"][id]')
+                ->seeElement('input[name="number"][id]')
+                ->seeElement('input[name="password"][id]')
+                ->seeElement('input[name="radio"][id]')
+                ->seeElement('input[name="range"][id]')
+                ->seeElement('button[name="reset"][id]')// uses button component
+                ->seeElement('button[name="reset"][id]')// uses button component
+                ->seeElement('input[name="search"][id]')
+                ->seeElement('button[name="submit"][id]')// uses button component
+                ->seeElement('button[name="submit"][id]')// uses button component
+                ->seeElement('input[name="tel"][id]')
+                ->seeElement('input[name="text"][id]')
+                ->seeElement('input[name="time"][id]')
+                ->seeElement('input[name="url"][id]')
+                ->seeElement('input[name="week"][id]');
         });
 });

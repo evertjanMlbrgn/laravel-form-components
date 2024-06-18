@@ -18,3 +18,10 @@ it('can render a placeholder', function () {
         ->seeElement('option[value="a"]')
         ->seeElement('option[value="b"]');
 });
+
+it('always has an id attribute', function () {
+    $this->registerTestRoute('select-slot');
+
+    $this->visit('/select-slot')
+        ->seeElement('select[name="select"][id]');
+});

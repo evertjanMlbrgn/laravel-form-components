@@ -29,7 +29,7 @@ abstract class FormBaseComponent extends Component
             return $this->id = $this->generateIdByName();
         }
 
-        return $this->id = Str::random(4);
+        return $this->id = 'rand_id_' . Str::random(4);
     }
 
     /**

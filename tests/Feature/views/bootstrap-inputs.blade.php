@@ -29,6 +29,7 @@
 </x-form-form>
 
 <x-form-form id="form-3">
+    {{-- NOTE: buttons cannot have the required, readonly attributes, can have disabled--}}
     <x-form-input label="labeltext" required readonly disabled value="test value" id="button" name="button" type="button"/>
     <x-form-input label="labeltext" required readonly disabled value="test value" id="checkbox" name="checkbox" type="checkbox"/>
     <x-form-input label="labeltext" required="Required" readonly disabled value="test value" id="color" name="color" type="color"/>

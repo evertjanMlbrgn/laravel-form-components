@@ -4,7 +4,7 @@ namespace Mlbrgn\LaravelFormComponents\Tests;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-use Mlbrgn\LaravelFormComponents\FormComponentsServiceProvider;
+use Mlbrgn\LaravelFormComponents\Providers\FormComponentsServiceProvider;
 use Orchestra\Testbench\BrowserKit\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
