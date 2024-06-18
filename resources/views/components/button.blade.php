@@ -11,5 +11,5 @@
     @endif
     id="{{ $getId() }}"
 >
-    {{ trim($slot) ?: 'Send' }}
+    {!! trim($slot) ?: 'Send' !!}
 </button>

@@ -50,7 +50,7 @@
 
                 <h2 id="form-overview">Overview</h2>
 
-                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/overview/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
+                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/overview/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
                 <x-form-form>
                     <div class="mb-3">
@@ -70,9 +70,14 @@
                 <h3>Form text</h3>
                 <x-form-form>
                     <x-form-input id="inputUsername" hidden autocomplete="username"/>
-                    <x-form-input type="password" id="inputPassword1" aria-describedby="passwordHelpBlock" label="Password" autocomplete="new-password">
+                    <x-form-input class="mb-3" type="password" id="inputPassword1" aria-describedby="passwordHelpBlock" label="Password" autocomplete="new-password">
                         @slot('help')
                             Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                        @endslot
+                    </x-form-input>
+                    <x-form-input type="password" id="inputPassword1" aria-describedby="passwordHelpBlock" label="Password with helptext containing html" autocomplete="new-password">
+                        @slot('help')
+                            Your <strong>password</strong> must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                         @endslot
                     </x-form-input>
                 </x-form-form>
@@ -107,7 +112,8 @@
                             <x-form-select id="disabledSelect" label="Disabled select menu">
                                 <option>Disabled select</option>
                                 @slot('help')
-                                    Just to see if helptext appears and has id and is refered to by aria-describedby
+                                    Just to <strong>see</strong> if helptext appears and has id and is referred to by aria-describedby.
+                                    <p class="text-primary">Just a test to see if text is displayed in primary color here</p>
                                 @endslot
                             </x-form-select>
                         </div>
@@ -211,7 +217,7 @@
                 </datalist>
 
                 <h2 id="form-select">Select</h2>
-                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/select/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
+                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/select/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
                 <h3>Default</h3>
 
@@ -266,7 +272,7 @@
                 </x-form-select>
 
                 <h2 id="form-checks-and-radios">Checks and radios</h2>
-                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/checks-radios/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
+                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/checks-radios/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
                 <h3>Checks</h3>
 
@@ -349,7 +355,7 @@
                 <x-form-radio  name="options-outlined" id="danger-outlined" autocomplete="off" label="Danger radio" class-button="btn-outline-danger" toggle/>
 
                 <h2 id="form-range">Range</h2>
-                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/range/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
+                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/range/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
                 <h3>Standard</h3>
                 <x-form-input type="range" class="mb-3" id="customRange1" label="Example range"/>
@@ -364,7 +370,7 @@
                 <x-form-input type="range" class="mb-3" min="0" max="5" step="0.5" id="customRange2" label="Example range with min and max and step"/>
 
                 <h2 id="form-input-group">Input group</h2>
-                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/input-group/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
+                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/input-group/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
                 <h3>Basic example</h3>
                 <p><span class="text-danger">TODO:</span> finish</p>
@@ -641,7 +647,7 @@
                 </x-form-input-group>
 
                 <h2 id="form-floating-label">Floating labels</h2>
-                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/floating-labels/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
+                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/floating-labels/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
                 <h3>Example</h3>
                 <x-form-input class="mb-3" id="floatingInput" placeholder="name@example.com" floating label="Email address"/>
@@ -914,7 +920,7 @@
                 </x-form-form>
 
                 <h2 class="mt-4" id="form-validation">Validation</h2>
-                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/validation/" target="_blank">bootstrap documentation</a>. Adjusted to use our form-components.</p>
+                <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/validation/" target="_blank">bootstrap documentation</a>. Adjusted to use our form-components.</p>
 
                 <p>Not all controls support validation styles, see Bootstrap validation. Input, select and checkboxes do. As well as up to 1 form control in an input-group.</p>
 
