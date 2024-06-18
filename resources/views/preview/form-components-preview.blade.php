@@ -82,7 +82,7 @@
                 <x-form-form>
                     <div class="row g-3 align-items-center">
                         <div class="col-auto">
-                            <label for="inputPassword2" class="col-form-label" autocomplete="new-password">Password</label>
+                            <label for="inputPassword3" class="col-form-label" autocomplete="new-password">Password</label>
                         </div>
                         <div class="col-auto">
                             <x-form-input id="username2" autocomplete="username" hidden/>
@@ -379,26 +379,26 @@
                 </x-form-input-group>
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <x-form-input placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
                     <span class="input-group-text" id="basic-addon2">@example.com</span>
                 </div>
 
                 <label for="basic-url" class="form-label">Your vanity URL</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    <x-form-input id="basic-url" aria-describedby="basic-addon3"/>
                 </div>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <x-form-input aria-label="Amount (to the nearest dollar)"/>
                     <span class="input-group-text">.00</span>
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+                    <x-form-input placeholder="Username" aria-label="Username"/>
                     <span class="input-group-text">@</span>
-                    <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+                    <x-form-input placeholder="Server" aria-label="Server"/>
                 </div>
 
                 <div class="input-group">
@@ -979,25 +979,22 @@
                     </div>
                     <div class="col-md-6">
                         <label for="validationDefault03" class="form-label">City</label>
-                        <input type="text" class="form-control" id="validationDefault03" required>
+                        <x-form-input id="validationDefault03" required/>
                     </div>
                     <div class="col-md-3">
                         <label for="validationDefault04" class="form-label">State</label>
-                        <select class="form-select" id="validationDefault04" required>
+                        <x-form-select id="validationDefault04" required>
                             <option selected disabled value="">Choose...</option>
                             <option>...</option>
-                        </select>
+                        </x-form-select>
                     </div>
                     <div class="col-md-3">
                         <label for="validationDefault05" class="form-label">Zip</label>
-                        <input type="text" class="form-control" id="validationDefault05" required>
+                        <x-form-input id="validationDefault05" required/>
                     </div>
                     <div class="col-12">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck4" required>
-                            <label class="form-check-label" for="invalidCheck4">
-                                Agree to terms and conditions
-                            </label>
+                            <x-form-checkbox value="" id="invalidCheck4" required label="Agree to terms and conditions"/>
                         </div>
                     </div>
                     <div class="col-12">
@@ -1248,16 +1245,16 @@
                     <x-form-input class="mb-3" name="color" type="color" label="Color"/>
                     <x-form-input class="mb-3" name="date" type="date" label="Date"/>
                     <x-form-input class="mb-3" name="datetime-local" type="datetime-local" label="Datetime local"/>
-                    <x-form-input class="mb-3" name="email" type="email" label="Email"/>
+                    <x-form-input class="mb-3" name="email" type="email" label="Email" autocomplete="username"/>
                     <x-form-input class="mb-3" name="file" type="file" label="File"/>
                     <div class="mb-3">
-                        <label>Hidden</label>
+                        <span>Hidden</span>
                         <x-form-input class="mb-3" name="hidden" type="hidden" label="Hidden"/>
                     </div>
                     <x-form-input class="mb-3" name="month" type="month" label="Month"/>
                     <x-form-input class="mb-3 w-auto" name="image" type="image" label="Image" src="{{ package_asset('button-image.png') }}" height="40px"/>
                     <x-form-input class="mb-3" name="number" type="number" label="Number"/>
-                    <x-form-input class="mb-3" name="password" type="password" label="Password" autocomplete="password"/>
+                    <x-form-input class="mb-3" name="password" type="password" label="Password" autocomplete="current-password"/>
                     <x-form-input class="mb-3" name="radio" type="radio" label="Radio"/>
                     <x-form-input class="mb-3" name="range" type="range" label="Range"/>
                     <div>
@@ -1271,7 +1268,7 @@
                             Submit
                         </x-form-input>
                     </div>
-                    <x-form-input class="mb-3" name="tel" type="tel" label="Tel"/>
+                    <x-form-input class="mb-3" name="tel" type="tel" label="Tel" autocomplete="tel"/>
                     <x-form-input class="mb-3" name="text" type="text" label="Text"/>
                     <x-form-input class="mb-3" name="time" type="time" label="Time"/>
                     <x-form-input class="mb-3" name="url" type="url" label="Url"/>

@@ -20,9 +20,7 @@
         type="checkbox"
         value="{{ $value }}"
         name="{{ $name }}"
-        @if($label)
-            id="{{ $id }}"
-        @endif
+        id="{{ $id }}"
         @if($checked)
             checked="checked"
         @endif
