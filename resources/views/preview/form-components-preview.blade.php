@@ -14,8 +14,8 @@
 
                 <h1>Mlbrgn form components preview page</h1>
 
-                <h2 style="color:green !important">Section links:</h2>
-                <ul>
+                <h2>Section links:</h2>
+                <ul id="section-links">
                     <li>
                         <a href="#form-overview">Overview</a>
                     </li>
@@ -48,7 +48,7 @@
                     </li>
                 </ul>
 
-                <h2 id="form-overview" class="mt-5" style="color:green !important">Overview</h2>
+                <h2 id="form-overview">Overview</h2>
 
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/overview/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
@@ -67,7 +67,7 @@
                     <x-form-submit class="mt-3" class-button="btn-secondary">Submit</x-form-submit>
                 </x-form-form>
 
-                <h3 class="mt-3">Form text</h3>
+                <h3>Form text</h3>
                 <x-form-form>
                     <x-form-input id="inputUsername" hidden autocomplete="username"/>
                     <x-form-input type="password" id="inputPassword1" aria-describedby="passwordHelpBlock" label="Password" autocomplete="new-password">
@@ -77,7 +77,7 @@
                     </x-form-input>
                 </x-form-form>
 
-                <h3 class="mt-3">Inline text</h3>
+                <h3>Inline text</h3>
 
                 <x-form-form>
                     <div class="row g-3 align-items-center">
@@ -96,7 +96,7 @@
                     </div>
                 </x-form-form>
 
-                <h3 class="mt-3">Disabled forms</h3>
+                <h3>Disabled forms</h3>
                 <x-form-form>
                     <fieldset disabled>
                         <legend>Disabled fieldset example</legend>
@@ -119,11 +119,11 @@
                 </x-form-form>
 
 
-                <h2 id="form-controls" class="mt-5" style="color:green !important">Form controls</h2>
+                <h2 id="form-controls">Form controls</h2>
 
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/form-control/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
-                <h3 class="mt-3">Example</h3>
+                <h3>Example</h3>
 
                 <div class="mb-3">
                     <x-form-input type="email" id="exampleFormControlInput1" label="Email address" placeholder="name@example.com" required/>
@@ -132,13 +132,13 @@
                     <x-form-textarea id="exampleFormControlTextarea1" label="Example textarea" rows="3"></x-form-textarea>
                 </div>
 
-                <h3 class="mt-3">Sizing</h3>
+                <h3>Sizing</h3>
 
                 <x-form-input class="form-control-lg mb-3" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example"/>
                 <x-form-input class="mb-3" type="text" placeholder="Default input" aria-label="default input example"/>
                 <x-form-input class="form-control-sm mb-3" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example"/>
 
-                <h3 class="mt-3">Form text</h3>
+                <h3>Form text</h3>
 
                 <x-form-form>
                     <x-form-input id="username3"  autocomplete="username" hidden/>
@@ -149,16 +149,16 @@
                     </x-form-input>
                 </x-form-form>
 
-                <h3 class="mt-3">Disabled</h3>
+                <h3>Disabled</h3>
 
                 <x-form-input class="mb-3" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled/>
                 <x-form-input class="mb-3" type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly/>
 
-                <h3 class="mt-3">Readonly</h3>
+                <h3>Readonly</h3>
 
                 <x-form-input type="text" value="Readonly input here..." aria-label="readonly input example" readonly/>
 
-                <h3 class="mt-3">Readonly plain text </h3>
+                <h3>Readonly plain text </h3>
 
                 <x-form-form>
                     <x-form-input readonly class="form-control-plaintext mb-3" id="staticEmail" label="Email" value="email@example.com" horizontal class-label="col-2" class-control="col-10" autocomplete="username"/>
@@ -177,7 +177,7 @@
                     </div>
                 </x-form-form>
 
-                <h3 class="mt-3">File inputs</h3>
+                <h3>File inputs</h3>
 
                 <div class="mb-3">
                     <x-form-input type="file" id="formFile" label="Default file input example"/>
@@ -195,11 +195,11 @@
                     <x-form-input class="form-control-lg" id="formFileLg" type="file" label="Large file input example"/>
                 </div>
 
-                <h3 class="mt-3">Colors</h3>
+                <h3>Colors</h3>
 
                 <x-form-input type="color" class="form-control-color mb-3" id="exampleColorInput" value="#563d7c" label="Color picker" title="Choose your color"/>
 
-                <h3 class="mt-3">Datalist</h3>
+                <h3>Datalist</h3>
 
                 <x-form-input list="datalistOptions" id="exampleDataList" label="Datalist example" placeholder="Type to search..."/>
                 <datalist id="datalistOptions">
@@ -210,10 +210,10 @@
                     <option value="Chicago">
                 </datalist>
 
-                <h2 id="form-select" class="mt-5" style="color:green !important">Select</h2>
+                <h2 id="form-select">Select</h2>
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/select/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
-                <h3 class="mt-3">Default</h3>
+                <h3>Default</h3>
 
                 <x-form-select class="mb-3" aria-label="Default select example">
                     <option selected>Open this select menu</option>
@@ -222,7 +222,7 @@
                     <option value="3">Three</option>
                 </x-form-select>
 
-                <h3 class="mt-3">Sizing</h3>
+                <h3>Sizing</h3>
 
                 <x-form-select class="form-select-lg mb-3" aria-label=".form-select-lg example">
                     <option selected>Open this select menu</option>
@@ -238,7 +238,7 @@
                     <option value="3">Three</option>
                 </x-form-select>
 
-                <h3 class="mt-3">Multiple</h3>
+                <h3>Multiple</h3>
 
                 <x-form-select class="mb-3" multiple aria-label="multiple select example">
                     <option selected>Open this select menu</option>
@@ -247,7 +247,7 @@
                     <option value="3">Three</option>
                 </x-form-select>
 
-                <h3 class="mt-3">Size</h3>
+                <h3>Size</h3>
 
                 <x-form-select class="mb-3" size="3" aria-label="size 3 select example">
                     <option selected>Open this select menu</option>
@@ -256,7 +256,7 @@
                     <option value="3">Three</option>
                 </x-form-select>
 
-                <h3 class="mt-3">Disabled</h3>
+                <h3>Disabled</h3>
 
                 <x-form-select class="mb-5" aria-label="Disabled select example" disabled>
                     <option selected>Open this select menu</option>
@@ -265,10 +265,10 @@
                     <option value="3">Three</option>
                 </x-form-select>
 
-                <h2 id="form-checks-and-radios" class="mt-5" style="color:green !important">Checks and radios</h2>
+                <h2 id="form-checks-and-radios">Checks and radios</h2>
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/checks-radios/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
-                <h3 class="mt-3">Checks</h3>
+                <h3>Checks</h3>
 
                 <x-form-checkbox value="" label="Default checkbox" id="flexCheckDefault">
                     @slot('help')
@@ -277,16 +277,16 @@
                 </x-form-checkbox>
                 <x-form-checkbox value="" label="Checked checkbox" id="flexCheckChecked" checked/>
 
-                <h3 class="mt-3">Indeterminate</h3>
+                <h3>Indeterminate</h3>
 
                 <p>Skipped can only be done using javascript</p>
 
-                <h3 class="mt-3">Disabled</h3>
+                <h3>Disabled</h3>
 
                 <x-form-checkbox value="" id="flexCheckDisabled" disabled label="Disabled checkbox"/>
                 <x-form-checkbox value="" id="flexCheckCheckedDisabled" label="Disabled checked checkbox" checked disabled/>
 
-                <h3 class="mt-3">Radios</h3>
+                <h3>Radios</h3>
 
                 <x-form-radio name="flexRadioDefault" id="flexRadioDefault1" label="Default radio">
                     @slot('help')
@@ -295,23 +295,23 @@
                 </x-form-radio>
                 <x-form-radio name="flexRadioDefault" id="flexRadioDefault2" label="Default checked radio" checked/>
 
-                <h3 class="mt-3">Disabled</h3>
+                <h3>Disabled</h3>
 
                 <x-form-radio name="flexRadioDisabled" id="flexRadioDisabled" disabled label="Disabled radio"/>
                 <x-form-radio name="flexRadioDisabled" id="flexRadioCheckedDisabled" checked disabled label="Disabled checked radio"/>
 
-                <h3 class="mt-3">Switches</h3>
+                <h3>Switches</h3>
 
                 <x-form-checkbox id="flexSwitchCheckDefault1" label="Default switch checkbox input" switch/>
                 <x-form-checkbox id="flexSwitchCheckDefault2" label="Checked switch checkbox input" checked switch/>
                 <x-form-checkbox id="flexSwitchCheckDefault3" label="Disabled switch checkbox input" disabled switch/>
                 <x-form-checkbox id="flexSwitchCheckDefault4" label="Disabled checked switch checkbox input" disabled checked switch/>
 
-                <h3 class="mt-3">vertically stacked</h3>
+                <h3>vertically stacked</h3>
 
                 <p>skipped</p>
 
-                <h3 class="mt-3">Inline</h3>
+                <h3>Inline</h3>
 
                 <div class="mb-3">
                     <x-form-checkbox id="inlineCheckbox1" value="option1" label="1" inline/>
@@ -324,49 +324,49 @@
                     <x-form-radio name="inlineRadioOptions" id="inlineRadio3" value="option1" label="3 (disabled)" disabled inline/>
                 </div>
 
-                <h3 class="mt-3">Without labels</h3>
+                <h3>Without labels</h3>
 
                 <p>Skipped</p>
 
-                <h3 class="mt-3">Checkbox toggle buttons</h3>
+                <h3>Checkbox toggle buttons</h3>
 
                 <x-form-checkbox id="btn-check" autocomplete="off" label="Single toggle" toggle class-button="btn-secondary" class-label="extra label classes"/>
                 <x-form-checkbox id="btn-check-2" autocomplete="off" label="Checked" toggle checked class-button="btn-secondary-outline"/>
                 <x-form-checkbox id="btn-check-3" autocomplete="off" label="Disabled" toggle disabled class-button="btn-primary"/>
 
-                <h3 class="mt-3">Radio toggle buttons</h3>
+                <h3>Radio toggle buttons</h3>
 
                 <x-form-radio name="options" id="option1" autocomplete="off" checked label="Checked" toggle class-button="btn-secondary" class-label="extra label classes"/>
                 <x-form-radio name="options" id="option2" autocomplete="off" label="Radio" toggle class-button="btn-primary-outline"/>
                 <x-form-radio name="options" id="option3" autocomplete="off" checked label="Disabled" toggle disabled class-button="btn-secondary"/>
                 <x-form-radio name="options" id="option4" autocomplete="off" label="Radio" toggle/>
 
-                <h3 class="mt-3">Outlined styles</h3>
+                <h3>Outlined styles</h3>
 
                 <x-form-checkbox id="btn-check-outlined" autocomplete="off" label="Single toggle" class-button="bnt-outline-primary" toggle/>
                 <x-form-checkbox id="btn-check-2-outlined" checked autocomplete="off" label="Checked" class-button="bnt-outline-secondary" toggle/>
                 <x-form-radio name="options-outlined" id="success-outlined" autocomplete="off" checked label="Checked succes radio" class-button="btn-outline-success" toggle/>
                 <x-form-radio  name="options-outlined" id="danger-outlined" autocomplete="off" label="Danger radio" class-button="btn-outline-danger" toggle/>
 
-                <h2 id="form-range" class="mt-5" style="color:green !important">Range</h2>
+                <h2 id="form-range">Range</h2>
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/range/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
-                <h3 class="mt-3">Standard</h3>
+                <h3>Standard</h3>
                 <x-form-input type="range" class="mb-3" id="customRange1" label="Example range"/>
 
-                <h3 class="mt-3">Disabled</h3>
+                <h3>Disabled</h3>
                 <x-form-input type="range" class="mb-3" id="disabledRange" label="Disabled range" disabled/>
 
-                <h3 class="mt-3">Min and max</h3>
+                <h3>Min and max</h3>
                 <x-form-input type="range" class="mb-3" min="0" max="5" id="customRange2" label="Example range with min and max"/>
 
-                <h3 class="mt-3">Steps</h3>
+                <h3>Steps</h3>
                 <x-form-input type="range" class="mb-3" min="0" max="5" step="0.5" id="customRange2" label="Example range with min and max and step"/>
 
-                <h2 id="form-input-group" class="mt-5" style="color:green !important">Input group</h2>
+                <h2 id="form-input-group">Input group</h2>
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/input-group/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
-                <h3 class="mt-3">Basic example</h3>
+                <h3>Basic example</h3>
                 <p><span class="text-danger">TODO:</span> finish</p>
 
                 <x-form-input-group class="mb-3">
@@ -410,14 +410,14 @@
                     </x-form-textarea>
                 </div>
 
-                <h3 class="mt-3">Wrapping</h3>
+                <h3>Wrapping</h3>
 
                 <x-form-input-group class="flex-nowrap">
                     <x-form-input-group-text id="addon-wrapping">@</x-form-input-group-text>
                     <x-form-input placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"/>
                 </x-form-input-group>
 
-                <h3 class="mt-3">Sizing</h3>
+                <h3>Sizing</h3>
 
                 <x-form-input-group class="input-group-sm mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
@@ -434,7 +434,7 @@
                     <x-form-input aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"/>
                 </x-form-input-group>
 
-                <h3 class="mt-3">Checkboxes and radios</h3>
+                <h3>Checkboxes and radios</h3>
                 <p><span class="text-danger">TODO: </span>Alignment not correct</p>
                 <x-form-input-group class="mb-3">
                     <x-form-input-group-text class="">
@@ -450,14 +450,14 @@
                     <x-form-input aria-label="Text input with radio button"/>
                 </x-form-input-group>
 
-                <h3 class="mt-3">Multiple inputs</h3>
+                <h3>Multiple inputs</h3>
                 <x-form-input-group class="input-group">
                     <x-form-input-group-text>Name</x-form-input-group-text>
                     <x-form-input aria-label="First name" placeholder="First name"/>
                     <x-form-input aria-label="Last name" placeholder="Last name"/>
                 </x-form-input-group>
 
-                <h3 class="mt-3">Multiple addons</h3>
+                <h3>Multiple addons</h3>
 
                 <x-form-input-group class=" mb-3">
                     <x-form-input-group-text>$</x-form-input-group-text>
@@ -471,7 +471,7 @@
                     <x-form-input-group-text>0.00</x-form-input-group-text>
                 </x-form-input-group>
 
-                <h3 class="mt-3">Button addons</h3>
+                <h3>Button addons</h3>
 
                 <x-form-input-group class="mb-3">
                     <x-form-button class="btn-outline-secondary" id="button-addon1" class-button="btn-secondary">Button</x-form-button>
@@ -495,7 +495,7 @@
                     <x-form-button class="btn-outline-primary" class-button="btn-outline-primary">Button</x-form-button>
                 </x-form-input-group>
 
-                <h3 class="mt-3">Buttons with dropdowns</h3>
+                <h3>Buttons with dropdowns</h3>
                 <x-form-input-group class="mb-3">
                     <x-form-button class="btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
                     <ul class="dropdown-menu">
@@ -540,7 +540,7 @@
                     </ul>
                 </x-form-input-group>
 
-                <h3 class="mt-3">Segmented buttons</h3>
+                <h3>Segmented buttons</h3>
 
                 <x-form-input-group class="mb-3">
                     <x-form-button class="btn-outline-secondary">Action</x-form-button>
@@ -572,7 +572,7 @@
                     </ul>
                 </x-form-input-group>
 
-                <h3 class="mt-3">Custom select</h3>
+                <h3>Custom select</h3>
 
                 <p><span class="text-danger">TODO: </span>Label elements in first 2 examples</p>
 
@@ -616,7 +616,7 @@
                     <x-form-button class="btn-outline-secondary">Button</x-form-button>
                 </x-form-input-group>
 
-                <h3 class="mt-3">Custom file input</h3>
+                <h3>Custom file input</h3>
 
                 <p><span class="text-danger">TODO: </span>Label elements in first 2 examples</p>
 
@@ -640,34 +640,34 @@
                     <x-form-button class="btn-outline-secondary" id="inputGroupFileAddon04">Button</x-form-button>
                 </x-form-input-group>
 
-                <h2 id="form-floating-label" class="mt-5" style="color:green !important">Floating labels</h2>
+                <h2 id="form-floating-label">Floating labels</h2>
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/floating-labels/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
-                <h3 class="mt-3">Example</h3>
+                <h3>Example</h3>
                 <x-form-input class="mb-3" id="floatingInput" placeholder="name@example.com" floating label="Email address"/>
                 <x-form-input id="floatingPassword" placeholder="Password" floating label="Password"/>
 
-                <h3 class="mt-3">Value already present</h3>
+                <h3>Value already present</h3>
                 <x-form-form class="form-floating">
                     <x-form-input id="floatingInputValue" label="Input with value" placeholder="name@example.com" floating value="test@example.com"/>
                 </x-form-form>
 
-                <h3 class="mt-3">Form validation styles</h3>
+                <h3>Form validation styles</h3>
                 <x-form-form class="form-floating">
                     <x-form-input class="is-invalid" id="floatingInputInvalid" placeholder="name@example.com" value="test@example.com" label="Invalid input" floating/>
                 </x-form-form>
 
-                <h3 class="mt-3">Textareas</h3>
+                <h3>Textareas</h3>
                 <div class="form-floating">
                     <x-form-textarea placeholder="Leave a comment here" id="floatingTextarea" label="Comments" floating></x-form-textarea>
                 </div>
 
-                <h3 class="mt-3">Explicit height</h3>
+                <h3>Explicit height</h3>
                 <div class="form-floating">
                     <x-form-textarea placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" label="Comments" floating></x-form-textarea>
                 </div>
 
-                <h3 class="mt-3">Selects</h3>
+                <h3>Selects</h3>
                 <div class="form-floating">
                     <x-form-select id="floatingSelect" aria-label="Floating label select example" label="Works with selects" floating>
                         <option selected>Open this select menu</option>
@@ -677,7 +677,7 @@
                     </x-form-select>
                 </div>
 
-                <h3 class="mt-3">Layout</h3>
+                <h3>Layout</h3>
                 <div class="row g-2">
                     <div class="col-md">
                         <div class="form-floating">
@@ -696,10 +696,10 @@
                     </div>
                 </div>
 
-                <h2 id="form-layout" class="mt-5" style="color:green !important">Layout</h2>
+                <h2 id="form-layout">Layout</h2>
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/layout/" target="_blank">bootstrap documentation</a>. Adjusted to use our form-components.</p>
 
-                <h3 class="mt-3">Form grid</h3>
+                <h3>Form grid</h3>
                 <div class="row mb-3">
                     <div class="col">
                         <x-form-input type="text" placeholder="First name" aria-label="First name"/>
@@ -709,7 +709,7 @@
                     </div>
                 </div>
 
-                <h3 class="mt-3">Gutters</h3>
+                <h3>Gutters</h3>
                 <div class="row g-3 mb-3">
                     <div class="col">
                         <x-form-input type="text" placeholder="First name" aria-label="First name"/>
@@ -719,7 +719,7 @@
                     </div>
                 </div>
 
-                <h3 class="mt-3">Complex form</h3>
+                <h3>Complex form</h3>
                 <x-form-form class="row g-3 mb-3">
                     <div class="col-md-6">
                         <x-form-input type="email" label="Email" id="inputEmail4" autocomplete="username"/>
@@ -754,9 +754,9 @@
                     </div>
                 </x-form-form>
 
-                <h3 class="mt-3">Horizontal form</h3>
+                <h3>Horizontal form</h3>
 
-                <x-form-form class="mb-3">
+                <x-form-form class="mb-5">
                     <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email test" horizontal class-label="col-2" class-control="col-10" required/>
                     <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
                     <x-form-input type="range" class="mb-3" id="inputPassword9" label="Password" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
@@ -779,10 +779,12 @@
                             <x-form-checkbox  id="gridCheck1" label="Example checkbox"/>
                         </div>
                     </div>
-                    <x-form-submit class="btn-primary">Sign in</x-form-submit>
+                    <div class="row">
+                        <x-form-submit class="btn-primary">Sign in</x-form-submit>
+                    </div>
                 </x-form-form>
 
-                <h3 class="mt-5">Horizontal form label sizing</h3>
+                <h3 class="mt-4">Horizontal form label sizing</h3>
 
                 <div class="row mb-3">
                     <x-form-input type="email" class="form-control-sm" id="colFormLabelSm" label="Email" placeholder="col-form-label-sm" horizontal class-label="col-2" class-control="col-10" autocomplete="username"/>
@@ -807,7 +809,7 @@
                     </div>
                 </div>
 
-                <h3 class="mt-3">Auto sizing</h3>
+                <h3>Auto sizing</h3>
                 <form class="row gy-2 gx-3 align-items-center mb-3">
                     <div class="col-auto">
                         <x-form-input type="text" id="autoSizingInput" label="Name" placeholder="Jane Doe" class-label="visually-hidden"/>
@@ -847,7 +849,7 @@
                     </div>
                 </form>
 
-                <h3 class="mt-3">Specific column classes</h3>
+                <h3>Specific column classes</h3>
 
                 <form class="row gx-3 gy-2 align-items-center mb-3">
                     <div class="col-sm-3">
@@ -879,7 +881,7 @@
                     </div>
                 </form>
 
-                <h3 class="mt-3">Inline forms</h3>
+                <h3>Inline forms</h3>
 
                 <x-form-form action="" tooltip="" label="test" class="row-cols-lg-auto g-3 align-items-center">
                     <div class="col-12 mb-3">
@@ -911,7 +913,7 @@
                     </div>
                 </x-form-form>
 
-                <h2 id="form-validation" class="mt-5" style="color:green !important">Validation</h2>
+                <h2 class="mt-4" id="form-validation">Validation</h2>
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.0/forms/validation/" target="_blank">bootstrap documentation</a>. Adjusted to use our form-components.</p>
 
                 <p>Not all controls support validation styles, see Bootstrap validation. Input, select and checkboxes do. As well as up to 1 form control in an input-group.</p>
@@ -960,7 +962,7 @@
                     </div>
                 </x-form-form>
 
-                <h3 class="mt-5">Browser defaults</h3>
+                <h3 class="mt-4">Browser defaults</h3>
 
                 <x-form-form class="row g-3">
                     <div class="col-md-4">
@@ -1002,7 +1004,7 @@
                     </div>
                 </x-form-form>
 
-                <h3 class="mt-5">Server side</h3>
+                <h3 class="mt-4">Server side</h3>
 
                 <x-form-form class="row g-3">
                     <div class="col-md-4">
@@ -1061,7 +1063,7 @@
                     </div>
                 </x-form-form>
 
-                <h3 class="mt-5">Supported elements</h3>
+                <h3>Supported elements</h3>
 
                 <x-form-form class="was-validated">
                     <div class="mb-3">
@@ -1102,7 +1104,7 @@
                     </div>
                 </x-form-form>
 
-                <h3 class="mt-3">Tooltips</h3>
+                <h3>Tooltips</h3>
                 <x-form-form class="row g-3 needs-validation" novalidate>
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationTooltip01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Aweful!" tooltip-feedback/>
@@ -1134,10 +1136,10 @@
                     </div>
                 </x-form-form>
 
-                <h2 id="form-validation" class="mt-5" style="color:green !important">Custom tests</h2>
+                <h2 class="mt-4" id="form-validation">Custom tests</h2>
                 <p>Custom tests not based on Bootstrap documentation</p>
 
-                <h3>Setting "has-client-side-validation" and "has-custom-client-side-validation" attribute on form component with custom validation</h3>
+                <h3 >Setting "has-client-side-validation" and "has-custom-client-side-validation" attribute on form component with custom validation</h3>
 
                 <x-form-form class="row g-3" has-client-side-validation has-custom-client-side-validation>
                     <div class="col-md-4 position-relative">
@@ -1183,7 +1185,7 @@
                     </div>
                 </x-form-form>
 
-                <h3 id="form-custom-tests" class="mt-3">Setting "has-client-side-validation" attribute on form component with custom validation</h3>
+                <h3 class="mt-4" id="form-custom-tests">Setting "has-client-side-validation" attribute on form component with custom validation</h3>
 
                 <x-form-form class="row g-3" has-client-side-validation>
                     <div class="col-md-4 position-relative">
@@ -1229,12 +1231,12 @@
                     </div>
                 </x-form-form>
 
-                <h3 class="mt-3">HTML editor (tinyMCE)</h3>
+                <h3 class="mt-4">HTML editor (tinyMCE)</h3>
                 <x-form-html-editor id="test">
                     hello world!
                 </x-form-html-editor>
 
-                <h3 class="mt-3">All input types</h3>
+                <h3 class="mt-4">All input types</h3>
                 <x-form-form id="form-2">
                     <x-form-input class="mb-3 d-block" name="button" type="button" label="Button" value="Button"/>
                     <x-form-input class="mb-3" name="checkbox" type="checkbox" label="Checkbox"/>
@@ -1269,14 +1271,14 @@
                     </x-form-button>
                 </x-form-form>
 
-                <h3 class="mt-3">Input group with more than one control</h3>
+                <h3 class="mt-4">Input group with more than one control</h3>
                 <x-form-form class="needs-validation" novalidate>
                     <x-form-input-group>
                         <x-form-input-group-text>First and last name</x-form-input-group-text>
                         <x-form-input aria-label="First name" required invalid-feedback="Nope"/>
                         <x-form-input aria-label="Last name" required invalid-feedback="No way"/>
                     </x-form-input-group>
-                    <x-form-input-group class="mt-3">
+                    <x-form-input-group>
                         <x-form-input-group-text>First name</x-form-input-group-text>
                         <x-form-input aria-label="First name" required invalid-feedback="Nope"/>
                     </x-form-input-group>

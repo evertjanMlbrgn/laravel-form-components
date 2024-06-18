@@ -1,5 +1,33 @@
 @import 'bootstrap/scss/bootstrap';
 
-body {
-    //background-color:red;
+h1 {
+    margin-bottom:1em;
+}
+
+h2 {
+    color:darkgreen;
+    margin-top:1em;
+    margin-bottom:1em;
+}
+
+h3 {
+    color:darkgreen;
+    margin-top:1em;
+    margin-bottom:1em;
+}
+
+#section-links a {
+    color:darkgreen;
+}
+
+#section-links a:hover {
+    color:black;
+}
+
+#section-links a:visited {
+    color:green;
+}
+
+#section-links a:active {
+    color:forestgreen;
 }
