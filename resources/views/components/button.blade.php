@@ -4,7 +4,7 @@
     ])->class([
         'btn',
         $classButton
-        ])->filter(fn (string $value, string $key) => !in_array($key, ['required', 'readonly']))
+        ])->filter(fn (string $value, string $key) => !in_array($key, ['required', 'readonly', 'label']))
     }}
     @if(isset($name))
         name="{{ $name }}"

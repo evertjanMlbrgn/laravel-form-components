@@ -293,7 +293,7 @@
                         Just some help text
                     @endslot
                 </x-form-radio>
-                <x-form-radio name="flexRadioDefault" id="flexRadioDefault1" label="Default checked radio" checked/>
+                <x-form-radio name="flexRadioDefault" id="flexRadioDefault2" label="Default checked radio" checked/>
 
                 <h3 class="mt-3">Disabled</h3>
 
@@ -302,10 +302,10 @@
 
                 <h3 class="mt-3">Switches</h3>
 
-                <x-form-checkbox id="flexSwitchCheckDefault" label="Default switch checkbox input" switch/>
-                <x-form-checkbox id="flexSwitchCheckDefault" label="Checked switch checkbox input" checked switch/>
-                <x-form-checkbox id="flexSwitchCheckDefault" label="Disabled switch checkbox input" disabled switch/>
-                <x-form-checkbox id="flexSwitchCheckDefault" label="Disabled checked switch checkbox input" disabled checked switch/>
+                <x-form-checkbox id="flexSwitchCheckDefault1" label="Default switch checkbox input" switch/>
+                <x-form-checkbox id="flexSwitchCheckDefault2" label="Checked switch checkbox input" checked switch/>
+                <x-form-checkbox id="flexSwitchCheckDefault3" label="Disabled switch checkbox input" disabled switch/>
+                <x-form-checkbox id="flexSwitchCheckDefault4" label="Disabled checked switch checkbox input" disabled checked switch/>
 
                 <h3 class="mt-3">vertically stacked</h3>
 
@@ -320,8 +320,8 @@
                 </div>
                 <div class="mb-3">
                     <x-form-radio name="inlineRadioOptions" id="inlineRadio1" value="option1" label="1" inline/>
-                    <x-form-radio name="inlineRadioOptions" id="inlineRadio1" value="option1" label="2" inline/>
-                    <x-form-radio name="inlineRadioOptions" id="inlineRadio1" value="option1" label="3 (disabled)" disabled inline/>
+                    <x-form-radio name="inlineRadioOptions" id="inlineRadio2" value="option1" label="2" inline/>
+                    <x-form-radio name="inlineRadioOptions" id="inlineRadio3" value="option1" label="3 (disabled)" disabled inline/>
                 </div>
 
                 <h3 class="mt-3">Without labels</h3>
@@ -1236,11 +1236,7 @@
 
                 <h3 class="mt-3">All input types</h3>
                 <x-form-form id="form-2">
-                    <div>
-                        <x-form-input class="mb-3" name="button" type="button" label="Button">
-                            type button
-                        </x-form-input>
-                    </div>
+                    <x-form-input class="mb-3 d-block" name="button" type="button" label="Button" value="Button"/>
                     <x-form-input class="mb-3" name="checkbox" type="checkbox" label="Checkbox"/>
                     <x-form-input class="mb-3" name="color" type="color" label="Color"/>
                     <x-form-input class="mb-3" name="date" type="date" label="Date"/>
@@ -1257,17 +1253,9 @@
                     <x-form-input class="mb-3" name="password" type="password" label="Password" autocomplete="current-password"/>
                     <x-form-input class="mb-3" name="radio" type="radio" label="Radio"/>
                     <x-form-input class="mb-3" name="range" type="range" label="Range"/>
-                    <div>
-                        <x-form-input class="mb-3" name="reset" type="reset" label="Reset">
-                            Reset
-                        </x-form-input>
-                    </div>
+                    <x-form-input class="mb-3 d-block" name="reset" type="reset" label="Reset" value="Reset"/>
                     <x-form-input class="mb-3" name="search" type="search" label="Search"/>
-                    <div>
-                        <x-form-input class="mb-3" name="submit" type="submit" label="Submit">
-                            Submit
-                        </x-form-input>
-                    </div>
+                    <x-form-input class="mb-3 d-block" name="submit" type="submit" label="Submit" value="Submit"/>
                     <x-form-input class="mb-3" name="tel" type="tel" label="Tel" autocomplete="tel"/>
                     <x-form-input class="mb-3" name="text" type="text" label="Text"/>
                     <x-form-input class="mb-3" name="time" type="time" label="Time"/>
@@ -1276,6 +1264,9 @@
                     <x-form-submit>
                         Submit button using x-form-submit component
                     </x-form-submit>
+                    <x-form-button>
+                       Just a button
+                    </x-form-button>
                 </x-form-form>
 
                 <h3 class="mt-3">Input group with more than one control</h3>

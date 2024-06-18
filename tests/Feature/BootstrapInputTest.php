@@ -110,7 +110,6 @@ it('always has an id attribute', function () {
     $this->visit('/bootstrap-inputs')
         ->within('#form-4', function() {
             return $this->seeElement('button[name="button"][id]')// uses button component
-            ->seeElement('button[name="button"][id]')// uses button component
             ->seeElement('input[name="checkbox"][id]')
                 ->seeElement('input[name="color"][id]')
                 ->seeElement('input[name="date"][id]')
@@ -125,9 +124,7 @@ it('always has an id attribute', function () {
                 ->seeElement('input[name="radio"][id]')
                 ->seeElement('input[name="range"][id]')
                 ->seeElement('button[name="reset"][id]')// uses button component
-                ->seeElement('button[name="reset"][id]')// uses button component
                 ->seeElement('input[name="search"][id]')
-                ->seeElement('button[name="submit"][id]')// uses button component
                 ->seeElement('button[name="submit"][id]')// uses button component
                 ->seeElement('input[name="tel"][id]')
                 ->seeElement('input[name="text"][id]')
@@ -136,3 +133,25 @@ it('always has an id attribute', function () {
                 ->seeElement('input[name="week"][id]');
         });
 });
+
+it('set label of button by using value attribute', function () {
+    $this->registerTestRoute('bootstrap-inputs');
+
+    $this->visit('/bootstrap-inputs')
+        ->within('#form-5', function() {
+            return $this->seeInElement('button[name="button"]', 'button label')// uses button component
+                ->seeInElement('button[name="reset"]', 'button label')// uses button component
+                ->seeInElement('button[name="submit"]', 'button label');// uses button component
+        });
+});
+
+//it('set label of button by using value attribute', function () {
+//    $this->registerTestRoute('bootstrap-inputs');
+//
+//    $this->visit('/bootstrap-inputs')
+//        ->within('#form-5', function() {
+//            return $this->seeInElement('button[name="button"]', 'button label')// uses button component
+//            ->seeInElement('button[name="reset"]', 'button label')// uses button component
+//            ->seeInElement('button[name="submit"]', 'button label');// uses button component
+//        });
+//});

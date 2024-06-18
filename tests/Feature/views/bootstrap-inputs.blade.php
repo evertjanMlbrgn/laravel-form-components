@@ -78,3 +78,9 @@
     <x-form-input name="url" type="url" class="extra-1 extra-2"/>
     <x-form-input name="week" type="week" class="extra-1 extra-2"/>
 </x-form-form>
+
+<x-form-form id="form-5">
+    <x-form-input name="button" type="button" value="button label"/>
+    <x-form-input name="reset" type="reset" value="button label"/>
+    <x-form-input name="submit" type="submit" value="button label"/>
+</x-form-form>
