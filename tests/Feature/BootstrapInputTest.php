@@ -78,7 +78,7 @@ it('honors extra classes', function () {
         ->within('#form-4', function() {
             return $this->seeElement('button[name="button"].extra-1.extra-2')// uses button component
                 ->seeElement('button[name="button"].extra-1.extra-2')// uses button component
-                ->seeElement('input[name="checkbox"].extra-1.extra-2')
+                ->seeElement('div.extra-1.extra-2 > input[name="checkbox"]')
                 ->seeElement('input[name="color"].extra-1.extra-2')
                 ->seeElement('input[name="date"].extra-1.extra-2')
                 ->seeElement('input[name="datetime-local"].extra-1.extra-2')
@@ -89,7 +89,7 @@ it('honors extra classes', function () {
                 ->seeElement('input[name="month"].extra-1.extra-2')
                 ->seeElement('input[name="number"].extra-1.extra-2')
                 ->seeElement('input[name="password"].extra-1.extra-2')
-                ->seeElement('input[name="radio"].extra-1.extra-2')
+                ->seeElement('div.extra-1.extra-2 > [name="radio"]')
                 ->seeElement('input[name="range"].extra-1.extra-2')
                 ->seeElement('button[name="reset"].extra-1.extra-2')// uses button component
                 ->seeElement('button[name="reset"].extra-1.extra-2')// uses button component

@@ -765,9 +765,9 @@
                 <x-form-form class="mb-5">
                     <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email test" horizontal class-label="col-2" class-control="col-10" required/>
                     <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
-                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Password" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
+                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
                     <x-form-textarea class="mb-3" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10"/>
-                    <x-form-select id="inputState2" label="State" class="form-select mb-3" horizontal class-label="col-2" class-control="col-10">
+                    <x-form-select id="inputState2" label="State" class="mb-3" horizontal class-label="col-2" class-control="col-10">
                         <option selected>Choose...</option>
                         <option>Kansas</option>
                         <option>Colorado</option>
@@ -924,7 +924,7 @@
 
                 <p>Not all controls support validation styles, see Bootstrap validation. Input, select and checkboxes do. As well as up to 1 form control in an input-group.</p>
 
-                <x-form-form class="row g-3 needs-validation" novalidate>
+                <x-form-form class="row g-3" uses-custom-validation>
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationCustom01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
@@ -970,7 +970,7 @@
 
                 <h3 class="mt-4">Browser defaults</h3>
 
-                <x-form-form class="row g-3">
+                <x-form-form class="row g-3" uses-validation>
                     <div class="col-md-4">
                         <x-form-input id="validationDefault01" value="Mark" required label="First name"/>
                     </div>
@@ -1129,7 +1129,7 @@
                         <x-form-input id="validationTooltip03" required valid-feedback="Nice city!" invalid-feedback="Please provide a valid city." tooltip-feedback label="City"/>
                     </div>
                     <div class="col-md-3 position-relative">
-                        <x-form-select class="form-select" id="validationTooltip04" required label="State" valid-feedback="Great state!" invalid-feedback="Please select a valid state." tooltip-feedback>
+                        <x-form-select id="validationTooltip04" required label="State" valid-feedback="Great state!" invalid-feedback="Please select a valid state." tooltip-feedback>
                             <option selected disabled value="">Choose...</option>
                             <option>...</option>
                         </x-form-select>
@@ -1142,12 +1142,42 @@
                     </div>
                 </x-form-form>
 
+                <h3 class="mt-5">Horizontal form validation</h3>
+                <x-form-form class="mb-5" uses-custom-validation>
+                    <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email" horizontal class-label="col-2" class-control="col-10" required invalid-feedback="wrong"/>
+                    <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="try again"/>
+                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="rejected"/>
+                    <x-form-textarea class="mb-5" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" required invalid-feedback="invalid"/>
+                    <x-form-select id="inputState2" label="State" class="mb-5" horizontal class-label="col-2" class-control="col-10" invalid-feedback="wrong choice" required>
+                        <option disabled selected value> -- select an option -- </option>
+                        <option>Choose...</option>
+                        <option>Kansas</option>
+                        <option>Colorado</option>
+                    </x-form-select>
+                    <fieldset class="row mb-3">
+                        <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+                        <div class="col-sm-10">
+                            <x-form-checkbox name="gridRadios" id="gridRadios1" label="first radio" value="option1" required/>
+                            <x-form-checkbox name="gridRadios" id="gridRadios2" label="second radio" value="option2" required/>
+                            <x-form-checkbox name="gridRadios" id="gridRadios3" label="Third radio" value="option3" required invalid-feedback="You must select one of these 3 radio boxes"/>
+                        </div>
+                    </fieldset>
+                    <div class="row mb-3">
+                        <div class="col-sm-10 offset-sm-2">
+                            <x-form-checkbox id="gridCheck1" label="Example checkbox" required invalid-feedback="Must be checked"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <x-form-submit class="btn-primary">Sign in</x-form-submit>
+                    </div>
+                </x-form-form>
+
                 <h2 class="mt-4" id="form-validation">Custom tests</h2>
                 <p>Custom tests not based on Bootstrap documentation</p>
 
-                <h3 >Setting "has-client-side-validation" and "has-custom-client-side-validation" attribute on form component with custom validation</h3>
+                <h3 >Setting "uses-validation" and "uses-custom-validation" attribute on form component with custom validation</h3>
 
-                <x-form-form class="row g-3" has-client-side-validation has-custom-client-side-validation>
+                <x-form-form class="row g-3" uses-validation uses-custom-validation>
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationCustom06" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
@@ -1191,9 +1221,9 @@
                     </div>
                 </x-form-form>
 
-                <h3 class="mt-4" id="form-custom-tests">Setting "has-client-side-validation" attribute on form component with custom validation</h3>
+                <h3 class="mt-4" id="form-custom-tests">Setting "uses-validation" attribute on form component with custom validation</h3>
 
-                <x-form-form class="row g-3" has-client-side-validation>
+                <x-form-form class="row g-3" uses-validation>
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationCustom11" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>

@@ -1,4 +1,4 @@
-<x-form-form has-custom-client-side-validation>
+<x-form-form uses-custom-validation>
     <div class="input-required">
         <x-form-input class="input-required" name="input" label="input" required/>
     </div>

@@ -1,4 +1,4 @@
-<x-form-form has-custom-client-side-validation>
+<x-form-form uses-custom-validation>
     <x-form-input id="input" class="input-required" name="input" label="input" required>
         @slot('help')
             Help text

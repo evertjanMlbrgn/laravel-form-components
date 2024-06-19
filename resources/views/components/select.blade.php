@@ -9,10 +9,12 @@
 ?>
 
 @if($floating || $horizontal)
-    <div @class([
-    'row' => $horizontal,
-    'form-floating' => $floating
-    ])>
+    <div
+        {{ $attributes->class([
+          'row' => $horizontal,
+          'form-floating' => $floating
+      ])->filter(fn (string $value, string $key) => $key === 'class') }}
+    >
 @endif
 
         @if(!$hidden && (!$floating || $horizontal))
@@ -37,10 +39,18 @@
             >
         @endif
                 <select
-                    {{ $attributes->class([
-                        'form-select',
-                        'is-invalid' => $hasError($name)
-                    ]) }}
+                    @if(!$floating && !$horizontal)
+                        {{ $attributes->class([
+                            'form-select',
+                            'is-invalid' => $hasError($name)
+                        ]) }}
+                    @else
+                        {{ $attributes->filter(fn (string $value, string $key) => $key !== 'class') }}
+                        @class([
+                            'form-select',
+                            'is-invalid' => $hasError($name)
+                        ])
+                    @endif
                     name="{{ $name }}"
                     id="{{ $id }}"
                     @if($multiple) multiple @endif
@@ -57,10 +67,6 @@
                     @endif
                     >
 
-        @if($horizontal)
-            </div>
-        @endif
-
                     @if($placeholder)
                         <option value="" disabled @if($nothingSelected()) selected="selected" @endif>
                             {{ $placeholder }}
@@ -75,6 +81,10 @@
                         {{ $slot }}
                     @endforelse
                 </select>
+
+        @if($horizontal)
+            </div>
+        @endif
 
             @if(!$hidden && ($floating && !$horizontal))
                 <x-mlbrgn-form-label

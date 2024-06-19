@@ -4,19 +4,28 @@
 ?>
 
 @if(!$toggle && !$hidden)
-<div @class([
-    'form-check',
-    'form-check-inline' => $attributes->get('inline'),
-    ])>
+    <div {{ $attributes->class([
+        'form-check',
+        'form-check-inline' => $attributes->get('inline'),
+        ])->filter(fn (string $value, string $key) => $key === 'class') }}
+    >
 @endif
 
     <input
-        {{ $attributes->class([
-            'form-check-input' => !$toggle,
-            'btn-check' => $toggle,
-            'is-invalid' => $hasError($name),
-            'test-class'
-        ]) }}
+        @if(!$toggle && !$hidden)
+            {{ $attributes->filter(fn (string $value, string $key) => $key !== 'class') }}
+            @class([
+                'form-check-input' => !$toggle,
+                'btn-check' => $toggle,
+                'is-invalid' => $hasError($name),
+            ])
+        @else
+            {{ $attributes->class([
+                'form-check-input' => !$toggle,
+                'btn-check' => $toggle,
+                'is-invalid' => $hasError($name),
+            ]) }}
+        @endif
         type="radio"
         value="{{ $value }}"
         name="{{ $name }}"
@@ -27,7 +36,7 @@
         @if(isset($help))
             aria-describedby="{{ $id }}-help-text"
         @endif
-        @if(isset($hidden))
+        @if($hidden)
             hidden
         @endif
     />
@@ -49,6 +58,24 @@
 
     @if(isset($help))
         <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
+    @endif
+
+    @if(!empty($validFeedback))
+        <div @class([
+                'valid-feedback' => !$tooltipFeedback,
+                'valid-tooltip' => $tooltipFeedback,
+            ])>
+            {{ $validFeedback }}
+        </div>
+    @endif
+
+    @if(!empty($invalidFeedback))
+        <div @class([
+                'invalid-feedback' => !$tooltipFeedback,
+                'invalid-tooltip' => $tooltipFeedback,
+            ])>
+            {{ $invalidFeedback }}
+        </div>
     @endif
 
     @if($shouldShowError($name))

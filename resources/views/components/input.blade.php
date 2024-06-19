@@ -20,10 +20,12 @@
     ?>
 
     @if($floating || $horizontal)
-        <div @class([
-        'row' => $horizontal,
-        'form-floating' => $floating
-        ])  >
+        <div
+            {{ $attributes->class([
+                'row' => $horizontal,
+                'form-floating' => $floating
+            ])->filter(fn (string $value, string $key) => $key === 'class') }}
+        >
     @endif
 
         @if(!$hidden && $type !== 'hidden' && (!$floating || $horizontal))
@@ -48,12 +50,22 @@
             >
         @endif
                 <input
-                    {{ $attributes->class([
-                    'form-control' => $type !== 'range',
-                    'form-range' => $type === 'range',
-                    'form-control-color' => ($type === 'color'),
-                    'is-invalid' => ($hasError($name))
-                    ]) }}
+                    @if(!$floating && !$horizontal)
+                        {{ $attributes->class([
+                        'form-control' => $type !== 'range',
+                        'form-range' => $type === 'range',
+                        'form-control-color' => ($type === 'color'),
+                        'is-invalid' => ($hasError($name)),
+                        ]) }}
+                    @else
+                        {{ $attributes->filter(fn (string $value, string $key) => $key !== 'class') }}
+                        @class([
+                            'form-control' => $type !== 'range',
+                            'form-range' => $type === 'range',
+                            'form-control-color' => ($type === 'color'),
+                            'is-invalid' => ($hasError($name)),
+                        ])
+                    @endif
                     type="{{ $type }}"
                     value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
                     name="{{ $name }}"

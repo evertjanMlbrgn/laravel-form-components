@@ -2,10 +2,10 @@
 
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 
-// tests if setting has-custom-client-side-validation adds class needs-validation to form and attribute no-validate
+// tests if setting uses-custom-validation adds class needs-validation to form and attribute no-validate
 // also tests if input-groups get the class has-validation (needed to fix rounded borders on input-groups with
 // validation
-it('handles "has-custom-client-side-validation', function () {
+it('handles "uses-custom-validation', function () {
     $this->registerTestRoute('bootstrap-form-client-side-validation');
 
     $this->visit('/bootstrap-form-client-side-validation')
@@ -16,6 +16,6 @@ it('handles "has-custom-client-side-validation', function () {
         ->seeElement('div.input-group-2.has-validation');
 });
 
-it('adds javascript when using attribute "has-client-side-validation"', function() {
+it('adds javascript when using attribute "uses-validation"', function() {
 
 })->todo();

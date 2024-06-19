@@ -26,8 +26,8 @@ class Form extends FormBaseComponent
      */
     public function __construct(
         string $method = 'POST',
-        public bool $hasCustomClientSideValidation = false,
-        public bool $hasClientSideValidation = false
+        public bool $usesCustomValidation = false,
+        public bool $usesValidation = false
     ) {
         $this->method = strtoupper($method);
         $this->spoofMethod = in_array($this->method, ['PUT', 'PATCH', 'DELETE']);

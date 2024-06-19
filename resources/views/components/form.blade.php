@@ -1,9 +1,9 @@
 <form
     method="{{ $spoofMethod ? 'POST' : $method }}"
     {{ $attributes->class([
-        'needs-validation' => $hasError() || $hasCustomClientSideValidation
+        'needs-validation' => $hasError() || $usesCustomValidation
     ]) }}
-    {{ $hasCustomClientSideValidation ? 'novalidate' : '' }}
+    {{ $usesCustomValidation ? 'novalidate' : '' }}
     >
 
     @unless(in_array($method, ['HEAD', 'GET', 'OPTIONS']))

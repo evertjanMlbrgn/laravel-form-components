@@ -4,10 +4,13 @@
 ?>
 
 @if($floating || $hidden || $horizontal)
-    <div @class([
-    'row' => $horizontal,
-    'form-floating' => $floating,
-    'd-none' => $hidden])  >
+    <div
+        {{ $attributes->class([
+            'row' => $horizontal,
+            'form-floating' => $floating,
+            'd-none' => $hidden
+       ])->filter(fn (string $value, string $key) => $key === 'class') }}
+    >
         @endif
 
         @if(!$hidden && (!$floating || $horizontal))
@@ -31,13 +34,21 @@
                  ])
             >
         @endif
-
                 <textarea
-                    {{ $attributes->class([
-                        'form-control',
-                        'html-editor',
-                        'is-invalid' => $hasError($name)
+                    @if(!$floating && !$horizontal)
+                        {{ $attributes->class([
+                            'form-control',
+                            'html-editor',
+                            'is-invalid' => $hasError($name)
                         ]) }}
+                    @else
+                        {{ $attributes->filter(fn (string $value, string $key) => $key !== 'class') }}
+                        @class([
+                            'form-control',
+                            'html-editor',
+                            'is-invalid' => $hasError($name)
+                        ])
+                    @endif
                     name="{{ $name }}"
                     id="{{ $id }}"
 {{--                    @if($required) required @endif--}}

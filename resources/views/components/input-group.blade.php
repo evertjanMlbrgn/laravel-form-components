@@ -1,11 +1,11 @@
 @aware([
-    'hasClientSideValidation',
-    'hasCustomClientSideValidation'
+    'usesValidation',
+    'usesCustomValidation'
 ]
 )
 <div {{ $attributes->class([
     'input-group',
-    'has-validation' => $hasCustomClientSideValidation || $hasClientSideValidation// needs to be added for rounded border when validation messages show
+    'has-validation' => $usesCustomValidation || $usesValidation// needs to be added for rounded border when validation messages show
     ]) }}
 >
 
