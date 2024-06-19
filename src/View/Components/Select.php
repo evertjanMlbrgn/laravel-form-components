@@ -38,7 +38,8 @@ class Select extends FormBaseComponent
         public string $classControl = '',
         public string $validFeedback = '',
         public string $invalidFeedback = '',
-        public bool $tooltipFeedback = false
+        public bool $tooltipFeedback = false,
+        public string $helpText = ''
     ) {
         $this->manyRelation = $manyRelation;
 

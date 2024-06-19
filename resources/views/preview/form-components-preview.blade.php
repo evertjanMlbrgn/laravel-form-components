@@ -1171,54 +1171,27 @@
 
                 <h3 class="mt-5">Horizontal form validation</h3>
                 <x-form-form class="mb-5" uses-custom-validation>
-                    <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email" horizontal class-label="col-2" class-control="col-10" required invalid-feedback="wrong">
-                    @slot('help')
-                        help text
-                    @endslot
-                    </x-form-input>
-                    <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="try again">
-                        @slot('help')
-                            help text
-                        @endslot
-                    </x-form-input>
-                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="rejected">
-                        @slot('help')
-                            help text
-                        @endslot
-                    </x-form-input>
-                    <x-form-textarea class="mb-5" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" required invalid-feedback="invalid">
-                        @slot('help')
-                            help text
-                        @endslot
-                    </x-form-textarea>
-                    <x-form-select id="inputState2" label="State" class="mb-5" horizontal class-label="col-2" class-control="col-10" invalid-feedback="wrong choice" required>
+                    <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email" horizontal class-label="col-2" class-control="col-10" required invalid-feedback="wrong" help-text="help text using help attribute"/>
+                    <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="try again" help-text="help text using help attribute"/>
+                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="rejected" help-text="help text using help attribute"/>
+                    <x-form-textarea class="mb-5" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" required invalid-feedback="invalid" help-text="help text using help attribute"/>
+                    <x-form-select id="inputState2" label="State" class="mb-5" horizontal class-label="col-2" class-control="col-10" invalid-feedback="wrong choice" required help-text="help text using help attribute">
                         <option disabled selected value> -- select an option -- </option>
                         <option>Choose...</option>
                         <option>Kansas</option>
                         <option>Colorado</option>
-                        @slot('help')
-                            help text
-                        @endslot
                     </x-form-select>
                     <fieldset class="row mb-3">
                         <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
                         <div class="col-sm-10">
                             <x-form-radio name="gridRadios" id="gridRadios1" label="first radio" value="option1" required/>
                             <x-form-radio name="gridRadios" id="gridRadios2" label="second radio" value="option2" required/>
-                            <x-form-radio name="gridRadios" id="gridRadios3" label="Third radio" value="option3" required invalid-feedback="You must select one of these 3 radio boxes">
-                                @slot('help')
-                                    help text
-                            @endslot
-                            </x-form-radio>
+                            <x-form-radio name="gridRadios" id="gridRadios3" label="Third radio" value="option3" required invalid-feedback="You must select one of these 3 radio boxes" help-text="help text using help attribute"/>
                         </div>
                     </fieldset>
                     <div class="row mb-3">
                         <div class="col-sm-10 offset-sm-2">
-                            <x-form-checkbox id="gridCheck1" label="Example checkbox" required invalid-feedback="Must be checked">
-                                @slot('help')
-                                    help text
-                                @endslot
-                            </x-form-checkbox>
+                            <x-form-checkbox id="gridCheck1" label="Example checkbox" required invalid-feedback="Must be checked" help-text="help text using help attribute"/>
                         </div>
                     </div>
                     <div class="row">
