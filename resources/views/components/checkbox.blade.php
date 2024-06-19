@@ -57,11 +57,6 @@
         </x-mlbrgn-form-label>
     @endif
 
-
-    @if(isset($help))
-        <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
-    @endif
-
     @if(!empty($validFeedback))
         <div @class([
                     'valid-feedback' => !$tooltipFeedback,
@@ -82,6 +77,10 @@
 
     @if($shouldShowError($name))
         <x-mlbrgn-form-errors :name="$name" />
+    @endif
+
+    @if(isset($help))
+        <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
     @endif
 
 @if(!$toggle && !$hidden)

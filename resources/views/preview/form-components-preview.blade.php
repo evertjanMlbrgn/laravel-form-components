@@ -763,26 +763,53 @@
                 <h3>Horizontal form</h3>
 
                 <x-form-form class="mb-5">
-                    <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email test" horizontal class-label="col-2" class-control="col-10" required/>
-                    <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
-                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
-                    <x-form-textarea class="mb-3" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10"/>
+                    <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email test" horizontal class-label="col-2" class-control="col-10" required>
+                        @slot('help')
+                            horizontal email
+                        @endslot
+                    </x-form-input>
+                    <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password">
+                        @slot('help')
+                            horizontal password
+                        @endslot
+                    </x-form-input>
+                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password">
+                        @slot('help')
+                            horizontal range
+                        @endslot
+                    </x-form-input>
+                    <x-form-textarea class="mb-3" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10">
+                        @slot('help')
+                            horizontal textarea
+                        @endslot
+                    </x-form-textarea>
                     <x-form-select id="inputState2" label="State" class="mb-3" horizontal class-label="col-2" class-control="col-10">
                         <option selected>Choose...</option>
                         <option>Kansas</option>
                         <option>Colorado</option>
+                        @slot('help')
+                            horizontal select
+                        @endslot
                     </x-form-select>
                     <fieldset class="row mb-3">
                         <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
                         <div class="col-sm-10">
-                            <x-form-checkbox name="gridRadios" id="gridRadios1" label="first radio" value="option1" checked/>
-                            <x-form-checkbox name="gridRadios" id="gridRadios2" label="second radio" value="option2" checked/>
-                            <x-form-checkbox name="gridRadios" id="gridRadios3" label="Third disabled option" value="option3" disabled/>
+                            <x-form-radio name="gridRadios" id="gridRadios1" label="first radio" value="option1" checked/>
+                            <x-form-radio name="gridRadios" id="gridRadios2" label="second radio" value="option2" checked/>
+                            <x-form-radio name="gridRadios" id="gridRadios3" label="Third disabled option" value="option3" disabled>
+                                @slot('help')
+                                    radios
+                                @endslot
+                            </x-form-radio>
                         </div>
                     </fieldset>
                     <div class="row mb-3">
                         <div class="col-sm-10 offset-sm-2">
-                            <x-form-checkbox  id="gridCheck1" label="Example checkbox"/>
+                            <x-form-checkbox id="gridCheck1" label="Example checkbox">
+                                @slot('help')
+                                    checkbox
+                                @endslot
+                            </x-form-checkbox>
                         </div>
                     </div>
                     <div class="row">
@@ -1144,27 +1171,54 @@
 
                 <h3 class="mt-5">Horizontal form validation</h3>
                 <x-form-form class="mb-5" uses-custom-validation>
-                    <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email" horizontal class-label="col-2" class-control="col-10" required invalid-feedback="wrong"/>
-                    <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="try again"/>
-                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="rejected"/>
-                    <x-form-textarea class="mb-5" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" required invalid-feedback="invalid"/>
+                    <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email" horizontal class-label="col-2" class-control="col-10" required invalid-feedback="wrong">
+                    @slot('help')
+                        help text
+                    @endslot
+                    </x-form-input>
+                    <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="try again">
+                        @slot('help')
+                            help text
+                        @endslot
+                    </x-form-input>
+                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="rejected">
+                        @slot('help')
+                            help text
+                        @endslot
+                    </x-form-input>
+                    <x-form-textarea class="mb-5" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" required invalid-feedback="invalid">
+                        @slot('help')
+                            help text
+                        @endslot
+                    </x-form-textarea>
                     <x-form-select id="inputState2" label="State" class="mb-5" horizontal class-label="col-2" class-control="col-10" invalid-feedback="wrong choice" required>
                         <option disabled selected value> -- select an option -- </option>
                         <option>Choose...</option>
                         <option>Kansas</option>
                         <option>Colorado</option>
+                        @slot('help')
+                            help text
+                        @endslot
                     </x-form-select>
                     <fieldset class="row mb-3">
                         <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
                         <div class="col-sm-10">
-                            <x-form-checkbox name="gridRadios" id="gridRadios1" label="first radio" value="option1" required/>
-                            <x-form-checkbox name="gridRadios" id="gridRadios2" label="second radio" value="option2" required/>
-                            <x-form-checkbox name="gridRadios" id="gridRadios3" label="Third radio" value="option3" required invalid-feedback="You must select one of these 3 radio boxes"/>
+                            <x-form-radio name="gridRadios" id="gridRadios1" label="first radio" value="option1" required/>
+                            <x-form-radio name="gridRadios" id="gridRadios2" label="second radio" value="option2" required/>
+                            <x-form-radio name="gridRadios" id="gridRadios3" label="Third radio" value="option3" required invalid-feedback="You must select one of these 3 radio boxes">
+                                @slot('help')
+                                    help text
+                            @endslot
+                            </x-form-radio>
                         </div>
                     </fieldset>
                     <div class="row mb-3">
                         <div class="col-sm-10 offset-sm-2">
-                            <x-form-checkbox id="gridCheck1" label="Example checkbox" required invalid-feedback="Must be checked"/>
+                            <x-form-checkbox id="gridCheck1" label="Example checkbox" required invalid-feedback="Must be checked">
+                                @slot('help')
+                                    help text
+                                @endslot
+                            </x-form-checkbox>
                         </div>
                     </div>
                     <div class="row">

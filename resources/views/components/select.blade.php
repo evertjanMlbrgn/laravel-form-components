@@ -100,10 +100,6 @@
                     </div>
                 @endif
 
-        @if($horizontal)
-            </div>
-        @endif
-
             @if(!$hidden && ($floating && !$horizontal))
                 <x-mlbrgn-form-label
                     :parentClasses="$attributes->get('class')"
@@ -116,14 +112,17 @@
                 </x-mlbrgn-form-label>
             @endif
 
-            @if(isset($help))
-                <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
-            @endif
-
             @if($shouldShowError($name))
                 <x-mlbrgn-form-errors :name="$name" />
             @endif
 
+            @if(isset($help))
+                <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
+            @endif
+
+        @if($horizontal)
+            </div>
+        @endif
 
 @if($floating || $horizontal)
     </div>
