@@ -10,7 +10,7 @@
     @if(isset($name))
         name="{{ $name }}"
     @endif
-    @if(isset($hidden))
+    @if($hidden)
         hidden
     @endif
     id="{{ $getId() }}"
