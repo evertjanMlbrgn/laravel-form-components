@@ -82,6 +82,24 @@
                     @endforelse
                 </select>
 
+                @if(!empty($validFeedback))
+                    <div @class([
+                    'valid-feedback' => !$tooltipFeedback,
+                    'valid-tooltip' => $tooltipFeedback,
+                ])>
+                        {{ $validFeedback }}
+                    </div>
+                @endif
+
+                @if(!empty($invalidFeedback))
+                    <div @class([
+                    'invalid-feedback' => !$tooltipFeedback,
+                    'invalid-tooltip' => $tooltipFeedback,
+                ])>
+                        {{ $invalidFeedback }}
+                    </div>
+                @endif
+
         @if($horizontal)
             </div>
         @endif
@@ -96,24 +114,6 @@
                     :for="$id">
                     {{ $label }}
                 </x-mlbrgn-form-label>
-            @endif
-
-            @if(!empty($validFeedback))
-                <div @class([
-                    'valid-feedback' => !$tooltipFeedback,
-                    'valid-tooltip' => $tooltipFeedback,
-                ])>
-                    {{ $validFeedback }}
-                </div>
-            @endif
-
-            @if(!empty($invalidFeedback))
-                <div @class([
-                    'invalid-feedback' => !$tooltipFeedback,
-                    'invalid-tooltip' => $tooltipFeedback,
-                ])>
-                    {{ $invalidFeedback }}
-                </div>
             @endif
 
             @if(isset($help))
