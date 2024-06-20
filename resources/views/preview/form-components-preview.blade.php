@@ -975,8 +975,7 @@
                         <x-form-input id="validationCustom03" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
                     </div>
                     <div class="col-md-3">
-                        <x-form-select id="validationCustom04" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state.">
-                            <option selected disabled value="">Choose...</option>
+                        <x-form-select id="validationCustom04" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state." placeholder="Choose...">
                             <option>...</option>
                         </x-form-select>
                     </div>
@@ -1018,8 +1017,7 @@
                     </div>
                     <div class="col-md-3">
                         <label for="validationDefault04" class="form-label">State</label>
-                        <x-form-select id="validationDefault04" required>
-                            <option selected disabled value="">Choose...</option>
+                        <x-form-select id="validationDefault04" required placeholder="Choose...">
                             <option>...</option>
                         </x-form-select>
                     </div>
@@ -1069,8 +1067,8 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <x-form-select class="is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required label="State">
-                            <option selected disabled value="">Choose...</option>
+                        <option selected disabled value=""></option>
+                        <x-form-select class="is-invalid" id="validationServer04" aria-describedby="validationServer04Feedback" required label="State" placeholder="Choose...">
                             <option>...</option>
                         </x-form-select>
                         <div id="validationServer04Feedback" class="invalid-feedback">
@@ -1156,8 +1154,7 @@
                         <x-form-input id="validationTooltip03" required valid-feedback="Nice city!" invalid-feedback="Please provide a valid city." tooltip-feedback label="City"/>
                     </div>
                     <div class="col-md-3 position-relative">
-                        <x-form-select id="validationTooltip04" required label="State" valid-feedback="Great state!" invalid-feedback="Please select a valid state." tooltip-feedback>
-                            <option selected disabled value="">Choose...</option>
+                        <x-form-select id="validationTooltip04" required label="State" valid-feedback="Great state!" invalid-feedback="Please select a valid state." tooltip-feedback placeholder="Choose...">
                             <option>...</option>
                         </x-form-select>
                     </div>
@@ -1175,9 +1172,8 @@
                     <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="try again" help-text="help text using help attribute"/>
                     <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="rejected" help-text="help text using help attribute"/>
                     <x-form-textarea class="mb-5" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" required invalid-feedback="invalid" help-text="help text using help attribute"/>
-                    <x-form-select id="inputState2" label="State" class="mb-5" horizontal class-label="col-2" class-control="col-10" invalid-feedback="wrong choice" required help-text="help text using help attribute">
-                        <option disabled selected value> -- select an option -- </option>
-                        <option>Choose...</option>
+                    <x-form-select id="inputState2" label="State" class="mb-5" horizontal class-label="col-2" class-control="col-10" invalid-feedback="wrong choice" required help-text="help text using help attribute" placeholder="Choose...">
+                        <option>Iowa</option>
                         <option>Kansas</option>
                         <option>Colorado</option>
                     </x-form-select>
@@ -1228,8 +1224,7 @@
                         <x-form-input id="validationCustom08" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
                     </div>
                     <div class="col-md-3">
-                        <x-form-select id="validationCustom09" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state.">
-                            <option selected disabled value="">Choose...</option>
+                        <x-form-select id="validationCustom09" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state." placeholder="Choose...">
                             <option>...</option>
                         </x-form-select>
                     </div>
@@ -1274,8 +1269,7 @@
                         <x-form-input id="validationCustom13" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
                     </div>
                     <div class="col-md-3">
-                        <x-form-select id="validationCustom14" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state.">
-                            <option selected disabled value="">Choose...</option>
+                        <x-form-select id="validationCustom14" label="State" required valid-feedback="Way to go!" invalid-feedback="Please select a valid state." placeholder="Choose...">
                             <option>...</option>
                         </x-form-select>
                     </div>
