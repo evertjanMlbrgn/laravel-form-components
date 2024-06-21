@@ -80,3 +80,37 @@ it('does not render label when checkbox is hidden', function () {
         });
 });
 
+it('honors use_wrapper_classes when set to true', function () {
+    Config::set('form-components.use_wrapper_classes', true);
+
+    $this->registerTestRoute('bootstrap-checkbox');
+
+    $this->visit('/bootstrap-checkbox')
+        ->within('#form-3', function() {
+            $this->seeElement('div.mx-3.my-3.ms-3.mt-3.me-3.mb-3 input[name="checkbox"].form-control-lg.some-other-class');
+
+        });
+});
+
+it('honors use_wrapper_classes when set to false', function () {
+    Config::set('form-components.use_wrapper_classes', false);
+
+    $this->registerTestRoute('bootstrap-checkbox');
+
+    $this->visit('/bootstrap-checkbox')
+        ->within('#form-3', function() {
+            $this->seeElement('input[name="checkbox"].form-control-lg.some-other-class.mx-3.my-3.ms-3.mt-3.me-3.mb-3');
+        });
+
+    Config::set('form-components.use_wrapper_classes', true);
+
+});
+
+it('sets a default value', function () {
+    $this->registerTestRoute('bootstrap-checkbox');
+
+    $this->visit('/bootstrap-checkbox')
+        ->within('#form-default', function() {
+            $this->seeElement('input[name="checkbox"]:checked');
+        });
+});

@@ -1,33 +1,38 @@
-{{-- Only add a wrapper element when floating label, hidden or horizontal control --}}
-{{-- Label position should always be before control, except when floating, ignore floating when horizontal control --}}
-
 {{-- If checkbox or radio use dedicated components --}}
-@if($type === 'button')
-    @include('form-components::button', ['classButton' => 'btn-primary', 'slot' => $attributes->get('value')])
-@elseif($type === 'checkbox')
-    @include('form-components::checkbox', ['toggle' => false, 'checked' => $attributes->has('checked'), 'classButton' => '', 'labelButton' => ''])
-@elseif($type === "radio")
-    @include('form-components::radio', ['toggle' => false, 'checked' => $attributes->has('checked'), 'classButton' => '', 'labelButton' => ''])
-@elseif($type === 'reset')
-    @include('form-components::button', ['type' => 'reset', 'classButton' => 'btn-primary', 'slot' => $attributes->get('value')])
-@elseif($type === 'submit')
-    @include('form-components::button', ['type' => 'submit', 'classButton' => 'btn-primary', 'slot' => $attributes->get('value')])
-@else
 
-    {{-- cache id, new on generated each time $getId() is called if no name or id attribute --}}
-    <?php
-        $id = $getId();
-    ?>
+    {{-- Handle different input types --}}
+    @if(in_array($type, ['button', 'reset', 'submit']))
+        @include('form-components::button', [
+            'type' => $type,
+            'classButton' => 'btn-primary',
+            'slot' => $attributes->get('value')
+        ])
+    @elseif(in_array($type, ['checkbox', 'radio']))
+        @include('form-components::' . $type, [
+            'toggle' => false,
+            'checked' => $attributes->has('checked'),
+            'classButton' => '',
+            'labelButton' => ''
+        ])
+    @else
 
+    {{-- Cache ID to avoid generating multiple times --}}
+    <?php $id = $getId(); ?>
+
+    {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
     @if($floating || $horizontal)
+{{--        onlyWrapperClasses: @dump($attributes->onlyWrapperClasses())--}}
+{{--        exceptWrapperClasses: @dump($attributes->exceptWrapperClasses())--}}
+{{--        all attributes @dump($attributes)--}}
         <div
-            {{ $attributes->class([
+            {{ $attributes->onlyWrapperClasses()->class([
                 'row' => $horizontal,
                 'form-floating' => $floating
-            ])->filter(fn (string $value, string $key) => $key === 'class') }}
+            ]) }}
         >
     @endif
 
+        {{-- label before control --}}
         @if(!$hidden && $type !== 'hidden' && (!$floating || $horizontal))
             <x-mlbrgn-form-label
                 :parentClasses="$attributes->get('class')"
@@ -41,6 +46,7 @@
             </x-mlbrgn-form-label>
         @endif
 
+        {{-- horizontal control wrapper --}}
         @if($horizontal)
             <div
                 @class([
@@ -49,22 +55,22 @@
                 ])
             >
         @endif
+                {{-- Input element --}}
                 <input
                     @if(!$floating && !$horizontal)
                         {{ $attributes->class([
-                        'form-control' => $type !== 'range',
-                        'form-range' => $type === 'range',
-                        'form-control-color' => ($type === 'color'),
-                        'is-invalid' => ($hasError($name)),
-                        ]) }}
-                    @else
-                        {{ $attributes->filter(fn (string $value, string $key) => $key !== 'class') }}
-                        @class([
                             'form-control' => $type !== 'range',
                             'form-range' => $type === 'range',
                             'form-control-color' => ($type === 'color'),
                             'is-invalid' => ($hasError($name)),
-                        ])
+                        ]) }}
+                    @else
+                        {{ $attributes->exceptWrapperClasses()->class([
+                            'form-control' => $type !== 'range',
+                            'form-range' => $type === 'range',
+                            'form-control-color' => ($type === 'color'),
+                            'is-invalid' => ($hasError($name)),
+                        ]) }}
                     @endif
                     type="{{ $type }}"
                     value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
@@ -80,6 +86,7 @@
                     @if($floating && !$attributes->has('placeholder')) placeholder="&nbsp;"@endif
                 >
 
+                {{-- Feedback messages --}}
                 @if(!empty($validFeedback))
                     <div @class([
                         'valid-feedback' => !$tooltipFeedback,
@@ -98,6 +105,7 @@
                     </div>
                 @endif
 
+        {{-- label after control --}}
         @if(!$hidden && $type !== 'hidden' && ($floating && !$horizontal))
             <x-mlbrgn-form-label
                 :parentClasses="$attributes->get('class')"
@@ -110,11 +118,13 @@
             </x-mlbrgn-form-label>
         @endif
 
+        {{-- Error message --}}
         @if($shouldShowError($name))
             <x-mlbrgn-form-errors :name="$name" />
         @endif
 
-        @if(isset($help))
+        {{-- Help text --}}
+        @isset($help)
             <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
         @endif
 
@@ -122,10 +132,12 @@
             <x-mlbrgn-form-text :id="$id">{{ $helpText }}</x-mlbrgn-form-text>
         @endif
 
+        {{-- close horizontal control wrapper --}}
         @if($horizontal)
             </div>
         @endif
 
+    {{-- Close wrapper for floating or horizontal controls --}}
     @if($floating || $horizontal)
         </div>
     @endif

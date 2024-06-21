@@ -1,5 +1,6 @@
 <?php
 
+// TODO deprecate
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 
 beforeEach(function () {

@@ -1,24 +1,23 @@
-{{-- cache id, new on generated each time $getId() is called if no name or id attribute --}}
-<?php
-    $id = $getId();
-?>
+{{-- Cache ID to avoid generating multiple times --}}
+<?php $id = $getId(); ?>
 
+{{-- Open wrapper --}}
 @if(!$toggle && !$hidden)
-    <div {{ $attributes->class([
-        'form-check',
-        'form-check-inline' => $attributes->get('inline'),
-        ])->filter(fn (string $value, string $key) => $key === 'class') }}
-    >
+<div {{ $attributes->onlyWrapperClasses()->class([
+    'form-check',
+    'form-check-inline' => $attributes->get('inline'),
+    ]) }}
+>
 @endif
 
+    {{-- Input --}}
     <input
         @if(!$toggle && !$hidden)
-            {{ $attributes->filter(fn (string $value, string $key) => $key !== 'class') }}
-            @class([
+            {{ $attributes->exceptWrapperClasses()->class([
                 'form-check-input' => !$toggle,
                 'btn-check' => $toggle,
                 'is-invalid' => $hasError($name),
-            ])
+            ]) }}
         @else
             {{ $attributes->class([
                 'form-check-input' => !$toggle,
@@ -41,6 +40,7 @@
         @endif
     />
 
+    {{-- label --}}
     @if(!$hidden)
         <x-mlbrgn-form-label :parentClasses="$attributes->get('class')"
             @class([
@@ -56,6 +56,7 @@
         </x-mlbrgn-form-label>
     @endif
 
+    {{-- Feedback messages --}}
     @if(!empty($validFeedback))
         <div @class([
                 'valid-feedback' => !$tooltipFeedback,
@@ -74,10 +75,12 @@
         </div>
     @endif
 
+    {{-- Error message --}}
     @if($shouldShowError($name))
         <x-mlbrgn-form-errors :name="$name" />
     @endif
 
+    {{-- Help text --}}
     @if(isset($help))
         <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
     @endif
@@ -86,6 +89,7 @@
         <x-mlbrgn-form-text :id="$id">{{ $helpText }}</x-mlbrgn-form-text>
     @endif
 
+{{-- Close wrapper --}}
 @if(!$toggle && !$hidden)
 </div>
 @endif

@@ -42,4 +42,12 @@ it('does not render label when control is hidden', function () {
 //        });
 })->todo();
 
+it('sets a default value', function () {
+    $this->registerTestRoute('bootstrap-textarea');
+
+    $this->visit('/bootstrap-textarea')
+        ->within('#form-default', function() {
+            $this->seeInElement('textarea[name="textarea"]', 'b');
+        });
+});
 

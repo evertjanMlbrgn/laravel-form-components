@@ -2,6 +2,22 @@
 
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 
+it('sets the id on the label or generates one', function () {
+    $this->registerTestRoute('bootstrap-label-for');
+
+    $page = $this->visit('/bootstrap-label-for')
+        ->seeElement('textarea[id="text_b"]')
+        ->seeElement('label[for="text_b"]');
+
+    $inputId = $page->crawler()->filter('input[type="text"]')->attr('id');
+
+    expect($inputId)->toStartWith("auto_id_");
+
+    $page
+        ->seeElement('input[id="' . $inputId . '"]')
+        ->seeElement('label[for="' . $inputId . '"]');
+});
+
 it('Sets label without required attribute and with correct label class', function () {
 
     $this->registerTestRoute('custom-label');
@@ -138,7 +154,5 @@ it('uses correct id for label', function () {
 //            ->seeElement('label[type="textarea"].form-label.required:not([required])')
 //            ->seeElement('label[type="html-editor"].form-label.required:not([required])');
     });
-
-
 
 });

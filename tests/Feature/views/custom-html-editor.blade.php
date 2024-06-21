@@ -50,3 +50,7 @@ $target = ['html-editor-1' => ['html-editor-bound-value']];
         Sample content
     </x-form-html-editor>
 </x-form-form>
+
+<x-form-form id="form-default">
+    <x-form-textarea default="b" name="textarea" />
+</x-form-form>

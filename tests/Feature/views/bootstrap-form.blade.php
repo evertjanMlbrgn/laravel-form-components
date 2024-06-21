@@ -1,4 +1,19 @@
-<x-form-form uses-custom-validation>
+<x-form-form id="form_get" method="GET">
+</x-form-form>
+
+<x-form-form id="form_post" method="POST">
+</x-form-form>
+
+<x-form-form id="form_put" method="PUT">
+</x-form-form>
+
+<x-form-form id="form_patch" method="PATCH">
+</x-form-form>
+
+<x-form-form id="form_delete" method="DELETE">
+</x-form-form>
+
+<x-form-form id="form_custom_validation" uses-custom-validation>
     <div class="input-required">
         <x-form-input class="input-required" name="input" label="input" required/>
     </div>

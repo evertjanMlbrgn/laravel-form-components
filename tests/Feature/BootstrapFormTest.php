@@ -3,8 +3,8 @@
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 
 it('spoofs the methods for put patch and delete forms', function () {
-    $this->registerTestRoute('spoof-method')
-        ->visit('/spoof-method')
+    $this->registerTestRoute('bootstrap-form')
+        ->visit('bootstrap-form')
 
         // methods
         ->seeElement('form[id="form_get"][method="GET"]')
@@ -22,8 +22,8 @@ it('spoofs the methods for put patch and delete forms', function () {
 });
 
 it('sets the csrf token to the forms that need it', function () {
-    $this->registerTestRoute('spoof-method')
-        ->visit('/spoof-method')
+    $this->registerTestRoute('bootstrap-form')
+        ->visit('/bootstrap-form')
 
         // csrf
         ->dontSeeElement('form[id="form_get"] input[name="_token"]')
@@ -32,3 +32,19 @@ it('sets the csrf token to the forms that need it', function () {
         ->seeElement('form[id="form_patch"] input[name="_token"]')
         ->seeElement('form[id="form_delete"] input[name="_token"]');
 });
+
+it('handles "uses-custom-validation', function () {
+    $this->registerTestRoute('bootstrap-form');
+
+    $this->visit('/bootstrap-form')
+        ->within('#form_custom_validation', function() {
+            $this->seeElement('form.needs-validation')
+                ->seeElement('form[novalidate]')
+                ->seeElement('div.input-group.has-validation')
+                ->seeElement('div.input-group-2.has-validation');
+        });
+});
+
+it('adds javascript when using attribute "uses-validation"', function() {
+
+})->todo();

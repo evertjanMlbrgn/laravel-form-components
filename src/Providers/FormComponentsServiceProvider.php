@@ -5,6 +5,7 @@ namespace Mlbrgn\LaravelFormComponents\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
+use Illuminate\View\ComponentAttributeBag;
 use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
 use Mlbrgn\LaravelFormComponents\View\Components\Button;
 use Mlbrgn\LaravelFormComponents\View\Components\Captcha;
@@ -100,6 +101,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             return '<?php app(\Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder::class)->pop(); ?>';
         });
 
+        $this->registerMacro();
     }
 
     protected function registerComponents(): void
@@ -144,5 +146,64 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         $this->mergeConfigFrom(self::CONFIG_FILE, 'form-components');
 
         $this->app->singleton(FormDataBinder::class, fn () => new FormDataBinder);
+    }
+
+    private function registerMacro()
+    {
+        ComponentAttributeBag::macro('onlyWrapperClasses', function () {
+
+            if (!config('form-components.use_wrapper_classes')) {
+                return new static([]);
+            }
+
+            $classes = $this->get('class', '');
+
+            // Filter classes starting with 'm-', 'ms-', 'mt-', 'me-', 'mb-'
+            $wrapperClasses = array_filter(explode(' ', $classes), function ($value) {
+                return str_starts_with($value, 'm-') ||
+                    str_starts_with($value, 'ms-') ||
+                    str_starts_with($value, 'mt-') ||
+                    str_starts_with($value, 'me-') ||
+                    str_starts_with($value, 'mb-') ||
+                    str_starts_with($value, 'mx-') ||
+                    str_starts_with($value, 'my-');
+            });
+
+            // Join the filtered margin classes back into a string
+            $wrapperClassesString = implode(' ', $wrapperClasses);
+
+            $retAttributes = [];
+            $retAttributes['class'] = $wrapperClassesString;
+
+            return new static($retAttributes);
+        });
+
+        ComponentAttributeBag::macro('exceptWrapperClasses', function () {
+
+            if (!config('form-components.use_wrapper_classes')) {
+                return $this;
+            }
+
+            $classes = $this->get('class', '');
+
+            // Filter classes starting with 'm-', 'ms-', 'mt-', 'me-', 'mb-'
+            $nonWrapperClasses = array_filter(explode(' ', $classes), function ($value) {
+                return !str_starts_with($value, 'm-') &&
+                    !str_starts_with($value, 'ms-') &&
+                    !str_starts_with($value, 'mt-') &&
+                    !str_starts_with($value, 'me-') &&
+                    !str_starts_with($value, 'mb-') &&
+                    !str_starts_with($value, 'mx-') &&
+                    !str_starts_with($value, 'my-');
+            });
+
+            // Join the filtered margin classes back into a string
+            $nonWrapperClasses = implode(' ', $nonWrapperClasses);
+
+            $retAttributes = $this->getAttributes();
+            $retAttributes['class'] = $nonWrapperClasses;
+
+            return new static($retAttributes);
+        });
     }
 }

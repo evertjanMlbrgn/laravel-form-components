@@ -1,18 +1,18 @@
-{{-- cache id, new on generated each time $getId() is called if no name or id attribute --}}
-<?php
-    $id = $getId();
-?>
+{{-- Cache ID to avoid generating multiple times --}}
+<?php $id = $getId(); ?>
 
+{{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
 @if($floating || $horizontal)
     <div
-        {{ $attributes->class([
+        {{ $attributes->onlyWrapperClasses()->class([
             'row' => $horizontal,
             'form-floating' => $floating,
             'd-none' => $hidden
-        ])->filter(fn (string $value, string $key) => $key === 'class') }}
+           ]) }}
     >
 @endif
 
+    {{-- label before control --}}
     @if(!$hidden && (!$floating || $horizontal))
         <x-mlbrgn-form-label
             :parentClasses="$attributes->get('class')"
@@ -26,6 +26,7 @@
         </x-mlbrgn-form-label>
     @endif
 
+    {{-- horizontal control wrapper --}}
     @if($horizontal)
         <div
             @class([
@@ -35,6 +36,7 @@
         >
     @endif
 
+        {{-- Textarea element --}}
         <textarea
         @if(!$floating && !$horizontal)
             {{ $attributes->class([
@@ -42,14 +44,12 @@
                 'is-invalid' => $hasError($name)
             ]) }}
         @else
-            {{ $attributes->filter(fn (string $value, string $key) => $key !== 'class') }}
-            @class([
+            {{ $attributes->exceptWrapperClasses()->class([
                'form-control',
-                'is-invalid' => $hasError($name)
-            ])
+               'is-invalid' => $hasError($name)
+           ]) }}
         @endif
         name="{{ $name }}"
-{{--        @if($required) required @endif--}}
         {{-- Placeholder is required as of writing --}}
         @if($floating && !$attributes->get('placeholder'))
             placeholder="&nbsp;"
@@ -63,6 +63,7 @@
         id="{{ $id }}">{{ $value }}</textarea>
         {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 
+        {{-- Feedback messages --}}
         @if(!empty($validFeedback))
             <div
                 @class([
@@ -82,6 +83,7 @@
             </div>
         @endif
 
+    {{-- label after control --}}
     @if(!$hidden && ($floating && !$horizontal))
         <x-mlbrgn-form-label
             :parentClasses="$attributes->get('class')"
@@ -94,10 +96,12 @@
         </x-mlbrgn-form-label>
     @endif
 
+    {{-- Error message --}}
     @if($shouldShowError($name))
         <x-mlbrgn-form-errors :name="$name" />
     @endif
 
+    {{-- Help text --}}
     @if(isset($help))
         <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
     @endif
@@ -106,10 +110,12 @@
         <x-mlbrgn-form-text :id="$id">{{ $helpText }}</x-mlbrgn-form-text>
     @endif
 
+    {{-- close horizontal control wrapper --}}
     @if($horizontal)
         </div>
     @endif
 
+{{-- Close wrapper for floating or horizontal controls --}}
 @if($floating || $horizontal)
     </div>
 @endif

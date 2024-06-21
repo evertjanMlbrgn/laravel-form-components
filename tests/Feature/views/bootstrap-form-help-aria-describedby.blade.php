@@ -1,4 +1,4 @@
-<x-form-form uses-custom-validation>
+<x-form-form id="form-1" uses-custom-validation>
     <x-form-input id="input" class="input-required" name="input" label="input" required>
         @slot('help')
             Help text
@@ -14,6 +14,11 @@
             Help text
         @endslot
     </x-form-textarea>
+    <x-form-html-editor id="html-editor" class="html-editor-required" name="html-editor" required>
+        @slot('help')
+            Help text
+        @endslot
+    </x-form-html-editor>
     <x-form-checkbox id="checkbox" class="checkbox-required" name="checkbox" required>
         @slot('help')
             Help text

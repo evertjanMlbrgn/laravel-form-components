@@ -55,28 +55,28 @@
 </x-form-form>
 
 <x-form-form id="form-4">
-    <x-form-input name="button" type="button" class="extra-1 extra-2"/>
-    <x-form-input name="checkbox" type="checkbox" class="extra-1 extra-2"/>
-    <x-form-input name="color" type="color" class="extra-1 extra-2"/>
-    <x-form-input name="date" type="date" class="extra-1 extra-2"/>
-    <x-form-input name="datetime-local" type="datetime-local" class="extra-1 extra-2"/>
-    <x-form-input name="email" type="email" class="extra-1 extra-2"/>
-    <x-form-input name="file" type="file" class="extra-1 extra-2"/>
-    <x-form-input name="hidden" type="hidden" class="extra-1 extra-2"/>
-    <x-form-input name="image" type="image" class="extra-1 extra-2"/>
-    <x-form-input name="month" type="month" class="extra-1 extra-2"/>
-    <x-form-input name="number" type="number" class="extra-1 extra-2"/>
-    <x-form-input name="password" type="password" class="extra-1 extra-2"/>
-    <x-form-input name="radio" type="radio" class="extra-1 extra-2"/>
-    <x-form-input name="range" type="range" class="extra-1 extra-2"/>
-    <x-form-input name="reset" type="reset" class="extra-1 extra-2"/>
-    <x-form-input name="search" type="search" class="extra-1 extra-2"/>
-    <x-form-input name="submit" type="submit" class="extra-1 extra-2"/>
-    <x-form-input name="tel" type="tel" class="extra-1 extra-2"/>
-    <x-form-input name="text" type="text" class="extra-1 extra-2"/>
-    <x-form-input name="time" type="time" class="extra-1 extra-2"/>
-    <x-form-input name="url" type="url" class="extra-1 extra-2"/>
-    <x-form-input name="week" type="week" class="extra-1 extra-2"/>
+    <x-form-input name="button" type="button" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="checkbox" type="checkbox" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="color" type="color" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="date" type="date" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="datetime-local" type="datetime-local" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="email" type="email" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="file" type="file" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="hidden" type="hidden" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="image" type="image" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="month" type="month" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="number" type="number" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="password" type="password" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="radio" type="radio" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="range" type="range" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="reset" type="reset" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="search" type="search" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="submit" type="submit" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="tel" type="tel" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="text" type="text" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="time" type="time" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="url" type="url" class="extra-1 extra-2 form-control-sm"/>
+    <x-form-input name="week" type="week" class="extra-1 extra-2 form-control-sm"/>
 </x-form-form>
 
 <x-form-form id="form-5">
@@ -108,4 +108,30 @@
     <x-form-input id="time" name="time" type="time" label="test" hidden/>
     <x-form-input id="url" name="url" type="url" label="test" hidden/>
     <x-form-input id="week" name="week" type="week" label="test" hidden/>
+</x-form-form>
+
+<x-form-form id="form-7">
+    <x-form-input name="checkbox" type="checkbox" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="color" type="color" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="date" type="date" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="datetime-local" type="datetime-local" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="email" type="email" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="file" type="file" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="hidden" type="hidden" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="image" type="image" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="month" type="month" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="number" type="number" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="password" type="password" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="radio" type="radio" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="range" type="range" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="search" type="search" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="tel" type="tel" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="text" type="text" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="time" type="time" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="url" type="url" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+    <x-form-input name="week" type="week" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal/>
+</x-form-form>
+
+<x-form-form id="form-default">
+    <x-form-input default="a" name="input" />
 </x-form-form>

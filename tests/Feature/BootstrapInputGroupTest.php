@@ -2,6 +2,7 @@
 
 uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 
+// NOTE cannot put the test in 1 file, somehow seeElementCount doesn't work correctly within "within"
 it('adds custom input classes', function () {
     $this->registerTestRoute('bootstrap-input-group-1');
 
@@ -14,6 +15,7 @@ it('adds custom input classes', function () {
 
 });
 
+// NOTE cannot put the test in 1 file, somehow seeElementCount doesn't work correctly within "within"
 it('groups elements with input-group', function () {
     $this->registerTestRoute('bootstrap-input-group-2');
 

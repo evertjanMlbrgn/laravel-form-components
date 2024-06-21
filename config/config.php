@@ -26,6 +26,12 @@ return [
      * Path to custom content css for the TinyMCE editor, this css file can be used to style the content within the editor,
      * e.g. all headings should be read or the font-family of the content should be Arial.
      **/
-    'tinymce_content_css_path' => env('FORM_COMPONENTS_TINYMCE_CONTENT_CSS_PATH', '')
+    'tinymce_content_css_path' => env('FORM_COMPONENTS_TINYMCE_CONTENT_CSS_PATH', ''),
+
+    /**
+     * Extracts certain utility classes and puts them on the control wrapper instead of the control itself
+     * now extracts the m*-* utility classes, because they make more sense on the wrapper than on the control
+     */
+    'use_wrapper_classes' => env('FORM_COMPONENTS_USE_WRAPPER_CLASSES', true)
 
 ];

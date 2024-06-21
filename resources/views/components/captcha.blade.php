@@ -3,10 +3,10 @@
     'label',
 ])
 
-<div class="g-recaptcha mb-3"
+<div {{ $attributes->class('g-recaptcha') }}
      data-sitekey="{{ config('services.recaptcha.site-key') }}"
      data-badge="inline"
      data-size="invisible"
      data-callback="{{ $callback }}">
 </div>
-<button class="btn btn-primary" type="submit">{{ $label }}</button>
+<x-mlbrgn-form-submit>{{ $label }}</x-mlbrgn-form-submit>

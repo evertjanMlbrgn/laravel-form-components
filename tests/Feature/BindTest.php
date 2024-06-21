@@ -24,8 +24,21 @@ it('sets the right value if the value is zero', function () {
         ->seeElement('input[name="input"][value="0"]');
 });
 
+it('binds two targets to the form', function () {
+    $this->registerTestRoute('bind-two-targets');
+
+    $this->visit('/bind-two-targets')
+        ->seeElement('input[name="input"][value="a"]')
+        ->seeInElement('textarea[name="textarea"]', 'e')
+        ->dontSeeElement('option[value="c"]:selected')
+        ->seeElement('option[value="f"]:selected')
+        ->seeElement('input[name="checkbox"]')
+        ->dontSeeElement('input[name="checkbox"]:checked')
+        ->seeElement('input[name="radio"]:checked');
+});
+
 it('overrides the bound target with the old request data', function () {
-    $this->registerTestRoute('bound-with-validation-errors', function (Request $request) {
+    $this->registerTestRoute('bind-with-validation-errors', function (Request $request) {
         $request->validate([
             'input' => 'required',
             'textarea' => 'required',
@@ -35,7 +48,7 @@ it('overrides the bound target with the old request data', function () {
         ]);
     });
 
-    $this->visit('/bound-with-validation-errors')
+    $this->visit('/bind-with-validation-errors')
         ->type('d', 'input')
         ->type('e', 'textarea')
         ->select('f', 'select')
@@ -51,7 +64,7 @@ it('overrides the bound target with the old request data', function () {
 });
 
 it('handles old nested data', function () {
-    $this->registerTestRoute('nested-validation-errors', function (Request $request) {
+    $this->registerTestRoute('bind-nested-validation-errors', function (Request $request) {
         $request->validate([
             'input.nested' => 'required',
             'textarea.nested' => 'required',
@@ -61,7 +74,7 @@ it('handles old nested data', function () {
         ]);
     });
 
-    $this->visit('/nested-validation-errors')
+    $this->visit('/bind-nested-validation-errors')
         ->type('d', 'input[nested]')
         ->type('e', 'textarea[nested]')
         ->select('f', 'select[nested]')
@@ -77,9 +90,9 @@ it('handles old nested data', function () {
 });
 
 it('overrides the default value', function () {
-    $this->registerTestRoute('default-values-with-bound-target');
+    $this->registerTestRoute('bind-default-values-with-bound-target');
 
-    $this->visit('/default-values-with-bound-target')
+    $this->visit('/bind-default-values-with-bound-target')
         ->seeElement('input[name="input"][value="a"]')
         ->seeInElement('textarea[name="textarea"]', 'b')
         ->seeElement('option[value="f"]:selected')
@@ -90,9 +103,9 @@ it('overrides the default value', function () {
 });
 
 it('overrides the default value when nested', function () {
-    $this->registerTestRoute('default-values-with-nested-bound-target');
+    $this->registerTestRoute('bind-default-values-with-nested-bound-target');
 
-    $this->visit('/default-values-with-nested-bound-target')
+    $this->visit('/bind-default-values-with-nested-bound-target')
         ->seeElement('input[name="nested[input]"][value="a"]')
         ->seeInElement('textarea[name="nested[textarea]"]', 'b')
         ->seeElement('select[name="nested[select]"] > option[value="f"]:selected')
@@ -102,23 +115,10 @@ it('overrides the default value when nested', function () {
         ->dontSeeElement('input[name="nested[radio]"]:checked');
 });
 
-it('binds two targets to the form', function () {
-    $this->registerTestRoute('bind-two-targets');
-
-    $this->visit('/bind-two-targets')
-        ->seeElement('input[name="input"][value="a"]')
-        ->seeInElement('textarea[name="textarea"]', 'e')
-        ->dontSeeElement('option[value="c"]:selected')
-        ->seeElement('option[value="f"]:selected')
-        ->seeElement('input[name="checkbox"]')
-        ->dontSeeElement('input[name="checkbox"]:checked')
-        ->seeElement('input[name="radio"]:checked');
-});
-
 it('overrides the global bind with a bind per element', function () {
-    $this->registerTestRoute('override-bind');
+    $this->registerTestRoute('bind-override');
 
-    $this->visit('/override-bind')
+    $this->visit('/bind-override')
         ->seeElement('input[name="input"][value="d"]')
         ->seeInElement('textarea[name="textarea"]', 'e')
         ->seeElement('option[value="f"]:selected')

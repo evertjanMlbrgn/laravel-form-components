@@ -1,15 +1,15 @@
 <button
     {{ $attributes->merge([
-        'type' => $type
+        'type' => $type ?? 'button'
     ])->class([
         'btn',
         'd-none' => $hidden,
         $classButton
-        ])->filter(fn (string $value, string $key) => !in_array($key, ['required', 'readonly', 'label']))
+        ])->except(['required', 'readonly', 'label'])
     }}
-    @if(isset($name))
+    @if(!empty($name))
         name="{{ $name }}"
-    @endif
+    @endempty
     @if($hidden)
         hidden
     @endif
