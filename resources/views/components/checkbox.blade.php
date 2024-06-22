@@ -86,7 +86,7 @@
         <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
     @endif
 
-    @if(isset($helpText) && !isset($help))
+    @if(!empty($helpText) && !isset($help))
         <x-mlbrgn-form-text :id="$id">{{ $helpText }}</x-mlbrgn-form-text>
     @endif
 
