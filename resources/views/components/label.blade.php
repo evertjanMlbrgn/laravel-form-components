@@ -15,11 +15,12 @@
     $isCheckboxOrRadio = (isset($type) && ($type === 'checkbox' || $type === 'radio'));
 @endphp
 {{--label has type {{ isset($type) ? $type : 'no type' }}--}}
+{{--required {{ (bool) $required }}--}}
 @if ($slot->isNotEmpty())
      <label {{ $attributes->class([
         'form-label' => !$horizontal && !$toggle && !$isCheckboxOrRadio,
         'col-form-label' => $horizontal && !$containsFormControlLg && !$containsFormControlSm,
-        'required' => $required,
+        'required' => (bool) $required,
         'col-form-label-sm' => $horizontal && $containsFormControlSm,
         'col-form-label-lg' => $horizontal && $containsFormControlLg
     ]) }}>

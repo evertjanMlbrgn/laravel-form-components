@@ -32,6 +32,11 @@ return [
      * Extracts certain utility classes and puts them on the control wrapper instead of the control itself
      * now extracts the m*-* utility classes, because they make more sense on the wrapper than on the control
      */
-    'use_wrapper_classes' => env('FORM_COMPONENTS_USE_WRAPPER_CLASSES', true)
+    'use_wrapper_classes' => env('FORM_COMPONENTS_USE_WRAPPER_CLASSES', true),
+
+    /**
+     * Modifies label class from form-label to input-group-text when label is inside an input-group when set to true
+     */
+    'modify_label_class' => env('FORM_COMPONENTS_MODIFY_LABEL_CLASS', true)
 
 ];

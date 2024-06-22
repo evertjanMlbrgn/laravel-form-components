@@ -1375,17 +1375,91 @@
 
                 <h3 class="mt-4">Input group with more than one control</h3>
                 <x-form-form class="needs-validation" novalidate>
-                    <x-form-input-group>
+                    <x-form-input-group class="mb-5">
                         <x-form-input-group-text>First and last name</x-form-input-group-text>
-                        <x-form-input aria-label="First name" required invalid-feedback="Nope"/>
+                        <x-form-input aria-label="First name" required />
                         <x-form-input aria-label="Last name" required invalid-feedback="No way"/>
                     </x-form-input-group>
-                    <x-form-input-group>
+                    <x-form-input-group class="mb-5">
                         <x-form-input-group-text>First name</x-form-input-group-text>
                         <x-form-input aria-label="First name" required invalid-feedback="Nope"/>
                     </x-form-input-group>
                     <x-form-submit class="btn-primary mt-3">Submit form</x-form-submit>
 
+                </x-form-form>
+
+                <h3>Input group labels</h3>
+
+                <x-form-form>
+                    <x-form-input-group id="input-group-1" class="mt-5 something-else" for="input-group-1-input" label="Label outside of input-group, by using label, for and required attributes" required help-text="help text for input group">
+                        <x-form-input id="input-group-1-input" name="text" type="text" />
+                        <x-form-input-group-text>
+                            input group text
+                        </x-form-input-group-text>
+                    </x-form-input-group>
+                </x-form-form>
+
+                <h3>label at start of controls (default behaviour)</h3>
+
+                <p>Only applicable to inputs, textarea, select. Html-editor buggy support.</p>
+
+                <x-form-form>
+                    <x-form-input-group id="input-group-2" class="mt-5 something-else" required help-text="help text for input group">
+                        <x-form-input id="input-group-2-control" name="text" type="text" label="Label on input"/>
+                        <x-form-input-group-text class="text-primary">
+                            label should appear before preceding input
+                        </x-form-input-group-text>
+                    </x-form-input-group>
+                    <x-form-input-group id="input-group-3" class="mt-5 something-else" required help-text="help text for input group">
+                        <x-form-textarea id="input-group-3-control" name="text" type="text" label="Label on textarea"/>
+                        <x-form-input-group-text class="text-primary">
+                            label should appear before preceding textarea
+                        </x-form-input-group-text>
+                    </x-form-input-group>
+                    <x-form-input-group id="input-group-4" class="mt-5 something-else" required help-text="help text for input group">
+                        <x-form-select id="input-group-4-control" name="text" type="text" label="Label on select"/>
+                        <x-form-input-group-text class="text-primary">
+                            label should appear before preceding select
+                        </x-form-input-group-text>
+                    </x-form-input-group>
+                    <x-form-input-group id="input-group-5" class="mt-5 something-else" required help-text="help text for input group">
+                        <x-form-html-editor id="input-group-5-control" name="text" type="text" label="Label on html-editor"/>
+                        <x-form-input-group-text class="text-primary">
+                            label should appear before preceding html-editor
+                        </x-form-input-group-text>
+                    </x-form-input-group>
+                </x-form-form>
+
+
+                <h3>label and end of controls (using attribute "label-end")</h3>
+
+                <p>Only applicable to inputs, textarea, select. Html-editor buggy support.</p>
+
+                <x-form-form>
+                    <x-form-input-group id="input-group-6" class="mt-5 something-else" required help-text="help text for input group">
+                        <x-form-input-group-text class="text-primary">
+                            label should appear after following input
+                        </x-form-input-group-text>
+                        <x-form-input id="input-group-6-control" name="text" type="text" label="Label on input" label-end/>
+                    </x-form-input-group>
+                    <x-form-input-group id="input-group-7" class="mt-5 something-else" required help-text="help text for input group">
+                        <x-form-input-group-text class="text-primary">
+                            label should appear after following textarea
+                        </x-form-input-group-text>
+                        <x-form-textarea id="input-group-7-control" name="text" type="text" label="Label on textarea" label-end/>
+                    </x-form-input-group>
+                    <x-form-input-group id="input-group-8" class="mt-5 something-else" required help-text="help text for input group">
+                        <x-form-input-group-text class="text-primary">
+                            label should appear after following select
+                        </x-form-input-group-text>
+                        <x-form-select id="input-group-8-control" name="text" type="text" label="Label on select" label-end/>
+                    </x-form-input-group>
+                    <x-form-input-group id="input-group-9" class="mt-5 something-else" required help-text="help text for input group">
+                        <x-form-input-group-text class="text-primary">
+                            label should appear after following html-editor
+                        </x-form-input-group-text>
+                        <x-form-html-editor id="input-group-9-control" name="text" type="text" label="Label on html-editor" label-end/>
+                    </x-form-input-group>
                 </x-form-form>
             </div>
         </div>

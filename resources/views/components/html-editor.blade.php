@@ -13,17 +13,19 @@
 @endif
 
     {{-- label before control --}}
-    @if(!$hidden && (!$floating || $horizontal))
-        <x-mlbrgn-form-label
-            :parentClasses="$attributes->get('class')"
-            :required="$attributes->has('required')"
-            @class([
-                'col-4' => empty($classLabel),
-                $classLabel
-             ])
-            :for="$id">
-            {{ $label }}
-        </x-mlbrgn-form-label>
+    @if(!$hidden)
+        @if(!$attributes->has('label-end') && (!$floating || $horizontal))
+            <x-mlbrgn-form-label
+                :parentClasses="$attributes->get('class')"
+                :required="$attributes->has('required')"
+                @class([
+                    'col-4' => empty($classLabel),
+                    $classLabel
+                 ])
+                :for="$id">
+                {{ $label }}
+            </x-mlbrgn-form-label>
+        @endif
     @endif
 
     {{-- horizontal control wrapper --}}
@@ -58,6 +60,9 @@
             @if($floating && !$attributes->get('placeholder'))
                 placeholder="&nbsp;"
             @endif
+            @if(isset($help))
+                aria-describedby="{{ $id }}-help-text"
+            @endif
         >{{ $slot }}</textarea>
         {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 
@@ -82,16 +87,18 @@
         @endif
 
         {{-- label after control --}}
-        @if(!$hidden && ($floating && !$horizontal))
-            <x-mlbrgn-form-label
-                :parentClasses="$attributes->get('class')"
-                :required="$attributes->has('required')"
-                @class([
-                   $classLabel
-               ])
-                :for="$id">
-                {{ $label }}
-            </x-mlbrgn-form-label>
+        @if(!$hidden)
+            @if($attributes->has('label-end') || ($floating && !$horizontal))
+                <x-mlbrgn-form-label
+                    :parentClasses="$attributes->get('class')"
+                    :required="$attributes->has('required')"
+                    @class([
+                       $classLabel
+                   ])
+                    :for="$id">
+                    {{ $label }}
+                </x-mlbrgn-form-label>
+            @endif
         @endif
 
         {{-- Error message --}}

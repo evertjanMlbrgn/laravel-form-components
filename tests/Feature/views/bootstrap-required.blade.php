@@ -1,4 +1,4 @@
-<x-form-form>
+<x-form-form id="form-required">
     <div class="input-required">
         <x-form-input class="input-required" name="input" label="input" required/>
     </div>

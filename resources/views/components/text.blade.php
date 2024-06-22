@@ -5,6 +5,5 @@
     @if(isset($id))
         id="{{ $id }}-help-text"
     @endif
->
-    {{ $slot }}
-</div>
+>{{ $slot }}</div>
+{{-- NOTE: No spaces between start and end tag --}}
