@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 it('adds help text', function () {
     $this->registerTestRoute('bootstrap-help');
 

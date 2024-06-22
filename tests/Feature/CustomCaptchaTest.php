@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 it('renders captcha', function () {
     $this->registerTestRoute('custom-captcha');
 

@@ -1,9 +1,8 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\View;
-use Mlbrgn\LaravelFormComponents\Tests\Feature\ActivityModel;
+use Mlbrgn\LaravelFormComponents\Tests\Feature\Models\ActivityModel;
 
 it('supports date casts and custom casts', function () {
     config(['form-components.use_eloquent_date_casting' => true]);

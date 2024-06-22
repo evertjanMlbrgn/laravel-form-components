@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 it('sets correct classes on toggle checkboxes and radios', function () {
     $this->registerTestRoute('bootstrap-radio-toggles');
 

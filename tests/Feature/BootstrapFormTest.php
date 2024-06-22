@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 it('spoofs the methods for put patch and delete forms', function () {
     $this->registerTestRoute('bootstrap-form')
         ->visit('bootstrap-form')

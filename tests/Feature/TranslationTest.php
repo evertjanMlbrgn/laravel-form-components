@@ -1,6 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 use Illuminate\Http\Request;
 
 it('can have no target bound to the form', function () {

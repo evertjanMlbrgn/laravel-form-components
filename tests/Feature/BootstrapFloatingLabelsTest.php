@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 it('floats labels', function () {
     $this->registerTestRoute('bootstrap-floating-label');
 

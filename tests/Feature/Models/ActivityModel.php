@@ -1,6 +1,6 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\Tests\Feature;
+namespace Mlbrgn\LaravelFormComponents\Tests\Feature\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

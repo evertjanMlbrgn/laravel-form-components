@@ -11,7 +11,11 @@
 |
 */
 
-// uses(Tests\TestCase::class)->in('Feature');
+//use Tests\TestCase;
+
+use Mlbrgn\LaravelFormComponents\Tests\TestCase;
+
+uses(TestCase::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +28,6 @@
 |
 */
 
-expect()->extend('toBeOne', function () {
-    return $this->toBe(1);
-});
 
 /*
 |--------------------------------------------------------------------------

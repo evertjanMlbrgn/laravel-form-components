@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 it('sets classes on textarea', function () {
 //    $this->registerTestRoute('custom-button');
 //    $this->visit('custom-button')

@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 it('lets buttons default to correct type', function () {
     $this->registerTestRoute('bootstrap-button');
     $this->visit('bootstrap-button')

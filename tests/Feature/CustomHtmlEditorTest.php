@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 it('renders html-editor', function () {
     $this->registerTestRoute('custom-html-editor');
 

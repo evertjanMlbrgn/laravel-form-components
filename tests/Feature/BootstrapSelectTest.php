@@ -1,6 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 use Illuminate\Http\Request;
 
 it('shows slot when no options attribute provided', function () {

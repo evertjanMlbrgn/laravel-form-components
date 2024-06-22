@@ -1,7 +1,6 @@
 <?php
 
 // TODO deprecate
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 
 beforeEach(function () {
     if (config('form-components.framework') !== 'bootstrap-5') {

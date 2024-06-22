@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 it('sets type to "text" when no type provided to input', function () {
     $this->registerTestRoute('bootstrap-input');
 

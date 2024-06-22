@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 // NOTE cannot put the test in 1 file, somehow seeElementCount doesn't work correctly within "within"
 it('adds custom input classes', function () {
     $this->registerTestRoute('bootstrap-input-group-1');
@@ -9,7 +7,7 @@ it('adds custom input classes', function () {
     $this->visit('/bootstrap-input-group-1')
         ->within('#input-group-1', function() {
             return $this->seeElement('.form-control-color', ['value' => '#000000'])
-                ->seeElementCount('.form-switch', 1) // fails
+                ->seeElementCount('.form-switch', 1)
                 ->seeElement('.form-range', ['type' => 'range']);
         });
 

@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 it('sets the id on the label or generates one', function () {
     $this->registerTestRoute('bootstrap-label-for');
 

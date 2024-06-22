@@ -1,6 +1,6 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
+//uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
 use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
 
 it('can bind targets', function () {

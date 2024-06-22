@@ -1,7 +1,5 @@
 <?php
 
-uses(\Mlbrgn\LaravelFormComponents\Tests\TestCase::class);
-
 it('sets correct classes on toggle checkboxes', function () {
     $this->registerTestRoute('bootstrap-checkbox-toggles');
 
