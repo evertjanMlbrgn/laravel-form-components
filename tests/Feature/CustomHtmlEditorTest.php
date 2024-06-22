@@ -89,3 +89,12 @@ it('sets a default value', function () {
         });
 });
 
+it('does not have help text when no @slot("help") or "help-text" attribute', function () {
+    $this->registerTestRoute('custom-html-editor');
+
+    $this->visit('/custom-html-editor')
+        ->within('#form-8', function() {
+            $this->dontSeeElement('div[id="content-using-slot-help-text"]');
+        });
+});
+

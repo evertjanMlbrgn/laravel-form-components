@@ -113,3 +113,12 @@ it('sets a default value', function () {
             $this->seeElement('input[name="checkbox"]:checked');
         });
 });
+
+it('does not have help text when no @slot("help") or "help-text" attribute', function () {
+    $this->registerTestRoute('bootstrap-checkbox');
+
+    $this->visit('/bootstrap-checkbox')
+        ->within('#form-3', function() {
+            $this->dontSeeElement('div[id="checkbox-help-text"]');
+        });
+});

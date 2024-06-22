@@ -128,3 +128,12 @@ it('sets a default value', function () {
             $this->seeElement('input[name="radio"]:checked');
         });
 });
+
+it('does not have help text when no @slot("help") or "help-text" attribute', function () {
+    $this->registerTestRoute('bootstrap-radio');
+
+    $this->visit('/bootstrap-radio')
+        ->within('#form-3', function() {
+            $this->dontSeeElement('div[id="radio-help-text"]');
+        });
+});

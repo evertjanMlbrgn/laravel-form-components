@@ -39,6 +39,36 @@ it('honors type attribute', function () {
         });
 });
 
+it('does not have help text when no @slot("help") or "help-text" attribute', function () {
+    $this->registerTestRoute('bootstrap-input');
+
+    $this->visit('/bootstrap-input')
+        ->within('#form-2', function() {
+            $this->dontSeeElement('div[id="button-1-help-text"]')// uses button component
+                ->dontSeeElement('div[id="checkbox-1-help-text"]')
+                ->dontSeeElement('div[id="color-1-help-text"]')
+                ->dontSeeElement('div[id="date-1-help-text"]')
+                ->dontSeeElement('div[id="datetime-local-1-help-text"]')
+                ->dontSeeElement('div[id="email-1-help-text"]')
+                ->dontSeeElement('div[id="file-1-help-text"]')
+                ->dontSeeElement('div[id="hidden-1-help-text"]')
+                ->dontSeeElement('div[id="image-1-help-text"]')
+                ->dontSeeElement('div[id="month-1-help-text"]')
+                ->dontSeeElement('div[id="number-1-help-text"]')
+                ->dontSeeElement('div[id="password-1-help-text"]')
+                ->dontSeeElement('div[id="radio-1-help-text"]')
+                ->dontSeeElement('div[id="range-1-help-text"]')
+                ->dontSeeElement('div[id="reset-1-help-text"]')
+                ->dontSeeElement('div[id="search-1-help-text"]')
+                ->dontSeeElement('div[id="submit-1-help-text"]')
+                ->dontSeeElement('div[id="tel-1-help-text"]')
+                ->dontSeeElement('div[id="text-1-help-text"]')
+                ->dontSeeElement('div[id="time-1-help-text"]')
+                ->dontSeeElement('div[id="url-1-help-text"]')
+                ->dontSeeElement('div[id="week-1-help-text"]');
+        });
+});
+
 it('honors extra attributes', function () {
     $this->registerTestRoute('bootstrap-input');
 

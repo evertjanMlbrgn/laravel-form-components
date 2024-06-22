@@ -49,3 +49,12 @@ it('sets a default value', function () {
         });
 });
 
+it('does not have help text when no @slot("help") or "help-text" attribute', function () {
+    $this->registerTestRoute('bootstrap-textarea');
+
+    $this->visit('/bootstrap-textarea')
+        ->within('#form-other', function() {
+            $this->dontSeeElement('div[id="textarea-help-text"]');
+        });
+});
+

@@ -126,3 +126,12 @@ it('shows a validation error', function () {
         });
 
 });
+
+it('does not have help text when no @slot("help") or "help-text" attribute', function () {
+    $this->registerTestRoute('bootstrap-select');
+
+    $this->visit('/bootstrap-select')
+        ->within('#form-4', function() {
+            $this->dontSeeElement('div[id="select-help-text"]');
+        });
+});
