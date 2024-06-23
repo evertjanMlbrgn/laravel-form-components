@@ -29,17 +29,6 @@ abstract class TestCase extends BaseTestCase
         View::addLocation(__DIR__.'/Feature/views');
     }
 
-//    protected function getEnvironmentSetUp($app)
-//    {
-//        // Set up SQLite in-memory database for testing
-//        $app['config']->set('database.default', 'sqlite');
-//        $app['config']->set('database.connections.sqlite', [
-//            'driver'   => 'sqlite',
-//            'database' => ':memory:',
-//            'prefix'   => '',
-//        ]);
-//    }
-
     protected function getPackageProviders($app)
     {
         return [FormComponentsServiceProvider::class];

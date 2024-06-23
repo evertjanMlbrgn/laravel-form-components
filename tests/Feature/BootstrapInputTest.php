@@ -6,7 +6,7 @@ it('always gets an id attribute', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-no-id', function() {
+        ->within('#form-input-no-id', function() {
             return $this->seeElement('button[name="button"][id]')// uses button component
             ->seeElement('input[name="checkbox"][id]')
                 ->seeElement('input[name="color"][id]')
@@ -46,7 +46,7 @@ it('honors type attribute', function () {
 
     $this->visit('/bootstrap-input')
         ->within('#form-type-attribute', function() {
-            return $this->seeElement('button[name="button"][type="button"]')// uses button component
+             $this->seeElement('button[name="button"][type="button"]')// uses button component
                 ->seeElement('input[name="checkbox"][type="checkbox"]')
                 ->seeElement('input[name="color"][type="color"]')
                 ->seeElement('input[name="date"][type="date"]')
@@ -68,6 +68,37 @@ it('honors type attribute', function () {
                 ->seeElement('input[name="time"][type="time"]')
                 ->seeElement('input[name="url"][type="url"]')
                 ->seeElement('input[name="week"][type="week"]');
+        });
+});
+
+it('sets classes on input', function () {
+    $this->registerTestRoute('bootstrap-input');
+
+    // reusing form "form-type-attribute"
+    $this->visit('bootstrap-input')
+        ->within('#form-type-attribute', function() {
+            $this->seeElement('button[name="button"].btn')// uses button component
+                ->seeElement('input[name="checkbox"].form-check-input')
+                ->seeElement('input[name="color"].form-control')
+                ->seeElement('input[name="date"].form-control')
+                ->seeElement('input[name="datetime-local"].form-control')
+                ->seeElement('input[name="email"].form-control')
+                ->seeElement('input[name="file"].form-control')
+                ->seeElement('input[name="hidden"].form-control')
+                ->seeElement('input[name="image"].form-control')
+                ->seeElement('input[name="month"].form-control')
+                ->seeElement('input[name="number"].form-control')
+                ->seeElement('input[name="password"].form-control')
+                ->seeElement('input[name="radio"].form-check-input')
+                ->seeElement('input[name="range"].form-range')
+                ->seeElement('button[name="reset"].btn')// uses button component
+                ->seeElement('input[name="search"].form-control')
+                ->seeElement('button[name="submit"].btn')// uses button component
+                ->seeElement('input[name="tel"].form-control')
+                ->seeElement('input[name="text"].form-control')
+                ->seeElement('input[name="time"].form-control')
+                ->seeElement('input[name="url"].form-control')
+                ->seeElement('input[name="week"].form-control');
         });
 });
 
@@ -138,7 +169,7 @@ it('sets a default value', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-default', function() {
+        ->within('#form-input-default', function() {
             $this->seeElement('input[name="input"][value="a"]');
         });
 });
@@ -232,6 +263,30 @@ it('honors use_wrapper_classes when set to false', function () {
 
 });
 
+it('Uses old value after submit', function () {
+    $this->registerTestRoute('bootstrap-input', function (Request $request) {
+        $request->validate([
+            'text-validation' => 'required|in:abc',
+            'tel-validation' => 'required|in:123',
+            'checkbox-validation' => 'required',
+            'radio-validation' => 'required',
+        ]);
+    });
+
+    $this->visit('/bootstrap-input')
+        ->type('abc', 'text-validation')
+        ->type('123', 'tel-validation')
+//        ->check('checkbox-validation')
+//        ->check('radio-validation')
+        ->press('Send')
+        ->within('#form-input-validation', function() {
+            $this->seeElement('input[name="text-validation"][value="abc"]')
+            ->seeElement('input[name="tel-validation"][value="123"]');
+//            ->seeElement('input[name="checkbox-validation"]:checked')
+//            ->seeElement('input[name="radio-validation"]:checked');
+        });
+});
+
 // sample of inputs are checked
 it('shows a validation error', function () {
     $this->registerTestRoute('bootstrap-input', function (Request $request) {
@@ -279,7 +334,7 @@ it('does have help text when "help-text" attribute present', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-help-text', function() {
+        ->within('#form-input-help-text', function() {
 //            $this->seeElement('div.form-text[id="button"]')// uses button component
             $this->seeElement('div.form-text[id="checkbox-help-text"]')
                 ->seeElement('div.form-text[id="color-help-text"]')
@@ -369,31 +424,30 @@ it('does not have help text when control is hidden', function () {
 it('does not have help text when no @slot("help") or "help-text" attribute', function () {
     $this->registerTestRoute('bootstrap-input');
 
-    // reusing the form "form-type-attribute" for this test
     $this->visit('/bootstrap-input')
-        ->within('#form-type-attribute', function() {
+        ->within('#form-no-help', function() {
             $this->seeElement('input') // always make sure node list is not empty when only using dontSeeElement
-            ->dontSeeElement('div[id="button-1-help-text"]')// uses button component
-            ->dontSeeElement('div[id="checkbox-1-help-text"]')
-                ->dontSeeElement('div[id="color-1-help-text"]')
-                ->dontSeeElement('div[id="date-1-help-text"]')
+            ->dontSeeElement('div[id="button-help-text"]')// uses button component
+            ->dontSeeElement('div[id="checkbox-help-text"]')
+                ->dontSeeElement('div[id="color-help-text"]')
+                ->dontSeeElement('div[id="date-help-text"]')
                 ->dontSeeElement('div[id="datetime-local-1-help-text"]')
-                ->dontSeeElement('div[id="email-1-help-text"]')
-                ->dontSeeElement('div[id="file-1-help-text"]')
-//                ->dontSeeElement('div[id="hidden-1-help-text"]')
-                ->dontSeeElement('div[id="image-1-help-text"]')
-                ->dontSeeElement('div[id="month-1-help-text"]')
-                ->dontSeeElement('div[id="number-1-help-text"]')
-                ->dontSeeElement('div[id="password-1-help-text"]')
-                ->dontSeeElement('div[id="radio-1-help-text"]')
-                ->dontSeeElement('div[id="range-1-help-text"]')
-                ->dontSeeElement('div[id="reset-1-help-text"]')
-                ->dontSeeElement('div[id="search-1-help-text"]')
-                ->dontSeeElement('div[id="submit-1-help-text"]')
-                ->dontSeeElement('div[id="tel-1-help-text"]')
-                ->dontSeeElement('div[id="text-1-help-text"]')
-                ->dontSeeElement('div[id="time-1-help-text"]')
-                ->dontSeeElement('div[id="url-1-help-text"]')
-                ->dontSeeElement('div[id="week-1-help-text"]');
+                ->dontSeeElement('div[id="email-help-text"]')
+                ->dontSeeElement('div[id="file-help-text"]')
+//                ->dontSeeElement('div[id="hidden-help-text"]')
+                ->dontSeeElement('div[id="image-help-text"]')
+                ->dontSeeElement('div[id="month-help-text"]')
+                ->dontSeeElement('div[id="number-help-text"]')
+                ->dontSeeElement('div[id="password-help-text"]')
+                ->dontSeeElement('div[id="radio-help-text"]')
+                ->dontSeeElement('div[id="range-help-text"]')
+                ->dontSeeElement('div[id="reset-help-text"]')
+                ->dontSeeElement('div[id="search-help-text"]')
+                ->dontSeeElement('div[id="submit-help-text"]')
+                ->dontSeeElement('div[id="tel-help-text"]')
+                ->dontSeeElement('div[id="text-help-text"]')
+                ->dontSeeElement('div[id="time-help-text"]')
+                ->dontSeeElement('div[id="url-help-text"]')
+                ->dontSeeElement('div[id="week-help-text"]');
         });
 });

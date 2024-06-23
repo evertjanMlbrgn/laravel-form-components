@@ -42,12 +42,6 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
     </x-form-select>
-    <x-form-select id="hidden-select-2" name="select" value="select-value" label="hidden-select-label" hidden help-text="test">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </x-form-select>
     <x-form-select id="non-hidden-select" name="select" value="select-value" label="noon-hidden-select-label">
         <option selected>Open this select menu</option>
         <option value="1">One</option>
@@ -60,7 +54,7 @@
     <x-form-submit />
 </x-form-form>
 
-<x-form-form id="form-wrapper-classes">
+<x-form-form id="form-select-wrapper-classes">
     <x-form-select id="select" name="select" label="select" class="mx-3 my-3 ms-3 mt-3 me-3 mb-3 form-control-lg some-other-class" horizontal>
         <option selected>Open this select menu</option>
         <option value="1">One</option>
@@ -90,11 +84,20 @@
 </x-form-form>
 
 <x-form-form id="form-select-validation-error">
-    <x-form-select name="select" placeholder="select something" />
+    <x-form-select name="select" placeholder="select something" >
         <option value="a">A</option>
         <option value="b">B</option>
         <option value="c">C</option>
+    </x-form-select>
     <x-form-submit />
+</x-form-form>
+
+<x-form-form id="form-select-no-help">
+    <x-form-select name="select">
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+    </x-form-select>
 </x-form-form>
 
 <x-form-form id="form-select-help-slot">

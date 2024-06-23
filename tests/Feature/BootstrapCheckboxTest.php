@@ -20,7 +20,6 @@ it('check checkbox labels work', function () {
             $this->seeElement('input[value="a"] ~ label')
                 ->seeElement('input[value="b"] ~ label');
         });
-
 });
 
 it('Assert checkbox labels contain correct classes"', function () {
@@ -31,7 +30,6 @@ it('Assert checkbox labels contain correct classes"', function () {
             $this->seeElement('input[value="a"] ~ label.form-check-label')
                 ->seeElement('input[value="b"] ~ label.form-check-label');
         });
-
 });
 
 it('supports bound collections', function () {

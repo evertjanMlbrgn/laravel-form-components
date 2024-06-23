@@ -2,7 +2,7 @@
 
 it('lets buttons default to correct type', function () {
     $this->registerTestRoute('bootstrap-button');
-    $this->visit('bootstrap-button')
+    $this->visit('/bootstrap-button')
         ->within('#form-1', function() {
             $this->seeElement('button[id="button"][type="button"].btn')
             ->seeElement('button[id="button-submit"][type="submit"].btn')
@@ -14,7 +14,7 @@ it('lets buttons default to correct type', function () {
 
 it('sets classes on button', function () {
     $this->registerTestRoute('bootstrap-button');
-    $this->visit('bootstrap-button')
+    $this->visit('/bootstrap-button')
         ->within('#form-2', function() {
             $this->seeElement('button[id="button-2"].btn.btn-my-button:not(.btn-primary)')
                 ->seeElement('button[id="button-submit-2"][type="submit"].btn.btn-something:not(.btn-primary)')
@@ -24,7 +24,7 @@ it('sets classes on button', function () {
 
 it('sets extra classes on button', function () {
     $this->registerTestRoute('bootstrap-button');
-    $this->visit('bootstrap-button')
+    $this->visit('/bootstrap-button')
         ->within('#form-3', function() {
             $this->seeElement('button[id="button-3"].btn.btn-sm')
                 ->seeElement('button[id="button-submit-3"][type="submit"].btn.btn-lg')
@@ -35,7 +35,7 @@ it('sets extra classes on button', function () {
 it('sets extra attributes on button', function () {
     $this->registerTestRoute('bootstrap-button');
 
-    $this->visit('bootstrap-button')
+    $this->visit('/bootstrap-button')
         ->within('#form-4', function() {
             $this->seeElement('button[id="button-4"][autofocus][disabled]')
             ->seeElement('button[id="button-submit-4"][formtarget="test"][value="submit value"]')

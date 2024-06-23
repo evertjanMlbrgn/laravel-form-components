@@ -11,6 +11,16 @@ it('always gets an id attribute', function () {
         });
 });
 
+it('sets classes on input', function () {
+    $this->registerTestRoute('bootstrap-select');
+
+    // reusing form "form-type-attribute"
+    $this->visit('bootstrap-select')
+        ->within('#form-select-no-id', function() {
+            $this->seeElement('select[name="select"].form-select');
+        });
+});
+
 it('honors extra attributes', function () {
     $this->registerTestRoute('bootstrap-select');
 
@@ -55,7 +65,7 @@ it('honors use_wrapper_classes when set to true', function () {
     $this->registerTestRoute('bootstrap-select');
 
     $this->visit('/bootstrap-select')
-        ->within('#form-wrapper-classes', function() {
+        ->within('#form-select-wrapper-classes', function() {
             $this->seeElement('div.mx-3.my-3.ms-3.mt-3.me-3.mb-3 select[name="select"].form-control-lg.some-other-class');
 
         });
@@ -67,7 +77,7 @@ it('honors use_wrapper_classes when set to false', function () {
     $this->registerTestRoute('bootstrap-select');
 
     $this->visit('/bootstrap-select')
-        ->within('#form-wrapper-classes', function() {
+        ->within('#form-select-wrapper-classes', function() {
             $this->seeElement('select[name="select"].form-control-lg.some-other-class.mx-3.my-3.ms-3.mt-3.me-3.mb-3');
         });
 
@@ -141,8 +151,8 @@ it('does have help text when "help-text" attribute present', function () {
 
     $this->visit('/bootstrap-select')
         ->within('#form-select-help-text', function() {
-            $this->seeElement('div.form-text[id="select-help-text"]');
-
+            $this->seeElement('div.form-text[id="select-help-text"]')
+            ->seeInElement('div.form-text[id="select-help-text"]', 'attribute help text');
         });
 });
 
@@ -151,17 +161,16 @@ it('does have help text when @slot("help") attribute present', function () {
 
     $this->visit('/bootstrap-select')
         ->within('#form-select-help-slot', function() {
-            $this->seeElement('div.form-text[id="select-help-text"]');
-
+            $this->seeElement('div.form-text[id="select-help-text"]')
+            ->seeInElement('div.form-text[id="select-help-text"]', 'slot help text');
         });
 });
 
 it('does not have help text when no @slot("help") or "help-text" attribute', function () {
     $this->registerTestRoute('bootstrap-select');
 
-    // reusing "form-select-options-using-slot" for this test
     $this->visit('/bootstrap-select')
-        ->within('#form-select-options-using-slot', function() {
+        ->within('#form-select-no-help', function() {
             $this->seeElement('select')// always make sure node list is not empty when only using dontSeeElement
             ->dontSeeElement('div.form-text');
         });
@@ -173,8 +182,7 @@ it('does not have help text when select is hidden', function () {
     $this->visit('/bootstrap-select')
         ->within('#form-select-hidden', function() {
             $this->seeElement('select') // always make sure node list is not empty when only using dontSeeElement
-            ->dontSeeElement('div.form-text[id="hidden-select-help-text"]')
-                ->dontSeeElement('div.form-text[id="hidden-select-2-help-text"]')
+                ->dontSeeElement('div.form-text[id="hidden-select-help-text"]')
                 ->seeElement('div.form-text[id="non-hidden-select-help-text"]')
                 ->seeInElement('div.form-text[id="non-hidden-select-help-text"]', 'other help text');
         });
