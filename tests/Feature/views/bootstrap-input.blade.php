@@ -28,6 +28,48 @@
     <x-form-input id="week-1" name="week" type="week"/>
 </x-form-form>
 
+<x-form-form id="form-input-validation">
+{{--    <x-form-input id="button-1" name="button" type="button"/>--}}
+{{--    <x-form-input id="checkbox-1" name="checkbox" type="checkbox"/>--}}
+{{--    <x-form-input id="color-1" name="color" type="color"/>--}}
+{{--    <x-form-input id="date-1" name="date" type="date"/>--}}
+{{--    <x-form-input id="datetime-local-1" name="datetime-local" type="datetime-local"/>--}}
+{{--    <x-form-input id="email-1" name="email" type="email"/>--}}
+{{--    <x-form-input id="file-1" name="file" type="file"/>--}}
+{{--    <x-form-input id="hidden-1" name="hidden" type="hidden"/>--}}
+{{--    <x-form-input id="image-1" name="image" type="image"/>--}}
+{{--    <x-form-input id="month-1" name="month" type="month"/>--}}
+{{--    <x-form-input id="number-1" name="number" type="number"/>--}}
+{{--    <x-form-input id="password-1" name="password" type="password"/>--}}
+{{--    <x-form-input id="radio-1" name="radio" type="radio"/>--}}
+{{--    <x-form-input id="range-1" name="range" type="range"/>--}}
+{{--    <x-form-input id="reset-1" name="reset" type="reset"/>--}}
+{{--    <x-form-input id="search-1" name="search" type="search"/>--}}
+{{--    <x-form-input id="submit-1" name="submit" type="submit"/>--}}
+{{--    <x-form-input id="tel-1" name="tel" type="tel"/>--}}
+    <x-form-input id="text-1" name="text" type="text"/>
+{{--    <x-form-input id="time-1" name="time" type="time"/>--}}
+{{--    <x-form-input id="url-1" name="url" type="url"/>--}}
+{{--    <x-form-input id="week-1" name="week" type="week"/>--}}
+    <x-form-submit />
+</x-form-form>
+
+<x-form-form id="form-input-validation-error" method="POST">
+    <div>
+        <x-form-input name="tel" type="tel"/>
+    </div>
+    <div>
+        <x-form-input name="text" type="text" required/>
+    </div>
+    <div>
+        <x-form-input name="checkbox" type="checkbox" required/>
+    </div>
+    <div>
+        <x-form-input name="radio" type="radio" required/>
+    </div>
+    <x-form-submit />
+</x-form-form>
+
 <x-form-form id="form-extra-attributes">
     {{-- NOTE: buttons cannot have the required, readonly attributes, can have disabled--}}
     <x-form-input label="labeltext" required readonly disabled value="test value" id="button" name="button" type="button"/>
