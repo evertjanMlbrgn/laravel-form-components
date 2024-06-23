@@ -2,13 +2,15 @@
 <?php $id = $getId(); ?>
 
 {{-- Open wrapper --}}
-@if(!$toggle && !$hidden)
-<div {{ $attributes->onlyWrapperClasses()->class([
-    'form-check',
-    'form-switch' => $attributes->get('switch'),
-    'form-check-inline' => $attributes->get('inline'),
-   ]) }}
->
+@if(!$hidden)
+    @if(!$toggle)
+    <div {{ $attributes->onlyWrapperClasses()->class([
+        'form-check',
+        'form-switch' => $attributes->get('switch'),
+        'form-check-inline' => $attributes->get('inline'),
+       ]) }}
+    >
+    @endif
 @endif
 
     {{-- Input --}}
@@ -41,21 +43,21 @@
         @endif
         >
 
+@if(!$hidden)
+
     {{-- label --}}
-    @if(!$hidden)
-        <x-mlbrgn-form-label
-            :parentClasses="$attributes->get('class')"
-            :required="$attributes->has('required')"
-            @class([
-                'form-check-label' => !$toggle,
-                'btn' => $toggle,
-                $classButton,
-                $classLabel
-            ])
-            :for="$id">
-            {{ $label }}
-        </x-mlbrgn-form-label>
-    @endif
+    <x-mlbrgn-form-label
+        :parentClasses="$attributes->get('class')"
+        :required="$attributes->has('required')"
+        @class([
+            'form-check-label' => !$toggle,
+            'btn' => $toggle,
+            $classButton,
+            $classLabel
+        ])
+        :for="$id">
+        {{ $label }}
+    </x-mlbrgn-form-label>
 
     {{-- Feedback messages --}}
     @if(!empty($validFeedback))
@@ -90,8 +92,10 @@
         <x-mlbrgn-form-text :id="$id">{{ $helpText }}</x-mlbrgn-form-text>
     @endif
 
-{{-- Close wrapper --}}
-@if(!$toggle && !$hidden)
-</div>
+    {{-- Close wrapper --}}
+    @if(!$toggle)
+    </div>
+    @endif
+
 @endif
 

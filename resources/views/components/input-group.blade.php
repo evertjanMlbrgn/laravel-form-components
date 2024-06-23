@@ -68,19 +68,3 @@
 
 {{-- Open wrapper--}}
 </div>
-
-{{--<div class="mb-3">--}}
-{{--    <x-form-label :label="$label" :required="$attributes->has('required')"></x-form-label>--}}
-
-{{--    <div {{ $attributes->merge(['class' => 'input-group'  . ($hasError($name) ? ' is-invalid' : '')]) }}>--}}
-{{--        {{ $slot }}--}}
-{{--    </div>--}}
-
-{{--@if(isset($help))--}}
-{{--    <x-form-text>{{ $help }}</x-form-text>--}}
-{{--@endif--}}
-
-{{--    @if($shouldShowError($name))--}}
-{{--        <x-form-errors :name="$name" />--}}
-{{--    @endif--}}
-{{--</div>--}}

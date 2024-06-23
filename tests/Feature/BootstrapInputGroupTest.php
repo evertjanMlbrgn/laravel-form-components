@@ -25,3 +25,34 @@ it('groups elements with input-group', function () {
     });
 });
 
+it('does not have help text when no @slot("help") or "help-text" attribute', function () {
+    $this->registerTestRoute('bootstrap-input-group-1');
+
+    $this->visit('/bootstrap-input-group-1')
+        ->within('#input-group-1-form', function() {
+            $this->dontSeeElement('div.form-text');
+        });
+});
+
+it('does have help text when "help-text" attribute present', function () {
+    $this->registerTestRoute('bootstrap-input-group-2');
+
+    $this->visit('/bootstrap-input-group-2')
+        ->within('#input-group-2-form', function() {
+            $this->seeElement('div.form-text')
+                ->seeInElement('div.form-text', 'help text');
+        });
+});
+
+it('does have help text when @slot("help") attribute present', function () {
+    $this->registerTestRoute('bootstrap-input-group-3');
+
+    $this->visit('/bootstrap-input-group-3')
+        ->within('#input-group-3-form', function() {
+            $this->seeElement('div.form-text')
+            ->seeInElement('div.form-text', 'slot help text');
+        });
+});
+
+
+

@@ -1,4 +1,4 @@
-<x-form-form>
+<x-form-form id="input-group-1-form">
     <x-form-input-group id="input-group-1" label="Test label">
         <x-form-input name="color" type="color" />
         <x-form-checkbox name="check" switch />

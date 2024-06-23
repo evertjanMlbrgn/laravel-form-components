@@ -1,29 +1,30 @@
 {{-- Cache ID to avoid generating multiple times --}}
 <?php $id = $getId(); ?>
 
-{{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
-@if($floating || $horizontal)
-    <div
-        {{ $attributes->onlyWrapperClasses()->class([
-          'row' => $horizontal,
-          'form-floating' => $floating
-      ]) }}
-    >
-@endif
-        {{-- label before control --}}
-        @if(!$hidden)
-            @if(!$attributes->has('label-end') && (!$floating || $horizontal))
-                <x-mlbrgn-form-label
-                    :parentClasses="$attributes->get('class')"
-                    :required="$attributes->has('required')"
-                    @class([
-                       'col-4' => empty($classLabel),
-                       $classLabel
-                    ])
-                    :for="$id">
-                    {{ $label }}
-                </x-mlbrgn-form-label>
-            @endif
+@if(!$hidden)
+
+    {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
+    @if($floating || $horizontal)
+        <div
+            {{ $attributes->onlyWrapperClasses()->class([
+              'row' => $horizontal,
+              'form-floating' => $floating
+          ]) }}
+        >
+    @endif
+
+    {{-- label before control --}}
+        @if(!$attributes->has('label-end') && (!$floating || $horizontal))
+            <x-mlbrgn-form-label
+                :parentClasses="$attributes->get('class')"
+                :required="$attributes->has('required')"
+                @class([
+                   'col-4' => empty($classLabel),
+                   $classLabel
+                ])
+                :for="$id">
+                {{ $label }}
+            </x-mlbrgn-form-label>
         @endif
 
         {{-- horizontal control wrapper --}}
@@ -35,6 +36,8 @@
              ])
             >
         @endif
+
+@endif
                 {{-- Select element --}}
                 <select
                     @if(!$floating && !$horizontal)
@@ -79,38 +82,38 @@
                     @endforelse
                 </select>
 
-                {{-- Feedback messages --}}
-                @if(!empty($validFeedback))
-                    <div @class([
-                    'valid-feedback' => !$tooltipFeedback,
-                    'valid-tooltip' => $tooltipFeedback,
-                ])>
-                        {{ $validFeedback }}
-                    </div>
-                @endif
+@if(!$hidden)
 
-                @if(!empty($invalidFeedback))
-                    <div @class([
-                    'invalid-feedback' => !$tooltipFeedback,
-                    'invalid-tooltip' => $tooltipFeedback,
-                ])>
-                        {{ $invalidFeedback }}
-                    </div>
-                @endif
+            {{-- Feedback messages --}}
+            @if(!empty($validFeedback))
+                <div @class([
+                'valid-feedback' => !$tooltipFeedback,
+                'valid-tooltip' => $tooltipFeedback,
+            ])>
+                    {{ $validFeedback }}
+                </div>
+            @endif
 
-            {{-- label after control --}}
-            @if(!$hidden)
-                @if($attributes->has('label-end') || ($floating && !$horizontal))
-                    <x-mlbrgn-form-label
-                        :parentClasses="$attributes->get('class')"
-                        :required="$attributes->has('required')"
-                        @class([
-                            $classLabel
-                        ])
-                        :for="$id">
-                        {{ $label }}
-                    </x-mlbrgn-form-label>
-                @endif
+            @if(!empty($invalidFeedback))
+                <div @class([
+                'invalid-feedback' => !$tooltipFeedback,
+                'invalid-tooltip' => $tooltipFeedback,
+            ])>
+                    {{ $invalidFeedback }}
+                </div>
+            @endif
+
+        {{-- label after control --}}
+            @if($attributes->has('label-end') || ($floating && !$horizontal))
+                <x-mlbrgn-form-label
+                    :parentClasses="$attributes->get('class')"
+                    :required="$attributes->has('required')"
+                    @class([
+                        $classLabel
+                    ])
+                    :for="$id">
+                    {{ $label }}
+                </x-mlbrgn-form-label>
             @endif
 
             {{-- Error message --}}
@@ -132,7 +135,10 @@
             </div>
         @endif
 
-{{-- Close wrapper for floating or horizontal controls --}}
-@if($floating || $horizontal)
-    </div>
+    {{-- Close wrapper for floating or horizontal controls --}}
+    @if($floating || $horizontal)
+        </div>
+    @endif
+
 @endif
+

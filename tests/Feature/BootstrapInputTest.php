@@ -4,7 +4,7 @@ it('sets type to "text" when no type provided to input', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-1', function() {
+        ->within('#form-defaults-to-text', function() {
             return $this->seeElement('input[name="input-text-1"][type="text"]');
         });
 });
@@ -13,7 +13,7 @@ it('honors type attribute', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-2', function() {
+        ->within('#form-type-attribute', function() {
             return $this->seeElement('button[name="button"][type="button"]')// uses button component
                 ->seeElement('input[name="checkbox"][type="checkbox"]')
                 ->seeElement('input[name="color"][type="color"]')
@@ -39,12 +39,13 @@ it('honors type attribute', function () {
         });
 });
 
-it('does not have help text when no @slot("help") or "help-text" attribute', function () {
+it('does not have help text control is hidden', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-2', function() {
-            $this->dontSeeElement('div[id="button-1-help-text"]')// uses button component
+        ->within('#form-hidden-controls', function() {
+            $this->seeElement('input') // always make sure node list is not empty when only using dontSeeElement
+                ->dontSeeElement('div[id="button-1-help-text"]')// uses button component
                 ->dontSeeElement('div[id="checkbox-1-help-text"]')
                 ->dontSeeElement('div[id="color-1-help-text"]')
                 ->dontSeeElement('div[id="date-1-help-text"]')
@@ -69,11 +70,103 @@ it('does not have help text when no @slot("help") or "help-text" attribute', fun
         });
 });
 
+it('does not have help text when no @slot("help") or "help-text" attribute', function () {
+    $this->registerTestRoute('bootstrap-input');
+
+    // reusing the form "form-type-attribute" for this test
+    $this->visit('/bootstrap-input')
+        ->within('#form-type-attribute', function() {
+            $this->seeElement('input') // always make sure node list is not empty when only using dontSeeElement
+                ->dontSeeElement('div[id="button-1-help-text"]')// uses button component
+                ->dontSeeElement('div[id="checkbox-1-help-text"]')
+                ->dontSeeElement('div[id="color-1-help-text"]')
+                ->dontSeeElement('div[id="date-1-help-text"]')
+                ->dontSeeElement('div[id="datetime-local-1-help-text"]')
+                ->dontSeeElement('div[id="email-1-help-text"]')
+                ->dontSeeElement('div[id="file-1-help-text"]')
+//                ->dontSeeElement('div[id="hidden-1-help-text"]')
+                ->dontSeeElement('div[id="image-1-help-text"]')
+                ->dontSeeElement('div[id="month-1-help-text"]')
+                ->dontSeeElement('div[id="number-1-help-text"]')
+                ->dontSeeElement('div[id="password-1-help-text"]')
+                ->dontSeeElement('div[id="radio-1-help-text"]')
+                ->dontSeeElement('div[id="range-1-help-text"]')
+                ->dontSeeElement('div[id="reset-1-help-text"]')
+                ->dontSeeElement('div[id="search-1-help-text"]')
+                ->dontSeeElement('div[id="submit-1-help-text"]')
+                ->dontSeeElement('div[id="tel-1-help-text"]')
+                ->dontSeeElement('div[id="text-1-help-text"]')
+                ->dontSeeElement('div[id="time-1-help-text"]')
+                ->dontSeeElement('div[id="url-1-help-text"]')
+                ->dontSeeElement('div[id="week-1-help-text"]');
+        });
+});
+
+it('does have help text when "help-text" attribute present', function () {
+    $this->registerTestRoute('bootstrap-input');
+
+    $this->visit('/bootstrap-input')
+        ->within('#form-help-text', function() {
+//            $this->seeElement('div[id="button"]')// uses button component
+            $this->seeElement('div[id="checkbox-help-text"]')
+                ->seeElement('div[id="color-help-text"]')
+                ->seeElement('div[id="date-help-text"]')
+                ->seeElement('div[id="datetime-local-help-text"]')
+                ->seeElement('div[id="email-help-text"]')
+                ->seeElement('div[id="file-help-text"]')
+//                ->dontSeeElement('div[id="hidden-help-text"]')
+                ->seeElement('div[id="image-help-text"]')
+                ->seeElement('div[id="month-help-text"]')
+                ->seeElement('div[id="number-help-text"]')
+                ->seeElement('div[id="password-help-text"]')
+                ->seeElement('div[id="radio-help-text"]')
+                ->seeElement('div[id="range-help-text"]')
+//                ->seeElement('div[id="reset-help-text"]')
+                ->seeElement('div[id="search-help-text"]')
+//                ->seeElement('div[id="submit-help-text"]')
+                ->seeElement('div[id="tel-help-text"]')
+                ->seeElement('div[id="text-help-text"]')
+                ->seeElement('div[id="time-help-text"]')
+                ->seeElement('div[id="url-help-text"]')
+                ->seeElement('div[id="week-help-text"]');
+        });
+});
+
+it('does have help text when @slot("help") attribute present', function () {
+    $this->registerTestRoute('bootstrap-input');
+
+    $this->visit('/bootstrap-input')
+        ->within('#form-help-slot', function() {
+//            $this->seeElement('div[id="button"]')// uses button component
+            $this->seeElement('div[id="checkbox-help-text"]')
+                ->seeElement('div[id="color-help-text"]')
+                ->seeElement('div[id="date-help-text"]')
+                ->seeElement('div[id="datetime-local-help-text"]')
+                ->seeElement('div[id="email-help-text"]')
+                ->seeElement('div[id="file-help-text"]')
+                ->dontSeeElement('div[id="hidden-help-text"]')
+                ->seeElement('div[id="image-help-text"]')
+                ->seeElement('div[id="month-help-text"]')
+                ->seeElement('div[id="number-help-text"]')
+                ->seeElement('div[id="password-help-text"]')
+                ->seeElement('div[id="radio-help-text"]')
+                ->seeElement('div[id="range-help-text"]')
+//                ->seeElement('div[id="reset-help-text"]')
+                ->seeElement('div[id="search-help-text"]')
+//                ->seeElement('div[id="submit-help-text"]')
+                ->seeElement('div[id="tel-help-text"]')
+                ->seeElement('div[id="text-help-text"]')
+                ->seeElement('div[id="time-help-text"]')
+                ->seeElement('div[id="url-help-text"]')
+                ->seeElement('div[id="week-help-text"]');
+        });
+});
+
 it('honors extra attributes', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-3', function() {
+        ->within('#form-extra-attributes', function() {
             return $this->seeElement('button[name="button"][id="button"][disabled][value="test value"]:not([required]):not([readonly])')// uses button component
                 ->seeElement('input[name="checkbox"][type="checkbox"][id="checkbox"][required][readonly][disabled][value="test value"]')
                 ->seeElement('input[name="color"][type="color"][id="color"][required][readonly][disabled][value="test value"]')
@@ -103,7 +196,7 @@ it('honors extra classes', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-4', function() {
+        ->within('#form-extra-classes', function() {
             return $this->seeElement('button[name="button"].extra-1.extra-2.form-control-sm')// uses button component
                 ->seeElement('button[name="button"].extra-1.extra-2.form-control-sm')// uses button component
                 ->seeElement('input[name="checkbox"].extra-1.extra-2.form-control-sm')
@@ -132,11 +225,11 @@ it('honors extra classes', function () {
         });
 });
 
-it('always has an id attribute', function () {
+it('always gets an id attribute', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-4', function() {
+        ->within('#form-no-id', function() {
             return $this->seeElement('button[name="button"][id]')// uses button component
             ->seeElement('input[name="checkbox"][id]')
                 ->seeElement('input[name="color"][id]')
@@ -166,19 +259,20 @@ it('set label of button by using value attribute', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-5', function() {
+        ->within('#form-button-label-by-value-attribute', function() {
             return $this->seeInElement('button[name="button"]', 'button label')// uses button component
                 ->seeInElement('button[name="reset"]', 'button label')// uses button component
                 ->seeInElement('button[name="submit"]', 'button label');// uses button component
         });
 });
 
-it('does not render label when control is hidden', function () {
+it('does not render label or help when control is hidden', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-6', function() {
-            return $this->dontSeeElement('label[for="checkbox"]')
+        ->within('#form-hidden-controls', function() {
+            return $this->seeElement('input') // always make sure node list is not empty when only using dontSeeElement
+                ->dontSeeElement('label[for="checkbox"]')
                 ->dontSeeElement('label[for="color"]')
                 ->dontSeeElement('label[for="date"]')
                 ->dontSeeElement('label[for="datetime-local"]')
@@ -206,7 +300,7 @@ it('honors use_wrapper_classes when set to true', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-7', function() {
+        ->within('#form-wrapper-classes', function() {
             $this->seeElement('div.mx-3.my-3.ms-3.mt-3.me-3.mb-3 input[name="checkbox"].form-control-lg.some-other-class')
                 ->seeElement('div.mx-3.my-3.ms-3.mt-3.me-3.mb-3 input[name="color"].form-control-lg.some-other-class')
                 ->seeElement('div.mx-3.my-3.ms-3.mt-3.me-3.mb-3 input[name="date"].form-control-lg.some-other-class')
@@ -235,7 +329,7 @@ it('honors use_wrapper_classes when set to false', function () {
     $this->registerTestRoute('bootstrap-input');
 
     $this->visit('/bootstrap-input')
-        ->within('#form-7', function() {
+        ->within('#form-wrapper-classes', function() {
             $this->seeElement('input[name="checkbox"].form-control-lg.some-other-class.mx-3.my-3.ms-3.mt-3.me-3.mb-3')
                 ->seeElement('input[name="color"].form-control-lg.some-other-class.mx-3.my-3.ms-3.mt-3.me-3.mb-3')
                 ->seeElement('input[name="date"].form-control-lg.some-other-class.mx-3.my-3.ms-3.mt-3.me-3.mb-3')

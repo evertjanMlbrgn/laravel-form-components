@@ -1,13 +1,15 @@
 {{-- Cache ID to avoid generating multiple times --}}
 <?php $id = $getId(); ?>
 
-{{-- Open wrapper --}}
-@if(!$toggle && !$hidden)
-<div {{ $attributes->onlyWrapperClasses()->class([
-    'form-check',
-    'form-check-inline' => $attributes->get('inline'),
-    ]) }}
->
+@if(!$hidden)
+    {{-- Open wrapper --}}
+    @if(!$toggle)
+    <div {{ $attributes->onlyWrapperClasses()->class([
+        'form-check',
+        'form-check-inline' => $attributes->get('inline'),
+        ]) }}
+    >
+    @endif
 @endif
 
     {{-- Input --}}
@@ -40,21 +42,21 @@
         @endif
     />
 
+@if(!$hidden)
+
     {{-- label --}}
-    @if(!$hidden)
-        <x-mlbrgn-form-label :parentClasses="$attributes->get('class')"
-            @class([
-            'form-check-label' => !$toggle,
-            'btn' => $toggle,
-            $classButton,
-            $classLabel
-            ])
-            :for="$id"
-            :required="$attributes->has('required')"
-            >
-            {{ $label }}
-        </x-mlbrgn-form-label>
-    @endif
+    <x-mlbrgn-form-label :parentClasses="$attributes->get('class')"
+        @class([
+        'form-check-label' => !$toggle,
+        'btn' => $toggle,
+        $classButton,
+        $classLabel
+        ])
+        :for="$id"
+        :required="$attributes->has('required')"
+        >
+        {{ $label }}
+    </x-mlbrgn-form-label>
 
     {{-- Feedback messages --}}
     @if(!empty($validFeedback))
@@ -91,7 +93,9 @@
         <x-mlbrgn-form-text :id="$id">{{ $helpText }}</x-mlbrgn-form-text>
     @endif
 
-{{-- Close wrapper --}}
-@if(!$toggle && !$hidden)
-</div>
+    {{-- Close wrapper --}}
+    @if(!$toggle)
+    </div>
+    @endif
 @endif
+
