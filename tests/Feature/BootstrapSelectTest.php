@@ -7,21 +7,21 @@ it('always gets an id attribute', function () {
 
     $this->visit('/bootstrap-select')
         ->within('#form-select-no-id', function() {
-            $this->seeElement('select[name="select"][id]');
+            $this->seeElement('select[id]');
         });
 });
 
-it('sets classes on input', function () {
+it('sets classes', function () {
     $this->registerTestRoute('bootstrap-select');
 
     // reusing form "form-type-attribute"
     $this->visit('bootstrap-select')
-        ->within('#form-select-no-id', function() {
+        ->within('#form-select-classes', function() {
             $this->seeElement('select[name="select"].form-select');
         });
 });
 
-it('honors extra attributes', function () {
+it('sets extra attributes', function () {
     $this->registerTestRoute('bootstrap-select');
 
     $this->visit('/bootstrap-select')
@@ -30,7 +30,7 @@ it('honors extra attributes', function () {
         });
 });
 
-it('honors extra classes', function () {
+it('sets extra classes', function () {
     $this->registerTestRoute('bootstrap-select');
 
     $this->visit('/bootstrap-select')
@@ -48,7 +48,7 @@ it('sets a default value', function () {
         });
 });
 
-it('does not render label when select is hidden', function () {
+it('does not render label when hidden', function () {
     $this->registerTestRoute('bootstrap-select');
 
     $this->visit('/bootstrap-select')
@@ -85,7 +85,7 @@ it('honors use_wrapper_classes when set to false', function () {
 
 });
 
-it('remembers old value after submit', function () {
+it('uses old value after submit', function () {
     $this->registerTestRoute('bootstrap-select', function (Request $request) {
         $request->validate([
             'select' => 'required|in:0,1',
@@ -176,7 +176,7 @@ it('does not have help text when no @slot("help") or "help-text" attribute', fun
         });
 });
 
-it('does not have help text when select is hidden', function () {
+it('does not have help text hidden', function () {
     $this->registerTestRoute('bootstrap-select');
 
     $this->visit('/bootstrap-select')

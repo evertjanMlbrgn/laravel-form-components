@@ -54,7 +54,7 @@
     <x-form-submit />
 </x-form-form>
 
-<x-form-form id="form-extra-attributes">
+<x-form-form id="form-input-extra-attributes">
     {{-- NOTE: buttons cannot have the required, readonly attributes, can have disabled--}}
     <x-form-input label="labeltext" required readonly disabled value="test value" id="button" name="button" type="button"/>
     <x-form-input label="labeltext" required readonly disabled value="test value" id="checkbox" name="checkbox" type="checkbox"/>
@@ -80,7 +80,7 @@
     <x-form-input label="labeltext" required readonly disabled value="test value" id="week" name="week" type="week"/>
 </x-form-form>
 
-<x-form-form id="form-extra-classes">
+<x-form-form id="form-input-extra-classes">
     <x-form-input name="button" type="button" class="extra-1 extra-2 form-control-sm"/>
     <x-form-input name="checkbox" type="checkbox" class="extra-1 extra-2 form-control-sm"/>
     <x-form-input name="color" type="color" class="extra-1 extra-2 form-control-sm"/>
@@ -106,31 +106,31 @@
 </x-form-form>
 
 <x-form-form id="form-input-no-id">
-    <x-form-input name="button" type="button"/>
-    <x-form-input name="checkbox" type="checkbox"/>
-    <x-form-input name="color" type="color"/>
-    <x-form-input name="date" type="date"/>
+    <x-form-input type="button"/>
+    <x-form-input type="checkbox"/>
+    <x-form-input type="color"/>
+    <x-form-input type="date"/>
     <x-form-input name="datetime-local" type="datetime-local"/>
-    <x-form-input name="email" type="email"/>
-    <x-form-input name="file" type="file"/>
-    <x-form-input name="hidden" type="hidden"/>
-    <x-form-input name="image" type="image"/>
-    <x-form-input name="month" type="month"/>
-    <x-form-input name="number" type="number"/>
-    <x-form-input name="password" type="password"/>
-    <x-form-input name="radio" type="radio"/>
-    <x-form-input name="range" type="range"/>
-    <x-form-input name="reset" type="reset"/>
-    <x-form-input name="search" type="search"/>
-    <x-form-input name="submit" type="submit"/>
-    <x-form-input name="tel" type="tel"/>
-    <x-form-input name="text" type="text"/>
-    <x-form-input name="time" type="time"/>
-    <x-form-input name="url" type="url"/>
-    <x-form-input name="week" type="week"/>
+    <x-form-input type="email"/>
+    <x-form-input type="file"/>
+    <x-form-input type="hidden"/>
+    <x-form-input type="image"/>
+    <x-form-input type="month"/>
+    <x-form-input type="number"/>
+    <x-form-input type="password"/>
+    <x-form-input type="radio"/>
+    <x-form-input type="range"/>
+    <x-form-input type="reset"/>
+    <x-form-input type="search"/>
+    <x-form-input type="submit"/>
+    <x-form-input type="tel"/>
+    <x-form-input type="text"/>
+    <x-form-input type="time"/>
+    <x-form-input type="url"/>
+    <x-form-input type="week"/>
 </x-form-form>
 
-<x-form-form id="form-no-help">
+<x-form-form id="form-input-no-help">
 {{--    <x-form-input id="button" name="button" type="button"/>--}}
     <x-form-input id="checkbox" name="checkbox" type="checkbox"/>
     <x-form-input id="color" name="color" type="color"/>

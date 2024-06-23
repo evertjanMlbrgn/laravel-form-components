@@ -7,6 +7,14 @@
 </x-form-form>
 
 <x-form-form id="form-select-no-id">
+    <x-form-select>
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+    </x-form-select>
+</x-form-form>
+
+<x-form-form id="form-select-classes">
     <x-form-select name="select">
         <option value="a">A</option>
         <option value="b">B</option>

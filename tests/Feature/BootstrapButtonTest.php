@@ -12,7 +12,7 @@ it('lets buttons default to correct type', function () {
         });
 });
 
-it('sets classes on button', function () {
+it('sets classes', function () {
     $this->registerTestRoute('bootstrap-button');
     $this->visit('/bootstrap-button')
         ->within('#form-2', function() {
@@ -22,7 +22,7 @@ it('sets classes on button', function () {
         });
 });
 
-it('sets extra classes on button', function () {
+it('sets extra classes', function () {
     $this->registerTestRoute('bootstrap-button');
     $this->visit('/bootstrap-button')
         ->within('#form-3', function() {
@@ -32,7 +32,7 @@ it('sets extra classes on button', function () {
         });
 });
 
-it('sets extra attributes on button', function () {
+it('sets extra attributes', function () {
     $this->registerTestRoute('bootstrap-button');
 
     $this->visit('/bootstrap-button')

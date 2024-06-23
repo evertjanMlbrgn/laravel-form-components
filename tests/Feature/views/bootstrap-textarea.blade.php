@@ -11,11 +11,11 @@
     <x-form-textarea id="non-hidden-textarea" name="textarea" label="test" help-text="textarea help text"/>
 </x-form-form>
 
-<x-form-form id="form-extra-classes">
+<x-form-form id="form-textarea-extra-classes">
     <x-form-textarea id="textarea" name="textarea" class="extra-1 extra-2 form-control-lg"/>
 </x-form-form>
 
-<x-form-form id="form-extra-attributes">
+<x-form-form id="form-textarea-extra-attributes">
     <x-form-textarea id="textarea" name="textarea" readonly disabled/>
 </x-form-form>
 
