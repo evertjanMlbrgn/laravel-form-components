@@ -1487,7 +1487,7 @@
                 </x-form-form>
 
 
-                <h3>label and end of controls (using attribute "label-end")</h3>
+                <h3>label at end of controls (using attribute "label-end")</h3>
 
                 <p>Only applicable to inputs, textarea, select. Html-editor buggy support.</p>
 
