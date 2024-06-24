@@ -349,8 +349,8 @@
 
                 <h3>Outlined styles</h3>
 
-                <x-form-checkbox id="btn-check-outlined" autocomplete="off" label="Single toggle" class-button="bnt-outline-primary" toggle/>
-                <x-form-checkbox id="btn-check-2-outlined" checked autocomplete="off" label="Checked" class-button="bnt-outline-secondary" toggle/>
+                <x-form-checkbox id="btn-check-outlined" autocomplete="off" label="Single toggle" class-button="btn-outline-primary" toggle/>
+                <x-form-checkbox id="btn-check-2-outlined" checked autocomplete="off" label="Checked" class-button="btn-outline-secondary" toggle/>
                 <x-form-radio name="options-outlined" id="success-outlined" autocomplete="off" checked label="Checked succes radio" class-button="btn-outline-success" toggle/>
                 <x-form-radio  name="options-outlined" id="danger-outlined" autocomplete="off" label="Danger radio" class-button="btn-outline-danger" toggle/>
 

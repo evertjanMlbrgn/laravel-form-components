@@ -1,4 +1,9 @@
-<x-form-form id="form-1">
+<x-form-form id="form-label-for">
+    <x-form-input name="input" label="Input" />
+    <x-form-textarea name="textarea" label="Textarea" id="text_b" />
+</x-form-form>
+
+<x-form-form id="form-required-controls">
     <x-form-input required label="labeltext" id="button" name="button" type="button"/>
     <x-form-input required label="labeltext" id="checkbox" name="checkbox" type="checkbox"/>
     <x-form-input required label="labeltext" id="color" name="color" type="color"/>
@@ -29,7 +34,7 @@
     <x-form-html-editor required label="labeltext" id="html-editor" name="html-editor"/>
 </x-form-form>
 
-<x-form-form id="form-2">
+<x-form-form id="form-label-for-random-id">
     <x-form-input label="labeltext" type="color"/>
     <x-form-input label="labeltext" type="date"/>
     <x-form-input label="labeltext" type="datetime-local"/>
@@ -48,6 +53,7 @@
     <x-form-input label="labeltext" type="url"/>
     <x-form-input label="labeltext" type="week"/>
 
+    {{-- non inputs --}}
     <x-form-select label="labeltext"/>
     <x-form-checkbox label="labeltext"/>
     <x-form-radio label="labeltext"/>

@@ -1,27 +1,31 @@
 <?php
-
 it('sets the id on the label or generates one', function () {
-    $this->registerTestRoute('bootstrap-label-for');
+    $this->registerTestRoute('bootstrap-label');
 
-    $page = $this->visit('/bootstrap-label-for')
-        ->seeElement('textarea[id="text_b"]')
-        ->seeElement('label[for="text_b"]');
+    $page = $this->visit('/bootstrap-label');
+
+    $page->within('#form-label-for', function() {
+        $this->seeElement('textarea[id="text_b"]')
+            ->seeElement('label[for="text_b"]');
+    });
 
     $inputId = $page->crawler()->filter('input[type="text"]')->attr('id');
 
     expect($inputId)->toStartWith("auto_id_");
 
-    $page
-        ->seeElement('input[id="' . $inputId . '"]')
-        ->seeElement('label[for="' . $inputId . '"]');
+    $page->within('#form-label-for', function() use ($inputId) {
+        $this ->seeElement('input[id="' . $inputId . '"]')
+            ->seeElement('label[for="' . $inputId . '"]');
+    });
+
 });
 
-it('Sets label without required attribute and with correct label class', function () {
+it('Sets label for required control and adds label class "required"', function () {
 
-    $this->registerTestRoute('custom-label');
+    $this->registerTestRoute('bootstrap-label');
 
-    $this->visit('/custom-label')
-        ->within('#form-1', function() {
+    $this->visit('/bootstrap-label')
+        ->within('#form-required-controls', function() {
             return $this->dontSeeElement('label[for="button"]')// uses button component, label is inside button
                 ->seeElement('label[for="checkbox"].form-check-label.required:not([required]):not(.form-label)')
                 ->seeElement('label[for="color"].form-label.required:not([required])')
@@ -29,7 +33,7 @@ it('Sets label without required attribute and with correct label class', functio
                 ->seeElement('label[for="datetime-local"].form-label.required:not([required])')
                 ->seeElement('label[for="email"].form-label.required:not([required])')
                 ->seeElement('label[for="file"].form-label.required:not([required])')
-                ->seeElement('label[for="hidden"].form-label.required:not([required])')
+                ->dontSeeElement('label[for="hidden"].form-label.required:not([required])')
                 ->seeElement('label[for="image"].form-label.required:not([required])')
                 ->seeElement('label[for="month"].form-label.required:not([required])')
                 ->seeElement('label[for="number"].form-label.required:not([required])')
@@ -52,21 +56,20 @@ it('Sets label without required attribute and with correct label class', functio
                 ->seeElement('label[for="html-editor"].form-label.required:not([required])');
 
         });
-})->todo();
+});
 
-it('uses correct id for label', function () {
+it('sets correct "for" attribute on label', function () {
 
-    $this->registerTestRoute('custom-label');
+    $this->registerTestRoute('bootstrap-label');
 
-    $this->visit('/custom-label')
-        ->within('#form-2', function() {
-            $page = $this;
+    $this->visit('/bootstrap-label')
+        ->within('#form-label-for-random-id', function() {
+        $page = $this;
         $colorId = $page->crawler()->filter('input[type="color"]')->attr('id');
         $dateId = $page->crawler()->filter('input[type="date"]')->attr('id');
         $datetimeLocalId = $page->crawler()->filter('input[type="datetime-local"]')->attr('id');
         $emailId = $page->crawler()->filter('input[type="email"]')->attr('id');
         $fileId = $page->crawler()->filter('input[type="file"]')->attr('id');
-        $hiddenId = $page->crawler()->filter('input[type="hidden"]')->attr('id');
         $imageId = $page->crawler()->filter('input[type="image"]')->attr('id');
         $monthId = $page->crawler()->filter('input[type="month"]')->attr('id');
         $numberId = $page->crawler()->filter('input[type="number"]')->attr('id');
@@ -87,19 +90,18 @@ it('uses correct id for label', function () {
 
             $page->seeElement('label[for="' . $colorId . '"]')
             ->seeElement('input[type="color"][id="' . $colorId . '"]')
+
             ->seeElement('label[for="' . $dateId . '"]')
             ->seeElement('input[type="date"][id="' . $dateId . '"]')
-//            ->seeElement('label[for="datetime-local"][id="' . $datetimeLocalId . '"]')
-//            ->seeElement('input[type="datetime-local"][id="' . $datetimeLocalId . '"]')
+
+            ->seeElement('label[for="' . $datetimeLocalId . '"]')
+            ->seeElement('input[type="datetime-local"][id="' . $datetimeLocalId . '"]')
 
             ->seeElement('label[for="' . $emailId . '"]')
             ->seeElement('input[type="email"][id="' . $emailId . '"]')
 
             ->seeElement('label[for="' . $fileId . '"]')
             ->seeElement('input[type="file"][id="' . $fileId . '"]')
-
-//            ->seeElement('label[for="' . $hiddenId . '"]')
-//            ->seeElement('input[type="hidden"][id="' . $hiddenId . '"]')
 
             ->seeElement('label[for="' . $imageId . '"]')
             ->seeElement('input[type="image"][id="' . $imageId . '"]')
@@ -134,6 +136,8 @@ it('uses correct id for label', function () {
             ->seeElement('label[for="' . $weekId . '"]')
             ->seeElement('input[type="week"][id="' . $weekId . '"]')
 
+//            non inputs
+
             ->seeElement('label[for="' . $selectId . '"]')
             ->seeElement('select[id="' . $selectId . '"]')
 
@@ -148,9 +152,7 @@ it('uses correct id for label', function () {
 
             ->seeElement('label[for="' . $htmlEditorId . '"]')
             ->seeElement('textarea[readonly][id="' . $htmlEditorId . '"]');
-//
-//            ->seeElement('label[type="textarea"].form-label.required:not([required])')
-//            ->seeElement('label[type="html-editor"].form-label.required:not([required])');
+
     });
 
 });
