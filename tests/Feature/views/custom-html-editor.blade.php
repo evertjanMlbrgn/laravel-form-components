@@ -1,5 +1,5 @@
 @php
-$target = ['html-editor-1' => ['html-editor-bound-value']];
+    $binding = ['html-editor-bind' => 'HTML editor bound value'];
 @endphp
 
 <x-form-form id="form-html-editor-no-id">
@@ -42,8 +42,8 @@ $target = ['html-editor-1' => ['html-editor-bound-value']];
 </x-form-form>
 
 <x-form-form id="form-html-editor-bind">
-    @bind($target)
-    <x-form-html-editor id="bound-html-editor" name="html-editor-1" label="label 1"></x-form-html-editor>
+    @bind($binding)
+        <x-form-html-editor id="bound-html-editor" name="html-editor-bind" label="label 1"></x-form-html-editor>
     @endbind
 </x-form-form>
 
@@ -71,7 +71,7 @@ $target = ['html-editor-1' => ['html-editor-bound-value']];
 
 <x-form-form id="form-html-editor-value-using-slot">
     <x-form-html-editor id="value-using-slot">
-        Sample content
+        Value using slot
     </x-form-html-editor>
 </x-form-form>
 

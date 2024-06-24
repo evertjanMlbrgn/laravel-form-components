@@ -64,7 +64,8 @@
         @if ($hidden)
             hidden
         @endif
-        id="{{ $id }}">{{ $value }}</textarea>
+        id="{{ $id }}"
+        >{{ $value ?? $slot }}</textarea>
         {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 
 @if(!$hidden)

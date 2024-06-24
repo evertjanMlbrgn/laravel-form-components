@@ -178,16 +178,16 @@ it('can bind data', function () {
 
     $this->visit('/custom-html-editor')
         ->within('#form-html-editor-bind', function() {
-            $this->seeInElement('textarea[id="bound-html-editor"]', 'html-editor-bound-value');
+            $this->seeInElement('textarea[id="bound-html-editor"]', 'HTML editor bound value');
         });
-})->todo();
+});
 
 it('can set value using slot', function () {
     $this->registerTestRoute('custom-html-editor');
 
     $this->visit('/custom-html-editor')
         ->within('#form-html-editor-value-using-slot', function() {
-            $this->seeInElement('textarea[id="value-using-slot"]', 'Sample content');
+            $this->seeInElement('textarea[id="value-using-slot"]', 'Value using slot');
         });
 });
 

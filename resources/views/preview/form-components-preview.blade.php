@@ -1,4 +1,3 @@
-{{--<x-layout>--}}
 <!DOCTYPE html>
 <html lang="nl">
     <head>
@@ -1514,11 +1513,22 @@
                         <x-form-input-group-text class="text-primary">
                             label should appear after following html-editor
                         </x-form-input-group-text>
-                        <x-form-html-editor id="input-group-9-control" name="text" type="text" label="Label for html-editor" label-end/>
+                        @php
+                            $htmlEditorBind = ['html-editor' => 'HTML editor preview content'];
+                        @endphp
+                        <x-form-html-editor id="input-group-9-control" name="html-editor" label="Label for html-editor" :bind="$htmlEditorBind" label-end>
+                            test content
+                        </x-form-html-editor>
                     </x-form-input-group>
+                </x-form-form>
+
+                <h3>HTML editor value using slot</h3>
+                <x-form-form>
+                    <x-form-html-editor id="input-group-10-control" name="html-editor" label="Label for html-editor 2" label-end>
+                        test content
+                    </x-form-html-editor>
                 </x-form-form>
             </div>
         </div>
     </body>
 </html>
-{{--</x-layout>--}}

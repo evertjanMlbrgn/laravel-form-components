@@ -64,7 +64,7 @@
             @if(isset($help))
                 aria-describedby="{{ $id }}-help-text"
             @endif
-        >{{ $slot }}</textarea>
+        >{{ $value ?? $slot }}</textarea>
         {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 
 @if(!$hidden)

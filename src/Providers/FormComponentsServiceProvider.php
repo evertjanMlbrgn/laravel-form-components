@@ -70,7 +70,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 //                self::PATH_HELPERS => base_path('app/Helpers'),
 //            ], 'mlbrgn-form-components-helpers');
 
-            // publish js for html editor
+            // publish js for HTML editor
             $this->publishes([
                 __DIR__.'/../dist' => public_path('vendor/laravel-form-components'),
             ], 'public');

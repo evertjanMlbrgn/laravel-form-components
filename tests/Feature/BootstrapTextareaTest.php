@@ -160,16 +160,17 @@ it('can bind data', function () {
 
     $this->visit('/bootstrap-textarea')
         ->within('#form-textarea-bind', function() {
-            $this->seeInElement('textarea[id="bound-html-editor"]', 'html-editor-bound-value');
+            $this->seeInElement('textarea[id="bound-textarea"]', 'Textarea bound value');
         });
-})->todo();
+});
 
 it('can set value using slot', function () {
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
         ->within('#form-textarea-value-using-slot', function() {
-            $this->seeInElement('textarea[id="value-using-slot"]', 'Sample content');
+            $this->seeElement('textarea')
+            ->seeInElement('textarea[id="value-using-slot"]', 'Value using slot');
         });
-})->todo();
+});
 
