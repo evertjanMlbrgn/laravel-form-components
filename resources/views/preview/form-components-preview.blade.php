@@ -1509,12 +1509,12 @@
                         </x-form-input-group-text>
                         <x-form-select id="input-group-8-control" name="text" type="text" label="Label for select" label-end/>
                     </x-form-input-group>
-                    <x-form-input-group id="input-group-9" class="mt-5 something-else" required help-text="help text for input group">
+                    <x-form-input-group id="input-group-9" class="mt-5 something-else flex-nowrap" required help-text="help text for input group">
                         <x-form-input-group-text class="text-primary">
                             label should appear after following html-editor
                         </x-form-input-group-text>
                         @php
-                            $htmlEditorBind = ['html-editor' => 'HTML editor preview content'];
+                            $htmlEditorBind = ['html-editor' => 'HTML editor preview content (added "flex-nowrap" class to prevent label from wrapping to new line and clicking label does not focus TinyMCE editor content)'];
                         @endphp
                         <x-form-html-editor id="input-group-9-control" name="html-editor" label="Label for html-editor" :bind="$htmlEditorBind" label-end>
                             test content
@@ -1522,9 +1522,9 @@
                     </x-form-input-group>
                 </x-form-form>
 
-                <h3>HTML editor value using slot</h3>
+                <h3>HTML editor value using slot (and not-supported floating label)</h3>
                 <x-form-form>
-                    <x-form-html-editor id="input-group-10-control" name="html-editor" label="Label for html-editor 2" label-end>
+                    <x-form-html-editor id="input-group-10-control" name="html-editor" label="Label for html-editor" floating>
                         test content
                     </x-form-html-editor>
                 </x-form-form>
