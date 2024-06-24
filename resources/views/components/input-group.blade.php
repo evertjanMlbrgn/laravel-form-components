@@ -6,7 +6,7 @@
 
 {{-- Open wrapper--}}
 <div
-    {{ $attributes->onlyWrapperClasses() }}
+    {{ $attributes->onlyWrapperClasses()->class(['d-none' => $hidden ]) }}
 >
 
     @isset($label)

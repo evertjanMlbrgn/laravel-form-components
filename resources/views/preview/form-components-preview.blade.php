@@ -1426,6 +1426,10 @@
                         @endslot
                     </x-form-textarea>
                     <x-form-html-editor hidden label="hidden html-editor" help-text="test"></x-form-html-editor>
+                    <x-form-input-group hidden>
+                        <x-form-input name="something" label="Something"></x-form-input>
+                        <x-form-input name="something-else" label="Something else"></x-form-input>
+                    </x-form-input-group>
                 </x-form-form>
 
                 <h3 class="mt-4">Input group with more than one control</h3>

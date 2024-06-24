@@ -54,5 +54,13 @@ it('does have help text when @slot("help") attribute present', function () {
         });
 });
 
+it('hides input group when hidden attribute present', function () {
+    $this->registerTestRoute('bootstrap-input-group-4');
+
+    $this->visit('/bootstrap-input-group-4')
+        ->within('#input-group-4-form', function() {
+            $this->seeElement('div.d-none > div.input-group');
+        });
+});
 
 
