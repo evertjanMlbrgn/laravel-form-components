@@ -1528,6 +1528,13 @@
                         test content
                     </x-form-html-editor>
                 </x-form-form>
+
+                <x-form-form>
+                    <x-form-group label="Receive newsletters?" inline>
+                        <x-form-radio name="radio-inline" value="1" label="Yes"/>
+                        <x-form-radio name="radio-inline" value="2" label="No"/>
+                    </x-form-group>
+                </x-form-form>
             </div>
         </div>
     </body>
