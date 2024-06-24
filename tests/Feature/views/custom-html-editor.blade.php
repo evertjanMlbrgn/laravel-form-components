@@ -59,7 +59,7 @@
 </x-form-form>
 
 <x-form-form id="form-html-editor-validation-error">
-    <x-form-html-editor name="html-editor" />
+    <x-form-html-editor name="html-editor-validation-error" />
     <x-form-submit />
 </x-form-form>
 
