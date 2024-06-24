@@ -191,3 +191,11 @@ it('can set value using slot', function () {
         });
 });
 
+
+it('adds javascript', function() {
+    $this->registerTestRoute('custom-html-editor');
+
+    $this->visit('/custom-html-editor')
+        ->seeElement('script[src$="html-editor.js"]');
+});
+

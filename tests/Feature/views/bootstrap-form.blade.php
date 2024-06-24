@@ -38,3 +38,9 @@
         <x-form-input id="validationCustomUsername" aria-describedby="inputGroupPrepend" required valid-feedback="Yes!" invalid-feedback="Please choose a username."/>
     </x-form-input-group>
 </x-form-form>
+
+<div id="wrapper-for-form-uses-validation">
+    <x-form-form uses-validation>
+        <x-form-select class="select-required" name="select" required/>
+    </x-form-form>
+</div>

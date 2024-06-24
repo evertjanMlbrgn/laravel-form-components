@@ -9,6 +9,7 @@ export default defineConfig({
             input: [
                 'resources/js/main.js',
                 'resources/js/html-editor.js',
+                'resources/js/form-validation.js',
                 'resources/css/main.scss',
                 'resources/js/preview.js',
                 'resources/css/preview.scss',
@@ -27,6 +28,9 @@ export default defineConfig({
                     }
                     if (chunk.facadeModuleId.includes('html-editor.js')) {
                         return `js/mlbrgn-html-editor.js`; // Custom filename for JS
+                    }
+                    if (chunk.facadeModuleId.includes('form-validation.js')) {
+                        return `js/mlbrgn-form-validation.js`; // Custom filename for JS
                     }
                     if (chunk.facadeModuleId.includes('preview.js')) {
                         return `js/mlbrgn-preview.js`; // Custom filename for JS

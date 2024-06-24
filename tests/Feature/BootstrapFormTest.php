@@ -44,5 +44,8 @@ it('handles "uses-custom-validation', function () {
 });
 
 it('adds javascript when using attribute "uses-validation"', function() {
+    $this->registerTestRoute('bootstrap-form');
 
-})->todo();
+    $this->visit('/bootstrap-form')
+            ->seeElement('script[src$="form-validation.js"]');
+});

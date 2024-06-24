@@ -16,3 +16,8 @@
 
     {{ $slot }}
 </form>
+
+@once
+    <script src="{{ package_asset('form-validation.js') }}"></script>
+@endonce
+
