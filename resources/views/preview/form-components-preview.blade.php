@@ -1529,11 +1529,27 @@
                     </x-form-html-editor>
                 </x-form-form>
 
+                <h3>Group inline</h3>
                 <x-form-form>
                     <x-form-group label="Receive newsletters?" inline>
-                        <x-form-radio name="radio-inline" value="1" label="Yes"/>
+                        <x-form-radio name="radio-inline" class="me-3" value="1" label="Yes"/>
                         <x-form-radio name="radio-inline" value="2" label="No"/>
                     </x-form-group>
+                </x-form-form>
+
+                <h3>Input group size</h3>
+                <x-form-form>
+                    <x-form-input-group class="mb-3 input-group-sm">
+                        <x-slot:slot1>
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </x-slot:slot1>
+                        <x-slot:slot2>
+                            <x-form-input type="text" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
+                        </x-slot:slot2>
+                        <x-slot:slot3>
+                            <x-form-input type="text" placeholder="Nickname" aria-label="Nickname" aria-describedby="basic-addon1"/>
+                        </x-slot:slot3>
+                    </x-form-input-group>
                 </x-form-form>
             </div>
         </div>
