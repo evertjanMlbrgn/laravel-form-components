@@ -28,6 +28,7 @@ Route::middleware(['web'])->group(function () {
             'main.js',
             'html-editor.js',
             'form-validation.js',
+            'form-validation.css',
             'button-image.png'
         ];
 
@@ -53,6 +54,9 @@ Route::middleware(['web'])->group(function () {
                 break;
             case 'form-validation.js':
                 $file = __DIR__ . '/../dist/js/mlbrgn-form-validation.js';
+                break;
+            case 'form-validation.css':
+                $file = __DIR__ . '/../dist/css/mlbrgn-form-validation.css';
                 break;
             case 'button-image.png':
                 $file = __DIR__ . '/../public/images/button-image.png';

@@ -1,0 +1,14 @@
+// Don't show required asterisk when required field is inside form-group which is required itself
+.form-group .required label.required::after {
+    display:none;
+}
+
+// show invalid feedback when 1 or more fields are invalid
+.was-validated .form-group:has(.show-errors :invalid) > .invalid-feedback {
+    display: block;
+}
+
+// show valid feedback when no fields are invalid
+.was-validated .form-group:not(:has(:invalid)) > .valid-feedback {
+    display: block;
+}

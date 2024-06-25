@@ -23,7 +23,8 @@
 
     <div @class([
         'd-flex flex-row flex-wrap inline-space' => $inline,
-        'show-errors' => $showErrors
+        'show-errors' => $showErrors,
+        'required' => $attributes->has('required')
     ])>{{ $slot }}</div>
 
     {{-- Client side feedback messages --}}
@@ -61,3 +62,8 @@
         <x-mlbrgn-form-errors :name="$name" />
     @endif
 </div>
+
+{{-- TODO only  import when client side form validation--}}
+@once
+    <link rel="stylesheet" href="{{ package_asset('form-validation.css') }}">
+@endonce
