@@ -39,15 +39,15 @@
             {{ $slot5 }}
         @endif
 
-            @if(config('form-components.modify_label_class'))
-                @php
-                    // Modify the slot content if it has a label or labels add class input-group-text
-                    $slotContent = Str::replace('form-label', 'input-group-text', trim($slot));
-                @endphp
-                {!! $slotContent !!}
-            @else
-                {{ $slot }}
-            @endif
+        @if(config('form-components.modify_label_class'))
+            @php
+                // Modify the slot content if it has a label or labels add class input-group-text
+                $slotContent = Str::replace('form-label', 'input-group-text', trim($slot));
+            @endphp
+            {!! $slotContent !!}
+        @else
+            {{ $slot }}
+        @endif
     </div>
 
     {{-- Error message --}}

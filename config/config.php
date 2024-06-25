@@ -37,6 +37,11 @@ return [
     /**
      * Modifies label class from form-label to input-group-text when label is inside an input-group when set to true
      */
-    'modify_label_class' => env('FORM_COMPONENTS_MODIFY_LABEL_CLASS', true)
+    'modify_label_class' => env('FORM_COMPONENTS_MODIFY_LABEL_CLASS', true),
 
+    /**
+     * Detects "is-valid" or "is-invalid" class in "group" component to be able to set classes in "group" component.
+     * Needed to let "group" validation work
+     */
+    'detect_validation_classes_in_group' => env('FORM_COMPONENTS_DETECT_VALIDATION_CLASSES_IN_GROUP', true)
 ];

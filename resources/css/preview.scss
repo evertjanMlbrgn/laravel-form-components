@@ -38,3 +38,33 @@ label.required::after {
     color:red;
     margin-left:0.5em;
 }
+
+// show required asterisk
+.form-group label.required::after {
+    display:none;
+}
+
+.was-validated .form-group {
+    background-color: pink;
+}
+
+.was-validated .form-group:has(:invalid) {
+    background-color: #fcc;
+}
+
+//.was-validated .form-group .form-check-input:invalid ~ .form-check-label,
+//.form-check-input.is-invalid ~ .form-check-label {
+//    color: inherit;
+//}
+
+.was-validated .form-group:has(:invalid) .invalid-feedback {
+    display: block;
+}
+
+.was-validated .form-group:has(:valid) {
+    background-color: #cfc;
+}
+
+.was-validated .form-group:has(:valid) .valid-feedback {
+    display: block;
+}

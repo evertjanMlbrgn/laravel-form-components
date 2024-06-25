@@ -85,26 +85,29 @@
                 @if($floating && !$attributes->has('placeholder')) placeholder="&nbsp;"@endif
             >
 
-            {{-- Feedback messages --}}
-            @if(!empty($validFeedback))
-                <div @class([
-                    'valid-feedback' => !$tooltipFeedback,
-                    'valid-tooltip' => $tooltipFeedback,
-                ])>
-                    {{ $validFeedback }}
-                </div>
-            @endif
+        {{-- client side feedback messages --}}
+        @if($showErrors)
+                {{-- Feedback messages --}}
+                @if(!empty($validFeedback))
+                    <div @class([
+                        'valid-feedback' => !$tooltipFeedback,
+                        'valid-tooltip' => $tooltipFeedback,
+                    ])>
+                        {{ $validFeedback }}
+                    </div>
+                @endif
 
-            @if(!empty($invalidFeedback))
-                <div @class([
-                    'invalid-feedback' => !$tooltipFeedback,
-                    'invalid-tooltip' => $tooltipFeedback,
-                ])>
-                    {{ $invalidFeedback }}
-                </div>
-            @endif
+                @if(!empty($invalidFeedback))
+                    <div @class([
+                        'invalid-feedback' => !$tooltipFeedback,
+                        'invalid-tooltip' => $tooltipFeedback,
+                    ])>
+                        {{ $invalidFeedback }}
+                    </div>
+                @endif
+        @endif
 
-    {{-- label after control --}}
+        {{-- label after control --}}
         @if(!$hidden && $type !== 'hidden')
             @if($attributes->has('label-end') || ($floating && !$horizontal))
                 <x-mlbrgn-form-label
@@ -121,7 +124,7 @@
 
     @if(!$hidden && $type !== 'hidden')
 
-        {{-- Error message --}}
+        {{-- server side feedback messages --}}
         @if($shouldShowError($name))
             <x-mlbrgn-form-errors :name="$name" />
         @endif

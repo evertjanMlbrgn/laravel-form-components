@@ -84,7 +84,9 @@
 
 @if(!$hidden)
 
-            {{-- Feedback messages --}}
+        {{-- client side feedback messages --}}
+        @if($showErrors)
+
             @if(!empty($validFeedback))
                 <div @class([
                 'valid-feedback' => !$tooltipFeedback,
@@ -102,6 +104,7 @@
                     {{ $invalidFeedback }}
                 </div>
             @endif
+        @endif
 
         {{-- label after control --}}
             @if($attributes->has('label-end') || ($floating && !$horizontal))
@@ -116,7 +119,7 @@
                 </x-mlbrgn-form-label>
             @endif
 
-            {{-- Error message --}}
+            {{-- server side feedback messages --}}
             @if($shouldShowError($name))
                 <x-mlbrgn-form-errors :name="$name" />
             @endif

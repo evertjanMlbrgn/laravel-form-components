@@ -19,7 +19,10 @@ class Group extends FormBaseComponent
         public string $name = '',
         public string $label = '',
         public bool $inline = false,
-        bool $showErrors = true
+        public string $validFeedback = '',
+        public string $invalidFeedback = '',
+        public bool $tooltipFeedback = false,
+        bool $showErrors = true,
     )
     {
         $this->showErrors = $name && $showErrors;

@@ -69,24 +69,26 @@
 
 @if(!$hidden)
 
-    {{-- Feedback messages --}}
-    @if(!empty($validFeedback))
-        <div
-            @class([
-                'valid-feedback' => !$tooltipFeedback,
-                'valid-tooltip' => $tooltipFeedback,
-            ])>
-            {{ $validFeedback }}
-        </div>
-    @endif
+    {{-- client side feedback messages --}}
+    @if($showErrors)
+        @if(!empty($validFeedback))
+            <div
+                @class([
+                    'valid-feedback' => !$tooltipFeedback,
+                    'valid-tooltip' => $tooltipFeedback,
+                ])>
+                {{ $validFeedback }}
+            </div>
+        @endif
 
-    @if(!empty($invalidFeedback))
-        <div @class([
-        'invalid-feedback' => !$tooltipFeedback,
-        'invalid-tooltip' => $tooltipFeedback,
-    ])>
-            {{ $invalidFeedback }}
-        </div>
+        @if(!empty($invalidFeedback))
+            <div @class([
+            'invalid-feedback' => !$tooltipFeedback,
+            'invalid-tooltip' => $tooltipFeedback,
+        ])>
+                {{ $invalidFeedback }}
+            </div>
+        @endif
     @endif
 
     {{-- label after control --}}
@@ -102,7 +104,7 @@
         </x-mlbrgn-form-label>
     @endif
 
-    {{-- Error message --}}
+    {{-- server side feedback messages --}}
     @if($shouldShowError($name))
         <x-mlbrgn-form-errors :name="$name" />
     @endif

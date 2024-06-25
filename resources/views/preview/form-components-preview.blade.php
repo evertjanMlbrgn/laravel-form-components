@@ -208,11 +208,11 @@
 
                 <x-form-input list="datalistOptions" id="exampleDataList" label="Datalist example" placeholder="Type to search..."/>
                 <datalist id="datalistOptions">
-                    <option value="San Francisco">
-                    <option value="New York">
-                    <option value="Seattle">
-                    <option value="Los Angeles">
-                    <option value="Chicago">
+                    <option value="San Francisco">San Francisco</option>
+                    <option value="New York">New York</option>
+                    <option value="Seattle">Seattle</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                    <option value="Chicago">Chicago</option>
                 </datalist>
 
                 <h2 id="form-select">Select</h2>
@@ -1534,11 +1534,45 @@
                 </x-form-form>
 
                 <h3>Group inline</h3>
-                <x-form-form>
-                    <x-form-group label="Receive newsletters?" inline>
-                        <x-form-radio name="radio-inline" class="me-3" value="1" label="Yes"/>
-                        <x-form-radio name="radio-inline" value="2" label="No"/>
+                <x-form-form uses-custom-validation>
+                    <x-form-group name="radio-inline-a" class="mb-3 p-3" label="Receive newsletters?" inline required invalid-feedback="Select on of the two buttons" valid-feedback="That's clear!">
+                        <x-form-radio name="radio-inline-a" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false"/>
+                        <x-form-radio name="radio-inline-a" value="2" label="No" invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"/>
                     </x-form-group>
+                    <x-form-group name="radio-inline-b" class="mb-3 p-3" label="Receive more newsletters?" inline required invalid-feedback="You must select on of the two buttons" valid-feedback="Allright!">
+                        <x-form-radio name="radio-inline-b" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false"/>
+                        <x-form-radio name="radio-inline-b" value="2" label="No" invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"/>
+                    </x-form-group>
+
+                    <x-form-group name="radio-inline-b" class="mb-3 p-3" label="Want regular updates?" inline required invalid-feedback="You must check both checkboxes" valid-feedback="Allright!">
+                        <x-form-checkbox name="checkbox-inline-b" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false"/>
+                        <x-form-checkbox name="checkbox-inline-b" value="2" label="Yes, please!" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false"/>
+                    </x-form-group>
+                    <x-form-group name="textarea-inline" class="mb-3 p-3" label="Explain why you made this choice" inline required invalid-feedback="Put some text in both textareas" valid-feedback="You are a hero!">
+                        <x-form-textarea label="In this textarea" class="mb-3" inline required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-textarea>
+                        <x-form-textarea label="And in this one" inline required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-textarea>
+                    </x-form-group>
+                    <x-form-group name="input-inline" class="mb-3 p-3" label="Explain some more" inline required invalid-feedback="Put some text in both text fields" valid-feedback="Way to go!">
+                        <x-form-input label="In this text field" class="mb-3" inline required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-input>
+                        <x-form-input label="And in this one too" inline required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-input>
+                    </x-form-group>
+                    <x-form-group name="select-inline" class="mb-3 p-3" label="Where did you hear of us?" inline required invalid-feedback="Select a value" valid-feedback="Way to go!">
+                        <x-form-select label="Select one" class="mb-3" inline required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false" placeholder="Make a selection">
+                            <option value="Newspaper">
+                            <option value="TV">
+                            <option value="Radio">
+                            <option value="Google">
+                            <option value="Other">
+                        </x-form-select>
+                        <x-form-select label="Select two" inline required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false" placeholder="Make a selection">
+                            <option value="Newspaper">
+                            <option value="TV">
+                            <option value="Radio">
+                            <option value="Google">
+                            <option value="Other">
+                        </x-form-select>
+                    </x-form-group>
+                    <x-form-submit></x-form-submit>
                 </x-form-form>
 
                 <h3>Input group size</h3>
