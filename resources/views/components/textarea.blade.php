@@ -47,19 +47,21 @@
             {{ $attributes->class([
                 'form-control',
                 'is-invalid' => $hasError($name)
-            ])->whereDoesntStartWith('class-') }}
+            ])->whereDoesntStartWith('class-')->except(['value', 'label-end', 'id', 'value']) }}
         @else
             {{ $attributes->exceptWrapperClasses()->class([
                'form-control',
                'is-invalid' => $hasError($name)
-           ])->whereDoesntStartWith('class-') }}
+           ])->whereDoesntStartWith('class-')->except(['value', 'label-end', 'id', 'value']) }}
         @endif
-        name="{{ $name }}"
+        @if($name)
+            name="{{ $name }}"
+        @endif
         {{-- Placeholder is required as of writing --}}
         @if($floating && !$attributes->get('placeholder'))
             placeholder="&nbsp;"
         @endif
-        @if(isset($help))
+        @if(isset($help) && !$hidden)
             aria-describedby="{{ $id }}-help-text"
         @endif
         @if ($hidden)

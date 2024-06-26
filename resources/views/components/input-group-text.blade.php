@@ -1,3 +1,3 @@
-<span {{ $attributes->class(['input-group-text']) }}>
+<div {{ $attributes->class(['input-group-text']) }}>
     {{ $slot }}
-</span>
+</div>

@@ -45,22 +45,25 @@
                         {{ $attributes->class([
                             'form-select',
                             'is-invalid' => $hasError($name)
-                        ])->whereDoesntStartWith('class-') }}
+                        ])->whereDoesntStartWith('class-')->except(['placeholder', 'label-end', 'id', 'value']) }}
                     @else
                         {{ $attributes->exceptWrapperClasses()->class([
                        'form-select',
                        'is-invalid' => $hasError($name)
-                   ])->whereDoesntStartWith('class-') }}
+                   ])->whereDoesntStartWith('class-')->except(['placeholder', 'label-end', 'id', 'value']) }}
                     @endif
-                    name="{{ $name }}"
+                    @if($name)
+                        name="{{ $name }}"
+                    @endif
                     id="{{ $id }}"
                     @if($multiple) multiple @endif
-                    @if($floating && empty($placeholder))
-                        placeholder="&nbsp;"
-                    @else
-                        placeholder="{{ $placeholder }}"
-                    @endif
-                    @if(isset($help))
+{{--                    select cannot have a placeholder attribute--}}
+{{--                    @if($floating && empty($placeholder))--}}
+{{--                        placeholder="&nbsp;"--}}
+{{--                    @else--}}
+{{--                        placeholder="{{ $placeholder }}"--}}
+{{--                    @endif--}}
+                    @if(isset($help) && !$hidden)
                         aria-describedby="{{ $id }}-help-text"
                     @endif
                     @if($hidden)

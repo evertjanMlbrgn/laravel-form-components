@@ -6,7 +6,7 @@
 
 {{-- Open wrapper--}}
 <div
-    {{ $attributes->onlyWrapperClasses()->class(['d-none' => $hidden ]) }}
+    {{ $attributes->onlyWrapperClasses()->class(['d-none' => $hidden ])->except(['required', 'for']) }}
 >
 
     @isset($label)
@@ -20,7 +20,7 @@
             'input-group',
             'has-validation' => $usesCustomValidation || $usesValidation,// needs to be added for rounded border when validation messages show
             'is-invalid' => ($hasError($name) ? ' is-invalid' : '')
-           ]) }}
+           ])->except(['required', 'for']) }}
     >
 
         @if (isset($slot1) && $slot1 != null)

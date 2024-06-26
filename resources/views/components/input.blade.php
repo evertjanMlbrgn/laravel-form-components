@@ -29,12 +29,12 @@
         >
     @endif
 
-        {{-- label before control --}}
+    {{-- label before control --}}
     @if(!$hidden && $type !== 'hidden')
         @if(!$attributes->has('label-end') && (!$floating || $horizontal))
             <x-mlbrgn-form-label
                 :parentClasses="$attributes->get('class')"
-                :required="$attributes->has('required')"
+                :required="$attributes->has('required') && $type !== 'range'"
                 @class([
                     $attributes->get('class-label', ''),
                     'col-4' => $horizontal && empty($attributes->get('class-horizontal-cols-label', '')),
@@ -63,23 +63,31 @@
                         'form-range' => $type === 'range',
                         'form-control-color' => ($type === 'color'),
                         'is-invalid' => ($hasError($name)),
-                    ])->whereDoesntStartWith('class-') }}
+                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'value']) }}
                 @else
                     {{ $attributes->exceptWrapperClasses()->class([
                         'form-control' => $type !== 'range',
                         'form-range' => $type === 'range',
                         'form-control-color' => ($type === 'color'),
                         'is-invalid' => ($hasError($name)),
-                    ])->whereDoesntStartWith('class-') }}
+                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'value']) }}
                 @endif
                 type="{{ $type }}"
-                value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
-                name="{{ $name }}"
+                @if(!in_array($type, ['file', 'image']))
+                    value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
+                @endif
+                @if($name)
+                    name="{{ $name }}"
+                @endif
                 id="{{ $id }}"
                 @if ($hidden)
                     hidden
                 @endif
-                @if(isset($help))
+                @if($type === 'image')
+                    {{-- image button must have alt attribute --}}
+                    alt="{{ $attributes->get('alt', '&nbsp;') }}"
+                @endif
+                @if(isset($help) && !$hidden && $type !== 'hidden')
                     aria-describedby="{{ $id }}-help-text"
                 @endif
                 {{-- floating labels won't work without placeholder, yet they never display placeholder either --}}

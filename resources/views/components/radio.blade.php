@@ -19,28 +19,30 @@
                 'form-check-input' => !$toggle,
                 'btn-check' => $toggle,
                 'is-invalid' => $hasError($name),
-            ])->whereDoesntStartWith('class-') }}
+            ])->whereDoesntStartWith('class-')->except(['inline', 'id', 'value']) }}
         @else
             {{ $attributes->class([
                 'form-check-input' => !$toggle,
                 'btn-check' => $toggle,
                 'is-invalid' => $hasError($name),
-            ])->whereDoesntStartWith('class-') }}
+            ])->whereDoesntStartWith('class-')->except(['inline', 'id', 'value']) }}
         @endif
         type="radio"
         value="{{ $value }}"
-        name="{{ $name }}"
+        @if($name)
+            name="{{ $name }}"
+        @endif
         id="{{ $id }}"
         @if($checked)
             checked="checked"
         @endif
-        @if(isset($help))
+        @if(isset($help) && !$hidden)
             aria-describedby="{{ $id }}-help-text"
         @endif
         @if($hidden)
             hidden
         @endif
-    />
+    >
 
 @if(!$hidden)
 

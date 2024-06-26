@@ -20,22 +20,24 @@
                'form-check-input' => !$toggle,
                'btn-check' => $toggle,
                'is-invalid' => $hasError($name)
-           ])->whereDoesntStartWith('class-') }}
+           ])->whereDoesntStartWith('class-')->except(['inline', 'switch', 'id', 'value']) }}
         @else
             {{ $attributes->class([
                'form-check-input' => !$toggle,
                'btn-check' => $toggle,
                'is-invalid' => $hasError($name)
-           ])->whereDoesntStartWith('class-') }}
+           ])->whereDoesntStartWith('class-')->except(['inline', 'switch', 'id', 'value']) }}
         @endif
         type="checkbox"
         value="{{ $value }}"
+        @if($name)
         name="{{ $name }}"
+        @endif
         id="{{ $id }}"
         @if($checked)
             checked="checked"
         @endif
-        @if(isset($help))
+        @if(isset($help) && !$hidden)
             aria-describedby="{{ $id }}-help-text"
         @endif
         @if($hidden)

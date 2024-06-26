@@ -1,5 +1,6 @@
 <?php
 
+// NOTE select can't have placeholder attribute
 it('floats labels', function () {
     $this->registerTestRoute('bootstrap-floating-label');
 
@@ -13,9 +14,9 @@ it('floats labels', function () {
     ->seeInElement('label[for="textarea-1"]', 'Textarea 1')
     ->seeInElement('label[for="textarea-2"]', 'Textarea 2')
     ->seeElement('#input-1', ['placeholder' => ' '])
-    ->seeElement('#select-1', ['placeholder' => ' '])
+    ->seeElement('#select-1:not([placeholder])')
     ->seeElement('#textarea-1', ['placeholder' => ' '])
     ->seeElement('#input-2', ['placeholder' => 'John Doe'])
-    ->seeElement('#select-2', ['placeholder' => 'Jane Doe'])
+    ->seeElement('#select-2:not([placeholder])')
     ->seeElement('#textarea-2', ['placeholder' => 'Jane John']);
 });

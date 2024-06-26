@@ -20,6 +20,8 @@ it('sets the id on the label or generates one', function () {
 
 });
 
+
+// NOTE: range can't be required
 it('Sets label for required control and adds label class "required"', function () {
 
     $this->registerTestRoute('bootstrap-label');
@@ -39,7 +41,7 @@ it('Sets label for required control and adds label class "required"', function (
                 ->seeElement('label[for="number"].form-label.required:not([required])')
                 ->seeElement('label[for="password"].form-label.required:not([required])')
                 ->seeElement('label[for="radio"].form-check-label.required:not([required]):not(.form-label)')
-                ->seeElement('label[for="range"].form-label.required:not([required])')
+                ->seeElement('label[for="range"].form-label:not([required])')
                 ->dontSeeElement('label[for="reset"]')// uses button component, label is inside button
                 ->seeElement('label[for="search"].form-label.required:not([required])')
                 ->dontSeeElement('label[for="submit"]')// uses button component, label is inside button

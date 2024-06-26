@@ -23,7 +23,7 @@
         'required' => (bool) $required,
         'col-form-label-sm' => $horizontal && $containsFormControlSm,
         'col-form-label-lg' => $horizontal && $containsFormControlLg
-    ]) }}>
+    ])->except(['parentClasses']) }}>
         {{ $slot }}
     </label>
 @endif
