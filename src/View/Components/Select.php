@@ -34,8 +34,6 @@ class Select extends FormBaseComponent
         public string $placeholder = '',
         public bool $horizontal = false,
         public bool $hidden = false,
-        public string $classLabel = '',
-        public string $classControl = '',
         public string $validFeedback = '',
         public string $invalidFeedback = '',
         public bool $tooltipFeedback = false,

@@ -4,12 +4,12 @@
 {{-- Open wrapper --}}
 @if(!$hidden)
     @if(!$toggle)
-    <div {{ $attributes->onlyWrapperClasses()->class([
-        'form-check',
-        'form-switch' => $attributes->get('switch'),
-        'form-check-inline' => $attributes->get('inline'),
-       ]) }}
-    >
+        <div {{ $attributes->onlyWrapperClasses()->class([
+            'form-check',
+            'form-switch' => $attributes->get('switch'),
+            'form-check-inline' => $attributes->get('inline'),
+           ]) }}
+        >
     @endif
 @endif
 
@@ -20,13 +20,13 @@
                'form-check-input' => !$toggle,
                'btn-check' => $toggle,
                'is-invalid' => $hasError($name)
-           ]) }}
+           ])->whereDoesntStartWith('class-') }}
         @else
             {{ $attributes->class([
                'form-check-input' => !$toggle,
                'btn-check' => $toggle,
                'is-invalid' => $hasError($name)
-           ]) }}
+           ])->whereDoesntStartWith('class-') }}
         @endif
         type="checkbox"
         value="{{ $value }}"
@@ -52,8 +52,8 @@
         @class([
             'form-check-label' => !$toggle,
             'btn' => $toggle,
-            $classButton,
-            $classLabel
+            $attributes->get('class-label', ''),
+            $attributes->get('class-toggle-button', '') => $toggle,
         ])
         :for="$id">
         {{ $label }}

@@ -1,11 +1,13 @@
 <button
+
     {{ $attributes->merge([
         'type' => $type ?? 'button'
     ])->class([
         'btn',
         'd-none' => $hidden,
-        $classButton
-        ])->except(['required', 'readonly', 'label'])
+//        'btn-primary' => !$attributes->has('class-button'),
+//        $attributes->get('class-button', '')
+        ])->except(['required', 'readonly', 'label'])->whereDoesntStartWith('class-')
     }}
     @if(!empty($name))
         name="{{ $name }}"
@@ -15,5 +17,5 @@
     @endif
     id="{{ $getId() }}"
 >
-    {!! trim($slot) ?: 'Send' !!}
+    {!! $attributes->has('label') ? $attributes->get('label') : (trim($slot) ?: 'Send') !!}
 </button>

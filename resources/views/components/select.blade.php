@@ -19,8 +19,9 @@
                 :parentClasses="$attributes->get('class')"
                 :required="$attributes->has('required')"
                 @class([
-                   'col-4' => empty($classLabel),
-                   $classLabel
+                    $attributes->get('class-label', ''),
+                    'col-4' => $horizontal && empty($attributes->get('class-horizontal-cols-label', '')),
+                    $attributes->get('class-horizontal-cols-label', '')
                 ])
                 :for="$id">
                 {{ $label }}
@@ -31,8 +32,8 @@
         @if($horizontal)
             <div
                 @class([
-                 'col-8' => empty($classControl),
-                 $classControl => !empty($classControl)
+                 'col-8' => empty($attributes->get('class-horizontal-cols-control', '')),
+                 $attributes->get('class-horizontal-cols-control', '') => !empty($attributes->get('class-horizontal-cols-control', ''))
              ])
             >
         @endif
@@ -44,12 +45,12 @@
                         {{ $attributes->class([
                             'form-select',
                             'is-invalid' => $hasError($name)
-                        ]) }}
+                        ])->whereDoesntStartWith('class-') }}
                     @else
                         {{ $attributes->exceptWrapperClasses()->class([
                        'form-select',
                        'is-invalid' => $hasError($name)
-                   ]) }}
+                   ])->whereDoesntStartWith('class-') }}
                     @endif
                     name="{{ $name }}"
                     id="{{ $id }}"
@@ -112,7 +113,7 @@
                     :parentClasses="$attributes->get('class')"
                     :required="$attributes->has('required')"
                     @class([
-                        $classLabel
+                        $attributes->get('class-label', '')
                     ])
                     :for="$id">
                     {{ $label }}

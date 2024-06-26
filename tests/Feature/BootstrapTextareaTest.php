@@ -77,7 +77,6 @@ it('honors use_wrapper_classes when set to false', function () {
         });
 
     Config::set('form-components.use_wrapper_classes', true);
-
 });
 
 it('uses old value after submit', function () {

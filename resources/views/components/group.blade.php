@@ -1,14 +1,16 @@
-<div {{ $attributes->class([
+<div {{ $attributes->onlyWrapperClasses()->class([
     'form-group',
-    'is-invalid' => $hasError($name)
+    'is-invalid' => $hasError($name),
+    'show-errors' => $showErrors,
+    'required' => $attributes->has('required')
     ]) }}
 >
 
     <x-mlbrgn-form-label
         :required="$attributes->has('required')"
 {{--        @class([--}}
-{{--            'col-4' => empty($classLabel),--}}
-{{--            $classLabel--}}
+{{--            'col-4' => empty($attributes->get('class-label', '')),--}}
+{{--            $attributes->get('class-label', '')--}}
 {{--         ])--}}
 {{--        :for="$id">--}}
     >{{ $label }}</x-mlbrgn-form-label>
@@ -21,11 +23,19 @@
 {{--        detected {{ $isValidated ? 'Yes' : 'No' }}--}}
 {{--    @endif--}}
 
-    <div @class([
-        'd-flex flex-row flex-wrap inline-space' => $inline,
-        'show-errors' => $showErrors,
-        'required' => $attributes->has('required')
-    ])>{{ $slot }}</div>
+{{--    <div @class([--}}
+{{--        'd-flex flex-row flex-wrap inline-space' => $inline,--}}
+{{--        'show-errors' => $showErrors,--}}
+{{--        'required' => $attributes->has('required')--}}
+{{--    ])>{{ $slot }}</div>--}}
+
+    @if($inline)
+    <div
+        {{ $attributes->exceptWrapperClasses()->only('class')->class(['d-flex flex-row flex-wrap inline-space', $attributes->get('class-inline-wrapper', '')]) }}
+    >{{ $slot }}</div>
+    @else
+        {{ $slot }}
+    @endif
 
     {{-- Client side feedback messages --}}
     @if($showErrors)

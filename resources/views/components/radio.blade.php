@@ -19,13 +19,13 @@
                 'form-check-input' => !$toggle,
                 'btn-check' => $toggle,
                 'is-invalid' => $hasError($name),
-            ]) }}
+            ])->whereDoesntStartWith('class-') }}
         @else
             {{ $attributes->class([
                 'form-check-input' => !$toggle,
                 'btn-check' => $toggle,
                 'is-invalid' => $hasError($name),
-            ]) }}
+            ])->whereDoesntStartWith('class-') }}
         @endif
         type="radio"
         value="{{ $value }}"
@@ -47,10 +47,10 @@
     {{-- label --}}
     <x-mlbrgn-form-label :parentClasses="$attributes->get('class')"
         @class([
-        'form-check-label' => !$toggle,
-        'btn' => $toggle,
-        $classButton,
-        $classLabel
+            'form-check-label' => !$toggle,
+            'btn' => $toggle,
+            $attributes->get('class-label', ''),
+            $attributes->get('class-toggle-button', '') => $toggle
         ])
         :for="$id"
         :required="$attributes->has('required')"

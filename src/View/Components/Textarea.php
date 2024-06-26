@@ -25,8 +25,6 @@ class Textarea extends FormBaseComponent
         public bool $floating = false,
 //        public bool $required = false,
         public bool $hidden = false,
-        public string $classLabel = '',
-        public string $classControl = '',
         public string $validFeedback = '',
         public string $invalidFeedback = '',
         public bool $tooltipFeedback = false,

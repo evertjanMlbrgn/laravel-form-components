@@ -63,7 +63,7 @@
                         <x-form-input type="password" id="exampleInputPassword" label="Password" autocomplete="new-password"/>
                     </div>
                     <x-form-checkbox class="mb-3" id="exampleCheck1" label="Check me out"/>
-                    <x-form-submit class="mt-3" class-button="btn-secondary">Submit</x-form-submit>
+                    <x-form-submit class="mt-3">Submit</x-form-submit>
                 </x-form-form>
 
                 <h3>Form text</h3>
@@ -166,8 +166,8 @@
                 <h3>Readonly plain text </h3>
 
                 <x-form-form>
-                    <x-form-input readonly class="form-control-plaintext mb-3" id="staticEmail" label="Email" value="email@example.com" horizontal class-label="col-2" class-control="col-10" autocomplete="username"/>
-                    <x-form-input type="password" class="mb-3" label="Password" id="inputPassword5" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password"/>
+                    <x-form-input readonly class="form-control-plaintext mb-3" id="staticEmail" label="Email" value="email@example.com" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" autocomplete="username"/>
+                    <x-form-input type="password" class="mb-3" label="Password" id="inputPassword5" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" autocomplete="new-password"/>
                 </x-form-form>
 
                 <x-form-form class="row g-3">
@@ -335,23 +335,23 @@
 
                 <h3>Checkbox toggle buttons</h3>
 
-                <x-form-checkbox id="btn-check" autocomplete="off" label="Single toggle" toggle class-button="btn-secondary" class-label="extra label classes"/>
-                <x-form-checkbox id="btn-check-2" autocomplete="off" label="Checked" toggle checked class-button="btn-secondary-outline"/>
-                <x-form-checkbox id="btn-check-3" autocomplete="off" label="Disabled" toggle disabled class-button="btn-primary"/>
+                <x-form-checkbox id="btn-check" autocomplete="off" label="Single toggle" toggle class-toggle-button="btn-secondary" class-label="a-class another-class"/>
+                <x-form-checkbox id="btn-check-2" autocomplete="off" label="Checked" toggle checked class-toggle-button="btn-secondary-outline"/>
+                <x-form-checkbox id="btn-check-3" autocomplete="off" label="Disabled" toggle disabled class-toggle-button="btn-primary"/>
 
                 <h3>Radio toggle buttons</h3>
 
-                <x-form-radio name="options" id="option1" autocomplete="off" checked label="Checked" toggle class-button="btn-secondary" class-label="extra label classes"/>
-                <x-form-radio name="options" id="option2" autocomplete="off" label="Radio" toggle class-button="btn-primary-outline"/>
-                <x-form-radio name="options" id="option3" autocomplete="off" checked label="Disabled" toggle disabled class-button="btn-secondary"/>
+                <x-form-radio name="options" id="option1" autocomplete="off" checked label="Checked" toggle class-toggle-button="btn-secondary" class-label="a-class another-class"/>
+                <x-form-radio name="options" id="option2" autocomplete="off" label="Radio" toggle class-toggle-button="btn-primary-outline"/>
+                <x-form-radio name="options" id="option3" autocomplete="off" checked label="Disabled" toggle disabled class-toggle-button="btn-secondary"/>
                 <x-form-radio name="options" id="option4" autocomplete="off" label="Radio" toggle/>
 
                 <h3>Outlined styles</h3>
 
-                <x-form-checkbox id="btn-check-outlined" autocomplete="off" label="Single toggle" class-button="btn-outline-primary" toggle/>
-                <x-form-checkbox id="btn-check-2-outlined" checked autocomplete="off" label="Checked" class-button="btn-outline-secondary" toggle/>
-                <x-form-radio name="options-outlined" id="success-outlined" autocomplete="off" checked label="Checked succes radio" class-button="btn-outline-success" toggle/>
-                <x-form-radio  name="options-outlined" id="danger-outlined" autocomplete="off" label="Danger radio" class-button="btn-outline-danger" toggle/>
+                <x-form-checkbox id="btn-check-outlined" autocomplete="off" label="Single toggle" class-toggle-button="btn-outline-primary" toggle/>
+                <x-form-checkbox id="btn-check-2-outlined" checked autocomplete="off" label="Checked" class-toggle-button="btn-outline-secondary" toggle/>
+                <x-form-radio name="options-outlined" id="success-outlined" autocomplete="off" checked label="Checked succes radio" class-toggle-button="btn-outline-success" toggle/>
+                <x-form-radio  name="options-outlined" id="danger-outlined" autocomplete="off" label="Danger radio" class-toggle-button="btn-outline-danger" toggle/>
 
                 <h2 id="form-range">Range</h2>
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/range/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
@@ -372,7 +372,6 @@
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/input-group/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
 
                 <h3>Basic example</h3>
-                <p><span class="text-danger">TODO:</span> finish</p>
 
                 <x-form-input-group class="mb-3">
                     <x-slot:slot1>
@@ -440,7 +439,6 @@
                 </x-form-input-group>
 
                 <h3>Checkboxes and radios</h3>
-                <p><span class="text-danger">TODO: </span>Alignment not correct</p>
                 <x-form-input-group class="mb-3">
                     <x-form-input-group-text class="">
                         <x-form-checkbox class="mt-0" value="" aria-label="Checkbox for following text input"/>
@@ -479,25 +477,25 @@
                 <h3>Button addons</h3>
 
                 <x-form-input-group class="mb-3">
-                    <x-form-button class="btn-outline-secondary" id="button-addon1" class-button="btn-secondary">Button</x-form-button>
+                    <x-form-button class="btn-secondary" id="button-addon1">Button</x-form-button>
                     <x-form-input placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"/>
                 </x-form-input-group>
 
                 <x-form-input-group class="mb-3">
                     <x-form-input placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                    <x-form-button class="btn-outline-secondary" id="button-addon2" class-button="btn-secondary">Button</x-form-button>
+                    <x-form-button class="btn-outline-secondary" id="button-addon2">Button</x-form-button>
                 </x-form-input-group>
 
                 <x-form-input-group class="mb-3">
-                    <x-form-button class="btn-outline-secondary" class-button="btn-primary-outline">Button</x-form-button>
-                    <x-form-button class="btn-outline-secondary" class-button="btn-secondary-outline">Button</x-form-button>
+                    <x-form-button class="btn-primary">Button</x-form-button>
+                    <x-form-button class="btn-primary">Button</x-form-button>
                     <x-form-input placeholder="" aria-label="Example text with two button addons"/>
                 </x-form-input-group>
 
                 <x-form-input-group class="">
                     <x-form-input placeholder="Recipient's username" aria-label="Recipient's username with two button addons"/>
-                    <x-form-button class="btn-outline-secondary" class-button="btn-outline-secondary">Button</x-form-button>
-                    <x-form-button class="btn-outline-primary" class-button="btn-outline-primary">Button</x-form-button>
+                    <x-form-button>Button</x-form-button>
+                    <x-form-button>Button</x-form-button>
                 </x-form-input-group>
 
                 <h3>Buttons with dropdowns</h3>
@@ -564,7 +562,7 @@
 
                 <x-form-input-group class="">
                     <x-form-input aria-label="Text input with segmented dropdown button"/>
-                    <x-form-button class="btn" class-button="btn-outline-secondary">Action</x-form-button>
+                    <x-form-button class="btn">Action</x-form-button>
                     <x-form-button class="btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="visually-hidden">Toggle Dropdown</span>
                     </x-form-button>
@@ -578,8 +576,6 @@
                 </x-form-input-group>
 
                 <h3>Custom select</h3>
-
-                <p><span class="text-danger">TODO: </span>Label elements in first 2 examples</p>
 
                 <x-form-input-group class="mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Options</label>
@@ -622,8 +618,6 @@
                 </x-form-input-group>
 
                 <h3>Custom file input</h3>
-
-                <p><span class="text-danger">TODO: </span>Label elements in first 2 examples</p>
 
                 <x-form-input-group class="mb-3">
                     <label class="input-group-text" for="inputGroupFile01">Upload</label>
@@ -762,30 +756,30 @@
                 <h3>Horizontal form</h3>
 
                 <x-form-form class="mb-5">
-                    <x-form-input type="email" class="mb-3 form-control-sm some-other-class" id="inputEmail3" label="Email test" horizontal class-label="col-2" class-control="col-10" required>
+                    <x-form-input type="email" class="mb-3 form-control-sm some-other-class" id="inputEmail3" label="Email test" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" required>
                         @slot('help')
                             horizontal email
                         @endslot
                     </x-form-input>
-                    <x-form-input type="password" class="mb-3 form-control-lg" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password">
+                    <x-form-input type="password" class="mb-3 form-control-lg" id="inputPassword8" label="Password" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" autocomplete="new-password">
                         @slot('help')
                             horizontal password
                         @endslot
                     </x-form-input>
-                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password">
+                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" autocomplete="new-password">
                         @slot('help')
                             horizontal range
                         @endslot
                     </x-form-input>
-                    <x-form-textarea class="mb-3 some-other-class" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10">
+                    <x-form-textarea class="mb-3 some-other-class" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10">
                         @slot('help')
                             horizontal textarea
                         @endslot
                     </x-form-textarea>
-                    <x-form-html-editor id="test" class="mb-4 some-other-class" label="HTML editor" horizontal class-label="col-2" class-control="col-10" >
+                    <x-form-html-editor id="test" class="mb-4 some-other-class" label="HTML editor" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" >
                         hello world!
                     </x-form-html-editor>
-                    <x-form-select id="inputState2" label="Select" name="select" class="mb-3 something-else" horizontal class-label="col-2" class-control="col-10">
+                    <x-form-select id="inputState2" label="Select" name="select" class="mb-3 something-else" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10">
                         <option selected>Choose...</option>
                         <option>Kansas</option>
                         <option>Colorado</option>
@@ -822,13 +816,13 @@
                 <h3 class="mt-4">Horizontal form label sizing</h3>
 
                 <div class="row mb-3">
-                    <x-form-input type="email" class="form-control-sm" id="colFormLabelSm" label="Email" placeholder="col-form-label-sm" horizontal class-label="col-2" class-control="col-10" autocomplete="username"/>
+                    <x-form-input type="email" class="form-control-sm" id="colFormLabelSm" label="Email" placeholder="col-form-label-sm" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" autocomplete="username"/>
                 </div>
                 <div class="row mb-3">
-                    <x-form-input type="email" id="colFormLabel" label="Email" placeholder="col-form-label" horizontal class-label="col-2" class-control="col-10" autocomplete="username"/>
+                    <x-form-input type="email" id="colFormLabel" label="Email" placeholder="col-form-label" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" autocomplete="username"/>
                 </div>
                 <div class="row mb-3">
-                    <x-form-input type="email" class="form-control-lg" id="colFormLabelLg" label="Email" placeholder="col-form-label-lg" horizontal class-label="col-2" class-control="col-10" autocomplete="username"/>
+                    <x-form-input type="email" class="form-control-lg" id="colFormLabelLg" label="Email" placeholder="col-form-label-lg" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" autocomplete="username"/>
                 </div>
 
                 <h3 class="mb-0">Column sizing</h3>
@@ -968,10 +962,10 @@
                         </x-form-input-group>
                     </div>
                     <div class="col-md-12">
-                        <x-form-textarea id="textarea-horizontal2" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
+                        <x-form-textarea id="textarea-horizontal2" label="textarea horizontal" horizontal value="test value using attribute" class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
                     </div>
                     <div class="col-md-12">
-                        <x-form-input type="range" id="textarea-horizontal3" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
+                        <x-form-input type="range" id="textarea-horizontal3" label="textarea horizontal" horizontal value="test value using attribute" class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
                     </div>
                     <div class="col-md-6">
                         <x-form-input id="validationCustom03" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
@@ -1006,8 +1000,7 @@
                         <x-form-input id="validationDefault02" value="Otto" required label="Last name"/>
                     </div>
                     <div class="col-md-4">
-                        {{-- TODO label element --}}
-                        <label for="validationDefaultUsername" class="form-label">Username</label>
+                        <x-form-label for="validationDefaultUsername" class="form-label">Username</x-form-label>
                         <x-form-input-group>
                             <x-form-input-group-text  id="inputGroupPrepend2">@</x-form-input-group-text>
                             <x-form-input name="test" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required/>
@@ -1170,11 +1163,11 @@
 
                 <h3 class="mt-5">Horizontal form validation</h3>
                 <x-form-form class="mb-5" uses-custom-validation>
-                    <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email" horizontal class-label="col-2" class-control="col-10" required invalid-feedback="wrong" help-text="help text using help attribute"/>
-                    <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="try again" help-text="help text using help attribute"/>
-                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-label="col-2" class-control="col-10" autocomplete="new-password" required invalid-feedback="rejected" help-text="help text using help attribute"/>
-                    <x-form-textarea class="mb-5" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" required invalid-feedback="invalid" help-text="help text using help attribute"/>
-                    <x-form-select id="inputState2" label="State" class="mb-5" horizontal class-label="col-2" class-control="col-10" invalid-feedback="wrong choice" required help-text="help text using help attribute" placeholder="Choose...">
+                    <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" required invalid-feedback="wrong" help-text="help text using help attribute"/>
+                    <x-form-input type="password" class="mb-3" id="inputPassword8" label="Password" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" autocomplete="new-password" required invalid-feedback="try again" help-text="help text using help attribute"/>
+                    <x-form-input type="range" class="mb-3" id="inputPassword9" label="Range" min="1" step="1" max="10" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" autocomplete="new-password" required invalid-feedback="rejected" help-text="help text using help attribute"/>
+                    <x-form-textarea class="mb-5" id="textarea-horizontal" label="textarea horizontal" horizontal value="test value using attribute" class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" required invalid-feedback="invalid" help-text="help text using help attribute"/>
+                    <x-form-select id="inputState2" label="State" class="mb-5" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" invalid-feedback="wrong choice" required help-text="help text using help attribute" placeholder="Choose...">
                         <option>Iowa</option>
                         <option>Kansas</option>
                         <option>Colorado</option>
@@ -1217,10 +1210,10 @@
                         </x-form-input-group>
                     </div>
                     <div class="col-md-12">
-                        <x-form-textarea id="textarea-horizontal4" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
+                        <x-form-textarea id="textarea-horizontal4" label="textarea horizontal" horizontal value="test value using attribute" class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
                     </div>
                     <div class="col-md-12">
-                        <x-form-input type="range" id="textarea-horizontal5" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
+                        <x-form-input type="range" id="textarea-horizontal5" label="textarea horizontal" horizontal value="test value using attribute" class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
                     </div>
                     <div class="col-md-6">
                         <x-form-input id="validationCustom08" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
@@ -1262,10 +1255,10 @@
                         </x-form-input-group>
                     </div>
                     <div class="col-md-12">
-                        <x-form-textarea id="textarea-horizontal6" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
+                        <x-form-textarea id="textarea-horizontal6" label="textarea horizontal" horizontal value="test value using attribute" class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" valid-feedback="Yeah!" invalid-feedback="Nope" required/>
                     </div>
                     <div class="col-md-12">
-                        <x-form-input type="range" id="textarea-horizontal7" label="textarea horizontal" horizontal value="test value using attribute" class-label="col-2" class-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
+                        <x-form-input type="range" id="textarea-horizontal7" label="textarea horizontal" horizontal value="test value using attribute" class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" valid-feedback="Yo Yo!" invalid-feedback="Nah nah" min="0" max="10" step="1" required/>
                     </div>
                     <div class="col-md-6">
                         <x-form-input id="validationCustom13" required label="City" valid-feedback="You're set!" invalid-feedback="Please provide a valid city."/>
@@ -1533,7 +1526,7 @@
                     </x-form-html-editor>
                 </x-form-form>
 
-                <h3>Group inline</h3>
+                <h3>Form Group inline (with client side validation on group)</h3>
                 <x-form-form uses-custom-validation>
                     <x-form-group name="radio-inline-a" class="mb-3 p-3" label="Receive newsletters?" inline required invalid-feedback="Select one of the two buttons" valid-feedback="That's clear!">
                         <x-form-radio name="radio-inline-a" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false" />
@@ -1541,9 +1534,9 @@
                     </x-form-group>
                     <x-form-group name="radio-inline-b" class="mb-3 p-3" label="Want more updates?" inline required invalid-feedback="You must check both checkboxes" valid-feedback="Allright!">
                         <x-form-checkbox name="checkbox-inline-b" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false"/>
-                        <x-form-checkbox name="checkbox-inline-b" value="2" label="Yes, please!" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false"/>
+                        <x-form-checkbox name="checkbox-inline-b" value="2" label="Yes, please!" required />
                     </x-form-group>
-                    <x-form-group name="textarea-inline" class="mb-3 p-3" label="Explain why you made this choice" inline required invalid-feedback="Put some text in both textareas" valid-feedback="You are a hero, says textarea group!">
+                    <x-form-group name="textarea-inline" class="mb-3 p-3" label="Explain why you made this choice" inline required invalid-feedback="Put some text in both textareas" valid-feedback="You are a hero, says textarea group!" class-inline-wrapper="gap-3">
                         <x-form-textarea label="In this textarea" class="mb-3" inline required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-textarea>
                         <x-form-textarea label="And in this one" inline required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-textarea>
                     </x-form-group>
@@ -1560,6 +1553,43 @@
                             <option value="Other">Other</option>
                         </x-form-select>
                         <x-form-select label="Select two" inline required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false" placeholder="Make a selection">
+                            <option value="Newspaper">Newspaper</option>
+                            <option value="TV">Tv</option>
+                            <option value="Radio">Radio</option>
+                            <option value="Google">Google</option>
+                            <option value="Other">Other</option>
+                        </x-form-select>
+                    </x-form-group>
+                    <x-form-submit></x-form-submit>
+                </x-form-form>
+
+                <h3>Form Group inline 2 (with client side validation on inputs)</h3>
+                <x-form-form uses-custom-validation>
+                    <x-form-group name="radio-inline-a" class="mb-3 p-3" label="Receive newsletters?" :show-errors="false" inline>
+                        <x-form-radio name="radio-inline-a" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" />
+                        <x-form-radio name="radio-inline-a" value="2" label="No" required />
+                    </x-form-group>
+                    <x-form-group name="radio-inline-b" class="mb-3 p-3" label="Want more updates?" :show-errors="false" inline>
+                        <x-form-checkbox name="checkbox-inline-b" class="me-3" value="1" label="Yes" required invalid-feedback="nope" valid-feedback="yeah" />
+                        <x-form-checkbox name="checkbox-inline-b" value="2" label="Yes, please!" required invalid-feedback="nope" valid-feedback="yeah"/>
+                    </x-form-group>
+                    <x-form-group name="textarea-inline" class="mb-5 p-3" label="Explain why you made this choice" :show-errors="false" inline>
+                        <x-form-textarea label="In this textarea" inline required invalid-feedback="textarea invalid" valid-feedback="textarea 1 valid"></x-form-textarea>
+                        <x-form-textarea label="And in this one" inline required invalid-feedback="textarea invalid" valid-feedback="textarea 2 valid" ></x-form-textarea>
+                    </x-form-group>
+                    <x-form-group name="input-inline" class="mb-5 p-3" label="Explain some more" inline :show-errors="false" >
+                        <x-form-input label="In this text field" inline required invalid-feedback="nope" valid-feedback="yeah" ></x-form-input>
+                        <x-form-input label="And in this one too" inline required invalid-feedback="nope" valid-feedback="yeah" ></x-form-input>
+                    </x-form-group>
+                    <x-form-group name="select-inline" class="mb-3 p-3" label="Where did you hear of us?" inline :show-errors="false" >
+                        <x-form-select label="Select one" class="mb-3" inline required placeholder="Make a selection" valid-feedback="yeah" placeholder="Make a selection">
+                            <option value="Newspaper">Newspaper</option>
+                            <option value="TV">Tv</option>
+                            <option value="Radio">Radio</option>
+                            <option value="Google">Google</option>
+                            <option value="Other">Other</option>
+                        </x-form-select>
+                        <x-form-select label="Select two" inline required invalid-feedback="nope" valid-feedback="yeah" placeholder="Make a selection">
                             <option value="Newspaper">Newspaper</option>
                             <option value="TV">Tv</option>
                             <option value="Radio">Radio</option>
