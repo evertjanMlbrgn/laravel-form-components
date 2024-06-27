@@ -84,7 +84,7 @@
                     {{-- image button must have alt attribute --}}
                     alt="{{ $attributes->get('alt', '&nbsp;') }}"
                 @endif
-                @if(isset($help) && !$hidden && $type !== 'hidden')
+                @if(isset($help) || !empty($helpText) && !$hidden && $type !== 'hidden')
                     aria-describedby="{{ $id }}-help-text"
                 @endif
                 {{-- floating labels won't work without placeholder, yet they never display placeholder either --}}

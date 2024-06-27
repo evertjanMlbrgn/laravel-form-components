@@ -21,6 +21,9 @@
             'has-validation' => $usesCustomValidation || $usesValidation,// needs to be added for rounded border when validation messages show
             'is-invalid' => ($hasError($name) ? ' is-invalid' : '')
            ])->except(['required', 'for']) }}
+         @if(isset($help) || !empty($helpText) && !$hidden)
+             aria-describedby="{{ $id }}-help-text"
+         @endif
     >
 
         @if (isset($slot1) && $slot1 != null)

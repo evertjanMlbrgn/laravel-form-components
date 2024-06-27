@@ -1,11 +1,16 @@
 <div
     id="{{ $id }}"
+
     {{ $attributes->onlyWrapperClasses()->class([
     'form-group',
     'is-invalid' => $hasError($name),
     'show-errors' => $showErrors,
     'required' => $attributes->has('required')
     ]) }}
+
+    @if(isset($help) || !empty($helpText))
+        aria-describedby="{{ $id }}-help-text"
+    @endif
 >
     <x-mlbrgn-form-label
         :required="$attributes->has('required')"
