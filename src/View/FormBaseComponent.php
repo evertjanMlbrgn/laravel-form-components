@@ -21,27 +21,15 @@ abstract class FormBaseComponent extends Component
     }
 
     /**
-     * Generates an ID, once, for this component.
+     * Generates an ID
      */
-    public function getId(): string
-    {
-        if ($this->attributes->has('id') && ! empty($this->attributes->get('id'))) {
-            return $this->id = $this->attributes->get('id');
-        }
-        if ($this->name) {
-            return $this->id = $this->generateIdByName();
-        }
-
-        return $this->id = 'rand_id_' . Str::random(4);
-    }
-
     public function determineId($id, $name): string
     {
         if (!empty($id)) {
             return $this->attributes->get('id');
         }
         if (!empty($name)) {
-            return 'auto_id_'.$name;
+            return 'auto_id_'.$name.Str::random(4);
         }
 
         return 'rand_id_' . Str::random(4);
