@@ -137,11 +137,21 @@
 
         {{-- Help text --}}
         @isset($help)
-            <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
+            <x-mlbrgn-form-text
+                :id="$id"
+                @class([
+                    $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
+                ])
+            >{{ $help }}</x-mlbrgn-form-text>
         @endif
 
         @if(!empty($helpText) && !isset($help))
-            <x-mlbrgn-form-text :id="$id">{{ $helpText }}</x-mlbrgn-form-text>
+            <x-mlbrgn-form-text
+                :id="$id"
+                @class([
+                    $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
+                ])
+            >{{ $helpText }}</x-mlbrgn-form-text>
         @endif
     @endif
 

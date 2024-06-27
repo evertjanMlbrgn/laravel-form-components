@@ -69,7 +69,7 @@
                 <h3>Form text</h3>
                 <x-form-form>
                     <x-form-input id="inputUsername" hidden autocomplete="username"/>
-                    <x-form-input class="mb-3" type="password" id="inputPassword1"  label="Password" autocomplete="new-password">
+                    <x-form-input class="mb-3" type="password" id="inputPassword1"  label="Password" autocomplete="new-password" class-help-text="text-danger">
                         @slot('help')
                             Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                         @endslot
@@ -1530,7 +1530,7 @@
                 <h3>Form Group</h3>
 
                 <x-form-form uses-custom-validation>
-                    <x-form-group name="radio-inline-1" class="mb-3 p-3" label="Receive newsletters?" required invalid-feedback="Select one of the two buttons" valid-feedback="That's clear!" help-text="test help text">
+                    <x-form-group name="radio-inline-1" class="mb-3 p-3" label="Receive newsletters?" required invalid-feedback="Select one of the two buttons" valid-feedback="That's clear!" help-text="test help text" class-help-text="text-primary">
                         <x-form-radio name="radio-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false" />
                         <x-form-radio name="radio-inline-1" value="2" label="No" />
                     </x-form-group>
