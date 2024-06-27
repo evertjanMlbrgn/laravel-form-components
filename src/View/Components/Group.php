@@ -23,6 +23,7 @@ class Group extends FormBaseComponent
         public string $invalidFeedback = '',
         public bool $tooltipFeedback = false,
         bool $showErrors = true,
+        public string $helpText = ''
     )
     {
         $this->showErrors = $name && $showErrors;

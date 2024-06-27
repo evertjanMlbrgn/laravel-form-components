@@ -1527,6 +1527,44 @@
                     </x-form-html-editor>
                 </x-form-form>
 
+                <h3>Form Group</h3>
+
+                <x-form-form uses-custom-validation>
+                    <x-form-group name="radio-inline-1" class="mb-3 p-3" label="Receive newsletters?" required invalid-feedback="Select one of the two buttons" valid-feedback="That's clear!" help-text="test help text">
+                        <x-form-radio name="radio-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false" />
+                        <x-form-radio name="radio-inline-1" value="2" label="No" />
+                    </x-form-group>
+                    <x-form-group name="checkbox-inline-1" class="mb-3 p-3" label="Want more updates?" required invalid-feedback="You must check both checkboxes" valid-feedback="Allright!" help-text="test help text">
+                        <x-form-checkbox name="checkbox-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false"/>
+                        <x-form-checkbox name="checkbox-inline-1" value="2" label="Yes, please!" required />
+                    </x-form-group>
+                    <x-form-group class="mb-3 p-3" label="Explain why you made this choice" required invalid-feedback="Put some text in both textareas" valid-feedback="You are a hero, says textarea group!" class-inline-wrapper="gap-3" help-text="test help text">
+                        <x-form-textarea label="In this textarea" class="mb-3" required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-textarea>
+                        <x-form-textarea label="And in this one" required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-textarea>
+                    </x-form-group>
+                    <x-form-group class="mb-3 p-3" label="Explain some more" required invalid-feedback="Put some text in both text fields" valid-feedback="Way to go!" help-text="test help text">
+                        <x-form-input label="In this text field" class="mb-3" required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-input>
+                        <x-form-input label="And in this one too" required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-input>
+                    </x-form-group>
+                    <x-form-group class="mb-3 p-3" label="Where did you hear of us?" required invalid-feedback="Select a value" valid-feedback="Way to go!" help-text="test help text">
+                        <x-form-select label="Select one" class="mb-3" required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false" placeholder="Make a selection">
+                            <option value="Newspaper">Newspaper</option>
+                            <option value="TV">Tv</option>
+                            <option value="Radio">Radio</option>
+                            <option value="Google">Google</option>
+                            <option value="Other">Other</option>
+                        </x-form-select>
+                        <x-form-select label="Select two" required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false" placeholder="Make a selection">
+                            <option value="Newspaper">Newspaper</option>
+                            <option value="TV">Tv</option>
+                            <option value="Radio">Radio</option>
+                            <option value="Google">Google</option>
+                            <option value="Other">Other</option>
+                        </x-form-select>
+                    </x-form-group>
+                    <x-form-submit></x-form-submit>
+                </x-form-form>
+
                 <h3>Form Group inline (with client side validation on group)</h3>
                 <x-form-form uses-custom-validation>
                     <x-form-group name="radio-inline-1" class="mb-3 p-3" label="Receive newsletters?" inline required invalid-feedback="Select one of the two buttons" valid-feedback="That's clear!">
@@ -1537,15 +1575,15 @@
                         <x-form-checkbox name="checkbox-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false"/>
                         <x-form-checkbox name="checkbox-inline-1" value="2" label="Yes, please!" required />
                     </x-form-group>
-                    <x-form-group name="textarea-inline" class="mb-3 p-3" label="Explain why you made this choice" inline required invalid-feedback="Put some text in both textareas" valid-feedback="You are a hero, says textarea group!" class-inline-wrapper="gap-3">
+                    <x-form-group class="mb-3 p-3" label="Explain why you made this choice" inline required invalid-feedback="Put some text in both textareas" valid-feedback="You are a hero, says textarea group!" class-inline-wrapper="gap-3">
                         <x-form-textarea label="In this textarea" class="mb-3" required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-textarea>
                         <x-form-textarea label="And in this one" required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-textarea>
                     </x-form-group>
-                    <x-form-group name="input-inline" class="mb-3 p-3" label="Explain some more" inline required invalid-feedback="Put some text in both text fields" valid-feedback="Way to go!">
+                    <x-form-group class="mb-3 p-3" label="Explain some more" inline required invalid-feedback="Put some text in both text fields" valid-feedback="Way to go!">
                         <x-form-input label="In this text field" class="mb-3" required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-input>
                         <x-form-input label="And in this one too" required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false"></x-form-input>
                     </x-form-group>
-                    <x-form-group name="select-inline" class="mb-3 p-3" label="Where did you hear of us?" inline required invalid-feedback="Select a value" valid-feedback="Way to go!">
+                    <x-form-group class="mb-3 p-3" label="Where did you hear of us?" inline required invalid-feedback="Select a value" valid-feedback="Way to go!">
                         <x-form-select label="Select one" class="mb-3" required invalid-feedback="nope" valid-feedback="yeah" :show-errors="false" placeholder="Make a selection">
                             <option value="Newspaper">Newspaper</option>
                             <option value="TV">Tv</option>
@@ -1574,15 +1612,15 @@
                         <x-form-checkbox name="checkbox-inline-2" class="me-3" value="1" label="Yes" required invalid-feedback="nope" valid-feedback="yeah" />
                         <x-form-checkbox name="checkbox-inline-2" value="2" label="Yes, please!" required invalid-feedback="nope" valid-feedback="yeah"/>
                     </x-form-group>
-                    <x-form-group name="textarea-inline" class="mb-5 p-3" label="Explain why you made this choice" :show-errors="false" inline>
+                    <x-form-group class="mb-5 p-3" label="Explain why you made this choice" :show-errors="false" inline>
                         <x-form-textarea label="In this textarea" required invalid-feedback="textarea invalid" valid-feedback="textarea 1 valid"></x-form-textarea>
                         <x-form-textarea label="And in this one" required invalid-feedback="textarea invalid" valid-feedback="textarea 2 valid" ></x-form-textarea>
                     </x-form-group>
-                    <x-form-group name="input-inline" class="mb-5 p-3" label="Explain some more" inline :show-errors="false" >
+                    <x-form-group class="mb-5 p-3" label="Explain some more" inline :show-errors="false" >
                         <x-form-input label="In this text field" required invalid-feedback="nope" valid-feedback="yeah" ></x-form-input>
                         <x-form-input label="And in this one too" required invalid-feedback="nope" valid-feedback="yeah" ></x-form-input>
                     </x-form-group>
-                    <x-form-group name="select-inline" class="mb-3 p-3" label="Where did you hear of us?" inline :show-errors="false" >
+                    <x-form-group class="mb-3 p-3" label="Where did you hear of us?" inline :show-errors="false" >
                         <x-form-select label="Select one" class="mb-3" required placeholder="Make a selection" valid-feedback="yeah" placeholder="Make a selection">
                             <option value="Newspaper">Newspaper</option>
                             <option value="TV">Tv</option>

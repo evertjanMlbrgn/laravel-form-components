@@ -25,6 +25,7 @@ abstract class FormBaseComponent extends Component
      */
     public function determineId($id, $name): string
     {
+
         if (!empty($id)) {
             return $this->attributes->get('id');
         }
