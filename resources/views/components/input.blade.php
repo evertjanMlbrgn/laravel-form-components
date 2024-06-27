@@ -6,14 +6,12 @@
 @if(in_array($type, ['button', 'reset', 'submit']))
     @include('form-components::button', [
         'type' => $type,
-//        'classButton' => 'btn-primary',
         'slot' => $attributes->get('value')
     ])
 @elseif(in_array($type, ['checkbox', 'radio']))
     @include('form-components::' . $type, [
         'toggle' => $attributes->has('toggle'),
         'checked' => $attributes->has('checked'),
-//        'classButton' => '',
         'labelButton' => ''
     ])
 @else

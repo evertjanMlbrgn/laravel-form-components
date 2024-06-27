@@ -55,12 +55,7 @@
                     @endif
                     id="{{ $id }}"
                     @if($multiple) multiple @endif
-{{--                    select cannot have a placeholder attribute--}}
-{{--                    @if($floating && empty($placeholder))--}}
-{{--                        placeholder="&nbsp;"--}}
-{{--                    @else--}}
-{{--                        placeholder="{{ $placeholder }}"--}}
-{{--                    @endif--}}
+                    {{-- select cannot have a placeholder attribute--}}
                     @if(isset($help) && !$hidden)
                         aria-describedby="{{ $id }}-help-text"
                     @endif

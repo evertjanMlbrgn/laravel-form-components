@@ -34,6 +34,15 @@ abstract class FormBaseComponent extends Component
 
         return 'rand_id_' . Str::random(4);
     }
+
+    /**
+     * Generates a random id
+     * Used by text component to ensure that help text gets a random id to add aria attribute
+     */
+//    public function getRandomId(): string
+//    {
+//        return 'rand_id_' . Str::random(4);
+//    }
     /**
      * Generates an ID by the name attribute.
      */

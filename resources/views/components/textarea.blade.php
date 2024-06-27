@@ -7,7 +7,6 @@
             {{ $attributes->onlyWrapperClasses()->class([
                 'row' => $horizontal,
                 'form-floating' => $floating,
-//                'd-none' => $hidden
                ]) }}
         >
     @endif

@@ -5,8 +5,6 @@
     ])->class([
         'btn',
         'd-none' => $hidden,
-//        'btn-primary' => !$attributes->has('class-button'),
-//        $attributes->get('class-button', '')
         ])->except(['required', 'readonly', 'label', 'help-text', 'id'])->whereDoesntStartWith('class-')
     }}
     @if(!empty($name))
