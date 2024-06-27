@@ -1,3 +1,5 @@
+{{-- NOTE: type="file|button|reset|submit|image" inputs do not have support value / setting value --}}
+
 {{-- If checkbox or radio use dedicated components --}}
 
 {{-- Handle different input types --}}
@@ -18,6 +20,7 @@
 
     {{-- Cache ID to avoid generating multiple times --}}
     <?php $id = $getId(); ?>
+    <?php echo 'value: ' . $value ?>
 
     {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
     @if($floating || $horizontal)
@@ -63,14 +66,14 @@
                         'form-range' => $type === 'range',
                         'form-control-color' => ($type === 'color'),
                         'is-invalid' => ($hasError($name)),
-                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'value']) }}
+                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id']) }}
                 @else
                     {{ $attributes->exceptWrapperClasses()->class([
                         'form-control' => $type !== 'range',
                         'form-range' => $type === 'range',
                         'form-control-color' => ($type === 'color'),
                         'is-invalid' => ($hasError($name)),
-                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'value']) }}
+                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id']) }}
                 @endif
                 type="{{ $type }}"
                 @if(!in_array($type, ['file', 'image']))

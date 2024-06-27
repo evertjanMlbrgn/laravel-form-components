@@ -26,7 +26,7 @@ it('sets extra attributes', function () {
 
     $this->visit('/bootstrap-select')
         ->within('#form-select-extra-attributes', function() {
-            return $this->seeElement('select[name="select"][id="select"][readonly][disabled][value="test"]:not([required])');
+            return $this->seeElement('select[name="select"][id="select"][readonly][disabled]:not([required])');
         });
 });
 

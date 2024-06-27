@@ -19,13 +19,13 @@
                 'form-check-input' => !$toggle,
                 'btn-check' => $toggle,
                 'is-invalid' => $hasError($name),
-            ])->whereDoesntStartWith('class-')->except(['inline', 'id', 'value']) }}
+            ])->whereDoesntStartWith('class-')->except(['inline', 'id']) }}
         @else
             {{ $attributes->class([
                 'form-check-input' => !$toggle,
                 'btn-check' => $toggle,
                 'is-invalid' => $hasError($name),
-            ])->whereDoesntStartWith('class-')->except(['inline', 'id', 'value']) }}
+            ])->whereDoesntStartWith('class-')->except(['inline', 'id']) }}
         @endif
         type="radio"
         value="{{ $value }}"

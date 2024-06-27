@@ -40,17 +40,18 @@
 
 @endif
                 {{-- Select element --}}
+                {{-- NOTE: select element does not support value attribute --}}
                 <select
                     @if(!$floating && !$horizontal)
                         {{ $attributes->class([
                             'form-select',
                             'is-invalid' => $hasError($name)
-                        ])->whereDoesntStartWith('class-')->except(['placeholder', 'label-end', 'id', 'value']) }}
+                        ])->whereDoesntStartWith('class-')->except(['placeholder', 'label-end', 'id']) }}
                     @else
                         {{ $attributes->exceptWrapperClasses()->class([
                        'form-select',
                        'is-invalid' => $hasError($name)
-                   ])->whereDoesntStartWith('class-')->except(['placeholder', 'label-end', 'id', 'value']) }}
+                   ])->whereDoesntStartWith('class-')->except(['placeholder', 'label-end', 'id']) }}
                     @endif
                     @if($name)
                         name="{{ $name }}"

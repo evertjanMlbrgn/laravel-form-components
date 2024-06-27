@@ -47,13 +47,13 @@
                     'form-control',
                     'html-editor',
                     'is-invalid' => $hasError($name)
-                ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'value']) }}
+                ])->whereDoesntStartWith('class-')->except(['label-end', 'id']) }}
             @else
                 {{ $attributes->exceptWrapperClasses()->class([
                     'form-control',
                     'html-editor',
                     'is-invalid' => $hasError($name)
-                ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'value']) }}
+                ])->whereDoesntStartWith('class-')->except(['label-end', 'id']) }}
             @endif
             @if($name)
                 name="{{ $name }}"

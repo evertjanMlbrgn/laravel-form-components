@@ -20,13 +20,13 @@
                'form-check-input' => !$toggle,
                'btn-check' => $toggle,
                'is-invalid' => $hasError($name)
-           ])->whereDoesntStartWith('class-')->except(['inline', 'switch', 'id', 'value']) }}
+           ])->whereDoesntStartWith('class-')->except(['inline', 'switch', 'id']) }}
         @else
             {{ $attributes->class([
                'form-check-input' => !$toggle,
                'btn-check' => $toggle,
                'is-invalid' => $hasError($name)
-           ])->whereDoesntStartWith('class-')->except(['inline', 'switch', 'id', 'value']) }}
+           ])->whereDoesntStartWith('class-')->except(['inline', 'switch', 'id']) }}
         @endif
         type="checkbox"
         value="{{ $value }}"

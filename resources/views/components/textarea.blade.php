@@ -1,4 +1,5 @@
 {{-- Cache ID to avoid generating multiple times --}}
+{{-- NOTE: textarea does not have a value attribute --}}
 <?php $id = $getId(); ?>
 
 @if(!$hidden)
@@ -47,12 +48,12 @@
             {{ $attributes->class([
                 'form-control',
                 'is-invalid' => $hasError($name)
-            ])->whereDoesntStartWith('class-')->except(['value', 'label-end', 'id', 'value']) }}
+            ])->whereDoesntStartWith('class-')->except(['value', 'label-end', 'id']) }}
         @else
             {{ $attributes->exceptWrapperClasses()->class([
                'form-control',
                'is-invalid' => $hasError($name)
-           ])->whereDoesntStartWith('class-')->except(['value', 'label-end', 'id', 'value']) }}
+           ])->whereDoesntStartWith('class-')->except(['value', 'label-end', 'id']) }}
         @endif
         @if($name)
             name="{{ $name }}"
