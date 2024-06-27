@@ -18,10 +18,6 @@
     ])
 @else
 
-    {{-- Cache ID to avoid generating multiple times --}}
-    <?php $id = $getId(); ?>
-    <?php echo 'value: ' . $value ?>
-
     {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
     @if($floating || $horizontal)
         <div
@@ -58,6 +54,7 @@
             ])
         >
     @endif
+            testId: {{ $id }}
             {{-- Input element --}}
             <input
                 @if(!$floating && !$horizontal)

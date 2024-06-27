@@ -1,6 +1,3 @@
-{{-- Cache ID to avoid generating multiple times --}}
-<?php $id = $getId(); ?>
-
 @if(!$hidden)
 
     {{-- Wrapper for floating, hidden or horizontal controls, classes go on the wrapper, other attributes on control itself --}}

@@ -14,7 +14,10 @@ abstract class FormBaseComponent extends Component
      */
     public function render()
     {
-        return view(config('form-components.view_namespace').'::'.Str::kebab(class_basename($this)));
+        return function (array $data) {
+            $id = $this->determineId($data['attributes']->get('id'), $data['name'] ?? '');
+            return view(config('form-components.view_namespace').'::'.Str::kebab(class_basename($this)), ['id' => $id]);
+        };
     }
 
     /**
@@ -32,6 +35,17 @@ abstract class FormBaseComponent extends Component
         return $this->id = 'rand_id_' . Str::random(4);
     }
 
+    public function determineId($id, $name): string
+    {
+        if (!empty($id)) {
+            return $this->attributes->get('id');
+        }
+        if (!empty($name)) {
+            return 'auto_id_'.$name;
+        }
+
+        return 'rand_id_' . Str::random(4);
+    }
     /**
      * Generates an ID by the name attribute.
      */

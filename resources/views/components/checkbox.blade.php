@@ -1,6 +1,3 @@
-{{-- Cache ID to avoid generating multiple times --}}
-<?php $id = $getId(); ?>
-
 {{-- Open wrapper --}}
 @if(!$hidden)
     @if(!$toggle)

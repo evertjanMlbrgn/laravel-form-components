@@ -1,7 +1,4 @@
-{{-- Cache ID to avoid generating multiple times --}}
 {{-- NOTE: textarea does not have a value attribute --}}
-<?php $id = $getId(); ?>
-
 @if(!$hidden)
 
     {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}

@@ -15,7 +15,7 @@
     @if($hidden)
         hidden
     @endif
-    id="{{ $getId() }}"
+    id="{{ $id }}"
 >
     {!! $attributes->has('label') ? $attributes->get('label') : (trim($slot) ?: 'Send') !!}
 </button>
