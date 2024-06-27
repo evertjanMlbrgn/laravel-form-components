@@ -54,7 +54,6 @@
             ])
         >
     @endif
-            testId: {{ $id }}
             {{-- Input element --}}
             <input
                 @if(!$floating && !$horizontal)
