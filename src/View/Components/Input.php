@@ -23,6 +23,7 @@ class Input extends FormBaseComponent
         $bind = null,
         $default = null,
         $language = null,
+        $value = null,
         bool $showErrors = true,
         public string $label = '',
         public string $type = 'text',
@@ -32,7 +33,7 @@ class Input extends FormBaseComponent
         public string $validFeedback = '',
         public string $invalidFeedback = '',
         public bool $tooltipFeedback = false,
-        public string $helpText = ''
+        public string $helpText = '',
     ) {
 
         $this->showErrors = $showErrors;
@@ -41,6 +42,7 @@ class Input extends FormBaseComponent
             $this->name = "{$name}[{$language}]";
         }
 
-        $this->setValue($name, $bind, $default, $language);
+        $this->setValue($value, $name, $bind, $default, $language);
+
     }
 }

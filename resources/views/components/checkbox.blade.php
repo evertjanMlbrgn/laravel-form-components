@@ -26,7 +26,7 @@
            ])->whereDoesntStartWith('class-')->except(['inline', 'switch', 'id']) }}
         @endif
         type="checkbox"
-        value="{{ $value }}"
+        value="{{ $value ?? '' }}"
         @if($name)
         name="{{ $name }}"
         @endif

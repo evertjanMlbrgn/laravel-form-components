@@ -1,8 +1,6 @@
 {{-- NOTE: type="file|button|reset|submit|image" inputs do not have support value / setting value --}}
 
-{{-- If checkbox or radio use dedicated components --}}
-
-{{-- Handle different input types --}}
+{{-- Handle different input types, by using the right component --}}
 @if(in_array($type, ['button', 'reset', 'submit']))
     @include('form-components::button', [
         'type' => $type,
@@ -52,6 +50,7 @@
             ])
         >
     @endif
+
             {{-- Input element --}}
             <input
                 @if(!$floating && !$horizontal)

@@ -25,7 +25,7 @@
             ])->whereDoesntStartWith('class-')->except(['inline', 'id']) }}
         @endif
         type="radio"
-        value="{{ $value }}"
+        value="{{ $value ?? '' }}"
         @if($name)
             name="{{ $name }}"
         @endif

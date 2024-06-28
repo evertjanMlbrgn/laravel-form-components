@@ -13,7 +13,7 @@ use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
 trait HandlesBoundValues
 {
     /**
-     * Wether to retrieve the default value as a single
+     * Whether to retrieve the default value as a single
      * attribute or as a collection from the database.
      *
      * @var bool
