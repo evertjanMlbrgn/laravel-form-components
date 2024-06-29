@@ -26,14 +26,15 @@ trait HandlesDefaultAndOldValue
             $this->value = old($inputName, $this->getBoundValue($bind, $inputName) ?? $value ?? $default);
         } else {
 
-            // if individual control has non-false bind (attribute value)
+            // if bind attribute of control is non-false
             if ($bind !== false) {
                 // if bind is truthy bind stays bind provided by attribute
+                // this can be an array with name => value or an eloquent model
                 // otherwise we get the binding the control is wrapped in
                 $bind = $bind ?: $this->getBoundTarget();
-                echo 'bind on control found';
             }
 
+            // get the translation
             if ($bind) {
                 $default = $bind->getTranslation($name, $language, false) ?: $value ?? $default;
             }
