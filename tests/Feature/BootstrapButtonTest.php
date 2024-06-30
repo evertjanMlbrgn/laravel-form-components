@@ -73,3 +73,30 @@ it('does not let type of submit button be overridden', function () {
             $this->seeElement('button[id="button-submit"][type="submit"]');
         });
 });
+
+it('supports help text using attribute', function() {
+   $this->registerTestRoute('bootstrap-button');
+   $this->visit('bootstrap-button')
+       ->within('#form-help-text-using-attribute', function() {
+           $this->seeElement('button[id="button"] + div.form-text')
+               ->seeInElement('button[id="button"] + div.form-text', 'help text using attribute')
+               ->seeElement('button[id="button-submit"] + div.form-text')
+               ->seeInElement('button[id="button-submit"] + div.form-text', 'help text using attribute')
+               ->seeElement('button[id="button-reset"] + div.form-text')
+               ->seeInElement('button[id="button-reset"] + div.form-text', 'help text using attribute');
+       });
+});
+
+it('supports help text using slot', function() {
+    $this->registerTestRoute('bootstrap-button');
+    $this->visit('bootstrap-button')
+        ->within('#form-help-text-using-slot', function() {
+            $this->seeElement('button[id="button"] + div.form-text')
+                ->seeInElement('button[id="button"] + div.form-text', 'help text using slot')
+                ->seeElement('button[id="button-submit"] + div.form-text')
+                ->seeInElement('button[id="button-submit"] + div.form-text', 'help text using slot')
+                ->seeElement('button[id="button-reset"] + div.form-text')
+                ->seeInElement('button[id="button-reset"] + div.form-text', 'help text using slot');
+        });
+});
+

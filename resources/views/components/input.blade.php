@@ -55,14 +55,14 @@
             <input
                 @if(!$floating && !$horizontal)
                     {{ $attributes->class([
-                        'form-control' => $type !== 'range',
+                        'form-control' => $type !== 'range' && $type !== 'image',
                         'form-range' => $type === 'range',
                         'form-control-color' => ($type === 'color'),
                         'is-invalid' => ($hasError($name)),
                     ])->whereDoesntStartWith('class-')->except(['label-end', 'id']) }}
                 @else
                     {{ $attributes->exceptWrapperClasses()->class([
-                        'form-control' => $type !== 'range',
+                        'form-control' => $type !== 'range' && $type !== 'image',
                         'form-range' => $type === 'range',
                         'form-control-color' => ($type === 'color'),
                         'is-invalid' => ($hasError($name)),

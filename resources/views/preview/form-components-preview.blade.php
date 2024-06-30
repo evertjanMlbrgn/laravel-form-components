@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>MLBRGN form components preview page</title>
         <link rel="stylesheet" href="{{ package_asset('preview.css') }}">
+        <link rel="stylesheet" href="{{ package_asset('main.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <script src="{{ package_asset('preview.js') }}"></script>
     </head>
     <body>
@@ -988,7 +990,7 @@
                         <x-form-radio name="validation-form" value="" id="invalidCheck3" required label="...or this one" valid-feedback="You agree" invalid-feedback="You must check one of the buttons"/>
                     </div>
                     <div class="col-12">
-                        <x-form-submit class="btn-primary">Submit form</x-form-submit>
+                        <x-form-submit class="btn-primary" help-text="Help text using attribute">Submit form</x-form-submit>
                     </div>
                 </x-form-form>
 
@@ -1028,7 +1030,12 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <x-form-submit class="btn-primary">Submit form</x-form-submit>
+                        <x-form-submit class="btn-primary">
+                            Submit form
+                            @slot('help')
+                                help text using slot
+                            @endslot
+                        </x-form-submit>
                     </div>
                 </x-form-form>
 
@@ -1303,7 +1310,7 @@
                         <x-form-input class="mb-3" name="hidden-1" type="hidden" label="Hidden"/>
                     </div>
                     <x-form-input class="mb-3" name="month-1" type="month" label="Month"/>
-                    <x-form-input class="mb-3 w-auto" name="image-1" type="image" label="Image" src="{{ package_asset('button-image.png') }}" height="40"/>
+                    <x-form-input class="mb-3 w-auto d-block" name="image-1" type="image" label="Image" src="{{ package_asset('button-image.png') }}" height="40" alt="image button"/>
                     <x-form-input class="mb-3" name="number-1" type="number" label="Number"/>
                     <x-form-input class="mb-3" name="password-1" type="password" label="Password" autocomplete="current-password"/>
                     <x-form-input class="mb-3" name="radio-1" type="radio" label="Radio"/>
@@ -1716,6 +1723,55 @@
                     <x-form-html-editor name="html-editor-4" default="value 4 by default" :bind="$bind2" value="value 4 by value attribute"></x-form-html-editor>
                     <x-form-html-editor name="html-editor-5" default="value 5 by default" value="value 5 by value attribute"></x-form-html-editor>
                     @endbind
+                </x-form-form>
+
+                <h3>Input group icon</h3>
+                <x-form-form>
+                    <h4>Font icons</h4>
+                    <x-form-input-group-icon class="mb-3" class-font-icon="bi-alarm" icon-position="start">
+                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    </x-form-input-group-icon>
+                    <x-form-input-group-icon class-font-icon="bi-alarm" icon-position="end">
+                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    </x-form-input-group-icon>
+
+                    <h4>Image icons</h4>
+
+                    <x-form-input-group-icon class="mb-3" icon-position="start">
+                        <x-form-input name="input-1" value="test value"></x-form-input>
+                        @slot('iconImg')
+                            <img src="{{ package_asset('button-image.png') }}" alt=""/>
+                        @endslot
+                    </x-form-input-group-icon>
+                    <x-form-input-group-icon icon-position="end">
+                        <x-form-input name="input-1" value="test value"></x-form-input>
+                        @slot('iconImg')
+                            <img src="{{ package_asset('button-image.png') }}" alt=""/>
+                        @endslot
+                    </x-form-input-group-icon>
+
+                    <h4>Svg icons</h4>
+
+                    <x-form-input-group-icon class="mb-3" icon-position="start">
+                        <x-form-input name="input-1" value="test value"></x-form-input>
+                        @slot('iconSvg')
+                            <svg height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#ED8A19;" d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757 c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042 c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685 c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528 c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956 C22.602,0.567,25.338,0.567,26.285,2.486z"></path> </g></svg>
+                        @endslot
+                    </x-form-input-group-icon>
+                    <x-form-input-group-icon icon-position="end">
+                        <x-form-input name="input-1" value="test value"></x-form-input>
+                        @slot('iconSvg')
+                            <svg height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#ED8A19;" d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757 c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042 c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685 c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528 c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956 C22.602,0.567,25.338,0.567,26.285,2.486z"></path> </g></svg>
+                        @endslot
+                    </x-form-input-group-icon>
+
+                    <h4>SVG sprite icons</h4>
+                    <x-form-input-group-icon class="mb-3" svg-sprite-href="bi-alarm" icon-position="start">
+                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    </x-form-input-group-icon>
+                    <x-form-input-group-icon svg-sprite-href="bi-alarm" icon-position="end">
+                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    </x-form-input-group-icon>
                 </x-form-form>
             </div>
         </div>

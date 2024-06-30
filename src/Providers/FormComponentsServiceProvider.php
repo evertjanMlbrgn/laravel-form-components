@@ -16,6 +16,7 @@ use Mlbrgn\LaravelFormComponents\View\Components\Group;
 use Mlbrgn\LaravelFormComponents\View\Components\HtmlEditor;
 use Mlbrgn\LaravelFormComponents\View\Components\Input;
 use Mlbrgn\LaravelFormComponents\View\Components\InputGroup;
+use Mlbrgn\LaravelFormComponents\View\Components\InputGroupIcon;
 use Mlbrgn\LaravelFormComponents\View\Components\InputGroupText;
 use Mlbrgn\LaravelFormComponents\View\Components\Label;
 use Mlbrgn\LaravelFormComponents\View\Components\Radio;
@@ -119,6 +120,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $this->registerComponent('html-editor', HtmlEditor::class);
             $this->registerComponent('input', Input::class);
             $this->registerComponent('input-group', InputGroup::class);
+            $this->registerComponent('input-group-icon', InputGroupIcon::class);
             $this->registerComponent('input-group-text', InputGroupText::class);
             $this->registerComponent('label', Label::class);
             $this->registerComponent('radio', Radio::class);
