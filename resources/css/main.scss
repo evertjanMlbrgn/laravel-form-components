@@ -3,24 +3,20 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.input-group-icon {
-    fill:red;
-}
-.input-group-icon img {
-    max-width:1em;
-    max-height:1em;
-}
-
+.input-group-icon img,
 .input-group-icon svg {
     max-width:1em;
     max-height:1em;
 }
 
-.input-group-icon-sprite {
-    color:blue;
-    fill: darkgreen;
+.input-group-icon-font,
+.input-group-icon-sprite
+{
+    color:#00008b;
 }
 
-.input-group-icon-sprite svg {
-    overflow: visible
+.input-group-icon-svg svg,
+.input-group-icon-img img
+{
+    filter: invert(18%) sepia(24%) saturate(5356%) hue-rotate(223deg) brightness(90%) contrast(148%);
 }
