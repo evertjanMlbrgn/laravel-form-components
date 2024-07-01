@@ -9,7 +9,7 @@ it('adds help text', function () {
         });
 });
 
-// tests if setting uses-custom-validation adds class needs-validation to form and attribute no-validate
+// tests if setting validation-mode="custom" adds class needs-validation to form and attribute no-validate
 // also tests if input-groups get the class has-validation (needed to fix rounded borders on input-groups with
 // validation
 it('adds aria-describedby to control with help text', function () {

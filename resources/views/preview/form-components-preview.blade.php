@@ -121,7 +121,7 @@
                         <div class="mb-3">
                             <x-form-checkbox id="disabledFieldsetCheck" disabled label="Can't check this"/>
                         </div>
-                        <x-form-submit class="btn-primary">Submit</x-form-submit>
+                        <x-form-submit class="btn-preview-primary">Submit</x-form-submit>
                     </fieldset>
                 </x-form-form>
 
@@ -180,7 +180,7 @@
                         <x-form-input type="password" id="inputPassword7" label="Password" placeholder="Password" class-label="visually-hidden" autocomplete="new-password"/>
                     </div>
                     <div class="col-auto">
-                        <x-form-submit class="btn-primary mb-3">Confirm identity</x-form-submit>
+                        <x-form-submit class="btn-preview-primary mb-3">Confirm identity</x-form-submit>
                     </div>
                 </x-form-form>
 
@@ -339,23 +339,23 @@
 
                 <h3>Checkbox toggle buttons</h3>
 
-                <x-form-checkbox id="btn-check" label="Single toggle" toggle class-toggle-button="btn-secondary" class-label="a-class another-class"/>
-                <x-form-checkbox id="btn-check-2" label="Checked" toggle checked class-toggle-button="btn-secondary-outline"/>
-                <x-form-checkbox id="btn-check-3" label="Disabled" toggle disabled class-toggle-button="btn-primary"/>
+                <x-form-checkbox id="btn-check" label="Single toggle" toggle class-toggle-button="btn-preview-secondary" class-label="a-class another-class"/>
+                <x-form-checkbox id="btn-check-2" label="Checked" toggle checked class-toggle-button="btn-preview-secondary"/>
+                <x-form-checkbox id="btn-check-3" label="Disabled" toggle disabled class-toggle-button="btn-preview-secondary"/>
 
                 <h3>Radio toggle buttons</h3>
 
-                <x-form-radio name="options" id="option1" checked label="Checked" toggle class-toggle-button="btn-secondary" class-label="a-class another-class"/>
-                <x-form-radio name="options" id="option2" label="Radio" toggle class-toggle-button="btn-primary-outline"/>
-                <x-form-radio name="options" id="option3" checked label="Disabled" toggle disabled class-toggle-button="btn-secondary"/>
-                <x-form-radio name="options" id="option4" label="Radio" toggle/>
+                <x-form-radio name="options" id="option1" checked label="Checked" toggle class-toggle-button="btn-preview-primary" class-label="a-class another-class"/>
+                <x-form-radio name="options" id="option2" label="Radio" toggle class-toggle-button="btn-preview-primary"/>
+                <x-form-radio name="options" id="option3" label="Disabled" toggle disabled class-toggle-button="btn-preview-primary"/>
+                <x-form-radio name="options" id="option4" label="Radio" toggle class-toggle-button="btn-preview-primary"/>
 
                 <h3>Outlined styles</h3>
 
-                <x-form-checkbox id="btn-check-outlined" label="Single toggle" class-toggle-button="btn-outline-primary" toggle/>
-                <x-form-checkbox id="btn-check-2-outlined" checked label="Checked" class-toggle-button="btn-outline-secondary" toggle/>
-                <x-form-radio name="options-outlined" id="success-outlined" checked label="Checked succes radio" class-toggle-button="btn-outline-success" toggle/>
-                <x-form-radio  name="options-outlined" id="danger-outlined" label="Danger radio" class-toggle-button="btn-outline-danger" toggle/>
+                <x-form-checkbox id="btn-check-outlined" label="Single toggle" class-toggle-button="btn-preview-outline-primary" toggle/>
+                <x-form-checkbox id="btn-check-2-outlined" checked label="Checked" class-toggle-button="btn-preview-outline-primary" toggle/>
+                <x-form-radio name="options-outlined" id="success-outlined" checked label="Checked succes radio" class-toggle-button="btn-preview-outline-secondary" toggle/>
+                <x-form-radio  name="options-outlined" id="danger-outlined" label="Danger radio" class-toggle-button="btn-preview-outline-secondary" toggle/>
 
                 <h2 id="form-range">Range</h2>
                 <p>Examples taken From <a href="https://getbootstrap.com/docs/5.3/forms/range/" target="_blank">bootstrap documentation on form controls</a>. Adjusted to use our form-components.</p>
@@ -481,18 +481,18 @@
                 <h3>Button addons</h3>
 
                 <x-form-input-group class="mb-3">
-                    <x-form-button class="btn-secondary" id="button-addon1">Button</x-form-button>
+                    <x-form-button class="btn-preview-secondary" id="button-addon1">Button</x-form-button>
                     <x-form-input placeholder="" aria-label="Example text with button addon" />
                 </x-form-input-group>
 
                 <x-form-input-group class="mb-3">
                     <x-form-input placeholder="Recipient's username" aria-label="Recipient's username" />
-                    <x-form-button class="btn-outline-secondary" id="button-addon2">Button</x-form-button>
+                    <x-form-button class="btn-preview-outline-secondary" id="button-addon2">Button</x-form-button>
                 </x-form-input-group>
 
                 <x-form-input-group class="mb-3">
-                    <x-form-button class="btn-primary">Button</x-form-button>
-                    <x-form-button class="btn-primary">Button</x-form-button>
+                    <x-form-button class="btn-preview-primary">Button</x-form-button>
+                    <x-form-button class="btn-preview-primary">Button</x-form-button>
                     <x-form-input placeholder="" aria-label="Example text with two button addons"/>
                 </x-form-input-group>
 
@@ -504,7 +504,7 @@
 
                 <h3>Buttons with dropdowns</h3>
                 <x-form-input-group class="mb-3">
-                    <x-form-button class="btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
+                    <x-form-button class="btn-preview-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -517,7 +517,7 @@
 
                 <x-form-input-group class="mb-3">
                     <x-form-input aria-label="Text input with dropdown button"/>
-                    <x-form-button class="btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
+                    <x-form-button class="btn-preview-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -528,7 +528,7 @@
                 </x-form-input-group>
 
                 <x-form-input-group class="">
-                    <x-form-button class="btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
+                    <x-form-button class="btn-preview-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Action before</a></li>
                         <li><a class="dropdown-item" href="#">Another action before</a></li>
@@ -537,7 +537,7 @@
                         <li><a class="dropdown-item" href="#">Separated link</a></li>
                     </ul>
                     <x-form-input aria-label="Text input with 2 dropdown buttons"/>
-                    <x-form-button class="btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
+                    <x-form-button class="btn-preview-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</x-form-button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#">Action</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -550,8 +550,8 @@
                 <h3>Segmented buttons</h3>
 
                 <x-form-input-group class="mb-3">
-                    <x-form-button class="btn-outline-secondary">Action</x-form-button>
-                    <x-form-button class="btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <x-form-button class="btn-preview-outline-secondary">Action</x-form-button>
+                    <x-form-button class="btn-preview-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="visually-hidden">Toggle Dropdown</span>
                     </x-form-button>
                     <ul class="dropdown-menu">
@@ -567,7 +567,7 @@
                 <x-form-input-group class="">
                     <x-form-input aria-label="Text input with segmented dropdown button"/>
                     <x-form-button class="btn">Action</x-form-button>
-                    <x-form-button class="btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <x-form-button class="btn-preview-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="visually-hidden">Toggle Dropdown</span>
                     </x-form-button>
                     <ul class="dropdown-menu dropdown-menu-end">
@@ -602,7 +602,7 @@
                 </x-form-input-group>
 
                 <x-form-input-group class="mb-3">
-                    <x-form-button class="btn-outline-secondary">Button</x-form-button>
+                    <x-form-button class="btn-preview-outline-secondary">Button</x-form-button>
                     <x-form-select id="inputGroupSelect03" aria-label="Example select with button addon">
                         <option selected>Choose...</option>
                         <option value="1">One</option>
@@ -618,7 +618,7 @@
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                     </x-form-select>
-                    <x-form-button class="btn-outline-secondary">Button</x-form-button>
+                    <x-form-button class="btn-preview-outline-secondary">Button</x-form-button>
                 </x-form-input-group>
 
                 <h3>Custom file input</h3>
@@ -634,13 +634,13 @@
                 </x-form-input-group>
 
                 <x-form-input-group class="mb-3">
-                    <x-form-button class="btn-outline-secondary" id="inputGroupFileAddon03">Button</x-form-button>
+                    <x-form-button class="btn-preview-outline-secondary" id="inputGroupFileAddon03">Button</x-form-button>
                     <x-form-input type="file" id="inputGroupFile03"  aria-label="Upload"/>
                 </x-form-input-group>
 
                 <x-form-input-group class="">
                     <x-form-input type="file" id="inputGroupFile04"  aria-label="Upload"/>
-                    <x-form-button class="btn-outline-secondary" id="inputGroupFileAddon04">Button</x-form-button>
+                    <x-form-button class="btn-preview-outline-secondary" id="inputGroupFileAddon04">Button</x-form-button>
                 </x-form-input-group>
 
                 <h2 id="form-floating-label">Floating labels</h2>
@@ -753,7 +753,7 @@
                         <x-form-checkbox  label="Check me out" id="gridCheck"/>
                     </div>
                     <div class="col-12">
-                        <x-form-submit class="btn-primary">Sign in</x-form-submit>
+                        <x-form-submit class="btn-preview-primary">Sign in</x-form-submit>
                     </div>
                 </x-form-form>
 
@@ -813,7 +813,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <x-form-submit class="btn-primary">Sign in</x-form-submit>
+                        <x-form-submit class="btn-preview-primary">Sign in</x-form-submit>
                     </div>
                 </x-form-form>
 
@@ -878,7 +878,7 @@
                         <x-form-checkbox label="Remember me" id="autoSizingCheck"/>
                     </div>
                     <div class="col-auto">
-                        <x-form-submit class="btn-primary">Submit</x-form-submit>
+                        <x-form-submit class="btn-preview-primary">Submit</x-form-submit>
                     </div>
                 </form>
 
@@ -910,7 +910,7 @@
                         <x-form-checkbox  label="Remember me" id="autoSizingCheck2"/>
                     </div>
                     <div class="col-auto">
-                        <x-form-submit class="btn-primary">Submit</x-form-submit>
+                        <x-form-submit class="btn-preview-primary">Submit</x-form-submit>
                     </div>
                 </form>
 
@@ -942,7 +942,7 @@
                     </div>
 
                     <div class="col-12">
-                        <x-form-submit class="btn-primary">Submit</x-form-submit>
+                        <x-form-submit class="btn-preview-primary">Submit</x-form-submit>
                     </div>
                 </x-form-form>
 
@@ -951,7 +951,7 @@
 
                 <p>Not all controls support validation styles, see Bootstrap validation. Input, select and checkboxes do. As well as up to 1 form control in an input-group.</p>
 
-                <x-form-form class="row g-3" uses-custom-validation>
+                <x-form-form class="row g-3" validation-mode="custom">
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationCustom01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
@@ -990,13 +990,13 @@
                         <x-form-radio name="validation-form" value="" id="invalidCheck3" required label="...or this one" valid-feedback="You agree" invalid-feedback="You must check one of the buttons"/>
                     </div>
                     <div class="col-12">
-                        <x-form-submit class="btn-primary" help-text="Help text using attribute">Submit form</x-form-submit>
+                        <x-form-submit class="btn-preview-primary" help-text="Help text using attribute">Submit form</x-form-submit>
                     </div>
                 </x-form-form>
 
                 <h3 class="mt-4">Browser defaults</h3>
 
-                <x-form-form class="row g-3" uses-validation>
+                <x-form-form class="row g-3" validation-mode="default">
                     <div class="col-md-4">
                         <x-form-input id="validationDefault01" value="Mark" required label="First name"/>
                     </div>
@@ -1030,7 +1030,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <x-form-submit class="btn-primary">
+                        <x-form-submit class="btn-preview-primary">
                             Submit form
                             @slot('help')
                                 help text using slot
@@ -1041,7 +1041,7 @@
 
                 <h3 class="mt-4">Server side</h3>
 
-                <x-form-form class="row g-3">
+                <x-form-form class="row g-3" validation-mode="server">
                     <div class="col-md-4">
                         <x-form-input class="is-valid" id="validationServer01" value="Mark" required label="First name"/>
                         <div class="valid-feedback">
@@ -1093,7 +1093,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <x-form-submit class="btn-primary">Submit form</x-form-submit>
+                        <x-form-submit class="btn-preview-primary">Submit form</x-form-submit>
                     </div>
                 </x-form-form>
 
@@ -1134,12 +1134,12 @@
                     </div>
 
                     <div class="mb-3">
-                        <x-form-submit class="btn-primary" disabled>Submit form</x-form-submit>
+                        <x-form-submit class="btn-preview-primary" disabled>Submit form</x-form-submit>
                     </div>
                 </x-form-form>
 
                 <h3>Tooltips</h3>
-                <x-form-form class="row g-3 needs-validation" novalidate>
+                <x-form-form class="row g-3 needs-validation" validation-mode="custom">
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationTooltip01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Aweful!" tooltip-feedback/>
                     </div>
@@ -1165,12 +1165,12 @@
                         <x-form-input type="text" class="form-control" id="validationTooltip05" required label="Zip" valid-feedback="Splendid" invalid-feedback="Please provide a valid zip." tooltip-feedback/>
                     </div>
                     <div class="col-12">
-                        <x-form-submit class="btn-primary">Submit form</x-form-submit>
+                        <x-form-submit class="btn-preview-primary">Submit form</x-form-submit>
                     </div>
                 </x-form-form>
 
                 <h3 class="mt-5">Horizontal form validation</h3>
-                <x-form-form class="mb-5" uses-custom-validation>
+                <x-form-form class="mb-5" validation-mode="custom">
                     <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" required invalid-feedback="wrong" help-text="help text using help attribute"/>
                     <x-form-input type="password" class="mb-3" id="inputPassword11" label="Password" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" autocomplete="new-password" required invalid-feedback="try again" help-text="help text using help attribute"/>
                     <x-form-input type="range" class="mb-3" id="inputPassword12" label="Range" min="1" step="1" max="10" value="8" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" invalid-feedback="rejected" help-text="help text using help attribute"/>
@@ -1194,16 +1194,16 @@
                         </div>
                     </div>
                     <div class="row">
-                        <x-form-submit class="btn-primary">Sign in</x-form-submit>
+                        <x-form-submit class="btn-preview-primary">Sign in</x-form-submit>
                     </div>
                 </x-form-form>
 
                 <h2 class="mt-4" id="form-custom-tests">Custom tests</h2>
                 <p>Custom tests not based on Bootstrap documentation</p>
 
-                <h3 >Setting "uses-validation" and "uses-custom-validation" attribute on form component with custom validation</h3>
+                <h3 >Setting validation-mode to "default" and "custom" attribute on form component with custom validation</h3>
 
-                <x-form-form class="row g-3" uses-validation uses-custom-validation>
+                <x-form-form class="row g-3" validation-mode="custom">
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationCustom06" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
@@ -1242,13 +1242,13 @@
                         <x-form-radio name="validation-form" value="" id="invalidCheck8" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
                     </div>
                     <div class="col-12">
-                        <x-form-submit class="btn-primary">Submit form</x-form-submit>
+                        <x-form-submit class="btn-preview-primary">Submit form</x-form-submit>
                     </div>
                 </x-form-form>
 
-                <h3 class="mt-4" id="form-uses-validation">Setting "uses-validation" attribute on form component with custom validation</h3>
+                <h3 class="mt-4" id="form-uses-validation">Setting validation-mode="default"" attribute on form component with custom validation</h3>
 
-                <x-form-form class="row g-3" uses-validation>
+                <x-form-form class="row g-3" validation-mode="default">
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationCustom11" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
@@ -1287,7 +1287,7 @@
                         <x-form-radio name="validation-form" value="" id="invalidCheck11" required label="Agree to terms and conditions" valid-feedback="You agree" invalid-feedback="You must agree before submitting."/>
                     </div>
                     <div class="col-12">
-                        <x-form-submit class="btn-primary">Submit form</x-form-submit>
+                        <x-form-submit class="btn-preview-primary">Submit form</x-form-submit>
                     </div>
                 </x-form-form>
 
@@ -1444,7 +1444,7 @@
                         <x-form-input-group-text>First name</x-form-input-group-text>
                         <x-form-input aria-label="First name" required invalid-feedback="Nope"/>
                     </x-form-input-group>
-                    <x-form-submit class="btn-primary mt-3">Submit form</x-form-submit>
+                    <x-form-submit class="btn-preview-primary mt-3">Submit form</x-form-submit>
 
                 </x-form-form>
 
@@ -1536,7 +1536,7 @@
 
                 <h3>Form Group</h3>
 
-                <x-form-form uses-custom-validation>
+                <x-form-form validation-mode="custom">
                     <x-form-group name="radio-inline-1" class="mb-3 p-3" label="Receive newsletters?" required invalid-feedback="Select one of the two buttons" valid-feedback="That's clear!" help-text="test help text" class-help-text="text-primary">
                         <x-form-radio name="radio-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false" />
                         <x-form-radio name="radio-inline-1" value="2" label="No" />
@@ -1573,7 +1573,7 @@
                 </x-form-form>
 
                 <h3>Form Group inline (with client side validation on group)</h3>
-                <x-form-form uses-custom-validation>
+                <x-form-form validation-mode="custom">
                     <x-form-group name="radio-inline-1" class="mb-3 p-3" label="Receive newsletters?" inline required invalid-feedback="Select one of the two buttons" valid-feedback="That's clear!">
                         <x-form-radio name="radio-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false" />
                         <x-form-radio name="radio-inline-1" value="2" label="No" />
@@ -1610,7 +1610,7 @@
                 </x-form-form>
 
                 <h3>Form Group inline 2 (with client side validation on inputs)</h3>
-                <x-form-form uses-custom-validation>
+                <x-form-form validation-mode="custom">
                     <x-form-group name="radio-inline-2" class="mb-3 p-3" label="Receive newsletters?" :show-errors="false" inline>
                         <x-form-radio name="radio-inline-2" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" />
                         <x-form-radio name="radio-inline-2" value="2" label="No" required />
@@ -1740,13 +1740,13 @@
                     <x-form-input-group-icon class="mb-3" icon-position="start" for="image-icon-1">
                         <x-form-input id="image-icon-1" name="input-1" value="test value"></x-form-input>
                         @slot('iconImg')
-                            <img src="{{ package_asset('icon-envelope.png') }}" alt=""/>
+                            <img src="{{ package_asset('icon-envelope.png') }}" alt="">
                         @endslot
                     </x-form-input-group-icon>
                     <x-form-input-group-icon icon-position="end" for="image-icon-2">
                         <x-form-input id="image-icon-2" name="input-1" value="test value"></x-form-input>
                         @slot('iconImg')
-                            <img src="{{ package_asset('icon-envelope.png') }}" alt=""/>
+                            <img src="{{ package_asset('icon-envelope.png') }}" alt="">
                         @endslot
                     </x-form-input-group-icon>
 

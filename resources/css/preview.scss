@@ -1,29 +1,39 @@
+$primary-active: #061b08;
+$primary: #1b7529;
+$primary-hover: #48b658;
+$primary-disabled: #7daf81;
+
+$secondary-active: #000027;
+$secondary: #0505af;
+$secondary-hover: #3f3fe8;
+$secondary-disabled: #9e9ee1;
+
 @import 'bootstrap/scss/bootstrap';
 
 h1 {
+    color:green;
     margin-bottom:1em;
 }
 
 h2 {
-    color:darkgreen;
     margin-top:1em;
     margin-bottom:1em;
 }
 
 h3 {
-    color:darkgreen;
+    color:$primary;
     margin-top:1em;
     margin-bottom:1em;
 }
 
 h4 {
-    color:darkblue;
+    color:$secondary;
     margin-top:1em;
     margin-bottom:1em;
 }
 
 #section-links a {
-    color:darkgreen;
+    color:$primary;
 }
 
 #section-links a:hover {
@@ -31,7 +41,7 @@ h4 {
 }
 
 #section-links a:visited {
-    color:green;
+    color:$primary;
 }
 
 #section-links a:active {
@@ -44,3 +54,50 @@ label.required::after {
     color:red;
     margin-left:0.5em;
 }
+
+.btn-preview-primary {
+    @include button-variant(
+        $primary, $white, $white,
+        $primary-hover, $white, $white,
+        $primary-active, $white, $white,
+        $primary-disabled, $white, $black);
+}
+
+.btn-preview-secondary {
+    @include button-variant(
+        $secondary, $white, $white,
+        $secondary-hover, $white, $white,
+        $secondary-active, $white, $white,
+        $secondary-disabled, $white, $black);
+}
+
+.btn-preview-outline-primary {
+    @include button-variant(
+        $white, $primary, $black,
+        $white, $primary, $black,
+        $primary, $primary, $white,
+        $white, $primary, $black);
+}
+
+.btn-preview-outline-secondary {
+    @include button-variant(
+            $white, $secondary, $black,
+            $white, $secondary, $black,
+            $secondary, $secondary, $white,
+            $white, $secondary, $black);
+}
+
+//.btn-preview-outline-primary {
+//    @include button-variant(transparent, $on-primary, $on-primary,
+//        $on-primary, $on-primary, $primary,
+//        $on-primary, $on-primary, $primary,
+//        $on-primary, $on-primary, $primary);
+//}
+//
+//.btn-preview-outline-secondary {
+//    @include button-variant(transparent, $on-secondary, $on-secondary,
+//        $white, $on-secondary, $on-secondary,
+//        $white, $on-secondary, $on-secondary,
+//        $white, $on-secondary, $on-secondary);
+//}
+

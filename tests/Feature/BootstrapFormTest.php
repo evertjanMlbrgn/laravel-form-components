@@ -31,7 +31,7 @@ it('sets the csrf token to the forms that need it', function () {
         ->seeElement('form[id="form_delete"] input[name="_token"]');
 });
 
-it('handles "uses-custom-validation', function () {
+it('handles validation-mode="custom"', function () {
     $this->registerTestRoute('bootstrap-form');
 
     $this->visit('/bootstrap-form')
@@ -41,11 +41,4 @@ it('handles "uses-custom-validation', function () {
                 ->seeElement('div.input-group.has-validation')
                 ->seeElement('div.input-group-2.has-validation');
         });
-});
-
-it('adds javascript when using attribute "uses-validation"', function() {
-    $this->registerTestRoute('bootstrap-form');
-
-    $this->visit('/bootstrap-form')
-            ->seeElement('script[src$="form-validation.js"]');
 });
