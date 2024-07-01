@@ -1728,23 +1728,23 @@
                 <h3>Input group icon</h3>
                 <x-form-form>
                     <h4>Font icons</h4>
-                    <x-form-input-group-icon class="mb-3" class-font-icon="bi-alarm" icon-position="start">
-                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    <x-form-input-group-icon class="mb-3" class-font-icon="bi-alarm" icon-position="start" for="font-icon-1">
+                        <x-form-input id="font-icon-1" name="input-1" value="test value"></x-form-input>
                     </x-form-input-group-icon>
-                    <x-form-input-group-icon class-font-icon="bi-alarm" icon-position="end">
-                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    <x-form-input-group-icon class-font-icon="bi-alarm" icon-position="end" for="font-icon-2">
+                        <x-form-input id="font-icon-2" name="input-1" value="test value"></x-form-input>
                     </x-form-input-group-icon>
 
                     <h4>Image icons</h4>
 
-                    <x-form-input-group-icon class="mb-3" icon-position="start">
-                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    <x-form-input-group-icon class="mb-3" icon-position="start" for="image-icon-1">
+                        <x-form-input id="image-icon-1" name="input-1" value="test value"></x-form-input>
                         @slot('iconImg')
                             <img src="{{ package_asset('icon-envelope.png') }}" alt=""/>
                         @endslot
                     </x-form-input-group-icon>
-                    <x-form-input-group-icon icon-position="end">
-                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    <x-form-input-group-icon icon-position="end" for="image-icon-2">
+                        <x-form-input id="image-icon-2" name="input-1" value="test value"></x-form-input>
                         @slot('iconImg')
                             <img src="{{ package_asset('icon-envelope.png') }}" alt=""/>
                         @endslot
@@ -1752,8 +1752,8 @@
 
                     <h4>Svg icons</h4>
 
-                    <x-form-input-group-icon class="mb-3" icon-position="start">
-                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    <x-form-input-group-icon class="mb-3" icon-position="start" for="svg-1">
+                        <x-form-input id="svg-1" name="input-1" value="test value"></x-form-input>
                         @slot('iconSvg')
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
@@ -1761,8 +1761,8 @@
                             </svg>
                         @endslot
                     </x-form-input-group-icon>
-                    <x-form-input-group-icon icon-position="end">
-                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    <x-form-input-group-icon icon-position="end" for="svg-2">
+                        <x-form-input id="svg-2" name="input-1" value="test value"></x-form-input>
                         @slot('iconSvg')
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
@@ -1772,11 +1772,11 @@
                     </x-form-input-group-icon>
 
                     <h4>SVG sprite icons</h4>
-                    <x-form-input-group-icon class="mb-3" svg-sprite-href="{{ package_asset('sprite.svg') }}#right" icon-position="start">
-                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    <x-form-input-group-icon class="mb-3" svg-sprite-href="{{ package_asset('sprite.svg') }}#right" icon-position="start" for="sprite-1">
+                        <x-form-input id="sprite-1" name="input-1" value="test value"></x-form-input>
                     </x-form-input-group-icon>
-                    <x-form-input-group-icon svg-sprite-href="{{ package_asset('sprite.svg') }}#left" icon-position="end">
-                        <x-form-input name="input-1" value="test value"></x-form-input>
+                    <x-form-input-group-icon svg-sprite-href="{{ package_asset('sprite.svg') }}#left" icon-position="end" for="sprite-2">
+                        <x-form-input id="sprite-2" name="input-1" value="test value"></x-form-input>
                     </x-form-input-group-icon>
                 </x-form-form>
             </div>

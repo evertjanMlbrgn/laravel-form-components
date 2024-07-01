@@ -6,31 +6,47 @@
 
         {{-- font icon --}}
         @if($attributes->has('class-font-icon'))
-            <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-font'])>
+            <label @class(['input-group-text', 'input-group-icon', 'input-group-icon-font'])
+            @if($attributes->has('for'))
+                for="{{ $attributes->get('for') }}"
+            @endif
+            >
                 <i @class([$attributes->get('class-font-icon')])></i>
-            </span>
+            </label>
         @endif
 
         {{-- svg icon --}}
         @isset($iconSvg)
-            <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-svg'])>
+            <label @class(['input-group-text', 'input-group-icon', 'input-group-icon-svg'])
+                @if($attributes->has('for'))
+                   for="{{ $attributes->get('for') }}"
+                @endif
+            >
                 {{ $iconSvg }}
-            </span>
+            </label>
         @endif
 
         {{-- img icon --}}
         @isset($iconImg)
-            <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-img'])>
+            <label @class(['input-group-text', 'input-group-icon', 'input-group-icon-img'])
+            @if($attributes->has('for'))
+                for="{{ $attributes->get('for') }}"
+            @endif
+            >
                 {{ $iconImg }}
-            </span>
+            </label>
         @endif
 
         @if($attributes->has('svg-sprite-href'))
-            <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-sprite'])>
+            <label @class(['input-group-text', 'input-group-icon', 'input-group-icon-sprite'])
+                @if($attributes->has('for'))
+                   for="{{ $attributes->get('for') }}"
+                @endif
+            >
                 <svg class="svg-icon">
                     <use href="{{ $attributes->get('svg-sprite-href') }}"></use>
                 </svg>
-            </span>
+            </label>
         @endif
     @endif
     {{ $slot }}
@@ -39,32 +55,48 @@
     @if($attributes->get('icon-position') === 'end')
 
         @if($attributes->has('class-font-icon'))
-            <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-font'])>
+            <label @class(['input-group-text', 'input-group-icon', 'input-group-icon-font'])
+                @if($attributes->has('for'))
+                   for="{{ $attributes->get('for') }}"
+                @endif
+            >
                 <i @class([$attributes->get('class-font-icon')])></i>
-            </span>
+            </label>
         @endif
 
         {{-- svg icon --}}
         @isset($iconSvg)
-            <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-svg'])>
+            <label @class(['input-group-text', 'input-group-icon', 'input-group-icon-svg'])
+                @if($attributes->has('for'))
+                    for="{{ $attributes->get('for') }}"
+                @endif
+            >
                 {{ $iconSvg }}
-            </span>
+            </label>
         @endif
 
         {{-- img icon --}}
         @isset($iconImg)
-            <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-img'])>
+            <label @class(['input-group-text', 'input-group-icon', 'input-group-icon-img'])
+                @if($attributes->has('for'))
+                    for="{{ $attributes->get('for') }}"
+                @endif
+            >
                 {{ $iconImg }}
-            </span>
+            </label>
         @endif
 
         {{-- svg sprite --}}
         @if($attributes->has('svg-sprite-href'))
-            <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-sprite'])>
+            <label @class(['input-group-text', 'input-group-icon', 'input-group-icon-sprite'])
+                @if($attributes->has('for'))
+                    for="{{ $attributes->get('for') }}"
+                @endif
+            >
                 <svg class="svg-icon">
                     <use href="{{ $attributes->get('svg-sprite-href') }}"></use>
                 </svg>
-            </span>
+            </label>
         @endif
     @endif
 
