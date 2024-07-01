@@ -38,6 +38,11 @@
     </x-form-input-group-icon>
 </x-form-form>
 
+<x-form-form id="form-input-group-icons-for">
+    <x-form-input-group-icon class-font-icon="bi-alarm" icon-position="end" for="test-input">
+        <x-form-input id="test-input" name="input-1" value="test value"></x-form-input>
+    </x-form-input-group-icon>
+</x-form-form>
 
 <x-form-form id="form-input-group-icons-icon-position">
 
