@@ -1725,7 +1725,7 @@
                     @endbind
                 </x-form-form>
 
-                <h3>Input group icon</h3>
+                <h3>Input group icons</h3>
                 <x-form-form>
                     <h4>Font icons</h4>
                     <x-form-input-group-icon class="mb-3" class-font-icon="bi-alarm" icon-position="start" for="font-icon-1">
