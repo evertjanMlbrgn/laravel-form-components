@@ -29,7 +29,9 @@ Route::middleware(['web'])->group(function () {
             'html-editor.js',
             'form-validation.js',
             'form-validation.css',
-            'button-image.png'
+            'button-image.png',
+            'icon-envelope.png',
+            'sprite.svg'
         ];
 
         if (!in_array($name, $allowedAssets)) {
@@ -60,6 +62,12 @@ Route::middleware(['web'])->group(function () {
                 break;
             case 'button-image.png':
                 $file = __DIR__ . '/../public/images/button-image.png';
+                break;
+            case 'icon-envelope.png':
+                $file = __DIR__ . '/../public/images/icon-envelope.png';
+                break;
+            case 'sprite.svg':
+                $file = __DIR__ . '/../public/images/sprite.svg';
                 break;
         }
 

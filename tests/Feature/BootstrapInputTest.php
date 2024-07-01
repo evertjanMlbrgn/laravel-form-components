@@ -46,7 +46,7 @@ it('sets classes', function () {
                 ->seeElement('input[name="email"].form-control')
                 ->seeElement('input[name="file"].form-control')
                 ->seeElement('input[name="hidden"].form-control')
-                ->seeElement('input[name="image"].form-control')
+                ->seeElement('input[name="image"]')// no form-control class
                 ->seeElement('input[name="month"].form-control')
                 ->seeElement('input[name="number"].form-control')
                 ->seeElement('input[name="password"].form-control')

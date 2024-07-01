@@ -1740,13 +1740,13 @@
                     <x-form-input-group-icon class="mb-3" icon-position="start">
                         <x-form-input name="input-1" value="test value"></x-form-input>
                         @slot('iconImg')
-                            <img src="{{ package_asset('button-image.png') }}" alt=""/>
+                            <img src="{{ package_asset('icon-envelope.png') }}" alt=""/>
                         @endslot
                     </x-form-input-group-icon>
                     <x-form-input-group-icon icon-position="end">
                         <x-form-input name="input-1" value="test value"></x-form-input>
                         @slot('iconImg')
-                            <img src="{{ package_asset('button-image.png') }}" alt=""/>
+                            <img src="{{ package_asset('icon-envelope.png') }}" alt=""/>
                         @endslot
                     </x-form-input-group-icon>
 
@@ -1755,21 +1755,27 @@
                     <x-form-input-group-icon class="mb-3" icon-position="start">
                         <x-form-input name="input-1" value="test value"></x-form-input>
                         @slot('iconSvg')
-                            <svg height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#ED8A19;" d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757 c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042 c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685 c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528 c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956 C22.602,0.567,25.338,0.567,26.285,2.486z"></path> </g></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.5 3.5 0 0 0 8 11.5a3.5 3.5 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5"/>
+                            </svg>
                         @endslot
                     </x-form-input-group-icon>
                     <x-form-input-group-icon icon-position="end">
                         <x-form-input name="input-1" value="test value"></x-form-input>
                         @slot('iconSvg')
-                            <svg height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 47.94 47.94" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#ED8A19;" d="M26.285,2.486l5.407,10.956c0.376,0.762,1.103,1.29,1.944,1.412l12.091,1.757 c2.118,0.308,2.963,2.91,1.431,4.403l-8.749,8.528c-0.608,0.593-0.886,1.448-0.742,2.285l2.065,12.042 c0.362,2.109-1.852,3.717-3.746,2.722l-10.814-5.685c-0.752-0.395-1.651-0.395-2.403,0l-10.814,5.685 c-1.894,0.996-4.108-0.613-3.746-2.722l2.065-12.042c0.144-0.837-0.134-1.692-0.742-2.285l-8.749-8.528 c-1.532-1.494-0.687-4.096,1.431-4.403l12.091-1.757c0.841-0.122,1.568-0.65,1.944-1.412l5.407-10.956 C22.602,0.567,25.338,0.567,26.285,2.486z"></path> </g></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.5 3.5 0 0 0 8 11.5a3.5 3.5 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5"/>
+                            </svg>
                         @endslot
                     </x-form-input-group-icon>
 
                     <h4>SVG sprite icons</h4>
-                    <x-form-input-group-icon class="mb-3" svg-sprite-href="bi-alarm" icon-position="start">
+                    <x-form-input-group-icon class="mb-3" svg-sprite-href="{{ package_asset('sprite.svg') }}#right" icon-position="start">
                         <x-form-input name="input-1" value="test value"></x-form-input>
                     </x-form-input-group-icon>
-                    <x-form-input-group-icon svg-sprite-href="bi-alarm" icon-position="end">
+                    <x-form-input-group-icon svg-sprite-href="{{ package_asset('sprite.svg') }}#left" icon-position="end">
                         <x-form-input name="input-1" value="test value"></x-form-input>
                     </x-form-input-group-icon>
                 </x-form-form>
