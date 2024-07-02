@@ -17,7 +17,7 @@
      <div
          {{ $attributes->exceptWrapperClasses()->class([
             'input-group',
-            'has-validation' => $validationMode === 'default' || $validationMode === 'custom',// needs to be added for rounded border when validation messages show
+            'has-validation' => $validationMode === 'client-default' || $validationMode === 'client-custom',// needs to be added for rounded border when validation messages show
             'is-invalid' => ($hasError($name) ? ' is-invalid' : '')
            ])->except(['required', 'for']) }}
          @if(isset($help) || !empty($helpText) && !$hidden)

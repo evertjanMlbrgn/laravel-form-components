@@ -43,5 +43,10 @@ return [
      * Detects "is-valid" or "is-invalid" class in "group" component to be able to set classes in "group" component.
      * Needed to let "group" validation work
      */
-    'detect_validation_classes_in_group' => env('FORM_COMPONENTS_DETECT_VALIDATION_CLASSES_IN_GROUP', true)
+    'detect_validation_classes_in_group' => env('FORM_COMPONENTS_DETECT_VALIDATION_CLASSES_IN_GROUP', true),
+
+       /**
+        * Default form validation mode (server, client_default or client_custom)
+        */
+    'default-form-validation-mode' => env('FORM_COMPONENTS_DEFAULT_VALIDATION_MODE', 'server')
 ];

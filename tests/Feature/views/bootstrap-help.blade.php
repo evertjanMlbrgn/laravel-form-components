@@ -8,7 +8,7 @@
     </x-form-input>
 </x-form-form>
 
-<x-form-form id="form-aria-describedby" validation-mode="custom">
+<x-form-form id="form-aria-describedby" validation-mode="client-custom">
     <x-form-input id="input" class="input-required" name="input" label="input" required>
         @slot('help')
             Help text
@@ -52,7 +52,7 @@
     </x-form-group>
 </x-form-form>
 
-<x-form-form id="form-help-text-extra-classes" validation-mode="custom">
+<x-form-form id="form-help-text-extra-classes" validation-mode="client-custom">
     <x-form-input id="input" class="input-required" name="input" label="input" required class-help-text="text-danger">
         @slot('help')
             Help text

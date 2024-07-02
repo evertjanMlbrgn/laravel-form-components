@@ -951,7 +951,7 @@
 
                 <p>Not all controls support validation styles, see Bootstrap validation. Input, select and checkboxes do. As well as up to 1 form control in an input-group.</p>
 
-                <x-form-form class="row g-3" validation-mode="custom">
+                <x-form-form class="row g-3" validation-mode="client-custom">
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationCustom01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
@@ -996,7 +996,7 @@
 
                 <h3 class="mt-4">Browser defaults</h3>
 
-                <x-form-form class="row g-3" validation-mode="default">
+                <x-form-form class="row g-3" validation-mode="client-default">
                     <div class="col-md-4">
                         <x-form-input id="validationDefault01" value="Mark" required label="First name"/>
                     </div>
@@ -1139,7 +1139,7 @@
                 </x-form-form>
 
                 <h3>Tooltips</h3>
-                <x-form-form class="row g-3 needs-validation" validation-mode="custom">
+                <x-form-form class="row g-3 needs-validation" validation-mode="client-custom">
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationTooltip01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Aweful!" tooltip-feedback/>
                     </div>
@@ -1170,7 +1170,7 @@
                 </x-form-form>
 
                 <h3 class="mt-5">Horizontal form validation</h3>
-                <x-form-form class="mb-5" validation-mode="custom">
+                <x-form-form class="mb-5" validation-mode="client-custom">
                     <x-form-input type="email" class="mb-3" id="inputEmail3" label="Email" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" required invalid-feedback="wrong" help-text="help text using help attribute"/>
                     <x-form-input type="password" class="mb-3" id="inputPassword11" label="Password" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" autocomplete="new-password" required invalid-feedback="try again" help-text="help text using help attribute"/>
                     <x-form-input type="range" class="mb-3" id="inputPassword12" label="Range" min="1" step="1" max="10" value="8" horizontal class-horizontal-cols-label="col-2" class-horizontal-cols-control="col-10" invalid-feedback="rejected" help-text="help text using help attribute"/>
@@ -1201,9 +1201,9 @@
                 <h2 class="mt-4" id="form-custom-tests">Custom tests</h2>
                 <p>Custom tests not based on Bootstrap documentation</p>
 
-                <h3 >Setting validation-mode to "default" and "custom" attribute on form component with custom validation</h3>
+                <h3 >Setting validation-mode to "client-default" and "client-custom" attribute on form component with custom validation</h3>
 
-                <x-form-form class="row g-3" validation-mode="custom">
+                <x-form-form class="row g-3" validation-mode="client-custom">
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationCustom06" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
@@ -1246,9 +1246,9 @@
                     </div>
                 </x-form-form>
 
-                <h3 class="mt-4" id="form-uses-validation">Setting validation-mode="default"" attribute on form component with custom validation</h3>
+                <h3 class="mt-4" id="form-client-default-validation">Setting validation-mode="default"" attribute on form component with custom validation</h3>
 
-                <x-form-form class="row g-3" validation-mode="default">
+                <x-form-form class="row g-3" validation-mode="client-default">
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationCustom11" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Oh no...!"/>
                     </div>
@@ -1536,7 +1536,7 @@
 
                 <h3>Form Group</h3>
 
-                <x-form-form validation-mode="custom">
+                <x-form-form validation-mode="client-custom">
                     <x-form-group name="radio-inline-1" class="mb-3 p-3" label="Receive newsletters?" required invalid-feedback="Select one of the two buttons" valid-feedback="That's clear!" help-text="test help text" class-help-text="text-primary">
                         <x-form-radio name="radio-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false" />
                         <x-form-radio name="radio-inline-1" value="2" label="No" />
@@ -1573,7 +1573,7 @@
                 </x-form-form>
 
                 <h3>Form Group inline (with client side validation on group)</h3>
-                <x-form-form validation-mode="custom">
+                <x-form-form validation-mode="client-custom">
                     <x-form-group name="radio-inline-1" class="mb-3 p-3" label="Receive newsletters?" inline required invalid-feedback="Select one of the two buttons" valid-feedback="That's clear!">
                         <x-form-radio name="radio-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false" />
                         <x-form-radio name="radio-inline-1" value="2" label="No" />
@@ -1610,7 +1610,7 @@
                 </x-form-form>
 
                 <h3>Form Group inline 2 (with client side validation on inputs)</h3>
-                <x-form-form validation-mode="custom">
+                <x-form-form validation-mode="client-custom">
                     <x-form-group name="radio-inline-2" class="mb-3 p-3" label="Receive newsletters?" :show-errors="false" inline>
                         <x-form-radio name="radio-inline-2" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" />
                         <x-form-radio name="radio-inline-2" value="2" label="No" required />

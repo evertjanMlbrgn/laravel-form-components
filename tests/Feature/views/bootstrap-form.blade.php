@@ -13,7 +13,7 @@
 <x-form-form id="form_delete" method="DELETE">
 </x-form-form>
 
-<x-form-form id="form_custom_validation" validation-mode="custom">
+<x-form-form id="form_client_custom_validation" validation-mode="client-custom">
     <div class="input-required">
         <x-form-input class="input-required" name="input" label="input" required/>
     </div>
@@ -39,20 +39,20 @@
     </x-form-input-group>
 </x-form-form>
 
-<div id="wrapper-for-form-validation-default">
-    <x-form-form validation-mode="default">
-        <x-form-select class="select-required" name="select" required/>
-    </x-form-form>
-</div>
+{{--<div id="wrapper-for-form-validation-client-default">--}}
+{{--    <x-form-form validation-mode="client-default">--}}
+{{--        <x-form-select class="select-required" name="select" required/>--}}
+{{--    </x-form-form>--}}
+{{--</div>--}}
 
-<div id="wrapper-for-form-validation-custom">
-    <x-form-form validation-mode="custom">
-        <x-form-select class="select-required" name="select" required/>
-    </x-form-form>
-</div>
+{{--<div id="wrapper-for-form-validation-client-custom">--}}
+{{--    <x-form-form validation-mode="client-custom">--}}
+{{--        <x-form-select class="select-required" name="select" required/>--}}
+{{--    </x-form-form>--}}
+{{--</div>--}}
 
-<div id="wrapper-for-form-validation-server">
-    <x-form-form validation-mode="server">
-        <x-form-select class="select-required" name="select" required/>
-    </x-form-form>
-</div>
+{{--<div id="wrapper-for-form-validation-server">--}}
+{{--    <x-form-form validation-mode="server">--}}
+{{--        <x-form-select class="select-required" name="select" required/>--}}
+{{--    </x-form-form>--}}
+{{--</div>--}}
