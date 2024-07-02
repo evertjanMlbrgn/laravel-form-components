@@ -1434,7 +1434,7 @@
                 </x-form-form>
 
                 <h3 class="mt-4">Input group with more than one control</h3>
-                <x-form-form class="needs-validation" novalidate>
+                <x-form-form validation-mode="custom">
                     <x-form-input-group class="mb-5">
                         <x-form-input-group-text>First and last name</x-form-input-group-text>
                         <x-form-input aria-label="First name" required />

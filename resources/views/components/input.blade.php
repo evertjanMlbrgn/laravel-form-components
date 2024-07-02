@@ -59,14 +59,14 @@
                         'form-range' => $type === 'range',
                         'form-control-color' => ($type === 'color'),
                         'is-invalid' => ($hasError($name)),
-                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id']) }}
+                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'alt']) }}
                 @else
                     {{ $attributes->exceptWrapperClasses()->class([
                         'form-control' => $type !== 'range' && $type !== 'image',
                         'form-range' => $type === 'range',
                         'form-control-color' => ($type === 'color'),
                         'is-invalid' => ($hasError($name)),
-                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id']) }}
+                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'alt']) }}
                 @endif
                 type="{{ $type }}"
                 @if(!in_array($type, ['file', 'image']))
