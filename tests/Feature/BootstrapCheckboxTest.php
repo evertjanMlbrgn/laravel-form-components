@@ -211,3 +211,15 @@ it('checks the right input element after a validation error', function () {
         ->seeElement('input[value="a"]:not(:checked)')
         ->seeElement('input[value="b"]:checked');
 });
+
+it('supports "defaults-to-zero" attribute', function () {
+    $this->registerTestRoute('bootstrap-checkbox');
+
+    $this->visit('/bootstrap-checkbox')
+        ->within('#form-default-to-zero', function() {
+            $this->seeElement('input[type="hidden"][name="checkbox-defaults-to-zero"][value="0"] ~ input[type="checkbox"][name="checkbox-defaults-to-zero"]')
+            ->seeElement('input[type="checkbox"][name="checkbox-no-defaults-to-zero"]')
+            ->dontSeeElement('input[type="hidden"][name="checkbox-no-defaults-to-zero"][value="0"]');
+        });
+
+});

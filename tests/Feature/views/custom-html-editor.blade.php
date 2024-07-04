@@ -76,17 +76,22 @@
 </x-form-form>
 
 <x-form-form id="form-html-editor-default">
-    <x-form-textarea default="b" name="textarea" />
+    <x-form-html-editor default="b" name="textarea" />
 </x-form-form>
 
 <x-form-form id="form-html-editor-help-text">
-    <x-form-textarea id="html-editor" name="html-editor" help-text="attribute help text"/>
+    <x-form-html-editor id="html-editor" name="html-editor" help-text="attribute help text"/>
 </x-form-form>
 
 <x-form-form id="form-html-editor-help-slot">
-    <x-form-textarea id="html-editor" name="html-editor">
+    <x-form-html-editor id="html-editor" name="html-editor">
         @slot('help')
             slot help text
         @endslot
-    </x-form-textarea>
+    </x-form-html-editor>
 </x-form-form>
+
+<x-form-form id="form-html-editor-floating">
+    <x-form-html-editor id="html-editor" name="html-editor" help-text="attribute help text"/>
+</x-form-form>
+

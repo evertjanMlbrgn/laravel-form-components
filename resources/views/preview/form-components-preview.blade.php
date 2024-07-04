@@ -1331,7 +1331,7 @@
                     </x-form-button>
                 </x-form-form>
 
-                <h3 class="mt-4">All controls with hidden attribute, shouldn't be visible and not have labels,help text or errors rendered</h3>
+                <h3 class="mt-4">All controls with hidden attribute, shouldn't be visible and not have labels, help text or errors rendered</h3>
                 <x-form-form id="form-controls-hidden">
                     <x-form-input class="mb-3 d-block" name="button-2" type="button" label="Button" value="Button" hidden help-text="test"/>
                     <x-form-input class="mb-3" name="checkbox-2" type="checkbox" label="Checkbox" hidden>
