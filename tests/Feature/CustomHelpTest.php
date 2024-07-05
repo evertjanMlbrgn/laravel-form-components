@@ -4,7 +4,7 @@ it('adds help text', function () {
     $this->registerTestRoute('bootstrap-help');
 
     $this->visit('/bootstrap-help')
-        ->within('#form-help-text', function() {
+        ->within('#form-help-text', function () {
             $this->seeInElement('.form-text', 'Your username must be 8-20 characters long.');
         });
 });
@@ -16,7 +16,7 @@ it('adds aria-describedby to control with help text', function () {
     $this->registerTestRoute('bootstrap-help');
 
     $this->visit('/bootstrap-help')
-        ->within('#form-aria-describedby', function() {
+        ->within('#form-aria-describedby', function () {
             $this->seeElement('input#input[aria-describedby="input-help-text"]')
                 ->seeElement('input#input ~ div[id="input-help-text"]')
 
@@ -36,7 +36,7 @@ it('adds aria-describedby to control with help text', function () {
                 ->seeElement('div.input-group[id="input-group"] ~ div[id="input-group-help-text"]')
 
                 ->seeElement('div.form-group[id="form-group"][aria-describedby="form-group-help-text"]')
-                ->seeElement('div.form-group[id="form-group"] > div[id="form-group-help-text"].text-danger');;
+                ->seeElement('div.form-group[id="form-group"] > div[id="form-group-help-text"].text-danger');
         });
 });
 
@@ -44,7 +44,7 @@ it('adds extra classes to help text', function () {
     $this->registerTestRoute('bootstrap-help');
 
     $this->visit('/bootstrap-help')
-        ->within('#form-help-text-extra-classes', function() {
+        ->within('#form-help-text-extra-classes', function () {
             $this->seeElement('input#input[aria-describedby="input-help-text"]:not([class-help-text])')
                 ->seeElement('input#input ~ div[id="input-help-text"].text-danger')
 
@@ -64,7 +64,7 @@ it('adds extra classes to help text', function () {
                 ->seeElement('div.input-group[id="input-group"] ~ div[id="input-group-help-text"].text-danger')
 
                 ->seeElement('div.form-group[id="form-group"]')
-                ->seeElement('div.form-group[id="form-group"] > div[id="form-group-help-text"].text-danger');;
+                ->seeElement('div.form-group[id="form-group"] > div[id="form-group-help-text"].text-danger');
         });
 
 });

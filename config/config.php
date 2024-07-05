@@ -45,8 +45,8 @@ return [
      */
     'detect_validation_classes_in_group' => env('FORM_COMPONENTS_DETECT_VALIDATION_CLASSES_IN_GROUP', true),
 
-       /**
-        * Default form validation mode (server, client_default or client_custom)
-        */
-    'default-form-validation-mode' => env('FORM_COMPONENTS_DEFAULT_VALIDATION_MODE', 'server')
+    /**
+     * Default form validation mode (server, client_default or client_custom)
+     */
+    'default-form-validation-mode' => env('FORM_COMPONENTS_DEFAULT_VALIDATION_MODE', 'server'),
 ];

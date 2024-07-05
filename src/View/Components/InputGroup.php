@@ -20,8 +20,7 @@ class InputGroup extends FormBaseComponent
         bool $showErrors = true,
         public string $helpText = '',
         public bool $hidden = false,
-    )
-    {
+    ) {
         $this->showErrors = $name && $showErrors;
     }
 }

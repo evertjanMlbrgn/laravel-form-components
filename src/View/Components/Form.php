@@ -28,11 +28,11 @@ class Form extends FormBaseComponent
      */
     public function __construct(
         string $method = 'POST',
-        string $validationMode = null
+        ?string $validationMode = null
     ) {
         $this->method = strtoupper($method);
         $this->spoofMethod = in_array($this->method, ['PUT', 'PATCH', 'DELETE']);
-        $this->validationMode = !is_null($validationMode) ? $validationMode : config('form-components.default-form-validation-mode');
+        $this->validationMode = ! is_null($validationMode) ? $validationMode : config('form-components.default-form-validation-mode');
     }
 
     /**

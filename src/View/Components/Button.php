@@ -11,7 +11,5 @@ class Button extends FormBaseComponent
         public string $name = '',
         public bool $hidden = false,
         public string $helpText = ''
-    ) {
-
-    }
+    ) {}
 }

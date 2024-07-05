@@ -6,7 +6,7 @@ it('always gets an id attribute', function () {
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-no-id', function() {
+        ->within('#form-textarea-no-id', function () {
             $this->seeElement('textarea[name="textarea"][id]');
         });
 });
@@ -14,7 +14,7 @@ it('always gets an id attribute', function () {
 it('sets classes', function () {
     $this->registerTestRoute('bootstrap-textarea');
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-no-id', function() {
+        ->within('#form-textarea-no-id', function () {
             $this->seeElement('textarea.form-control');
         });
 });
@@ -22,7 +22,7 @@ it('sets classes', function () {
 it('sets extra attributes', function () {
     $this->registerTestRoute('bootstrap-textarea');
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-extra-attributes', function() {
+        ->within('#form-textarea-extra-attributes', function () {
             $this->seeElement('textarea[name="textarea"][readonly][disabled]');
         });
 });
@@ -30,7 +30,7 @@ it('sets extra attributes', function () {
 it('sets extra classes', function () {
     $this->registerTestRoute('bootstrap-textarea');
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-extra-classes', function() {
+        ->within('#form-textarea-extra-classes', function () {
             $this->seeElement('textarea[name="textarea"].extra-1.extra-2.form-control-lg');
         });
 });
@@ -39,7 +39,7 @@ it('sets a default value', function () {
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-default', function() {
+        ->within('#form-textarea-default', function () {
             $this->seeInElement('textarea[name="textarea"]', 'b');
         });
 });
@@ -48,9 +48,9 @@ it('does not render label when hidden', function () {
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-hidden', function() {
-                $this->dontSeeElement('label[for="textarea"]')
-                ->seeElement('label[for="non-hidden-textarea"]');;
+        ->within('#form-textarea-hidden', function () {
+            $this->dontSeeElement('label[for="textarea"]')
+                ->seeElement('label[for="non-hidden-textarea"]');
         });
 });
 
@@ -60,7 +60,7 @@ it('honors use_wrapper_classes when set to true', function () {
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-wrapper-classes', function() {
+        ->within('#form-textarea-wrapper-classes', function () {
             $this->seeElement('div.mx-3.my-3.ms-3.mt-3.me-3.mb-3 textarea[name="textarea"].form-control-lg.some-other-class');
 
         });
@@ -72,7 +72,7 @@ it('honors use_wrapper_classes when set to false', function () {
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-wrapper-classes', function() {
+        ->within('#form-textarea-wrapper-classes', function () {
             $this->seeElement('textarea[name="textarea"].form-control-lg.some-other-class.mx-3.my-3.ms-3.mt-3.me-3.mb-3');
         });
 
@@ -87,11 +87,11 @@ it('uses old value after submit', function () {
     });
 
     $this->visit('/bootstrap-textarea')
-            ->type('abc', 'textarea-validation')
-                ->press('Send')
-               ->within('#form-textarea-validation', function() {
-                   $this->seeInElement('textarea[name="textarea-validation"]', 'abc');
-               });
+        ->type('abc', 'textarea-validation')
+        ->press('Send')
+        ->within('#form-textarea-validation', function () {
+            $this->seeInElement('textarea[name="textarea-validation"]', 'abc');
+        });
 });
 
 it('shows a validation error', function () {
@@ -102,9 +102,9 @@ it('shows a validation error', function () {
     });
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-validation-error', function() {
+        ->within('#form-textarea-validation-error', function () {
             $this->press('Send')
-                ->within('#form-textarea-validation-error', function() {
+                ->within('#form-textarea-validation-error', function () {
                     $this->seeElement('textarea[name="textarea"]')
                         ->seeElement('textarea[name="textarea"] ~ div.invalid-feedback')
                         ->seeInElement('textarea[name="textarea"] ~ div.invalid-feedback', 'The textarea field is required');
@@ -116,7 +116,7 @@ it('does have help text when "help-text" attribute present', function () {
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-help-text', function() {
+        ->within('#form-textarea-help-text', function () {
             $this->seeElement('div.form-text[id="textarea-help-text"]')
                 ->seeInElement('div.form-text[id="textarea-help-text"]', 'attribute help text');
         });
@@ -126,7 +126,7 @@ it('does have help text when @slot("help") attribute present', function () {
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-help-slot', function() {
+        ->within('#form-textarea-help-slot', function () {
             $this->seeElement('div.form-text[id="textarea-help-text"]')
                 ->seeInElement('div.form-text[id="textarea-help-text"]', 'slot help text');
         });
@@ -136,9 +136,9 @@ it('does not have help text when no @slot("help") or "help-text" attribute', fun
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-no-help', function() {
+        ->within('#form-textarea-no-help', function () {
             $this->seeElement('textarea')
-            ->dontSeeElement('div[id="textarea-help-text"]');
+                ->dontSeeElement('div[id="textarea-help-text"]');
         });
 });
 
@@ -146,7 +146,7 @@ it('does not have help text when hidden', function () {
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-hidden', function() {
+        ->within('#form-textarea-hidden', function () {
             $this->seeElement('textarea') // always make sure node list is not empty when only using dontSeeElement
                 ->dontSeeElement('div.form-text[id="hidden-textarea-help-text"]')
                 ->seeElement('div.form-text[id="non-hidden-textarea-help-text"]')
@@ -158,7 +158,7 @@ it('can bind data', function () {
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-bind', function() {
+        ->within('#form-textarea-bind', function () {
             $this->seeInElement('textarea[id="bound-textarea"]', 'Textarea bound value');
         });
 });
@@ -167,9 +167,8 @@ it('can set value using slot', function () {
     $this->registerTestRoute('bootstrap-textarea');
 
     $this->visit('/bootstrap-textarea')
-        ->within('#form-textarea-value-using-slot', function() {
+        ->within('#form-textarea-value-using-slot', function () {
             $this->seeElement('textarea')
-            ->seeInElement('textarea[id="value-using-slot"]', 'Value using slot');
+                ->seeInElement('textarea[id="value-using-slot"]', 'Value using slot');
         });
 });
-

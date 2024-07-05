@@ -14,7 +14,7 @@ trait HandlesDefaultAndOldValue
     // 5. default attribute (from default attribute)
 
     private function setValue(
-        string $value = null,// from attribute
+        ?string $value,// from attribute
         string $name,// from attribute
         $bind = null,// from attribute
         $default = null,// from attribute

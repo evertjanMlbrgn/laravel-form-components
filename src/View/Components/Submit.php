@@ -11,6 +11,5 @@ class Submit extends FormBaseComponent
         public string $name = '',
         public bool $hidden = false,
         public string $helpText = ''
-    ) {
-    }
+    ) {}
 }

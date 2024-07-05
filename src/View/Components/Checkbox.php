@@ -17,6 +17,7 @@ class Checkbox extends FormBaseComponent
     public $value;
 
     public $type = 'checkbox';
+
     public bool $checked = false;
 
     /**
