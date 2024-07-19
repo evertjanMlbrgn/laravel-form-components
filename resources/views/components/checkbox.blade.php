@@ -61,6 +61,7 @@
         ])
         :for="$id">
         {{ $label }}
+        {{ $slot }}
     </x-mlbrgn-form-label>
 
     {{-- client side feedback messages --}}
