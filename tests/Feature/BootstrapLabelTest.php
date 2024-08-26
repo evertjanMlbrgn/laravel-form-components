@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection Annotator */
 
 it('sets the id on the label or generates one', function () {
     $this->registerTestRoute('bootstrap-label');
