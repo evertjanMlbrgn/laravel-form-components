@@ -2,6 +2,10 @@
 
 namespace Mlbrgn\LaravelFormComponents\Tests\Feature\Traits;
 
+use CreateCommentablesTable;
+use CreateCommentPostTable;
+use CreateCommentsTable;
+use CreatePostsTable;
 use Illuminate\Database\Eloquent\Model;
 
 trait InteractsWithDatabase
@@ -22,9 +26,9 @@ trait InteractsWithDatabase
         include_once __DIR__.'/../database/migrations/create_comment_post_table.php';
         include_once __DIR__.'/../database/migrations/create_commentables_table.php';
 
-        (new \CreatePostsTable)->up();
-        (new \CreateCommentsTable)->up();
-        (new \CreateCommentPostTable)->up();
-        (new \CreateCommentablesTable)->up();
+        (new CreatePostsTable)->up();
+        (new CreateCommentsTable)->up();
+        (new CreateCommentPostTable)->up();
+        (new CreateCommentablesTable)->up();
     }
 }
