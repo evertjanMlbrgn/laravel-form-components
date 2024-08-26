@@ -56,12 +56,12 @@ jobs:
         if: steps.js-and-css-cache.outputs.cache-hit != 'true'
         run: npm run build
 
-      - name: Prepare Laravel environment
-        run: |
-          cp .env.github .env
-          php artisan key:generate
-          php artisan migrate
-          php artisan passport:keys
+#      - name: Prepare Laravel environment
+#        run: |
+#          cp .env.github .env
+#          php artisan key:generate
+#          php artisan migrate
+#          php artisan passport:keys
 
       - name: Run tests
         run: vendor/bin/pest
