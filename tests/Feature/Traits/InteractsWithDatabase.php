@@ -2,11 +2,11 @@
 
 namespace Mlbrgn\LaravelFormComponents\Tests\Feature\Traits;
 
-use CreateCommentablesTable;
-use CreateCommentPostTable;
-use CreateCommentsTable;
-use CreatePostsTable;
 use Illuminate\Database\Eloquent\Model;
+use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\Migrations\CreateCommentablesTable;
+use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\Migrations\CreateCommentPostTable;
+use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\Migrations\CreateCommentsTable;
+use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\Migrations\CreatePostsTable;
 
 trait InteractsWithDatabase
 {
