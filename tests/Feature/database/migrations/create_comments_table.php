@@ -1,5 +1,7 @@
 <?php
 
+namespace Mlbrgn\LaravelFormComponents\Tests\Feature\Database\Migrations;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
