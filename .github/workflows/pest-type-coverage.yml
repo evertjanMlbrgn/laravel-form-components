@@ -39,7 +39,7 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MARIADB_DATABASE: aksi_test
+          MARIADB_DATABASE: mlbrgn_form_test
           MARIADB_USER: root
           MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: yes
 
