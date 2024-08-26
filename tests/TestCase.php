@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection SpellCheckingInspection */
 
 namespace Mlbrgn\LaravelFormComponents\Tests;
 
@@ -29,7 +29,7 @@ abstract class TestCase extends BaseTestCase
         View::addLocation(__DIR__.'/Feature/views');
     }
 
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [FormComponentsServiceProvider::class];
     }

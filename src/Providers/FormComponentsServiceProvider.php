@@ -143,7 +143,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         // with dot syntax. e.g. <x-form.input> TODO deprecate
         Blade::component(config('form-components.tag_prefix').'.'.$tagAlias, $class);
 
-        // for internal use, so that user can change prefix and we can still find components inside our views
+        // for internal use, so that user can change prefix, and we will still find components inside our views
         Blade::component('mlbrgn-form-'.$tagAlias, $class);
     }
 
@@ -154,7 +154,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         $this->app->singleton(FormDataBinder::class, fn () => new FormDataBinder);
     }
 
-    private function registerMacro()
+    private function registerMacro(): void
     {
         ComponentAttributeBag::macro('onlyWrapperClasses', function () {
 

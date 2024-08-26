@@ -13,7 +13,7 @@ class Radio extends FormBaseComponent
 
     public bool $checked = false;
 
-    public $type = 'radio';
+    public string $type = 'radio';
 
     public function __construct(
         public string $name = '',

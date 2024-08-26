@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 let setupBootstrapClientSideValidation = () =>
 {
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('form[novalidate]')
+    let forms = document.querySelectorAll('form[novalidate]');
 
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms)

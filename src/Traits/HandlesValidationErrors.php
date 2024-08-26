@@ -9,11 +9,11 @@ use Illuminate\Support\ViewErrorBag;
 
 trait HandlesValidationErrors
 {
-    public $showErrors = true;
+    public bool $showErrors = true;
 
     /**
      * Returns a boolean whether the given attribute has an error
-     * and the should be shown.
+     * and should be shown.
      */
     public function shouldShowError(string $name, string $bag = 'default'): bool
     {

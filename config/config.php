@@ -16,7 +16,7 @@ return [
     'tag_prefix' => env('FORM_COMPONENTS_TAG_PREFIX', 'form'),
 
     /**
-     * If you use Eloquent's Date Casting feature, you can use the date attributes in your forms by setting the
+     * If you use Eloquents Date Casting feature, you can use the date attributes in your forms by setting the
      * use_eloquent_date_casting configuration key to true
      **/
     'use_eloquent_date_casting' => env('FORM_COMPONENTS_USE_ELOQUENT_DATE_CASTING', false),

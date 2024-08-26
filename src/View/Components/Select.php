@@ -14,7 +14,7 @@ class Select extends FormBaseComponent
     use HandlesBoundValues;
     use HandlesValidationErrors;
 
-    public $selectedKey;
+    public mixed $selectedKey;
 
     /**
      * Create a new component instance.

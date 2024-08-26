@@ -14,9 +14,9 @@ class Checkbox extends FormBaseComponent
     use HandlesBoundValues;
     use HandlesValidationErrors;
 
-    public $value;
+    public string $value;
 
-    public $type = 'checkbox';
+    public string $type = 'checkbox';
 
     public bool $checked = false;
 

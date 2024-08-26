@@ -76,7 +76,7 @@
                             Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                         @endslot
                     </x-form-input>
-                    <x-form-input type="password" id="inputPassword2"  label="Password with helptext containing html" autocomplete="new-password">
+                    <x-form-input type="password" id="inputPassword2"  label="Password with help text containing html" autocomplete="new-password">
                         @slot('help')
                             Your <strong>password</strong> must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
                         @endslot
@@ -113,7 +113,7 @@
                             <x-form-select id="disabledSelect" label="Disabled select menu">
                                 <option>Disabled select</option>
                                 @slot('help')
-                                    Just to <strong>see</strong> if helptext appears and has id and is referred to by aria-describedby.
+                                    Just to <strong>see</strong> if help text appears and has id and is referred to by aria-describedby.
                                     <p class="text-primary">Just a test to see if text is displayed in primary color here</p>
                                 @endslot
                             </x-form-select>
@@ -1141,7 +1141,7 @@
                 <h3>Tooltips</h3>
                 <x-form-form class="row g-3 needs-validation" validation-mode="client-custom">
                     <div class="col-md-4 position-relative">
-                        <x-form-input id="validationTooltip01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Aweful!" tooltip-feedback/>
+                        <x-form-input id="validationTooltip01" value="Mark" label="First name" required valid-feedback="Looks good!" invalid-feedback="Awful!" tooltip-feedback/>
                     </div>
                     <div class="col-md-4 position-relative">
                         <x-form-input id="validationTooltip02" value="Otto" label="Last name" required valid-feedback="All set!" invalid-feedback="Not the way to go" tooltip-feedback/>
@@ -1297,7 +1297,7 @@
                 </x-form-html-editor>
 
                 <h3 class="mt-4">All form-input types</h3>
-                <x-form-form id="form-all-iput-types">
+                <x-form-form id="form-all-input-types">
                     <x-form-input class="mb-3 d-block" name="button-1" type="button" label="Button" value="Button"/>
                     <x-form-input class="mb-3" name="checkbox-1" type="checkbox" label="Checkbox"/>
                     <x-form-input class="mb-3" name="color-1" type="color" label="Color"/>
@@ -1541,7 +1541,7 @@
                         <x-form-radio name="radio-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false" />
                         <x-form-radio name="radio-inline-1" value="2" label="No" />
                     </x-form-group>
-                    <x-form-group name="checkbox-inline-1" class="mb-3 p-3" label="Want more updates?" required invalid-feedback="You must check both checkboxes" valid-feedback="Allright!" help-text="test help text">
+                    <x-form-group name="checkbox-inline-1" class="mb-3 p-3" label="Want more updates?" required invalid-feedback="You must check both checkboxes" valid-feedback="All right!" help-text="test help text">
                         <x-form-checkbox name="checkbox-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false"/>
                         <x-form-checkbox name="checkbox-inline-1" value="2" label="Yes, please!" required />
                     </x-form-group>
@@ -1578,7 +1578,7 @@
                         <x-form-radio name="radio-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false" />
                         <x-form-radio name="radio-inline-1" value="2" label="No" />
                     </x-form-group>
-                    <x-form-group name="checkbox-inline-1" class="mb-3 p-3" label="Want more updates?" inline required invalid-feedback="You must check both checkboxes" valid-feedback="Allright!">
+                    <x-form-group name="checkbox-inline-1" class="mb-3 p-3" label="Want more updates?" inline required invalid-feedback="You must check both checkboxes" valid-feedback="All right!">
                         <x-form-checkbox name="checkbox-inline-1" class="me-3" value="1" label="Yes" invalid-feedback="nope" valid-feedback="yeah" required :show-errors="false"/>
                         <x-form-checkbox name="checkbox-inline-1" value="2" label="Yes, please!" required />
                     </x-form-group>

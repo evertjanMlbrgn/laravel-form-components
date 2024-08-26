@@ -1,4 +1,6 @@
 /* Import TinyMCE */
+// noinspection SpellCheckingInspection
+
 import tinymce from 'tinymce';
 
 /* Default icons are required. After that, import custom icons if applicable */
@@ -31,7 +33,6 @@ document.addEventListener('DOMContentLoaded', async() => {
     // const response = await fetch('/build/manifest.json');
     // const manifest = await response.json();
     // const cssKey = Object.keys(manifest).find(key => key.includes(`${municipality}/app.scss`));
-    const cssPath = '/';
 
     await tinymce.init({
         skin_url: 'default',

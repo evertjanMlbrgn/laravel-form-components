@@ -1,4 +1,5 @@
-<?php
+<?php /** @noinspection ALL */
+/** @noinspection SpellCheckingInspection */
 
 it('lets buttons default to correct type', function () {
     $this->registerTestRoute('bootstrap-button');
@@ -37,6 +38,7 @@ it('sets extra attributes', function () {
 
     $this->visit('/bootstrap-button')
         ->within('#form-extra-attributes', function () {
+            /** @noinspection SpellCheckingInspection */
             $this->seeElement('button[id="button"][autofocus][disabled]')
                 ->seeElement('button[id="button-submit"][formtarget="test"][value="submit value"]')
                 ->seeElement('button[id="button-reset"][formnovalidate][formaction="test"]');

@@ -13,5 +13,5 @@ class ActivityModel extends Model
         'date_e' => 'datetime:Y-m',
     ];
 
-    public $dates = ['date_a'];
+    public array $dates = ['date_a'];
 }

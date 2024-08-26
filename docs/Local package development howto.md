@@ -46,5 +46,5 @@ composer install
 ```
 # Updating package from within other project
 
-Changes made from withing the packages folder can be commited seperately from the main project
+Changes made from withing the packages folder can be commited separately from the main project
 PHPStorm automatically shows it as a separate repository.

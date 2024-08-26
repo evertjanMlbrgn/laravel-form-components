@@ -50,7 +50,7 @@ When "no-api": true is present, you shouldn't be asked for a token, but if you a
 
 ### Create GitHub personal token
 * Go to GitHub
-* Click on profiel avatar and go to ” Settings”
+* Click on profiel avatar and go to "Settings"
 * Go to “Developer Settings”
 * Click on “Tokens (classic)”
 * Generate new token (classic)

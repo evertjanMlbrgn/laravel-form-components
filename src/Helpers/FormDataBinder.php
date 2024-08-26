@@ -16,7 +16,7 @@ class FormDataBinder
      *
      * @param  mixed  $target
      */
-    public function bind($target): void
+    public function bind(mixed $target): void
     {
         $this->bindings[] = $target;
     }
@@ -26,7 +26,7 @@ class FormDataBinder
      *
      * @return mixed
      */
-    public function get()
+    public function get(): mixed
     {
         return Arr::last($this->bindings);
     }

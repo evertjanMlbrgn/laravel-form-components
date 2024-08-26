@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection SpellCheckingInspection */
 
 namespace Mlbrgn\LaravelFormComponents\Tests\Feature\Traits;
 
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 trait InteractsWithDatabase
 {
-    protected function setupDatabase()
+    protected function setupDatabase(): void
     {
         Model::unguard();
 
@@ -21,8 +21,8 @@ trait InteractsWithDatabase
             'prefix' => '',
         ]);
 
-        include_once __DIR__.'/../database/migrations/create_posts_table.php';
-        include_once __DIR__.'/../database/migrations/create_comments_table.php';
+        include_once __DIR__.'/../Database/Migrations/create_posts_table.php';
+        include_once __DIR__.'/../Database/Migrations/create_comments_table.php';
         include_once __DIR__.'/../database/migrations/create_comment_post_table.php';
         include_once __DIR__.'/../database/migrations/create_commentables_table.php';
 

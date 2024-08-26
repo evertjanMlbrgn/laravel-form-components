@@ -2,17 +2,20 @@
 
 namespace Mlbrgn\LaravelFormComponents\View;
 
+use Closure;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 abstract class FormBaseComponent extends Component
 {
-    public $showErrors = true;
+    public bool $showErrors = true;
 
     /**
      * {@inheritDoc}
      */
-    public function render()
+    public function render(): View|Htmlable|Closure|string
     {
         return function (array $data) {
             $id = $this->determineId($data['attributes']->get('id'), $data['name'] ?? '');
@@ -57,8 +60,9 @@ abstract class FormBaseComponent extends Component
      * Converts a bracket-notation to a dotted-notation
      *
      * @param  string  $name
+     * @return string
      */
-    protected static function convertBracketsToDots($name): string
+    protected static function convertBracketsToDots(string $name): string
     {
         return str_replace(['[', ']'], ['.', ''], $name);
     }

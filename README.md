@@ -2,7 +2,6 @@
 
 - [Pascal Baljet](https://github.com/protonemedia)
 - [Evertjan Garretsen, Nick D.](https://github.com/MLBRGN)
-- [All Contributors](../../contributors)
 
 ## General
 

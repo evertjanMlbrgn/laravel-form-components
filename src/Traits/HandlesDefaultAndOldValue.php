@@ -19,7 +19,8 @@ trait HandlesDefaultAndOldValue
         $bind = null,// from attribute
         $default = null,// from attribute
         $language = null// from attribute
-    ) {
+    ): void
+    {
         $inputName = static::convertBracketsToDots($name);
 
         if (! $language) {
@@ -39,7 +40,7 @@ trait HandlesDefaultAndOldValue
                 $default = $bind->getTranslation($name, $language, false) ?: $value ?? $default;
             }
 
-            $this->value = old("{$inputName}.{$language}", $default);
+            $this->value = old("$inputName.$language", $default);
         }
     }
 }

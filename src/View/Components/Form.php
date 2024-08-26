@@ -39,8 +39,9 @@ class Form extends FormBaseComponent
      * Returns a boolean whether the error bag is not empty.
      *
      * @param  string  $bag
+     * @return bool
      */
-    public function hasError($bag = 'default'): bool
+    public function hasError(string $bag = 'default'): bool
     {
         $errors = View::shared('errors', fn () => request()->session()->get('errors', new ViewErrorBag));
 

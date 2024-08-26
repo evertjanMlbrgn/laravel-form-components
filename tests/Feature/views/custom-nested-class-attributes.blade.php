@@ -165,7 +165,7 @@
 
 <x-form-form id="form-group-inline-classes">
     <x-form-group inline class-inline-wrapper="gap-3">
-        <input name="email" label="Email"/>
-        <input name="password" type="password" label="Password"/>
+        <x-form-input name="email" label="Email"/>
+        <x-form-input name="password" type="password" label="Password"/>
     </x-form-group>
 </x-form-form>

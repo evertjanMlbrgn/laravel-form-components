@@ -34,7 +34,7 @@ class HtmlEditor extends FormBaseComponent
         $this->showErrors = $showErrors;
 
         if ($language) {
-            $this->name = "{$name}[{$language}]";
+            $this->name = "{$name}[$language]";
         }
 
         $this->setValue($value, $name, $bind, $default, $language);

@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="mlbrgn-form-components" pattern="!file[mlbrgn-laravel-form-components]:.idea//*&amp;&amp;!file[mlbrgn-laravel-form-components]:.phpunit.cache//*&amp;&amp;!file[mlbrgn-laravel-form-components]:dist//*" />
+</component>
