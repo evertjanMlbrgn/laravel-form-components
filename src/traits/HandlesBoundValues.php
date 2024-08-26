@@ -15,10 +15,8 @@ trait HandlesBoundValues
     /**
      * Whether to retrieve the default value as a single
      * attribute or as a collection from the database.
-     *
-     * @var bool
      */
-    protected $manyRelation = false;
+    protected bool $manyRelation = false;
 
     /**
      * Get an instance of FormDataBinder.
@@ -30,21 +28,16 @@ trait HandlesBoundValues
 
     /**
      * Get the latest bound target.
-     *
-     * @return mixed
      */
-    private function getBoundTarget()
+    private function getBoundTarget(): mixed
     {
         return $this->getFormDataBinder()->get();
     }
 
     /**
      * Get an item from the latest bound target.
-     *
-     * @param  mixed  $bind
-     * @return mixed
      */
-    private function getBoundValue($bind, string $name)
+    private function getBoundValue(mixed $bind, string $name): mixed
     {
         if ($bind === false) {
             return null;
@@ -67,10 +60,8 @@ trait HandlesBoundValues
 
     /**
      * Formats a DateTimeInterface if the key is specified as a date or datetime in the model.
-     *
-     * @return void
      */
-    private function formatDateTime(Model $model, string $key, DateTimeInterface $date)
+    private function formatDateTime(Model $model, string $key, DateTimeInterface $date): string|null|DateTimeInterface
     {
         if (! config('form-components.use_eloquent_date_casting')) {
             return $date;
@@ -91,11 +82,8 @@ trait HandlesBoundValues
 
     /**
      * Determine if the cast type is a custom date time cast.
-     *
-     * @param  string  $cast
-     * @return bool
      */
-    protected function isCustomDateTimeCast($cast)
+    protected function isCustomDateTimeCast(string $cast): bool
     {
         return Str::startsWith($cast, [
             'date:',
@@ -107,11 +95,8 @@ trait HandlesBoundValues
 
     /**
      * Returns an array with the attached keys.
-     *
-     * @param  mixed  $bind
-     * @return void
      */
-    private function getAttachedKeysFromRelation($bind, string $name): ?array
+    private function getAttachedKeysFromRelation(mixed $bind, string $name): ?array
     {
         if (! $bind instanceof Model) {
             return data_get($bind, $name);
