@@ -17,6 +17,7 @@ class Checkbox extends FormBaseComponent
     public $value;
 
     public $type = 'checkbox';
+
     public bool $checked = false;
 
     /**
@@ -32,8 +33,6 @@ class Checkbox extends FormBaseComponent
         bool $showErrors = true,
         public string $label = '',
         public bool $toggle = false,
-        public string $classButton = 'btn-primary',
-        public string $classLabel = '',
         public string $validFeedback = '',
         public string $invalidFeedback = '',
         public bool $hidden = false,

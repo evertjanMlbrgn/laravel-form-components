@@ -3,7 +3,6 @@
 namespace Mlbrgn\LaravelFormComponents\Tests\Feature\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Mlbrgn\LaravelFormComponents\Tests\Feature\Models\Comment;
 
 class PostMorphMany extends Model
 {

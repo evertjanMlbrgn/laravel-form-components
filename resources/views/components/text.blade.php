@@ -1,5 +1,5 @@
 @props(
-    ['id' =>'no id']
+    ['id' =>'no-id']
 )
 <div {{ $attributes->class('form-text') }}
     @if(isset($id))

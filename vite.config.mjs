@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/main.js',
                 'resources/js/html-editor.js',
                 'resources/js/form-validation.js',
+                'resources/css/form-validation.scss',
                 'resources/css/main.scss',
                 'resources/js/preview.js',
                 'resources/css/preview.scss',
@@ -40,6 +41,9 @@ export default defineConfig({
                 assetFileNames: (chunk) => {
                     if (chunk.name === 'main.css') {
                         return `css/mlbrgn-form-components.css`; // Custom filename for CSS
+                    }
+                    if (chunk.name === 'form-validation.css') {
+                        return `css/mlbrgn-form-validation.css`; // Custom filename for CSS
                     }
                     if (chunk.name === 'preview.css') {
                         return `css/mlbrgn-preview.css`; // Custom filename for CSS

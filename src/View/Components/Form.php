@@ -19,6 +19,8 @@ class Form extends FormBaseComponent
      */
     public bool $spoofMethod = false;
 
+    public string $validationMode = 'client-default';
+
     /**
      * Create a new component instance.
      *
@@ -26,11 +28,11 @@ class Form extends FormBaseComponent
      */
     public function __construct(
         string $method = 'POST',
-        public bool $usesCustomValidation = false,
-        public bool $usesValidation = false
+        ?string $validationMode = null
     ) {
         $this->method = strtoupper($method);
         $this->spoofMethod = in_array($this->method, ['PUT', 'PATCH', 'DELETE']);
+        $this->validationMode = ! is_null($validationMode) ? $validationMode : config('form-components.default-form-validation-mode');
     }
 
     /**

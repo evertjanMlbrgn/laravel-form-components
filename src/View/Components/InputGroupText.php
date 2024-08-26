@@ -13,6 +13,5 @@ class InputGroupText extends FormBaseComponent
      */
     public function __construct(
         public string $text = ''
-    ) {
-    }
+    ) {}
 }

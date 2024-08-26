@@ -59,3 +59,8 @@ $target = ['checkbox' => ['a']];
 <x-form-form id="form-checkbox-default">
     <x-form-checkbox :default="true" name="checkbox" />
 </x-form-form>
+
+<x-form-form id="form-default-to-zero">
+    <x-form-checkbox :default="true" name="checkbox-defaults-to-zero" default-to-zero/>
+    <x-form-checkbox :default="true" name="checkbox-no-defaults-to-zero"/>
+</x-form-form>

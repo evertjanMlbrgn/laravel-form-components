@@ -1,12 +1,11 @@
 @aware([
-    'usesValidation',
-    'usesCustomValidation'
+    'validationMode',
     ]
 )
 
 {{-- Open wrapper--}}
 <div
-    {{ $attributes->onlyWrapperClasses() }}
+    {{ $attributes->onlyWrapperClasses()->class(['d-none' => $hidden ])->except(['required', 'for']) }}
 >
 
     @isset($label)
@@ -18,9 +17,12 @@
      <div
          {{ $attributes->exceptWrapperClasses()->class([
             'input-group',
-            'has-validation' => $usesCustomValidation || $usesValidation,// needs to be added for rounded border when validation messages show
+            'has-validation' => $validationMode === 'client-default' || $validationMode === 'client-custom',// needs to be added for rounded border when validation messages show
             'is-invalid' => ($hasError($name) ? ' is-invalid' : '')
-           ]) }}
+           ])->except(['required', 'for']) }}
+         @if(isset($help) || !empty($helpText) && !$hidden)
+             aria-describedby="{{ $id }}-help-text"
+         @endif
     >
 
         @if (isset($slot1) && $slot1 != null)
@@ -39,15 +41,15 @@
             {{ $slot5 }}
         @endif
 
-            @if(config('form-components.modify_label_class'))
-                @php
-                    // Modify the slot content if it has a label or labels add class input-group-text
-                    $slotContent = Str::replace('form-label', 'input-group-text', trim($slot));
-                @endphp
-                {!! $slotContent !!}
-            @else
-                {{ $slot }}
-            @endif
+        @if(config('form-components.modify_label_class'))
+            @php
+                // Modify the slot content if it has a label or labels add class input-group-text
+                $slotContent = Str::replace('form-label', 'input-group-text', trim($slot));
+            @endphp
+            {!! $slotContent !!}
+        @else
+            {{ $slot }}
+        @endif
     </div>
 
     {{-- Error message --}}
@@ -58,12 +60,22 @@
     {{-- Help text --}}
     @isset($help)
 {{--        <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>--}}
-        <x-mlbrgn-form-text>{{ $help }}</x-mlbrgn-form-text>
+        <x-mlbrgn-form-text
+            :id="$id"
+            @class([
+                $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
+            ])
+        >{{ $help }}</x-mlbrgn-form-text>
     @endif
 
     @if(!empty($helpText) && !isset($help))
 {{--        <x-mlbrgn-form-text :id="$id">{{ $helpText }}</x-mlbrgn-form-text>--}}
-        <x-mlbrgn-form-text>{{ $helpText }}</x-mlbrgn-form-text>
+        <x-mlbrgn-form-text
+            :id="$id"
+            @class([
+                $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
+            ])
+        >{{ $helpText }}</x-mlbrgn-form-text>
     @endif
 
 {{-- Open wrapper--}}

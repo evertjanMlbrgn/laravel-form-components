@@ -23,7 +23,7 @@
 </x-form-form>
 
 <x-form-form id="form-select-extra-attributes">
-    <x-form-select id="select" name="select" readonly disabled value="test">
+    <x-form-select id="select" name="select" readonly disabled>
         <option value="a">A</option>
         <option value="b">B</option>
         <option value="c">C</option>

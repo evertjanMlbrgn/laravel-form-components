@@ -12,13 +12,14 @@
     "dev": "vite",
     "build": "vite build"
   },
-    "dependencies": {
-        "tinymce": "^7.1.0"
-    },
+  "dependencies": {
+    "bootstrap-icons": "^1.11.3",
+    "tinymce": "^7.1.0"
+  },
   "devDependencies": {
+    "laravel-vite-plugin": "^1.0.0",
     "sass": "^1.77.5",
-      "vite": "^5.0.0",
-      "laravel-vite-plugin": "^1.0.0"
+    "vite": "^5.0.0"
   },
   "author": "",
   "license": "ISC"

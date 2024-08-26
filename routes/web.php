@@ -28,42 +28,54 @@ Route::middleware(['web'])->group(function () {
             'main.js',
             'html-editor.js',
             'form-validation.js',
-            'button-image.png'
+            'form-validation.css',
+            'button-image.png',
+            'icon-envelope.png',
+            'sprite.svg',
         ];
 
-        if (!in_array($name, $allowedAssets)) {
+        if (! in_array($name, $allowedAssets)) {
             abort(404);
         }
 
-        switch($name) {
+        switch ($name) {
             case 'preview.css':
-                $file = __DIR__ . '/../dist/css/mlbrgn-preview.css';
+                $file = __DIR__.'/../dist/css/mlbrgn-preview.css';
                 break;
             case 'preview.js':
-                $file = __DIR__ . '/../dist/js/mlbrgn-preview.js';
+                $file = __DIR__.'/../dist/js/mlbrgn-preview.js';
                 break;
             case 'main.css':
-                $file = __DIR__ . '/../dist/css/mlbrgn-form-components.css';
+                $file = __DIR__.'/../dist/css/mlbrgn-form-components.css';
                 break;
             case 'main.js':
-                $file = __DIR__ . '/../dist/js/mlbrgn-form-components.js';
+                $file = __DIR__.'/../dist/js/mlbrgn-form-components.js';
                 break;
             case 'html-editor.js':
-                $file = __DIR__ . '/../dist/js/mlbrgn-html-editor.js';
+                $file = __DIR__.'/../dist/js/mlbrgn-html-editor.js';
                 break;
             case 'form-validation.js':
-                $file = __DIR__ . '/../dist/js/mlbrgn-form-validation.js';
+                $file = __DIR__.'/../dist/js/mlbrgn-form-validation.js';
+                break;
+            case 'form-validation.css':
+                $file = __DIR__.'/../dist/css/mlbrgn-form-validation.css';
                 break;
             case 'button-image.png':
-                $file = __DIR__ . '/../public/images/button-image.png';
+                $file = __DIR__.'/../public/images/button-image.png';
+                break;
+            case 'icon-envelope.png':
+                $file = __DIR__.'/../public/images/icon-envelope.png';
+                break;
+            case 'sprite.svg':
+                $file = __DIR__.'/../public/images/sprite.svg';
                 break;
         }
 
-        if (!isset($file)) {
+        if (! isset($file)) {
             abort(404);
         }
 
-        if (!File::exists($file)) {
+        if (! File::exists($file)) {
             abort(404);
         }
 
@@ -81,10 +93,8 @@ Route::middleware(['web'])->group(function () {
 
         return Response::make($content, 200, [
             'Content-Type' => $mimeType,
-            'Cache-Control' => 'public, max-age=86400' // Cache for 1 day
+            'Cache-Control' => 'public, max-age=86400', // Cache for 1 day
         ]);
     })->where('path', '.*')->name('package.assets');
 
 });
-
-

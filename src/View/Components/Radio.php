@@ -12,6 +12,7 @@ class Radio extends FormBaseComponent
     use HandlesValidationErrors;
 
     public bool $checked = false;
+
     public $type = 'radio';
 
     public function __construct(
@@ -22,9 +23,7 @@ class Radio extends FormBaseComponent
         bool $default = false,
         bool $showErrors = true,
         public bool $toggle = false,
-        public string $classButton = 'btn-primary',
         public bool $hidden = false,
-        public string $classLabel = '',
         public string $validFeedback = '',
         public string $invalidFeedback = '',
         public bool $tooltipFeedback = false,

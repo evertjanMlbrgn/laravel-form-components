@@ -64,9 +64,9 @@ it('handles morph many relationships', function () {
     DB::enableQueryLog();
 
     $this->visit('/select-relation')
-        ->seeElement('option[value="' . $commentA->getKey() . '"]:selected')
-        ->seeElement('option[value="' . $commentB->getKey() . '"]:not(:selected)')
-        ->seeElement('option[value="' . $commentC->getKey() . '"]:selected');
+        ->seeElement('option[value="'.$commentA->getKey().'"]:selected')
+        ->seeElement('option[value="'.$commentB->getKey().'"]:not(:selected)')
+        ->seeElement('option[value="'.$commentC->getKey().'"]:selected');
 
     // make sure we cache the result for each option element
     expect(DB::getQueryLog())->toHaveCount(1);
@@ -91,9 +91,9 @@ it('handles morph to many relationships', function () {
     DB::enableQueryLog();
 
     $this->visit('/select-relation')
-        ->seeElement('option[value="' . $commentA->getKey() . '"]:selected')
-        ->seeElement('option[value="' . $commentB->getKey() . '"]:not(:selected)')
-        ->seeElement('option[value="' . $commentC->getKey() . '"]:selected');
+        ->seeElement('option[value="'.$commentA->getKey().'"]:selected')
+        ->seeElement('option[value="'.$commentB->getKey().'"]:not(:selected)')
+        ->seeElement('option[value="'.$commentC->getKey().'"]:selected');
 
     // make sure we cache the result for each option element
     expect(DB::getQueryLog())->toHaveCount(1);

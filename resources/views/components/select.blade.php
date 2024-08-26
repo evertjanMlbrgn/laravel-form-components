@@ -1,6 +1,3 @@
-{{-- Cache ID to avoid generating multiple times --}}
-<?php $id = $getId(); ?>
-
 @if(!$hidden)
 
     {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
@@ -19,8 +16,9 @@
                 :parentClasses="$attributes->get('class')"
                 :required="$attributes->has('required')"
                 @class([
-                   'col-4' => empty($classLabel),
-                   $classLabel
+                    $attributes->get('class-label', ''),
+                    'col-4' => $horizontal && empty($attributes->get('class-horizontal-cols-label', '')),
+                    $attributes->get('class-horizontal-cols-label', '')
                 ])
                 :for="$id">
                 {{ $label }}
@@ -31,35 +29,34 @@
         @if($horizontal)
             <div
                 @class([
-                 'col-8' => empty($classControl),
-                 $classControl => !empty($classControl)
+                 'col-8' => empty($attributes->get('class-horizontal-cols-control', '')),
+                 $attributes->get('class-horizontal-cols-control', '') => !empty($attributes->get('class-horizontal-cols-control', ''))
              ])
             >
         @endif
 
 @endif
                 {{-- Select element --}}
+                {{-- NOTE: select element does not support value attribute --}}
                 <select
                     @if(!$floating && !$horizontal)
                         {{ $attributes->class([
                             'form-select',
                             'is-invalid' => $hasError($name)
-                        ]) }}
+                        ])->whereDoesntStartWith('class-')->except(['placeholder', 'label-end', 'id']) }}
                     @else
                         {{ $attributes->exceptWrapperClasses()->class([
                        'form-select',
                        'is-invalid' => $hasError($name)
-                   ]) }}
+                   ])->whereDoesntStartWith('class-')->except(['placeholder', 'label-end', 'id']) }}
                     @endif
-                    name="{{ $name }}"
+                    @if($name)
+                        name="{{ $name }}"
+                    @endif
                     id="{{ $id }}"
                     @if($multiple) multiple @endif
-                    @if($floating && empty($placeholder))
-                        placeholder="&nbsp;"
-                    @else
-                        placeholder="{{ $placeholder }}"
-                    @endif
-                    @if(isset($help))
+                    {{-- select cannot have a placeholder attribute--}}
+                    @if(isset($help) && !$hidden)
                         aria-describedby="{{ $id }}-help-text"
                     @endif
                     @if($hidden)
@@ -69,7 +66,7 @@
 
                     @if($placeholder)
                         <option value="" disabled @if($nothingSelected()) selected="selected" @endif>
-                            {{ $placeholder }}
+                            {{ $placeholder !== '1' ? $placeholder : '' }}
                         </option>
                     @endif
 
@@ -84,7 +81,9 @@
 
 @if(!$hidden)
 
-            {{-- Feedback messages --}}
+        {{-- client side feedback messages --}}
+        @if($showErrors)
+
             @if(!empty($validFeedback))
                 <div @class([
                 'valid-feedback' => !$tooltipFeedback,
@@ -102,6 +101,7 @@
                     {{ $invalidFeedback }}
                 </div>
             @endif
+        @endif
 
         {{-- label after control --}}
             @if($attributes->has('label-end') || ($floating && !$horizontal))
@@ -109,25 +109,35 @@
                     :parentClasses="$attributes->get('class')"
                     :required="$attributes->has('required')"
                     @class([
-                        $classLabel
+                        $attributes->get('class-label', '')
                     ])
                     :for="$id">
                     {{ $label }}
                 </x-mlbrgn-form-label>
             @endif
 
-            {{-- Error message --}}
+            {{-- server side feedback messages --}}
             @if($shouldShowError($name))
                 <x-mlbrgn-form-errors :name="$name" />
             @endif
 
             {{-- Help text --}}
             @if(isset($help))
-                <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
+                <x-mlbrgn-form-text
+                    :id="$id"
+                @class([
+                    $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
+                ])
+                >{{ $help }}</x-mlbrgn-form-text>
             @endif
 
             @if(!empty($helpText) && !isset($help))
-                <x-mlbrgn-form-text :id="$id">{{ $helpText }}</x-mlbrgn-form-text>
+                <x-mlbrgn-form-text
+                    :id="$id"
+                    @class([
+                        $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
+                    ])
+                >{{ $helpText }}</x-mlbrgn-form-text>
             @endif
 
         {{-- close horizontal control wrapper --}}

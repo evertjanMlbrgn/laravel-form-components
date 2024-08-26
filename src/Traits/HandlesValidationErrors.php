@@ -36,7 +36,6 @@ trait HandlesValidationErrors
     public function hasError(string $name, string $bag = 'default'): bool
     {
         $name = str_replace(['[', ']'], ['.', ''], Str::before($name, '[]'));
-
         $errorBag = $this->getErrorBag($bag);
 
         return $errorBag->has($name) || $errorBag->has($name.'.*');

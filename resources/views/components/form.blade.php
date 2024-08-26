@@ -1,9 +1,14 @@
+{{-- validation modes:
+    1. server -> set "novalidate" attribute and don't set "needs-validation" class
+    2. client-default client side browser validation -> don't set "novalidate" attribute and set "needs-validation" class
+    3. client-custom client side validation -> set "novalidate" attribute and set "needs-validation" class
+--}}
 <form
     method="{{ $spoofMethod ? 'POST' : $method }}"
     {{ $attributes->class([
-        'needs-validation' => $hasError() || $usesCustomValidation
+        'needs-validation' => $hasError() || $validationMode === 'client-default' || $validationMode === 'client-custom'
     ]) }}
-    {{ $usesCustomValidation ? 'novalidate' : '' }}
+    {{ ($validationMode === 'client-custom' || $validationMode === 'server') ? 'novalidate' : '' }}
     >
 
     @unless(in_array($method, ['HEAD', 'GET', 'OPTIONS']))
@@ -17,7 +22,9 @@
     {{ $slot }}
 </form>
 
-@once
-    <script src="{{ package_asset('form-validation.js') }}"></script>
-@endonce
+@if($validationMode === 'client-default' || $validationMode === 'client-custom')
+    @once
+        <script src="{{ package_asset('form-validation.js') }}"></script>
+    @endonce
+@endif
 

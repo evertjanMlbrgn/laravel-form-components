@@ -14,24 +14,37 @@ abstract class FormBaseComponent extends Component
      */
     public function render()
     {
-        return view(config('form-components.view_namespace').'::'.Str::kebab(class_basename($this)));
+        return function (array $data) {
+            $id = $this->determineId($data['attributes']->get('id'), $data['name'] ?? '');
+
+            return view(config('form-components.view_namespace').'::'.Str::kebab(class_basename($this)), ['id' => $id]);
+        };
     }
 
     /**
-     * Generates an ID, once, for this component.
+     * Generates an ID
      */
-    public function getId(): string
+    public function determineId($id, $name): string
     {
-        if ($this->attributes->has('id') && ! empty($this->attributes->get('id'))) {
-            return $this->id = $this->attributes->get('id');
+
+        if (! empty($id)) {
+            return $this->attributes->get('id');
         }
-        if ($this->name) {
-            return $this->id = $this->generateIdByName();
+        if (! empty($name)) {
+            return 'auto_id_'.$name.Str::random(4);
         }
 
-        return $this->id = 'rand_id_' . Str::random(4);
+        return 'rand_id_'.Str::random(4);
     }
 
+    /**
+     * Generates a random id
+     * Used by text component to ensure that help text gets a random id to add aria attribute
+     */
+    //    public function getRandomId(): string
+    //    {
+    //        return 'rand_id_' . Str::random(4);
+    //    }
     /**
      * Generates an ID by the name attribute.
      */

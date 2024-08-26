@@ -1,23 +1,18 @@
-{{-- If checkbox or radio use dedicated components --}}
+{{-- NOTE: type="file|button|reset|submit|image" inputs do not have support value / setting value --}}
 
-{{-- Handle different input types --}}
+{{-- Handle different input types, by using the right component --}}
 @if(in_array($type, ['button', 'reset', 'submit']))
     @include('form-components::button', [
         'type' => $type,
-        'classButton' => 'btn-primary',
         'slot' => $attributes->get('value')
     ])
 @elseif(in_array($type, ['checkbox', 'radio']))
     @include('form-components::' . $type, [
-        'toggle' => false,
+        'toggle' => $attributes->has('toggle'),
         'checked' => $attributes->has('checked'),
-        'classButton' => '',
         'labelButton' => ''
     ])
 @else
-
-    {{-- Cache ID to avoid generating multiple times --}}
-    <?php $id = $getId(); ?>
 
     {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
     @if($floating || $horizontal)
@@ -29,15 +24,16 @@
         >
     @endif
 
-        {{-- label before control --}}
+    {{-- label before control --}}
     @if(!$hidden && $type !== 'hidden')
         @if(!$attributes->has('label-end') && (!$floating || $horizontal))
             <x-mlbrgn-form-label
                 :parentClasses="$attributes->get('class')"
-                :required="$attributes->has('required')"
+                :required="$attributes->has('required') && $type !== 'range'"
                 @class([
-                   'col-4' => empty($classLabel),
-                   $classLabel
+                    $attributes->get('class-label', ''),
+                    'col-4' => $horizontal && empty($attributes->get('class-horizontal-cols-label', '')),
+                    $attributes->get('class-horizontal-cols-label', '')
                 ])
                 :for="$id">
                 {{ $label }}
@@ -49,69 +45,81 @@
     @if($horizontal)
         <div
             @class([
-                'col-8' => empty($classControl),
-                $classControl => !empty($classControl)
+                'col-8' => empty($attributes->get('class-horizontal-cols-control', '')),
+                $attributes->get('class-horizontal-cols-control', '') => !empty($attributes->get('class-horizontal-cols-control', ''))
             ])
         >
     @endif
+
             {{-- Input element --}}
             <input
                 @if(!$floating && !$horizontal)
                     {{ $attributes->class([
-                        'form-control' => $type !== 'range',
+                        'form-control' => $type !== 'range' && $type !== 'image',
                         'form-range' => $type === 'range',
                         'form-control-color' => ($type === 'color'),
                         'is-invalid' => ($hasError($name)),
-                    ]) }}
+                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'alt']) }}
                 @else
                     {{ $attributes->exceptWrapperClasses()->class([
-                        'form-control' => $type !== 'range',
+                        'form-control' => $type !== 'range' && $type !== 'image',
                         'form-range' => $type === 'range',
                         'form-control-color' => ($type === 'color'),
                         'is-invalid' => ($hasError($name)),
-                    ]) }}
+                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'alt']) }}
                 @endif
                 type="{{ $type }}"
-                value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
-                name="{{ $name }}"
+                @if(!in_array($type, ['file', 'image']))
+                    value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
+                @endif
+                @if($name)
+                    name="{{ $name }}"
+                @endif
                 id="{{ $id }}"
                 @if ($hidden)
                     hidden
                 @endif
-                @if(isset($help))
+                @if($type === 'image')
+                    {{-- image button must have alt attribute --}}
+                    alt="{{ $attributes->get('alt', '&nbsp;') }}"
+                @endif
+                @if((isset($help) || !empty($helpText)) && !$hidden && $type !== 'hidden')
                     aria-describedby="{{ $id }}-help-text"
                 @endif
                 {{-- floating labels won't work without placeholder, yet they never display placeholder either --}}
                 @if($floating && !$attributes->has('placeholder')) placeholder="&nbsp;"@endif
             >
 
-            {{-- Feedback messages --}}
-            @if(!empty($validFeedback))
-                <div @class([
-                    'valid-feedback' => !$tooltipFeedback,
-                    'valid-tooltip' => $tooltipFeedback,
-                ])>
-                    {{ $validFeedback }}
-                </div>
-            @endif
+        {{-- client side feedback messages --}}
+        @if($showErrors)
+                {{-- Feedback messages --}}
+                @if(!empty($validFeedback))
+                    <div @class([
+                        'valid-feedback' => !$tooltipFeedback,
+                        'valid-tooltip' => $tooltipFeedback,
+                    ])>
+                        {{ $validFeedback }}
+                    </div>
+                @endif
 
-            @if(!empty($invalidFeedback))
-                <div @class([
-                    'invalid-feedback' => !$tooltipFeedback,
-                    'invalid-tooltip' => $tooltipFeedback,
-                ])>
-                    {{ $invalidFeedback }}
-                </div>
-            @endif
+                @if(!empty($invalidFeedback))
+                    <div @class([
+                        'invalid-feedback' => !$tooltipFeedback,
+                        'invalid-tooltip' => $tooltipFeedback,
+                    ])>
+                        {{ $invalidFeedback }}
+                    </div>
+                @endif
+        @endif
 
-    {{-- label after control --}}
+        {{-- label after control --}}
         @if(!$hidden && $type !== 'hidden')
             @if($attributes->has('label-end') || ($floating && !$horizontal))
                 <x-mlbrgn-form-label
                     :parentClasses="$attributes->get('class')"
                     :required="$attributes->has('required')"
                     @class([
-                       $classLabel
+                       $attributes->get('class-label', '')
                    ])
                     :for="$id">
                     {{ $label }}
@@ -121,18 +129,28 @@
 
     @if(!$hidden && $type !== 'hidden')
 
-        {{-- Error message --}}
+        {{-- server side feedback messages --}}
         @if($shouldShowError($name))
             <x-mlbrgn-form-errors :name="$name" />
         @endif
 
         {{-- Help text --}}
         @isset($help)
-            <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>
+            <x-mlbrgn-form-text
+                :id="$id"
+                @class([
+                    $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
+                ])
+            >{{ $help }}</x-mlbrgn-form-text>
         @endif
 
         @if(!empty($helpText) && !isset($help))
-            <x-mlbrgn-form-text :id="$id">{{ $helpText }}</x-mlbrgn-form-text>
+            <x-mlbrgn-form-text
+                :id="$id"
+                @class([
+                    $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
+                ])
+            >{{ $helpText }}</x-mlbrgn-form-text>
         @endif
     @endif
 
