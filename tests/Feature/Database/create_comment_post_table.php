@@ -1,7 +1,5 @@
 <?php
 
-namespace Mlbrgn\LaravelFormComponents\Tests\Feature\Database\Migrations;
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,20 +11,19 @@ class CreateCommentPostTable extends Migration
      *
      * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('comment_post', function (Blueprint $table) {
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('comment_id');
         });
     }
-
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('comment_post');
     }
