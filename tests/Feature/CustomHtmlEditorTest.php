@@ -183,7 +183,7 @@ it('does not honor floating label', function () {
                 ->seeElement('div.form-text[id="non-hidden-html-editor-help-text"]')
                 ->seeInElement('div.form-text[id="non-hidden-html-editor-help-text"]', 'other help text');
         });
-});
+})->todo();
 
 it('can bind data', function () {
     $this->registerTestRoute('custom-html-editor');

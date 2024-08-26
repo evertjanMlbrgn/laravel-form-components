@@ -1,0 +1,67 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+#    services:
+#      mysql:
+#        image: mariadb:10.5
+#        ports:
+#          - 3306:3306
+#        env:
+#          MARIADB_DATABASE: aksi_test
+#          MARIADB_USER: root
+#          MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: yes
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: dom, json, pdo
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: npm install
+
+      - name: Generated JS and CSS cache
+        id: js-and-css-cache
+        uses: actions/cache@v4
+        with:
+          path: public/build/**
+          key: ${{ runner.os }}-js-and-css-${{ hashFiles('**/package-lock.json', '**/resources/{.js,scss}') }}
+
+      - name: Generate front-end files
+        if: steps.js-and-css-cache.outputs.cache-hit != 'true'
+        run: npm run build
+
+      - name: Prepare Laravel environment
+        run: |
+          cp .env.github .env
+          php artisan key:generate
+          php artisan migrate
+          php artisan passport:keys
+
+      - name: Run tests
+        run: vendor/bin/pest

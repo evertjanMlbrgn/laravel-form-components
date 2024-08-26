@@ -47,6 +47,7 @@
         "orchestra/testbench-browser-kit": "^7.0 || ^8.0",
         "pestphp/pest": "^v2.9.4",
         "pestphp/pest-plugin-drift": "^2.1",
+        "pestphp/pest-plugin-type-coverage": "^2.8",
         "spatie/laravel-translatable": "^6.0",
         "symfony/dom-crawler": "^6.0"
     },

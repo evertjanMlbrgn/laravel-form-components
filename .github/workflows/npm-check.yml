@@ -1,0 +1,23 @@
+name: Npm security checks
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+
+jobs:
+  npm-audit:
+    runs-on: ubuntu-latest
+    name: npm audit
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          npm install
+          npm audit --production

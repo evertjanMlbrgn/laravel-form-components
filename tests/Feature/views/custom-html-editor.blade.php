@@ -92,6 +92,6 @@
 </x-form-form>
 
 <x-form-form id="form-html-editor-floating">
-    <x-form-html-editor id="html-editor" name="html-editor" help-text="attribute help text"/>
+    <x-form-html-editor id="html-editor" name="html-editor" help-text="attribute help text" floating/>
 </x-form-form>
 

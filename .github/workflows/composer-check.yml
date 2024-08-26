@@ -1,0 +1,22 @@
+name: Composer security checks
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - 'composer.json'
+      - 'composer.lock'
+
+jobs:
+  security-checker:
+    runs-on: ubuntu-latest
+    name: Security checker
+    steps:
+      - uses: actions/checkout@v4
+      - run: composer global require enlightn/security-checker
+      - run: ~/.composer/vendor/bin/security-checker security:check composer.lock
