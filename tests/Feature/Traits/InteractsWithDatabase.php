@@ -23,8 +23,8 @@ trait InteractsWithDatabase
 
         include_once __DIR__.'/../Database/CreatePostsTable.php';
         include_once __DIR__.'/../Database/CreateCommentsTable.php';
-        include_once __DIR__.'/../database/CreateCommentPostTable.php';
-        include_once __DIR__.'/../database/CreateCommentablesTable.php';
+        include_once __DIR__.'/../Database/CreateCommentPostTable.php';
+        include_once __DIR__.'/../Database/CreateCommentablesTable.php';
 
         (new CreatePostsTable)->up();
         (new CreateCommentsTable)->up();
