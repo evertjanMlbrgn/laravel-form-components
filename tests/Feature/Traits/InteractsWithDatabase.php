@@ -3,10 +3,10 @@
 namespace Mlbrgn\LaravelFormComponents\Tests\Feature\Traits;
 
 use Illuminate\Database\Eloquent\Model;
-use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\Migrations\CreateCommentablesTable;
-use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\Migrations\CreateCommentPostTable;
-use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\Migrations\CreateCommentsTable;
-use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\Migrations\CreatePostsTable;
+use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\CreateCommentablesTable;
+use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\CreateCommentPostTable;
+use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\CreateCommentsTable;
+use Mlbrgn\LaravelFormComponents\Tests\Feature\Database\CreatePostsTable;
 
 trait InteractsWithDatabase
 {
@@ -21,10 +21,10 @@ trait InteractsWithDatabase
             'prefix' => '',
         ]);
 
-        include_once __DIR__.'/../Database/Migrations/create_posts_table.php';
-        include_once __DIR__.'/../Database/Migrations/create_comments_table.php';
-        include_once __DIR__.'/../database/migrations/create_comment_post_table.php';
-        include_once __DIR__.'/../database/migrations/create_commentables_table.php';
+        include_once __DIR__.'/../Database/CreatePostsTable.php';
+        include_once __DIR__.'/../Database/CreateCommentsTable.php';
+        include_once __DIR__.'/../database/CreateCommentPostTable.php';
+        include_once __DIR__.'/../database/CreateCommentablesTable.php';
 
         (new CreatePostsTable)->up();
         (new CreateCommentsTable)->up();
