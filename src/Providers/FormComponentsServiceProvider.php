@@ -113,7 +113,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
         $this->loadViewsFrom(realpath(self::PATH_TO_BLADE_COMPONENT_VIEWS), config('form-components.view_namespace'));
 
-        Blade::componentNamespace('Mlbrgn\\LaravelFormComponents\\View\\Components', config('library.prefix.form'));
+        Blade::componentNamespace('Mlbrgn\\LaravelFormComponents\\View\\Components', config('form-components.tag_prefix'));
 
         $this->callAfterResolving(BladeCompiler::class, function () {
             $this->registerComponent('captcha', Captcha::class);
