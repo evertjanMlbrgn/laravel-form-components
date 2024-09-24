@@ -115,25 +115,25 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
         Blade::componentNamespace('Mlbrgn\\LaravelFormComponents\\View\\Components', config('library.prefix.form'));
 
-//        $this->callAfterResolving(BladeCompiler::class, function () {
-//            $this->registerComponent('captcha', Captcha::class);
-//            $this->registerComponent('checkbox', Checkbox::class);
-//            $this->registerComponent('errors', Errors::class);
-//            $this->registerComponent('form', Form::class);
-//            $this->registerComponent('group', Group::class);
-//            $this->registerComponent('html-editor', HtmlEditor::class);
-//            $this->registerComponent('input', Input::class);
-//            $this->registerComponent('input-group', InputGroup::class);
-//            $this->registerComponent('input-group-icon', InputGroupIcon::class);
-//            $this->registerComponent('input-group-text', InputGroupText::class);
-//            $this->registerComponent('label', Label::class);
-//            $this->registerComponent('radio', Radio::class);
-//            $this->registerComponent('select', Select::class);
-//            $this->registerComponent('submit', Submit::class);
-//            $this->registerComponent('text', Text::class);
-//            $this->registerComponent('textarea', Textarea::class);
-//            $this->registerComponent('button', Button::class);
-//        });
+        $this->callAfterResolving(BladeCompiler::class, function () {
+            $this->registerComponent('captcha', Captcha::class);
+            $this->registerComponent('checkbox', Checkbox::class);
+            $this->registerComponent('errors', Errors::class);
+            $this->registerComponent('form', Form::class);
+            $this->registerComponent('group', Group::class);
+            $this->registerComponent('html-editor', HtmlEditor::class);
+            $this->registerComponent('input', Input::class);
+            $this->registerComponent('input-group', InputGroup::class);
+            $this->registerComponent('input-group-icon', InputGroupIcon::class);
+            $this->registerComponent('input-group-text', InputGroupText::class);
+            $this->registerComponent('label', Label::class);
+            $this->registerComponent('radio', Radio::class);
+            $this->registerComponent('select', Select::class);
+            $this->registerComponent('submit', Submit::class);
+            $this->registerComponent('text', Text::class);
+            $this->registerComponent('textarea', Textarea::class);
+            $this->registerComponent('button', Button::class);
+        });
     }
 
     // tagAlias will become tag name (e.g. $tagAlias = 'abc' -> tag will be <x-abc/>)
@@ -141,13 +141,13 @@ class FormComponentsServiceProvider extends BaseServiceProvider
     {
 
         // with dash syntax. e.g. <x-form-input>
-//        Blade::component(config('form-components.tag_prefix').'-'.$tagAlias, $class);
-//
-//        // with dot syntax. e.g. <x-form.input> TODO deprecate
-//        Blade::component(config('form-components.tag_prefix').'.'.$tagAlias, $class);
-//
-//        // for internal use, so that user can change prefix, and we will still find components inside our views
-//        Blade::component('mlbrgn-form-'.$tagAlias, $class);
+        Blade::component(config('form-components.tag_prefix').'-'.$tagAlias, $class);
+
+        // with dot syntax. e.g. <x-form.input> TODO deprecate
+        Blade::component(config('form-components.tag_prefix').'.'.$tagAlias, $class);
+
+        // for internal use, so that user can change prefix, and we will still find components inside our views
+        Blade::component('mlbrgn-form-'.$tagAlias, $class);
     }
 
     public function register(): void
