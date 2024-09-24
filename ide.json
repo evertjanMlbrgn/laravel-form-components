@@ -1,14 +1,11 @@
 {
-    "$schema": "http://laravel-ide.com/schema/laravel-ide-v2.json",
+    "$schema": "https://laravel-ide.com/schema/laravel-ide-v1.json",
     "blade": {
         "components": {
             "viewPaths": [
                 {
-                    "path": "vendor/mlbrgn/laravel-form-components/resources/views/components"
-                },
-                {
-                    "path": "vendor/mlbrgn/laravel-form-components/src/View/Components",
-                    "prefix": "form-"
+                    "path": "resources/views/components",
+                    "namespace": "form"
                 }
             ]
         }
