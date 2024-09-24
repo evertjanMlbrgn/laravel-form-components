@@ -4,24 +4,12 @@
         "components": {
             "viewPaths": [
                 {
-                    "path": "vendor/mlbrgn/laravel-form-components/resources/views",
-                    "namespace": ""
+                    "path": "vendor/mlbrgn/laravel-form-components/resources/views/components",
+                    "namespace": "mlbrgn-form-components"
                 },
                 {
                     "path": "vendor/mlbrgn/laravel-form-components/src/View/Components",
                     "prefix": "form-"
-                }
-            ],
-            "directives": [
-                {
-                    "name": "bind",
-                    "prefix": "<?php app(\\Mlbrgn\\LaravelFormComponents\\FormDataBinder::class)->bind(",
-                    "suffix": "); ?>"
-                },
-                {
-                    "name": "endbind",
-                    "prefix": "<?php app(\\Mlbrgn\\LaravelFormComponents\\FormDataBinder::class)->pop();",
-                    "suffix": "?>"
                 }
             ]
         }
