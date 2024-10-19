@@ -23,11 +23,14 @@ trait HandlesValidationErrors
     /**
      * Getter for the ErrorBag.
      */
-    protected function getErrorBag(string $bag = 'default'): MessageBag
+    protected function getErrorBag(string $bag = 'default'): ?MessageBag
     {
-        $bags = View::shared('errors', fn () => request()->session()->get('errors', new ViewErrorBag));
+        if (request()->hasSession()) {
+            $bags = View::shared('errors', fn() => request()->session()->get('errors', new ViewErrorBag));
 
-        return $bags->getBag($bag);
+            return $bags->getBag($bag);
+        }
+        return null;
     }
 
     /**
@@ -38,6 +41,9 @@ trait HandlesValidationErrors
         $name = str_replace(['[', ']'], ['.', ''], Str::before($name, '[]'));
         $errorBag = $this->getErrorBag($bag);
 
-        return $errorBag->has($name) || $errorBag->has($name.'.*');
+        if ($errorBag) {
+            return $errorBag->has($name) || $errorBag->has($name.'.*');
+        }
+        return false;
     }
 }
