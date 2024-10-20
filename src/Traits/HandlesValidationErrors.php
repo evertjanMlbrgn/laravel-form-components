@@ -25,6 +25,7 @@ trait HandlesValidationErrors
      */
     protected function getErrorBag(string $bag = 'default'): ?MessageBag
     {
+        // sometimes session is not set on request, e.g. session middleware is not being applied to the error pages
         if (request()->hasSession()) {
             $bags = View::shared('errors', fn() => request()->session()->get('errors', new ViewErrorBag));
 
