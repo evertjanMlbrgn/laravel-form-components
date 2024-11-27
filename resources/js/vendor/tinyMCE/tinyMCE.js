@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async() => {
         convert_urls: false,
         license_key: 'gpl',
         automatic_uploads: true,
-        images_upload_url: 'api/upload-media',
+        images_upload_url: '/api/upload-media',
 
         setup: (editor) => {
             editor.ui.registry.addMenuButton('alignment', {
