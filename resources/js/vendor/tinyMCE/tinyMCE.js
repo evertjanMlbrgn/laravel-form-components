@@ -52,8 +52,43 @@ document.addEventListener('DOMContentLoaded', async() => {
         language: 'nl',
         convert_urls: false,
         license_key: 'gpl',
-        automatic_uploads: true,
-        images_upload_url: '/api/upload-media',
+        automatic_uploads: false, // Disable the default image upload handler
+        images_upload_handler: null, // Not needed if using `file_picker_callback`
+        file_picker_callback: (callback, value, meta) => {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*'); // Limit to images
+
+            input.onchange = function () {
+                const file = this.files[0];
+                if (!file) return;
+
+                const formData = new FormData();
+                formData.append('file', file);
+
+                fetch('/api/upload-media', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    },
+                    body: formData,
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.location) {
+                            callback(result.location); // Pass the image URL back to TinyMCE
+                        } else {
+                            alert('File upload failed: ' + (result.error || 'Unknown error'));
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error uploading file:', error);
+                        alert('An error occurred while uploading the file: ' + error.message);
+                    });
+            };
+
+            input.click();
+        },
 
         setup: (editor) => {
             editor.ui.registry.addMenuButton('alignment', {
