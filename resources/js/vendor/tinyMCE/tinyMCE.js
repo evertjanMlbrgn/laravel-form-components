@@ -63,13 +63,19 @@ document.addEventListener('DOMContentLoaded', async() => {
                 const file = this.files[0];
                 if (!file) return;
 
+                const editorElement = tinymce.activeEditor.getElement();
+                const model = editorElement.getAttribute('data-model') || null;
+                const id = editorElement.getAttribute('data-id') || null;
+
                 const formData = new FormData();
                 formData.append('file', file);
+                if (model) formData.append('model', model);
+                if (id) formData.append('id', id);
 
                 fetch('/api/upload-media', {
                     method: 'POST',
                     headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
                     },
                     body: formData,
                 })
