@@ -82,6 +82,12 @@ document.addEventListener('DOMContentLoaded', async() => {
                     .then(response => response.json())
                     .then(result => {
                         if (result.location) {
+                            const input = document.createElement('input');
+                            //input.type = 'hidden';
+                            input.name = 'temporary_media[]';
+                            input.value = result.location; // Store the temporary path
+                            editorElement.querySelector('.attached-media').appendChild(input);
+
                             callback(result.location); // Pass the image URL back to TinyMCE
                         } else {
                             alert('File upload failed: ' + (result.error || 'Unknown error'));

@@ -67,6 +67,9 @@
         >{{ $value ?? $slot }}</textarea>
         {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 
+        <div class="attached-media">
+            {{-- TinyMCE.js puts temporary media paths here --}}
+        </div>
 @if(!$hidden)
 
     {{-- client side feedback messages --}}
