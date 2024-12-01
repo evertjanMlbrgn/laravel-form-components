@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', async() => {
                 const editorElement = tinymce.activeEditor.getElement();
                 const model = editorElement.getAttribute('data-model') || null;
                 const id = editorElement.getAttribute('data-id') || null;
+                const container = editorElement;
 
                 const formData = new FormData();
                 formData.append('file', file);
@@ -84,9 +85,12 @@ document.addEventListener('DOMContentLoaded', async() => {
                         if (result.location) {
                             const input = document.createElement('input');
                             //input.type = 'hidden';
-                            input.name = 'temporary_media[]';
+                            input.name = 'attached_media[]';
                             input.value = result.location; // Store the temporary path
-                            editorElement.querySelector('.attached-media').appendChild(input);
+
+                            document.querySelectorAll('form .attached-media').forEach(container => {
+                                container.appendChild(input);
+                            });
 
                             callback(result.location); // Pass the image URL back to TinyMCE
                         } else {
