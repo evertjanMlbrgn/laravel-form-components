@@ -82,17 +82,17 @@ document.addEventListener('DOMContentLoaded', async() => {
                 })
                     .then(response => response.json())
                     .then(result => {
-                        if (result.location) {
+                        if (result.url) {
                             const input = document.createElement('input');
                             //input.type = 'hidden';
                             input.name = 'attached_media[]';
-                            input.value = result.location; // Store the temporary path
+                            input.value = result.url; // Store the temporary path
 
                             document.querySelectorAll('form .attached-media').forEach(container => {
                                 container.appendChild(input);
                             });
 
-                            callback(result.location); // Pass the image URL back to TinyMCE
+                            callback(result.url); // Pass the image URL back to TinyMCE
                         } else {
                             alert('File upload failed: ' + (result.error || 'Unknown error'));
                         }
