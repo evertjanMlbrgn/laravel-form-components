@@ -85,10 +85,10 @@ document.addEventListener('DOMContentLoaded', async() => {
                         if (result.url) {
                             const input = document.createElement('input');
                             //input.type = 'hidden';
-                            input.name = 'attached_media[]';
+                            input.name = 'content_media[]';
                             input.value = result.url; // Store the temporary path
 
-                            document.querySelectorAll('form .attached-media').forEach(container => {
+                            document.querySelectorAll('form .content-media').forEach(container => {
                                 container.appendChild(input);
                             });
 
