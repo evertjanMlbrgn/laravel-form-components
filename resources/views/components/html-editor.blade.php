@@ -67,8 +67,11 @@
         >{{ $value ?? $slot }}</textarea>
         {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 
+        {{-- TinyMCE.js puts temporary media paths here --}}
         <div class="content-media">
-            {{-- TinyMCE.js puts temporary media paths here --}}
+            @foreach (old('content_media', []) as $media)
+                <input {{-- type="hidden" --}} name="content_media[]" value="{{ $media }}">
+            @endforeach
         </div>
 @if(!$hidden)
 
