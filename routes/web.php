@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Mlbrgn\LaravelFormComponents\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ Route::middleware(['web'])->group(function () {
         return view('preview::form-components-preview');
     });
 
+    Route::post('form-upload-media', [UploadController::class, 'upload']);
     // Route to serve assets from the package's dist directory
     Route::get('package/assets/{name}', function ($name) {
 

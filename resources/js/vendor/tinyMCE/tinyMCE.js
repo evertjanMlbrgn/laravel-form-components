@@ -73,14 +73,27 @@ document.addEventListener('DOMContentLoaded', async() => {
                 if (model) formData.append('model', model);
                 if (id) formData.append('id', id);
 
-                fetch('/api/upload-media', {
+                fetch('/form-upload-media', {
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
                     },
                     body: formData,
                 })
-                    .then(response => response.json())
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json(); // Parse as JSON if the response is successful
+                        } else {
+                            // Handle specific HTTP status codes
+                            if (response.status === 404) {
+                                throw new Error("Files can't be uploaded: Not implemented (404)");
+                            } else if (response.status === 413) {
+                                throw new Error("Files can't be uploaded: File too large (413)");
+                            } else {
+                                throw new Error(`Upload failed with HTTP Status: ${response.status}`);
+                            }
+                        }
+                    })
                     .then(result => {
                         if (result.url) {
                             const input = document.createElement('input');
