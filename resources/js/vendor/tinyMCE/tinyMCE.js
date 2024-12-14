@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', async() => {
                     body: formData,
                 })
                     .then(response => {
-                        if (response.ok) {
+                        const isJsonResponse = response.headers.get('content-type')?.includes('application/json');
+                        if (isJsonResponse) {
                             return response.json(); // Parse as JSON if the response is successful
                         } else {
                             // Handle specific HTTP status codes
