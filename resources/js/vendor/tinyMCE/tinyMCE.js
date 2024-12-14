@@ -86,22 +86,22 @@ document.addEventListener('DOMContentLoaded', async() => {
                         } else {
                             // Handle specific HTTP status codes
                             if (response.status === 404) {
-                                throw new Error("Files can't be uploaded: Not implemented (404)");
+                                throw new Error("No upload route found (404)");
                             } else if (response.status === 413) {
-                                throw new Error("Files can't be uploaded: File too large (413)");
+                                throw new Error("File too large (413)");
                             } else {
-                                throw new Error(`Upload failed with HTTP Status: ${response.status}`);
+                                throw new Error(`${response.status}`);
                             }
                         }
                     })
                     .then(result => {
                         if (result.url) {
                             const input = document.createElement('input');
-                            //input.type = 'hidden';
+                            input.type = 'hidden';
                             input.name = 'content_media[]';
                             input.value = result.url; // Store the temporary path
 
-                            document.querySelectorAll('form .content-media').forEach(container => {
+                            editorElement.closest('form').querySelectorAll('form .content-media').forEach(container => {
                                 container.appendChild(input);
                             });
 
