@@ -18,6 +18,6 @@ class UploadController extends Controller
         $path = $request->file('file')->store('uploads', 'public');
 
         // Return the file URL for TinyMCE
-        return response()->json(['url' => asset('storage/' . $path)]);
+        return response()->json(['url' => '/storage/' . $path]);
     }
 }
