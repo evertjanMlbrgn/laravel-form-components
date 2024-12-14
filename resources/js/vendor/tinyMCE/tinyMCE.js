@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async() => {
 
                             callback(result.url); // Pass the image URL back to TinyMCE
                         } else {
-                            alert('File upload failed: ' + (result.error || 'Unknown error'));
+                            alert(result.error || 'File upload failed: Unknown error');
                         }
                     })
                     .catch(error => {
