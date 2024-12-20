@@ -53,7 +53,9 @@ trait HandlesBoundValues
         $bind = $bind ?: $this->getBoundTarget();
 
         if ($this->manyRelation) {
-            return $this->getAttachedKeysFromRelation($bind, $name);
+//            return $this->getAttachedKeysFromRelation($bind, $name);
+            // if a field is named impact_areas or impact-areas, the relation is not found, therefore convert to camelcase
+            return $this->getAttachedKeysFromRelation($bind, Str::camel($name));
         }
 
         $boundValue = data_get($bind, $name);
