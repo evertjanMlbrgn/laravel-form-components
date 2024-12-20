@@ -73,28 +73,42 @@ document.addEventListener('DOMContentLoaded', async() => {
                 if (model) formData.append('model', model);
                 if (id) formData.append('id', id);
 
-                fetch('/api/upload-media', {
+                fetch('/form-upload-media', {
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content'),
                     },
                     body: formData,
                 })
-                    .then(response => response.json())
+                    .then(response => {
+                        const isJsonResponse = response.headers.get('content-type')?.includes('application/json');
+                        if (isJsonResponse) {
+                            return response.json(); // Parse as JSON if the response is successful
+                        } else {
+                            // Handle specific HTTP status codes
+                            if (response.status === 404) {
+                                throw new Error("No upload route found (404)");
+                            } else if (response.status === 413) {
+                                throw new Error("File too large (413)");
+                            } else {
+                                throw new Error(`${response.status}`);
+                            }
+                        }
+                    })
                     .then(result => {
                         if (result.url) {
                             const input = document.createElement('input');
-                            //input.type = 'hidden';
+                            input.type = 'hidden';
                             input.name = 'content_media[]';
                             input.value = result.url; // Store the temporary path
 
-                            document.querySelectorAll('form .content-media').forEach(container => {
+                            editorElement.closest('form').querySelectorAll('form .content-media').forEach(container => {
                                 container.appendChild(input);
                             });
 
                             callback(result.url); // Pass the image URL back to TinyMCE
                         } else {
-                            alert('File upload failed: ' + (result.error || 'Unknown error'));
+                            alert(result.error || 'File upload failed: Unknown error');
                         }
                     })
                     .catch(error => {
