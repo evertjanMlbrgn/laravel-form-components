@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
+use UnitEnum;
 
 trait HandlesBoundValues
 {
@@ -53,15 +54,19 @@ trait HandlesBoundValues
         $bind = $bind ?: $this->getBoundTarget();
 
         if ($this->manyRelation) {
-//            return $this->getAttachedKeysFromRelation($bind, $name);
-            // if a field is named impact_areas or impact-areas, the relation is not found, therefore convert to camelcase
-            return $this->getAttachedKeysFromRelation($bind, Str::camel($name));
+            return $this->getAttachedKeysFromRelation($bind, $name);
         }
 
         $boundValue = data_get($bind, $name);
 
-        if ($bind instanceof Model && $boundValue instanceof DateTimeInterface) {
-            return $this->formatDateTime($bind, $name, $boundValue);
+        if ($bind instanceof Model) {
+            if ($boundValue instanceof DateTimeInterface) {
+                return $this->formatDateTime($bind, $name, $boundValue);
+            }
+
+            if (is_subclass_of($boundValue, UnitEnum::class)) {
+                return $boundValue->value;
+            }
         }
 
         return $boundValue;
