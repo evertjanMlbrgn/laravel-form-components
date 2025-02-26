@@ -36,6 +36,11 @@
         @endif
 
 @endif
+
+                @if($placeholderValue)
+                    <input type="hidden" name="{{ $name }}" value="default_value">
+                @endif
+
                 {{-- Select element --}}
                 {{-- NOTE: select element does not support value attribute --}}
                 <select
@@ -65,9 +70,6 @@
                     >
 
                     @if($placeholder)
-                        @if($placeholderValue)
-                            <input type="hidden" name="{{ $name }}" value="default_value">
-                        @endif
                         <option value="" disabled @if($nothingSelected()) selected="selected" @endif>
                             {{ $placeholder !== '1' ? $placeholder : '' }}
                         </option>
