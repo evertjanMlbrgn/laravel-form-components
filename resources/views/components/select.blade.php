@@ -65,7 +65,7 @@
                     >
 
                     @if($placeholder)
-                        <option value="" disabled @if($nothingSelected()) selected="selected" @endif>
+                        <option value="{{ $placeholderValue }}" disabled @if($nothingSelected()) selected="selected" @endif>
                             {{ $placeholder !== '1' ? $placeholder : '' }}
                         </option>
                     @endif

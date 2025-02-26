@@ -32,6 +32,7 @@ class Select extends FormBaseComponent
         bool $manyRelation = false,
         public bool $floating = false,
         public string $placeholder = '',
+        public string $placeholderValue = '',
         public bool $horizontal = false,
         public bool $hidden = false,
         public string $validFeedback = '',
