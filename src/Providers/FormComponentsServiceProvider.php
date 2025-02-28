@@ -85,12 +85,6 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             //            ]);
         }
 
-        // TODO not needed?
-        // Merge config without overwriting user modifications
-        // This prevents errors when new config options are added, but end user hasn't updated local published
-        // configuration file
-        // $this->mergeConfigFrom(self::CONFIG_FILE, 'form-components');
-
         // method 1 of loading view components
         $this->registerComponents();
 
