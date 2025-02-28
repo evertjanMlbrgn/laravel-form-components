@@ -22,6 +22,13 @@ return [
     'use_eloquent_date_casting' => env('FORM_COMPONENTS_USE_ELOQUENT_DATE_CASTING', false),
 
     /**
+     * If you use Eloquents Date Casting feature, you can use the date attributes in your forms by setting the
+     * use_eloquent_date_casting configuration key to true
+     * Aloowed values: "camel" or "snake"
+     **/
+    'relationship_convert_field_name_to_camelcase_for_relationships' => env('FORM_COMPONENTS_CONVERT_FIELD_NAME_TO_CAMELCASE_FOR_RELATIONSHIPS', true),
+
+    /**
      * TODO how to load custom content css?
      * Path to custom content css for the TinyMCE editor, this css file can be used to style the content within the editor,
      * e.g. all headings should be read or the font-family of the content should be Arial.

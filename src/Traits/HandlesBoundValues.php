@@ -124,7 +124,11 @@ trait HandlesBoundValues
             return data_get($bind, $name);
         }
 
-        $relation = $bind->{$name}();
+        if(config('form-components.relationship_convert_field_name_to_camelcase_for_relationships')) {
+            $relation = $bind->{Str::camel($name)}();
+        } else {
+            $relation = $bind->{$name}();
+        }
 
         if ($relation instanceof BelongsToMany) {
             $relatedKeyName = $relation->getRelatedKeyName();
