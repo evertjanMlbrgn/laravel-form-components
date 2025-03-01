@@ -24,9 +24,15 @@ return [
     /**
      * If you use Eloquents Date Casting feature, you can use the date attributes in your forms by setting the
      * use_eloquent_date_casting configuration key to true
-     * Aloowed values: "camel" or "snake"
+     * Allowed values: "camel" or "snake"
      **/
     'relationship_convert_field_name_to_camelcase_for_relationships' => env('FORM_COMPONENTS_CONVERT_FIELD_NAME_TO_CAMELCASE_FOR_RELATIONSHIPS', true),
+
+    /**
+     * use disabled option as placeholder in select
+     **/
+    'use_class_instead_of_disabled_in_select_placeholder' => env('FORM_COMPONENTS_USE_CLASS_INSTEAD_OF_DISABLED_IN_SELECT_PLACEHOLDER', true),
+
 
     /**
      * TODO how to load custom content css?

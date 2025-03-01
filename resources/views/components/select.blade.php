@@ -70,7 +70,13 @@
                     >
 
                     @if($placeholder)
-                        <option value="" disabled @if($nothingSelected()) selected="selected" @endif>
+                        <option value=""
+                            @if(config('config.use_class_instead_of_disabled_in_select_placeholder'))
+                                class="disabled"
+                            @else
+                                disabled
+                            @endif
+                            @if($nothingSelected()) selected="selected" @endif>
                             {{ $placeholder !== '1' ? $placeholder : '' }}
                         </option>
                     @endif
