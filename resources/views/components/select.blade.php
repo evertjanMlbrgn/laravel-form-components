@@ -71,7 +71,7 @@
 
                     @if($placeholder)
                         <option value=""
-                            @if(config('config.use_class_instead_of_disabled_in_select_placeholder'))
+                            @if(config('form-components.use_class_instead_of_disabled_in_select_placeholder'))
                                 class="disabled"
                             @else
                                 disabled
