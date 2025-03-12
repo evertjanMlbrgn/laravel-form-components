@@ -62,4 +62,12 @@ return [
      * Default form validation mode (server, client_default or client_custom)
      */
     'default-form-validation-mode' => env('FORM_COMPONENTS_DEFAULT_VALIDATION_MODE', 'server'),
+
+    'recaptcha' => [
+        'site-key' => env('RECAPTCHA_SITE_KEY'),
+        'secret-key' => env('RECAPTCHA_SECRET_KEY'),
+        'version' => 'v2',
+        'language' => 'RECAPTCHA_LANGUAGE',
+    ],
+
 ];
