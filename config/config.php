@@ -67,7 +67,7 @@ return [
         'site-key' => env('RECAPTCHA_SITE_KEY'),
         'secret-key' => env('RECAPTCHA_SECRET_KEY'),
         'version' => 'v2',
-        'language' => 'RECAPTCHA_LANGUAGE',
+        'language' => env('RECAPTCHA_LANGUAGE', 'nl'),
     ],
 
 ];

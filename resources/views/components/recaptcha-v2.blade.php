@@ -5,7 +5,7 @@
 
 {{--The Recaptcha element--}}
 <div {{ $attributes->class('g-recaptcha') }}
-     data-sitekey="{{ config('recaptcha.site-key') }}"
+     data-sitekey="{{ config('form-components.recaptcha.site-key') }}"
      data-badge="inline"
      data-size="invisible"
      data-callback="{{ $callback }}">
@@ -20,7 +20,7 @@
 
 
 @once
-    <script src="https://www.google.com/recaptcha/api.js?h1={{ config('recaptcha.language') }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js?h1={{ config('form-components.recaptcha.language') }}"></script>
     <!-- Add an onload callback -->
     <script>
         function onRecaptchaLoad() {
