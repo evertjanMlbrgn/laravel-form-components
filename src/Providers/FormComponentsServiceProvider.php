@@ -20,6 +20,7 @@ use Mlbrgn\LaravelFormComponents\View\Components\InputGroupIcon;
 use Mlbrgn\LaravelFormComponents\View\Components\InputGroupText;
 use Mlbrgn\LaravelFormComponents\View\Components\Label;
 use Mlbrgn\LaravelFormComponents\View\Components\Radio;
+use Mlbrgn\LaravelFormComponents\View\Components\RecaptchaV2;
 use Mlbrgn\LaravelFormComponents\View\Components\Select;
 use Mlbrgn\LaravelFormComponents\View\Components\Submit;
 use Mlbrgn\LaravelFormComponents\View\Components\Text;
@@ -128,6 +129,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $this->registerComponent('input-group-text', InputGroupText::class);
             $this->registerComponent('label', Label::class);
             $this->registerComponent('radio', Radio::class);
+            $this->registerComponent('recaptcha-v2', RecaptchaV2::class);
             $this->registerComponent('select', Select::class);
             $this->registerComponent('submit', Submit::class);
             $this->registerComponent('text', Text::class);
