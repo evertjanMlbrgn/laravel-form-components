@@ -3,11 +3,17 @@
         No form-id provided! This is needed for recaptcha to work!
     </div>
 @endif
-<x-form::button
+<x-mlbrgn-form-button
     @class([$classButton, 'g-recaptcha'])
     data-sitekey="{{ config('form-components.recaptcha.site-key') }}"
+    data-form-id="{{ $formId }}"
+    data-size="{{ config('form-components.recaptcha.size') }}"
+    data-theme="{{ config('form-components.recaptcha.theme') }}"
+    data-tabind="{{ config('form-components.recaptcha.tabindex') }}"
     data-callback="onFormSubmit"
-    data-form-id="{{ $formId }}">{{ $label }}</x-form::button>
+{{--    data-expired-callback="onExpired"--}}
+{{--    data-error-callback="onError"--}}
+>{{ $label }}</x-mlbrgn-form-button>
 
 @once
     <script>
@@ -40,7 +46,8 @@
                 console.error("Form not found:", formId);
             }
         }
+
     </script>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?h1={{ config('form-components.recaptcha.language') }}" async defer></script>
 @endonce

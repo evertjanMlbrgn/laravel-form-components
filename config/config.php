@@ -67,8 +67,10 @@ return [
         'site-key' => env('RECAPTCHA_SITE_KEY'),
         'secret-key' => env('RECAPTCHA_SECRET_KEY'),
         'version' => 'v2',
-        'language' => env('RECAPTCHA_LANGUAGE', 'nl'),
-        'size' => env('RECAPTCHA_SIZE', 'invisible'),
+        'language' => env('RECAPTCHA_LANGUAGE', 'en-GB'),
+        'size' => env('RECAPTCHA_SIZE', 'compact'), // compact, normal or invisible
+        'theme' => env('RECAPTCHA_THEME', 'light'), // light or dark
+        'tabindex' => env('RECAPTCHA_TABINDEX', 0), // tabindex
     ],
 
 ];
