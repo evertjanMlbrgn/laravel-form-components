@@ -3,51 +3,48 @@
         No form-id provided! This is needed for recaptcha to work!
     </div>
 @endif
-<x-mlbrgn-form-button
-    @class([$classButton, 'g-recaptcha'])
-    data-sitekey="{{ config('form-components.recaptcha.site-key') }}"
-    data-form-id="{{ $formId }}"
-    data-size="{{ config('form-components.recaptcha.size') }}"
-    data-theme="{{ config('form-components.recaptcha.theme') }}"
-    data-tabind="{{ config('form-components.recaptcha.tabindex') }}"
-    data-callback="onFormSubmit"
-{{--    data-expired-callback="onExpired"--}}
-{{--    data-error-callback="onError"--}}
+
+<div class="g-recaptcha" id="{{ $formId . '-captcha-container' }}"></div>
+<x-mlbrgn-form-button class="g-recaptcha-submit-button" type="submit" data-form-id="{{ $formId }}"
+    @class([$classButton])
 >{{ $label }}</x-mlbrgn-form-button>
 
 @once
     <script>
-        let submitButtonClicked = null;
+        let theme = '{{ config('form-components.recaptcha.theme') }}'
+        let sitekey = '{{ config('form-components.recaptcha.site-key') }}'
+        let size = '{{ config('form-components.recaptcha.size') }}'
+        let tabindex = '{{ config('form-components.recaptcha.tabindex') }}'
 
-        document.addEventListener("DOMContentLoaded", function() {
-            console.log("reCAPTCHA and callback ready.");
+        function captchaInitialize() {
+            console.log('Initializing reCAPTCHA');
 
-            // Store the last clicked button before reCAPTCHA executes
-            document.querySelectorAll(".g-recaptcha").forEach(button => {
-                button.addEventListener("click", function() {
-                    submitButtonClicked = this;
+            document.querySelectorAll(".g-recaptcha").forEach(recaptchaContainer => {
+                grecaptcha.render(recaptchaContainer, {
+                    sitekey: sitekey,
+                    size: size,
+                    theme: theme,
+                    callback: onCaptchaResponse,
+                    tabindex: tabindex,
+                    'expired-callback': onExpired,
+                    'error-callback': onError
                 });
             });
-        });
+        }
 
-        function onFormSubmit(token) {
-            if (!submitButtonClicked) {
-                console.error("submit button not found!");
-                return;
-            }
+        function onCaptchaResponse(token) {
+            // captcha response received (success)
+        }
 
-            const formId = submitButtonClicked.getAttribute('data-form-id');
-            const form = document.getElementById(formId);
+        function onExpired() {
+            console.log('reCAPTCHA expired');
+        }
 
-            if (form) {
-                console.log("Submitting form:", formId);
-                form.submit();
-            } else {
-                console.error("Form not found:", formId);
-            }
+        function onError() {
+            console.log('reCAPTCHA error');
         }
 
     </script>
 
-    <script src="https://www.google.com/recaptcha/api.js?h1={{ config('form-components.recaptcha.language') }}" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?hl={{ config('form-components.recaptcha.language') }}&onload=captchaInitialize&render=explicit" async defer></script>
 @endonce
