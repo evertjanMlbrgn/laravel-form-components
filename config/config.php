@@ -68,6 +68,7 @@ return [
         'secret-key' => env('RECAPTCHA_SECRET_KEY'),
         'version' => 'v2',
         'language' => env('RECAPTCHA_LANGUAGE', 'nl'),
+        'size' => env('RECAPTCHA_SIZE', 'invisible'),
     ],
 
 ];

@@ -1,56 +1,46 @@
-@props([
-    'callback',
-    'label',
-])
-
-{{--The Recaptcha element--}}
-<div {{ $attributes->class('g-recaptcha') }}
-     data-sitekey="{{ config('form-components.recaptcha.site-key') }}"
-     data-badge="inline"
-     data-size="invisible"
-     data-callback="{{ $callback }}">
-</div>
-{{-- The submit button --}}
-<x-mlbrgn-form-submit
-    @class([
-       $attributes->get('class-button', '') => $attributes->has('class-button')
-    ])
-    onclick="executeRecaptcha(this)"
->{{ $label }}</x-mlbrgn-form-submit>
-
+@if(empty($formId))
+    <div class="badge bg-danger">
+        No form-id provided! This is needed for recaptcha to work!
+    </div>
+@endif
+<x-form::button
+    @class([$classButton, 'g-recaptcha'])
+    data-sitekey="{{ config('form-components.recaptcha.site-key') }}"
+    data-callback="onFormSubmit"
+    data-form-id="{{ $formId }}">{{ $label }}</x-form::button>
 
 @once
-    <script src="https://www.google.com/recaptcha/api.js?h1={{ config('form-components.recaptcha.language') }}"></script>
-    <!-- Add an onload callback -->
     <script>
-        function onRecaptchaLoad() {
-            // the callback will be called when the api.js is loaded
-            console.log("reCAPTCHA API is loaded.");
-            alert('test');
-        }
-    </script>
-    <script>
-        function executeRecaptcha(event, button) {
-            console.log(event);
-            alert('trst')
-            event.preventDefault();
+        let submitButtonClicked = null;
 
-            let form = button.closest('form');
-            let recaptcha = form.querySelector('.g-recaptcha');
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("reCAPTCHA and callback ready.");
 
-            if (recaptcha) {
-                grecaptcha.execute(recaptcha.dataset.sitekey);
-                form.setAttribute('data-submit', 'true'); // Mark as ready for submission
+            // Store the last clicked button before reCAPTCHA executes
+            document.querySelectorAll(".g-recaptcha").forEach(button => {
+                button.addEventListener("click", function() {
+                    submitButtonClicked = this;
+                });
+            });
+        });
+
+        function onFormSubmit(token) {
+            if (!submitButtonClicked) {
+                console.error("submit button not found!");
+                return;
+            }
+
+            const formId = submitButtonClicked.getAttribute('data-form-id');
+            const form = document.getElementById(formId);
+
+            if (form) {
+                console.log("Submitting form:", formId);
+                form.submit();
+            } else {
+                console.error("Form not found:", formId);
             }
         }
-
-        function onReCaptchaSuccess(token) {
-            let forms = document.querySelectorAll('form[data-submit="true"]');
-            forms.forEach(form => {
-                form.submit();
-                form.removeAttribute('data-submit'); // Reset after submission
-            });
-        }
     </script>
-@endonce
 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+@endonce
