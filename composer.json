@@ -66,8 +66,15 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "test": [
+            "@putenv XDEBUG_MODE=off",
+            "./vendor/bin/pest"
+        ],
+        "quicktest": [
+            "@putenv XDEBUG_MODE=off",
+            "./vendor/bin/pest --parallel"
+        ]
     },
     "config": {
         "sort-packages": true,
