@@ -9,7 +9,7 @@ use Orchestra\Testbench\BrowserKit\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    protected $baseUrl = 'http://dogmeals.test';
+    protected $baseUrl = 'http://dogmeals.test';// TODO not dogmeals
 
     public static function isLaravel10(): bool
     {
