@@ -73,6 +73,13 @@ document.addEventListener('DOMContentLoaded', async() => {
                 if (model) formData.append('model', model);
                 if (id) formData.append('id', id);
 
+                // Dispatch custom event so the host app can modify FormData, this will be synchronous,
+                // so it will be used when fetching directly after this
+                const prepareEvent = new CustomEvent('tinymce:file-upload:prepare', {
+                    detail: { formData, file, model, id, editor: tinymce.activeEditor }
+                });
+                window.dispatchEvent(prepareEvent);
+
                 fetch('/form-upload-media', {
                     method: 'POST',
                     headers: {
