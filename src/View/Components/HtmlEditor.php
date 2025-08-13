@@ -29,6 +29,7 @@ class HtmlEditor extends FormBaseComponent
         public string $invalidFeedback = '',
         public bool $tooltipFeedback = false,
         public string $helpText = '',
+        public array $extraFormData = []
     ) {
 
         $this->showErrors = $showErrors;

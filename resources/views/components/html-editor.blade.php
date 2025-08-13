@@ -64,6 +64,9 @@
             @if(isset($help) && !$hidden)
                 aria-describedby="{{ $id }}-help-text"
             @endif
+            @if(!empty($extraFormData))
+                data-extra-form-data="{{ json_encode($extraFormData) }}"
+            @endif
         >{{ $value ?? $slot }}</textarea>
         {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 

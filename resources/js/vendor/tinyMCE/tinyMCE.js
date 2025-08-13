@@ -73,6 +73,16 @@ document.addEventListener('DOMContentLoaded', async() => {
                 if (model) formData.append('model', model);
                 if (id) formData.append('id', id);
 
+                // Parse extra form data from data attribute
+                const extraFormData = editorElement.dataset.extraFormData
+                    ? JSON.parse(editorElement.dataset.extraFormData)
+                    : {};
+
+                // Append all extra form data
+                for (const [key, val] of Object.entries(extraFormData)) {
+                    formData.append(key, val);
+                }
+
                 // Dispatch custom event so the host app can modify FormData, this will be synchronous,
                 // so it will be used when fetching directly after this
                 const prepareEvent = new CustomEvent('tinymce:file-upload:prepare', {
