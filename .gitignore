@@ -7,4 +7,3 @@ coverage
 .phpunit.cache
 /dist/.vite/manifest.json
 /node_modules/
-/dist/
