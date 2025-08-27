@@ -12,7 +12,7 @@ class HtmlEditor extends FormBaseComponent
     use HandlesValidationErrors;
 
     public $value;
-    public string $tinymceEditorConfigJson = '{}';
+    public string $tinymceConfigJson = '{}';
 
     public function __construct(
         public string $name = '',
@@ -31,7 +31,7 @@ class HtmlEditor extends FormBaseComponent
         public bool $tooltipFeedback = false,
         public string $helpText = '',
         public array $extraFormData = [],
-        $tinymceEditorConfig = [] // Accept array or JSON string
+        $tinymceConfig = [] // Accept array or JSON string
     ) {
 
         $this->showErrors = $showErrors;
@@ -43,11 +43,11 @@ class HtmlEditor extends FormBaseComponent
         $this->setValue($value, $name, $bind, $default, $language);
 
         // Handle TinyMCE config
-        if (is_string($tinymceEditorConfig)) {
-            $decoded = json_decode($tinymceEditorConfig, true);
-            $tinymceEditorConfig = $decoded ?? [];
+        if (is_string($tinymceConfig)) {
+            $decoded = json_decode($tinymceConfig, true);
+            $tinymceConfig = $decoded ?? [];
         }
 
-        $this->tinymceEditorConfigJson = e(json_encode($tinymceEditorConfig));
+        $this->tinymceConfigJson = e(json_encode($tinymceConfig));
     }
 }
