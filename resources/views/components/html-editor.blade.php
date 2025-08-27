@@ -67,6 +67,7 @@
             @if(!empty($extraFormData))
                 data-extra-form-data="{{ json_encode($extraFormData) }}"
             @endif
+            data-tinymce-editor-config="{{ $attributes->get('tinymce-editor-config') ?? '{}' }}"
         >{{ $value ?? $slot }}</textarea>
         {{-- important there should be no space between > and < otherwise placeholder won't show !!!  --}}
 

@@ -153,11 +153,11 @@ function setupEditor(editor) {
 document.addEventListener('DOMContentLoaded', async () => {
     document.querySelectorAll('.html-editor').forEach(async el => {
         let overrides = {};
-        if (el.dataset.editorConfig) {
+        if (el.dataset.tinymceEditorConfig) {
             try {
-                overrides = JSON.parse(el.dataset.editorConfig);
+                overrides = JSON.parse(el.dataset.tinymceEditorConfig);
             } catch (e) {
-                console.warn("Invalid JSON in data-editor-config", e);
+                console.warn("Invalid JSON in data-tinymce-editor-config", e);
             }
         }
 
