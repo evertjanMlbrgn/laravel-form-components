@@ -48,6 +48,8 @@ class HtmlEditor extends FormBaseComponent
             $tinymceConfig = $decoded ?? [];
         }
 
-        $this->tinymceConfigJson = e(json_encode($tinymceConfig));
+//        $this->tinymceConfigJson = e(json_encode($tinymceConfig));
+        $this->tinymceConfigJson = json_encode($tinymceConfig);
+
     }
 }
