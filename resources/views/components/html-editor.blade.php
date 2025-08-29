@@ -150,5 +150,11 @@
 @endif
 
 @once
-    <script src="{{ package_asset('html-editor.js') }}"></script>
+    <script src="{{ mlbrgnAsset('js/mlbrgn-html-editor.js') }}"></script>
+    <link rel="stylesheet" href="{{ mlbrgnAsset('css/mlbrgn-form-components.css') }}">
+{{--    @vite([--}}
+{{--            'resources/js/html-editor.js',   // matches the key in your manifest--}}
+{{--            'resources/js/preview.js',       // optional if the component needs it--}}
+{{--            'resources/css/preview.scss',    // optional CSS--}}
+{{--        ], 'vendor/mlbrgn/laravel-form-components')--}}
 @endonce

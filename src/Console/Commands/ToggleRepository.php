@@ -39,8 +39,7 @@ class ToggleRepository extends Command
         foreach ($this->packages as $name => $data) {
             $pathRepo = $data['path'];
             $symlinkName = $data['symlink'];
-            $linkPath = public_path('vendor/'.$symlinkName);
-            $targetPath = realpath(base_path(trim($pathRepo, './').'/dist'));
+            $targetPath = realpath(base_path(trim($pathRepo, './') . '/dist'));
 
             $isLinked = collect($repositories)->contains(fn ($repo) => ($repo['type'] ?? '') === 'path' && ($repo['url'] ?? '') === $pathRepo);
 
@@ -58,7 +57,9 @@ class ToggleRepository extends Command
                 // Remove from repositories
                 $repositories = array_values(array_filter($repositories, fn ($repo) => ! ($repo['type'] === 'path' && $repo['url'] === $pathRepo)));
 
-                $this->removePath($linkPath);
+                // Remove symlink
+                $this->removeSymlink($name, $symlinkName);
+
                 $this->info("🔗 Removed local path for $name");
 
                 // Restore the original version if saved
@@ -107,9 +108,7 @@ class ToggleRepository extends Command
                 if (! $targetPath || ! is_dir($targetPath)) {
                     $this->warn("⚠️ dist folder not found for $name, skipping symlink.");
                 } else {
-                    $this->removePath($linkPath);
-                    symlink($targetPath, $linkPath);
-                    $this->info("🔗 Created symlink: $linkPath → $targetPath");
+                    $this->createSymlink($name, $symlinkName, $targetPath);
                 }
 
                 $toggled[] = $name;
@@ -140,6 +139,30 @@ class ToggleRepository extends Command
         return self::SUCCESS;
     }
 
+    protected function createSymlink(string $packageName, string $symlinkName, string $targetPath): void
+    {
+        $vendorNamespace = explode('/', $packageName)[0]; // 'mlbrgn'
+        $parentDir = public_path('vendor/'.$vendorNamespace);
+
+        if (! is_dir($parentDir)) {
+            mkdir($parentDir, 0755, true);
+        }
+
+        $linkPath = $parentDir.'/'.$symlinkName;
+
+        $this->removePath($linkPath);
+
+        symlink($targetPath, $linkPath);
+        $this->info("🔗 Created symlink: $linkPath → $targetPath");
+    }
+
+    protected function removeSymlink(string $packageName, string $symlinkName): void
+    {
+        $vendorNamespace = explode('/', $packageName)[0];
+        $linkPath = public_path('vendor/'.$vendorNamespace.'/'.$symlinkName);
+        $this->removePath($linkPath);
+    }
+
     protected function removePath(string $path): void
     {
         if (is_link($path)) {
@@ -156,7 +179,6 @@ class ToggleRepository extends Command
 
     protected function cleanVendorPackage(string $name): void
     {
-        // Convert composer package name to vendor path: mlbrgn/laravel-medialibrary-extensions → vendor/mlbrgn/laravel-medialibrary-extensions
         $vendorPath = base_path('vendor/' . str_replace('/', DIRECTORY_SEPARATOR, $name));
         if (is_link($vendorPath) || is_dir($vendorPath) || file_exists($vendorPath)) {
             $this->removePath($vendorPath);

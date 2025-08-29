@@ -2,6 +2,7 @@
 
 namespace Mlbrgn\LaravelFormComponents\Providers;
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
@@ -26,6 +27,7 @@ use Mlbrgn\LaravelFormComponents\View\Components\Select;
 use Mlbrgn\LaravelFormComponents\View\Components\Submit;
 use Mlbrgn\LaravelFormComponents\View\Components\Text;
 use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
+use Mlbrgn\LaravelFormComponents\Support\PackageAssetManager;
 
 
 class FormComponentsServiceProvider extends BaseServiceProvider
@@ -52,6 +54,9 @@ class FormComponentsServiceProvider extends BaseServiceProvider
     public function boot(): void
     {
 
+        if ($this->app->environment('local')) {
+            $this->linkAssetsForDev();
+        }
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 self::CONFIG_FILE => config_path('form-components.php'),
@@ -80,11 +85,10 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             //                self::PATH_HELPERS => base_path('app/Helpers'),
             //            ], 'mlbrgn-form-components-helpers');
 
-            // publish js for HTML editor
+            // publish assets
             $this->publishes([
-                __DIR__.'/../dist' => public_path('vendor/laravel-form-components'),
+                __DIR__ . '/../../dist' => public_path('vendor/mlbrgn/laravel-form-components'),
             ], 'public');
-
             // publish test page?
             //            $this->publishes([
             //                __DIR__.'/../resources/js' => resource_path('js/vendor/package_name'),
@@ -221,5 +225,25 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
             return new static($retAttributes);
         });
+    }
+
+    protected function linkAssetsForDev(): void
+    {
+        $files = new Filesystem();
+
+        $target = __DIR__ . '/../../dist';
+        $link = public_path('vendor/mlbrgn/laravel-form-components');
+
+        // Remove old symlink if it exists
+//        if ($files->exists($link)) {
+//            $files->deleteDirectory($link);
+//        }
+
+//        try {
+//            $files->link($target, $link);
+//        } catch (\Exception $e) {
+//            // On Windows or if symlink fails, fallback to copy
+//            $files->copyDirectory($target, $link);
+//        }
     }
 }

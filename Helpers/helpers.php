@@ -6,3 +6,11 @@ if (! function_exists('package_asset')) {
         return route('package.assets', ['name' => $name]);
     }
 }
+
+if (! function_exists('mlbrgnAsset')) {
+    function mlbrgnAsset(string $path): string
+    {
+        return asset("vendor/mlbrgn/laravel-form-components/$path");
+    }
+}
+
