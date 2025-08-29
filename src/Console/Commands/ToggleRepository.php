@@ -21,7 +21,7 @@ class ToggleRepository extends Command
     protected const VENDOR_PATH = 'vendor';
     protected const VIEWS_PATH = 'views/vendor/laravel-form-components';
     protected const PUBLISH_PROVIDER = 'Mlbrgn\\LaravelFormComponents\\Providers\\FormComponentsServiceProvider';
-    protected const PUBLISH_TAG = 'media-library-extensions-assets';
+    protected const ASSETS_PUBLISH_TAG = 'public';
 
     // ------------------ Packages ------------------
     protected array $packages = [
@@ -177,7 +177,7 @@ class ToggleRepository extends Command
         $this->info("📦 Publishing package assets for " . self::PUBLISH_PROVIDER);
         $this->call('vendor:publish', [
             '--provider' => self::PUBLISH_PROVIDER,
-            '--tag' => self::PUBLISH_TAG,
+            '--tag' => self::ASSETS_PUBLISH_TAG,
             '--force' => true,
         ]);
     }
