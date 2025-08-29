@@ -1,7 +1,6 @@
 <?php
 
-/** @noinspection PhpMultipleClassDeclarationsInspection */
-namespace Mlbrgn\LaravelFormComponents\Console\Commands;;
+namespace Mlbrgn\LaravelFormComponents\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -16,9 +15,8 @@ class ToggleRepository extends Command
     protected array $packages = [
         'mlbrgn/laravel-form-components' => [
             'path' => './packages/mlbrgn/laravel-form-components',
-            'symlink' => 'laravel-form-components',
+            'symlink' => 'mlbrgn/laravel-form-components', // symlink inside mlbrgn folder
         ],
-        // Add more packages here if needed
     ];
 
     public function handle(): int
@@ -33,82 +31,65 @@ class ToggleRepository extends Command
         $composer = json_decode(file_get_contents($composerPath), true);
         $repositories = $composer['repositories'] ?? [];
         $originalRequires = $composer['extra']['original_require'] ?? [];
-
         $toggled = [];
 
         foreach ($this->packages as $name => $data) {
             $pathRepo = $data['path'];
             $symlinkName = $data['symlink'];
+            $linkPath = public_path('vendor/' . $symlinkName);
             $targetPath = realpath(base_path(trim($pathRepo, './') . '/dist'));
 
-            $isLinked = collect($repositories)->contains(fn ($repo) => ($repo['type'] ?? '') === 'path' && ($repo['url'] ?? '') === $pathRepo);
+            $isLinked = collect($repositories)->contains(fn($repo) => ($repo['type'] ?? '') === 'path' && ($repo['url'] ?? '') === $pathRepo);
 
             if ($isLinked) {
                 if (! $this->option('force') && ! $this->confirm("Remove local path for [$name]?")) {
                     continue;
                 }
 
-                // Clean vendor package folder
                 $this->cleanVendorPackage($name);
-
-                // Clean published views folder
                 $this->cleanPublishedViews();
-
-                // Remove from repositories
-                $repositories = array_values(array_filter($repositories, fn ($repo) => ! ($repo['type'] === 'path' && $repo['url'] === $pathRepo)));
-
-                // Remove symlink
-                $this->removeSymlink($name, $symlinkName);
-
+                $repositories = array_values(array_filter($repositories, fn($repo) => !($repo['type'] === 'path' && $repo['url'] === $pathRepo)));
+                $this->removePath($linkPath);
                 $this->info("🔗 Removed local path for $name");
 
-                // Restore the original version if saved
                 if (isset($originalRequires[$name])) {
                     $composer['require'][$name] = $originalRequires[$name];
                     unset($composer['extra']['original_require'][$name]);
                     $this->info("🔁 Restored version for $name to {$composer['require'][$name]}");
-                } else {
-                    $this->warn("⚠️ No stored original version for $name; leaving as-is.");
                 }
 
+                // Publish assets for Packagist mode
+                $this->publishAssets();
                 $toggled[] = $name;
             } else {
                 if (! $this->option('force') && ! $this->confirm("Use local path for [$name]?")) {
                     continue;
                 }
 
-                // Clean vendor package folder
                 $this->cleanVendorPackage($name);
-
-                // Clean published views folder
                 $this->cleanPublishedViews();
-
-                // Add to repositories
                 $repositories[] = [
                     'type' => 'path',
                     'url' => $pathRepo,
                     'options' => ['symlink' => true],
                 ];
 
-                // Save the current version before switching
                 $currentVersion = $composer['require'][$name] ?? null;
                 if ($currentVersion && $currentVersion !== 'dev-main') {
-                    if (! isset($composer['extra']['original_require'][$name])) {
-                        $composer['extra']['original_require'][$name] = $currentVersion;
-                        $this->info("💾 Saved original version for $name: $currentVersion");
-                    } else {
-                        $this->line("ℹ️ Skipping saving original version for $name; already saved as {$composer['extra']['original_require'][$name]}");
-                    }
+                    $composer['extra']['original_require'][$name] = $currentVersion;
+                    $this->info("💾 Saved original version for $name: $currentVersion");
                 }
 
-                // Set version to dev-main
                 $composer['require'][$name] = 'dev-main';
                 $this->info("🔖 Set version for $name to dev-main");
 
-                if (! $targetPath || ! is_dir($targetPath)) {
-                    $this->warn("⚠️ dist folder not found for $name, skipping symlink.");
+                if ($targetPath && is_dir($targetPath)) {
+                    $this->removePath($linkPath);
+                    File::ensureDirectoryExists(dirname($linkPath));
+                    symlink($targetPath, $linkPath);
+                    $this->info("🔗 Created symlink: $linkPath → $targetPath");
                 } else {
-                    $this->createSymlink($name, $symlinkName, $targetPath);
+                    $this->warn("⚠️ dist folder not found for $name, skipping symlink.");
                 }
 
                 $toggled[] = $name;
@@ -116,18 +97,15 @@ class ToggleRepository extends Command
         }
 
         $composer['repositories'] = $repositories;
-
-        // Clean up original_require if empty
         if (empty($composer['extra']['original_require'] ?? [])) {
             unset($composer['extra']['original_require']);
         }
 
-        // Write updated composer.json BEFORE running composer update
         file_put_contents($composerPath, json_encode($composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
         if (count($toggled)) {
-            $this->info('📦 Running composer update for: '.implode(', ', $toggled));
-            $process = Process::fromShellCommandline('composer update '.implode(' ', $toggled));
+            $this->info('📦 Running composer update for: ' . implode(', ', $toggled));
+            $process = Process::fromShellCommandline('composer update ' . implode(' ', $toggled));
             $process->setTty(Process::isTtySupported());
             $process->run(function ($type, $buffer) {
                 echo $buffer;
@@ -137,30 +115,6 @@ class ToggleRepository extends Command
         }
 
         return self::SUCCESS;
-    }
-
-    protected function createSymlink(string $packageName, string $symlinkName, string $targetPath): void
-    {
-        $vendorNamespace = explode('/', $packageName)[0]; // 'mlbrgn'
-        $parentDir = public_path('vendor/'.$vendorNamespace);
-
-        if (! is_dir($parentDir)) {
-            mkdir($parentDir, 0755, true);
-        }
-
-        $linkPath = $parentDir.'/'.$symlinkName;
-
-        $this->removePath($linkPath);
-
-        symlink($targetPath, $linkPath);
-        $this->info("🔗 Created symlink: $linkPath → $targetPath");
-    }
-
-    protected function removeSymlink(string $packageName, string $symlinkName): void
-    {
-        $vendorNamespace = explode('/', $packageName)[0];
-        $linkPath = public_path('vendor/'.$vendorNamespace.'/'.$symlinkName);
-        $this->removePath($linkPath);
     }
 
     protected function removePath(string $path): void
@@ -193,5 +147,15 @@ class ToggleRepository extends Command
             File::deleteDirectory($viewsPath);
             $this->info("🧹 Cleaned published views directory: $viewsPath");
         }
+    }
+
+    protected function publishAssets(): void
+    {
+        $this->info("📦 Publishing package assets for mlbrgn/laravel-form-components");
+        $this->call('vendor:publish', [
+            '--provider' => "Mlbrgn\\LaravelFormComponents\\ServiceProvider",
+            '--tag' => 'public',
+            '--force' => true,
+        ]);
     }
 }
