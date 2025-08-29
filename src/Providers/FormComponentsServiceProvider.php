@@ -25,6 +25,8 @@ use Mlbrgn\LaravelFormComponents\View\Components\Select;
 use Mlbrgn\LaravelFormComponents\View\Components\Submit;
 use Mlbrgn\LaravelFormComponents\View\Components\Text;
 use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
+use ToggleRepository;
+
 
 class FormComponentsServiceProvider extends BaseServiceProvider
 {
@@ -55,6 +57,9 @@ class FormComponentsServiceProvider extends BaseServiceProvider
                 self::CONFIG_FILE => config_path('form-components.php'),
             ], 'mlbrgn-form-components-config');
 
+            $this->commands([
+                ToggleRepository::class,
+            ]);
             //            $this->publishes([
             //                self::PATH_TO_BLADE_COMPONENT_VIEWS => base_path('resources/views/components/form'),
             //            ], 'mlbrgn-form-components-views');
