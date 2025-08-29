@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\View\ComponentAttributeBag;
+use Mlbrgn\LaravelFormComponents\Console\Commands\ToggleRepository;
 use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
 use Mlbrgn\LaravelFormComponents\View\Components\Button;
 use Mlbrgn\LaravelFormComponents\View\Components\Captcha;
@@ -25,7 +26,6 @@ use Mlbrgn\LaravelFormComponents\View\Components\Select;
 use Mlbrgn\LaravelFormComponents\View\Components\Submit;
 use Mlbrgn\LaravelFormComponents\View\Components\Text;
 use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
-use ToggleRepository;
 
 
 class FormComponentsServiceProvider extends BaseServiceProvider

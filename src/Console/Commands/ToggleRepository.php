@@ -1,7 +1,7 @@
 <?php
 
 /** @noinspection PhpMultipleClassDeclarationsInspection */
-
+namespace Mlbrgn\LaravelFormComponents\Console\Commands;;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
