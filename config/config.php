@@ -26,12 +26,14 @@ return [
      * use_eloquent_date_casting configuration key to true
      * Allowed values: "camel" or "snake"
      **/
-    'relationship_convert_field_name_to_camelcase_for_relationships' => env('FORM_COMPONENTS_CONVERT_FIELD_NAME_TO_CAMELCASE_FOR_RELATIONSHIPS', true),
+    'relationship_convert_field_name_to_camelcase_for_relationships' => env('FORM_COMPONENTS_CONVERT_FIELD_NAME_TO_CAMELCASE_FOR_RELATIONSHIPS',
+        true),
 
     /**
      * use disabled option as placeholder in select
      **/
-    'use_class_instead_of_disabled_in_select_placeholder' => env('FORM_COMPONENTS_USE_CLASS_INSTEAD_OF_DISABLED_IN_SELECT_PLACEHOLDER', true),
+    'use_class_instead_of_disabled_in_select_placeholder' => env('FORM_COMPONENTS_USE_CLASS_INSTEAD_OF_DISABLED_IN_SELECT_PLACEHOLDER',
+        true),
 
 
     /**
@@ -71,6 +73,70 @@ return [
         'size' => env('RECAPTCHA_SIZE', 'compact'), // compact, normal or invisible
         'theme' => env('RECAPTCHA_THEME', 'light'), // light or dark
         'tabindex' => env('RECAPTCHA_TABINDEX', 0), // tabindex
+    ],
+
+    'html_editor' => [
+        'height' => 400,
+        'min_height' => 300,
+        'skin_url' => 'default',
+        'body_class' => 'form-control html-content p-3 rounded-0 border-0 shadow-none',
+        'autoresize_bottom_margin' => 0,
+        'menubar' => false,
+        'branding' => false,
+        'promotion' => false,
+        'highlight_on_focus' => true,
+        'plugins' => 'autoresize autosave code emoticons link lists image table quickbars',
+        'content_css' => '',
+        'toolbar' => 'restoredraft code | blocks | bold italic underline strikethrough | alignment lists outdent indent | table image link emoticons | styleselect',
+        'link_default_target' => '_blank',
+        'document_base_url' => '/',
+        'language' => 'nl',
+        'convert_urls' => false,
+        'license_key' => 'gpl',
+        'automatic_uploads' => false,
+        'images_upload_handler' => null,
+        'image_list' => null,
+        'file_picker_callback' => 'mleFilePicker',
+        'file_picker_route' => '/mlbrgn-mle-media-manager-tinymce', // Laravel route that renders media manager
+        'image_uploadtab' => true,   // <-- required
+        'image_caption' => false,// support for caption using figure element wrapper when inserting
+        'image_advtab' => true, // shows advanced tab in image dialog
+        'object_resizing' => true,
+
+        'image_class_list' => [], // optional, for custom classes
+        'toolbar_mode' => 'floating', // makes toolbars float over selected elements
+        'contextmenu' => 'link image inserttable | cell row column deletetable',
+        'quickbars_selection_toolbar' => 'bold italic | styleselect | link | image',
+        'quickbars_insert_toolbar' => 'image table', // toolbar when inserting content
+
+        // Add predefined image style formats
+        'style_formats' => [
+            [
+                'title' => 'Image Left',
+                'selector' => 'img',
+                'styles' => [
+                    'float' => 'left',
+                    'margin' => '0 10px 0 10px',
+                ],
+            ],
+            [
+                'title' => 'Image Right',
+                'selector' => 'img',
+                'styles' => [
+                    'float' => 'right',
+                    'margin' => '0 10px 0 10px',
+                ],
+            ],
+            [
+                'title' => 'Image Center',
+                'selector' => 'img',
+                'styles' => [
+                    'display' => 'block',
+                    'margin' => '0 auto',
+                ],
+            ],
+        ],
+//        'automatic_uploads' => false,
     ],
 
 ];

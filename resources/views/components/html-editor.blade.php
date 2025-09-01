@@ -150,11 +150,13 @@
 @endif
 
 @once
+    <script>
+        // document.addEventListener('DOMContentLoaded', () => {
+            window.mlbHtmlEditorConfig ??= {};
+            window.mlbHtmlEditorConfig = @json(config('form-components.html_editor'));
+            console.log('window.mlbHtmlEditorConfig', window.mlbHtmlEditorConfig)
+        // })
+    </script>
     <script src="{{ mlbrgnAsset('js/mlbrgn-html-editor.js') }}"></script>
     <link rel="stylesheet" href="{{ mlbrgnAsset('css/mlbrgn-form-components.css') }}">
-{{--    @vite([--}}
-{{--            'resources/js/html-editor.js',   // matches the key in your manifest--}}
-{{--            'resources/js/preview.js',       // optional if the component needs it--}}
-{{--            'resources/css/preview.scss',    // optional CSS--}}
-{{--        ], 'vendor/mlbrgn/laravel-form-components')--}}
 @endonce
