@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/js/form-validation.js',
                 'resources/css/main.scss',
                 'resources/css/form-validation.scss',
+                'resources/css/tinyMCE/tinyMCEContentCSS.scss',
                 'resources/js/preview.js',
                 'resources/css/preview.scss',
             ],
@@ -40,6 +41,7 @@ export default defineConfig({
                         'main.css': 'css/mlbrgn-form-components.css',
                         'form-validation.css': 'css/mlbrgn-form-validation.css',
                         'preview.css': 'css/mlbrgn-preview.css',
+                        'tinyMCEContentCSS.css': 'css/tiny-mce-content.css',
                     };
                     return nameMap[chunk.name] || 'assets/mlbrgn-[name].[hash][extname]';
                 },

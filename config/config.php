@@ -86,7 +86,7 @@ return [
         'promotion' => false,
         'highlight_on_focus' => true,
         'plugins' => 'autoresize autosave code emoticons link lists image table quickbars',
-        'content_css' => '',
+        'content_css' => 'vendor/mlbrgn/laravel-form-components/css/tiny-mce-content.css',
         'toolbar' => 'restoredraft code | blocks | bold italic underline strikethrough | alignment lists outdent indent | table image link emoticons | styleselect',
         'link_default_target' => '_blank',
         'document_base_url' => '/',
@@ -116,7 +116,7 @@ return [
                 'selector' => 'img',
                 'styles' => [
                     'float' => 'left',
-                    'margin' => '0 10px 0 10px',
+                    'margin' => '0 1rem',
                 ],
             ],
             [
@@ -124,7 +124,7 @@ return [
                 'selector' => 'img',
                 'styles' => [
                     'float' => 'right',
-                    'margin' => '0 10px 0 10px',
+                    'margin' => '0 1rem',
                 ],
             ],
             [
