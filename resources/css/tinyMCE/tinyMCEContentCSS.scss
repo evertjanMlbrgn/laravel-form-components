@@ -2,3 +2,23 @@
     max-width: 100%;
     height: auto;
 }
+
+.mce-content-body img.mce-img-tiny {
+    max-width:20vw;
+}
+
+.mce-content-body img.mce-img-small {
+    max-width:25vw;
+}
+
+.mce-content-body img.mce-img-medium {
+    max-width:35vw;
+}
+
+.mce-content-body img.mce-img-large {
+    max-width:50vw;
+}
+
+.mce-content-body img.mce-img-max-width {
+    max-width:100%;
+}

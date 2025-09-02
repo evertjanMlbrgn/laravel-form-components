@@ -102,8 +102,14 @@ return [
         'image_caption' => false,// support for caption using figure element wrapper when inserting
         'image_advtab' => true, // shows advanced tab in image dialog
         'object_resizing' => true,
-
-        'image_class_list' => [], // optional, for custom classes
+        'image_class_list' => [
+            ['title' => 'None', 'value' => ''],
+            ['title' => 'Tiny', 'value' => 'mce-img-tiny'],
+            ['title' => 'Small', 'value' => 'mce-img-small'],
+            ['title' => 'Medium', 'value' => 'mce-img-medium'],
+            ['title' => 'Large', 'value' => 'mce-img-large'],
+            ['title' => 'Max-width', 'value' => 'mce-img-max-width'],
+        ], // optional, for custom classes
         'toolbar_mode' => 'floating', // makes toolbars float over selected elements
         'contextmenu' => 'link image inserttable | cell row column deletetable',
         'quickbars_selection_toolbar' => 'bold italic | styleselect | link | image',
