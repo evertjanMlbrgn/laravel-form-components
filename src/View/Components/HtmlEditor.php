@@ -53,13 +53,13 @@ class HtmlEditor extends FormBaseComponent
         $this->tinymceConfigJson = json_encode($tinymceConfig);
 
         // Push extra scripts from config
-        foreach (config('form-components.html_editor.extra_scripts', []) as $script) {
+        foreach (config('form-components.html_editor_tinymce_global_config.extra_scripts', []) as $script) {
             View::startPush('mfc-html-editor-assets');
             echo '<script type="module" src="' . e($script) . '"></script>';
             View::stopPush();
         }
 
-        foreach (config('form-components.html_editor.extra_styles', []) as $style) {
+        foreach (config('form-components.html_editor_tinymce_global_config.extra_styles', []) as $style) {
             View::startPush('mfc-html-editor-assets');
             echo '<link rel="stylesheet" href="' . e($style) . '">';
             View::stopPush();

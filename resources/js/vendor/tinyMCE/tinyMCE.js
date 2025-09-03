@@ -39,7 +39,7 @@ function resolveCallback(name) {
 /**
  * Default file picker callback
  */
-function defaultFilePickerCallback(callback, value, meta) {
+window.mfcDefaultFilePickerCallback = function(callback, value, meta) {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
@@ -144,57 +144,31 @@ const resolveFilePickerCallback = (callback) => {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const globalOverrides = window.mlbHtmlEditorConfig ?? {};
+    const globalHtmlEditorTinymceConfig = window.mlbHtmlEditorTinymceConfig ?? {};
 
     document.querySelectorAll('.html-editor').forEach(async el => {
-        let elementOverrides = {};
+        let elementTinymceConfig = {};
         if (el.dataset.tinymceConfig) {
             try {
-                elementOverrides = JSON.parse(el.dataset.tinymceConfig);
+                elementTinymceConfig = JSON.parse(el.dataset.tinymceConfig);
             } catch (e) {
                 console.warn("Invalid JSON in data-tinymce-config", e);
             }
         }
 
-        const baseConfig = {
-            target: el,
-            skin_url: 'default',
-            body_class: 'form-control html-content p-3 rounded-0 border-0 shadow-none',
-            min_height: 300,
-            autoresize_bottom_margin: 0,
-            menubar: false,
-            branding: false,
-            promotion: false,
-            highlight_on_focus: true,
-            plugins: 'autoresize autosave code emoticons link lists image table',
-            content_css: '',
-            toolbar: 'restoredraft code | blocks | bold italic underline strikethrough | alignment lists outdent indent | table image link emoticons',
-            link_default_target: '_blank',
-            document_base_url: '/',
-            language: 'nl',
-            convert_urls: false,
-            license_key: 'gpl',
-            automatic_uploads: false,
-            images_upload_handler: null,
-            image_list: null,
-            file_picker_callback: defaultFilePickerCallback,
-            setup: setupEditor,
-        };
-
-        console.log('baseConfig', baseConfig);
-        console.log('globalOverrides', globalOverrides);
-        console.log('elementOverrides', elementOverrides);
-        // Merge configs: base < global < element
+        console.log('globalHtmlEditorTinymceConfig', globalHtmlEditorTinymceConfig);
+        console.log('elementTinymceConfig', elementTinymceConfig);
         const mergedConfig = {
-            ...baseConfig,
-            ...globalOverrides,
-            ...elementOverrides
+            ...globalHtmlEditorTinymceConfig,
+            target: el,
+            setup: setupEditor,
+            ...elementTinymceConfig
         };
 
-        console.log('mergedConfig', mergedConfig);
-        // Resolve file_picker_callback after merging
+        // Resolve string callbacks after merging
         mergedConfig.file_picker_callback = resolveFilePickerCallback(mergedConfig.file_picker_callback);
 
+        console.log('mergedConfig', mergedConfig);
         await tinymce.init(mergedConfig);
     });
 });

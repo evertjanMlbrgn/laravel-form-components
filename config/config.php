@@ -75,7 +75,7 @@ return [
         'tabindex' => env('RECAPTCHA_TABINDEX', 0), // tabindex
     ],
 
-    'html_editor' => [
+    'html_editor_tinymce_global_config' => [
         'height' => 400,
         'min_height' => 300,
         'skin_url' => 'default',
@@ -96,8 +96,7 @@ return [
         'automatic_uploads' => false,
         'images_upload_handler' => null,
         'image_list' => null,
-        'file_picker_callback' => 'mleFilePicker',
-        'file_picker_route' => '/mlbrgn-mle-media-manager-tinymce', // Laravel route that renders media manager
+        'file_picker_callback' => 'mfcDefaultFilePickerCallback',
         'image_uploadtab' => true,   // <-- required
         'image_caption' => false,// support for caption using figure element wrapper when inserting
         'image_advtab' => true, // shows advanced tab in image dialog

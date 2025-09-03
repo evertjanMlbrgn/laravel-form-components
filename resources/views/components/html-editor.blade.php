@@ -152,9 +152,9 @@
 @once
     <script>
         // document.addEventListener('DOMContentLoaded', () => {
-            window.mlbHtmlEditorConfig ??= {};
-            window.mlbHtmlEditorConfig = @json(config('form-components.html_editor'));
-            console.log('window.mlbHtmlEditorConfig', window.mlbHtmlEditorConfig)
+            window.mlbHtmlEditorTinymceConfig ??= {};
+            window.mlbHtmlEditorTinymceConfig = @json(config('form-components.html_editor_tinymce_global_config'));
+            console.log('window.mlbHtmlEditorTinymceConfig', window.mlbHtmlEditorTinymceConfig)
         // })
     </script>
     <script src="{{ mlbrgnAsset('js/mlbrgn-html-editor.js') }}"></script>
