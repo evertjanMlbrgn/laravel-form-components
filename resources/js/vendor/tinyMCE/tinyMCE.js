@@ -52,18 +52,25 @@ window.mfcDefaultFilePickerCallback = function(callback, value, meta) {
         const model = editorElement.getAttribute('data-model') || null;
         const id = editorElement.getAttribute('data-id') || null;
 
+        console.log('formData test')
         const formData = new FormData();
         formData.append('file', file);
         if (model) formData.append('model', model);
         if (id) formData.append('id', id);
 
-        // Add extra form data
-        const extraFormData = editorElement.dataset.extraFormData
-            ? JSON.parse(editorElement.dataset.extraFormData)
-            : {};
-        for (const [key, val] of Object.entries(extraFormData)) {
-            formData.append(key, val);
+        // add extra data from dataset
+        for (const [key, val] of Object.entries(editorElement.dataset)) {
+            // Convert camelCase or kebab-case to snake_case
+            const snakeKey = key.replace(/([A-Z])/g, "_$1").toLowerCase();
+            formData.append(snakeKey, val);
         }
+
+        // const extraFormData = editorElement.dataset.extraFormData
+        //     ? JSON.parse(editorElement.dataset.extraFormData)
+        //     : {};
+        // for (const [key, val] of Object.entries(extraFormData)) {
+        //     formData.append(key, val);
+        // }
 
         // Allow listeners to tweak FormData
         const prepareEvent = new CustomEvent('tinymce:file-upload:prepare', {
@@ -71,6 +78,7 @@ window.mfcDefaultFilePickerCallback = function(callback, value, meta) {
         });
         window.dispatchEvent(prepareEvent);
 
+        console.log('formData', formData.toString());
         fetch('/form-upload-media', {
             method: 'POST',
             headers: {
