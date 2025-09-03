@@ -160,3 +160,5 @@
     <script src="{{ mlbrgnAsset('js/mlbrgn-html-editor.js') }}"></script>
     <link rel="stylesheet" href="{{ mlbrgnAsset('css/mlbrgn-form-components.css') }}">
 @endonce
+
+@stack('mfc-html-editor-assets')

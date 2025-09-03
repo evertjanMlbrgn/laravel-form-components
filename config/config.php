@@ -142,6 +142,8 @@ return [
                 ],
             ],
         ],
+
+        'extra_scripts' => []
 //        'automatic_uploads' => false,
     ],
 
