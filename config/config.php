@@ -146,4 +146,13 @@ return [
 //        'automatic_uploads' => false,
     ],
 
+    /*
+     |--------------------------------------------------------------------------
+     | DEVELOPER ONLY
+     |--------------------------------------------------------------------------
+     |
+     | Only used by developer
+     */
+    'mfc_using_local_package' => env('MFC_USING_LOCAL_PACKAGE', false),
+
 ];
