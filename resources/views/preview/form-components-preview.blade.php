@@ -10,6 +10,7 @@
         <script src="{{ package_asset('preview.js') }}"></script>
     </head>
     <body>
+        <x-form::local-package-badge/>
         <div class="container-fluid p-0">
             <div class="container-md py-1 py-md-3">
 

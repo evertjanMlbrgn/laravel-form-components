@@ -21,6 +21,7 @@ use Mlbrgn\LaravelFormComponents\View\Components\InputGroup;
 use Mlbrgn\LaravelFormComponents\View\Components\InputGroupIcon;
 use Mlbrgn\LaravelFormComponents\View\Components\InputGroupText;
 use Mlbrgn\LaravelFormComponents\View\Components\Label;
+use Mlbrgn\LaravelFormComponents\View\Components\LocalPackageBadge;
 use Mlbrgn\LaravelFormComponents\View\Components\Radio;
 use Mlbrgn\LaravelFormComponents\View\Components\RecaptchaV2;
 use Mlbrgn\LaravelFormComponents\View\Components\Select;
@@ -144,6 +145,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $this->registerComponent('text', Text::class);
             $this->registerComponent('textarea', Textarea::class);
             $this->registerComponent('button', Button::class);
+            $this->registerComponent('local-package-badge', LocalPackageBadge::class);
         });
     }
 
