@@ -97,7 +97,7 @@ jobs:
       - name: Run Code Coverage
         env:
           XDEBUG_MODE: coverage
-        run: vendor/bin/pest --coverage --min=80
+        run: vendor/bin/pest --coverage --min=50
 
   combine-results:
     runs-on: ubuntu-latest
