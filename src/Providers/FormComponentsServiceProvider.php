@@ -126,7 +126,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
         Blade::componentNamespace('Mlbrgn\\LaravelFormComponents\\View\\Components', config('form-components.tag_prefix'));
 
-        $this->callAfterResolving(BladeCompiler::class, function () {
+//        $this->callAfterResolving(BladeCompiler::class, function () {
             $this->registerComponent('captcha', Captcha::class);
             $this->registerComponent('checkbox', Checkbox::class);
             $this->registerComponent('errors', Errors::class);
@@ -146,7 +146,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $this->registerComponent('textarea', Textarea::class);
             $this->registerComponent('button', Button::class);
             $this->registerComponent('local-package-badge', LocalPackageBadge::class);
-        });
+//        });
     }
 
     // tagAlias will become tag name (e.g. $tagAlias = 'abc' -> tag will be <x-abc/>)
