@@ -8,3 +8,4 @@ coverage
 /dist/.vite/manifest.json
 /node_modules/
 /.env.local
+/public/hot
