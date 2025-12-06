@@ -105,7 +105,9 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         // method 3 of registering view components
         //Blade::componentNamespace('Mlbrgn\LaravelFormComponents\View\Components', config('form-components.tag_prefix'));
 
-        $this->loadViewsFrom(realpath(self::PATH_TO_OTHER_BLADE_VIEWS), 'preview');
+//        $this->loadViewsFrom(realpath(self::PATH_TO_OTHER_BLADE_VIEWS), 'preview');
+//        $this->loadViewsFrom(realpath(self::PATH_TO_OTHER_BLADE_VIEWS), 'preview');
+        $this->loadViewsFrom(__DIR__.'/../../resources/views', config('form-components.tag_prefix'));
         $this->loadRoutesFrom(self::ROUTES_PATH);
 
         Blade::directive('bind', function ($bind) {
@@ -124,29 +126,71 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
         $this->loadViewsFrom(realpath(self::PATH_TO_BLADE_COMPONENT_VIEWS), config('form-components.view_namespace'));
 
-        Blade::componentNamespace('Mlbrgn\\LaravelFormComponents\\View\\Components', config('form-components.tag_prefix'));
+        Blade::componentNamespace('Mlbrgn\\LaravelFormComponents\\View\\Components', 'form');
 
-//        $this->callAfterResolving(BladeCompiler::class, function () {
-            $this->registerComponent('captcha', Captcha::class);
-            $this->registerComponent('checkbox', Checkbox::class);
-            $this->registerComponent('errors', Errors::class);
-            $this->registerComponent('form', Form::class);
-            $this->registerComponent('group', Group::class);
-            $this->registerComponent('html-editor', HtmlEditor::class);
-            $this->registerComponent('input', Input::class);
-            $this->registerComponent('input-group', InputGroup::class);
-            $this->registerComponent('input-group-icon', InputGroupIcon::class);
-            $this->registerComponent('input-group-text', InputGroupText::class);
-            $this->registerComponent('label', Label::class);
-            $this->registerComponent('radio', Radio::class);
-            $this->registerComponent('recaptcha-v2', RecaptchaV2::class);
-            $this->registerComponent('select', Select::class);
-            $this->registerComponent('submit', Submit::class);
-            $this->registerComponent('text', Text::class);
-            $this->registerComponent('textarea', Textarea::class);
-            $this->registerComponent('button', Button::class);
-            $this->registerComponent('local-package-badge', LocalPackageBadge::class);
-//        });
+        Blade::component(config('form-components.tag_prefix') .'-input', Input::class);
+        Blade::component(config('form-components.tag_prefix') .'-captcha', Captcha::class);
+        Blade::component(config('form-components.tag_prefix') .'-checkbox', Checkbox::class);
+        Blade::component(config('form-components.tag_prefix') .'-errors', Errors::class);
+        Blade::component(config('form-components.tag_prefix') .'-form', Form::class);
+        Blade::component(config('form-components.tag_prefix') .'-group', Group::class);
+        Blade::component(config('form-components.tag_prefix') .'-html-editor', HtmlEditor::class);
+        Blade::component(config('form-components.tag_prefix') .'-input-group', InputGroup::class);
+        Blade::component(config('form-components.tag_prefix') .'-input-group-icon', InputGroupIcon::class);
+        Blade::component(config('form-components.tag_prefix') .'-input-group-text', InputGroupText::class);
+        Blade::component(config('form-components.tag_prefix') .'-label', Label::class);
+        Blade::component(config('form-components.tag_prefix') .'-radio', Radio::class);
+        Blade::component(config('form-components.tag_prefix') .'-recaptcha-v2', RecaptchaV2::class);
+        Blade::component(config('form-components.tag_prefix') .'-select', Select::class);
+        Blade::component(config('form-components.tag_prefix') .'-submit', Submit::class);
+        Blade::component(config('form-components.tag_prefix') .'-text', Text::class);
+        Blade::component(config('form-components.tag_prefix') .'-textarea', Textarea::class);
+        Blade::component(config('form-components.tag_prefix') .'-button', Button::class);
+        Blade::component(config('form-components.tag_prefix') .'-local-package-badge', LocalPackageBadge::class);
+
+        // TODO deprecate dot syntax
+        if (config('form-components.mfc_deprecated_dot_syntax') === true) {
+            Blade::component(config('form-components.tag_prefix') .'.input', Input::class);
+            Blade::component(config('form-components.tag_prefix') .'.captcha', Captcha::class);
+            Blade::component(config('form-components.tag_prefix') .'.checkbox', Checkbox::class);
+            Blade::component(config('form-components.tag_prefix') .'.errors', Errors::class);
+            Blade::component(config('form-components.tag_prefix') .'.form', Form::class);
+            Blade::component(config('form-components.tag_prefix') .'.group', Group::class);
+            Blade::component(config('form-components.tag_prefix') .'.html-editor', HtmlEditor::class);
+            Blade::component(config('form-components.tag_prefix') .'.input-group', InputGroup::class);
+            Blade::component(config('form-components.tag_prefix') .'.input-group-icon', InputGroupIcon::class);
+            Blade::component(config('form-components.tag_prefix') .'.input-group-text', InputGroupText::class);
+            Blade::component(config('form-components.tag_prefix') .'.label', Label::class);
+            Blade::component(config('form-components.tag_prefix') .'.radio', Radio::class);
+            Blade::component(config('form-components.tag_prefix') .'.recaptcha-v2', RecaptchaV2::class);
+            Blade::component(config('form-components.tag_prefix') .'.select', Select::class);
+            Blade::component(config('form-components.tag_prefix') .'.submit', Submit::class);
+            Blade::component(config('form-components.tag_prefix') .'.text', Text::class);
+            Blade::component(config('form-components.tag_prefix') .'.textarea', Textarea::class);
+            Blade::component(config('form-components.tag_prefix') .'.button', Button::class);
+            Blade::component(config('form-components.tag_prefix') .'.local-package-badge', LocalPackageBadge::class);
+        }
+
+        // internal use
+        Blade::component('mlbrgn-form-input', Input::class);
+        Blade::component('mlbrgn-form-captcha', Captcha::class);
+        Blade::component('mlbrgn-form-checkbox', Checkbox::class);
+        Blade::component('mlbrgn-form-errors', Errors::class);
+        Blade::component('mlbrgn-form-form', Form::class);
+        Blade::component('mlbrgn-form-group', Group::class);
+        Blade::component('mlbrgn-form-html-editor', HtmlEditor::class);
+        Blade::component('mlbrgn-form-input-group', InputGroup::class);
+        Blade::component('mlbrgn-form-input-group-icon', InputGroupIcon::class);
+        Blade::component('mlbrgn-form-input-group-text', InputGroupText::class);
+        Blade::component('mlbrgn-form-label', Label::class);
+        Blade::component('mlbrgn-form-radio', Radio::class);
+        Blade::component('mlbrgn-form-recaptcha-v2', RecaptchaV2::class);
+        Blade::component('mlbrgn-form-select', Select::class);
+        Blade::component('mlbrgn-form-submit', Submit::class);
+        Blade::component('mlbrgn-form-text', Text::class);
+        Blade::component('mlbrgn-form-textarea', Textarea::class);
+        Blade::component('mlbrgn-form-button', Button::class);
+        Blade::component('mlbrgn-form-local-package-badge', LocalPackageBadge::class);
     }
 
     // tagAlias will become tag name (e.g. $tagAlias = 'abc' -> tag will be <x-abc/>)
@@ -154,13 +198,13 @@ class FormComponentsServiceProvider extends BaseServiceProvider
     {
 
         // with dash syntax. e.g. <x-form-input>
-        Blade::component(config('form-components.tag_prefix').'-'.$tagAlias, $class);
+//        Blade::component(config('form-components.tag_prefix').'-'.$tagAlias, $class);
 
         // with dot syntax. e.g. <x-form.input> TODO deprecate
-        Blade::component(config('form-components.tag_prefix').'.'.$tagAlias, $class);
+//        Blade::component(config('form-components.tag_prefix').'.'.$tagAlias, $class);
 
         // for internal use, so that user can change prefix, and we will still find components inside our views
-        Blade::component('mlbrgn-form-'.$tagAlias, $class);
+//        Blade::component('mlbrgn-form-'.$tagAlias, $class);
     }
 
     public function register(): void
