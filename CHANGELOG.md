@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.109](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.108...1.0.109) (2025-12-06)
+
+
+### Bug Fixes
+
+* blade components recognized in ide ([bdc9544](https://github.com/evertjanMlbrgn/laravel-form-components/commit/bdc954412791be480f8e0ddeec1512f2557d4e88))
+
 ## [1.0.108](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.107...1.0.108) (2025-11-27)
 
 
