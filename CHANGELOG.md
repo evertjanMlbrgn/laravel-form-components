@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.110](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.109...1.0.110) (2025-12-07)
+
+
+### Bug Fixes
+
+* setting mfc_deprecated_dot_syntax to false by default ([28bd28c](https://github.com/evertjanMlbrgn/laravel-form-components/commit/28bd28c1c27c7256d9a3e75a6bc85a7052eb074b))
+
 ## [1.0.109](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.108...1.0.109) (2025-12-06)
 
 
