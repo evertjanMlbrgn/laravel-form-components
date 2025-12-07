@@ -162,5 +162,5 @@ return [
       |
       | Only used by the developer
       */
-    'mfc_deprecated_dot_syntax' => true,
+    'mfc_deprecated_dot_syntax' => false,
 ];
