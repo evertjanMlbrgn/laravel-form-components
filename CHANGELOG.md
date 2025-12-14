@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.111](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.110...1.0.111) (2025-12-14)
+
+
+### Bug Fixes
+
+* open basedir problem in package assets (in routes/web), now using base_path ([076f4d6](https://github.com/evertjanMlbrgn/laravel-form-components/commit/076f4d61468cb7ea9e0890e29f8e92c4e381cd9a))
+
 ## [1.0.110](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.109...1.0.110) (2025-12-07)
 
 
