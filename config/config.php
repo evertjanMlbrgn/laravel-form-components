@@ -151,8 +151,16 @@ return [
      | DEVELOPER ONLY
      |--------------------------------------------------------------------------
      |
-     | Only used by developer
+     | Only used by the developer
      */
     'mfc_using_local_package' => env('MFC_USING_LOCAL_PACKAGE', false),
 
+    /*
+      |--------------------------------------------------------------------------
+      | Deprecated features
+      |--------------------------------------------------------------------------
+      |
+      | Only used by the developer
+      */
+    'mfc_deprecated_dot_syntax' => false,
 ];

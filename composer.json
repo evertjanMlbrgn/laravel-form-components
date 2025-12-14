@@ -34,23 +34,23 @@
         }
     ],
     "require": {
-        "php": "^8.1 || ^8.2",
+        "php": "^8.1 || ^8.2 || ^8.3",
+        "barryvdh/laravel-ide-helper": "^3.0.0",
         "illuminate/support": "^9.0 || ^10.0 || ^11.0 || ^12.0",
         "symfony/http-foundation": "^6.0 || ^7.0"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^3.0",
-        "larastan/larastan": "^2.0",
+        "larastan/larastan": "^3.0.0",
         "laravel/pint": "^1.16",
         "mockery/mockery": "^1.4.4",
-        "nesbot/carbon": "^2.66",
-        "orchestra/testbench": "^8.23",
-        "orchestra/testbench-browser-kit": "^7.0 || ^8.0",
-        "pestphp/pest": "^v2.9.4",
-        "pestphp/pest-plugin-drift": "^2.1",
-        "pestphp/pest-plugin-type-coverage": "^2.8",
-        "spatie/laravel-translatable": "^6.0",
-        "symfony/dom-crawler": "^6.0"
+        "nesbot/carbon": "^3.0.0",
+        "orchestra/testbench": "^10.0.0",
+        "orchestra/testbench-browser-kit": "^10.0.0",
+        "pestphp/pest": "^4.0.0",
+        "pestphp/pest-plugin-drift": "^4.0.0",
+        "pestphp/pest-plugin-type-coverage": "^4.0.0",
+        "spatie/laravel-translatable": "^6.0.0",
+        "symfony/dom-crawler": "^7.0.0"
     },
     "autoload": {
         "psr-4": {

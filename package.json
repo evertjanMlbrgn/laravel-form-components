@@ -16,12 +16,12 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "passive-events-support": "^1.1.0",
-    "tinymce": "^7.1.0"
+    "tinymce": "^8.2.2"
   },
   "devDependencies": {
-    "laravel-vite-plugin": "^1.0.0",
-    "sass": "^1.77.5",
-    "vite": "^6.2.1"
+    "laravel-vite-plugin": "^2.0.1",
+    "sass": "^1.94.2",
+    "vite": "^7.2.4"
   },
   "author": "",
   "license": "ISC"
