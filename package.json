@@ -16,7 +16,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "passive-events-support": "^1.1.0",
-    "tinymce": "^8.2.2"
+    "tinymce": "^8.3.0"
   },
   "devDependencies": {
     "laravel-vite-plugin": "^2.0.1",
