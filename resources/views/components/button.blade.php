@@ -5,7 +5,12 @@
     ])->class([
         'btn',
         'd-none' => $hidden,
-        ])->except(['required', 'readonly', 'label', 'help-text', 'id'])->whereDoesntStartWith('class-')
+        ])->except([
+            'required',
+            'readonly',
+            'help-text',
+            'id'])
+            ->whereDoesntStartWith('class-')
     }}
     @if(!empty($name))
         name="{{ $name }}"
@@ -44,9 +49,3 @@
         </x-mlbrgn-form-components::text>
     @endif
 @endif
-
-{{-- Automatically include assets once per page --}}
-{{--@once--}}
-{{--    <x-mlbrgn-form-components::assets :config="$assetFeatures()" />--}}
-{{--@endonce--}}
-
