@@ -2,16 +2,40 @@
 
 {{-- Handle different input types, by using the right component --}}
 @if(in_array($type, ['button', 'reset', 'submit']))
-    @include('mlbrgn-form-components::button', [
-        'type' => $type,
-        'slot' => $attributes->get('value')
-    ])
+    <x-dynamic-component
+        :component="'form-button'"
+        :name="$name"
+        :type="$type"
+        :id="$id"
+        :hidden="$hidden"
+        :help-text="$helpText"
+        :label="$label"
+        :attributes="$attributes"
+    >
+        {{ $slot }}
+{{--        @slot('help')--}}
+{{--            fdsafds--}}
+{{--           {{ $help }}--}}
+{{--        @endslot--}}
+    </x-dynamic-component>
+
 @elseif(in_array($type, ['checkbox', 'radio']))
-    @include('mlbrgn-form-components::' . $type, [
-        'toggle' => $attributes->has('toggle'),
-        'checked' => $attributes->has('checked'),
-        'labelButton' => ''
-    ])
+    <x-dynamic-component
+        :component="'form-' . $type"
+        :name="$name"
+        :toggle="$attributes->has('toggle')"
+        :checked="$attributes->has('checked')"
+        :help-text="$helpText"
+        :value="$value"
+        :label="$label"
+        :attributes="$attributes"
+        :help="$attributes->slots()['help']"
+    >
+{{--                @slot('help')--}}
+{{--                    fdsafds--}}
+{{--                   {{ $help }}--}}
+{{--                @endslot--}}
+    </x-dynamic-component>
 @else
 
     {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
