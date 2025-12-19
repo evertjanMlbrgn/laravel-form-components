@@ -90,6 +90,9 @@
 </div>
 
 {{-- TODO only  import when client side form validation--}}
-@once
-    <link rel="stylesheet" href="{{ package_asset('form-validation.css') }}">
-@endonce
+{{--@once--}}
+{{--    <link rel="stylesheet" href="{{ package_asset('form-validation.css') }}">--}}
+{{--@endonce--}}
+{{--@once--}}
+{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
+{{--@endonce--}}

@@ -66,4 +66,20 @@ class HtmlEditor extends FormBaseComponent
         }
 
     }
+
+    public function assetFeatures(): array
+    {
+        return [
+            'features' => ['htmlEditor' => true],
+            'basePath' => asset('vendor/mlbrgn-form-components')
+        ];
+    }
+
+
+    public function tinymceConfig(): array
+    {
+        // Merge global config with component-specific settings if needed
+        return config('form-components.html_editor_tinymce_global_config', []);
+    }
+
 }

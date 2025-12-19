@@ -109,3 +109,6 @@
     @endif
 
 </x-mlbrgn-form-input-group>
+@once
+    <x-form-components::assets :config="$assetFeatures()" />
+@endonce

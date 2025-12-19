@@ -7,6 +7,7 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+                'resources/js/core/asset-loader.js',
                 'resources/js/main.js',
                 'resources/js/html-editor.js',
                 'resources/js/form-validation.js',
@@ -27,6 +28,7 @@ export default defineConfig({
                 // JS filenames
                 entryFileNames: chunk => {
                     const nameMap = {
+                        'asset-loader.js': 'js/asset-loader.js',
                         'main.js': 'js/mlbrgn-form-components.js',
                         'html-editor.js': 'js/mlbrgn-html-editor.js',
                         'form-validation.js': 'js/mlbrgn-form-validation.js',

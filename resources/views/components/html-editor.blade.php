@@ -2,13 +2,13 @@
 
     {{-- Wrapper for floating, hidden or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
     @if($floating || $hidden || $horizontal)
-    <div
-        {{ $attributes->onlyWrapperClasses()->class([
-            'row' => $horizontal,
-            'form-floating' => $floating,
-            'd-none' => $hidden
-       ]) }}
-    >
+        <div
+            {{ $attributes->onlyWrapperClasses()->class([
+                'row' => $horizontal,
+                'form-floating' => $floating,
+                'd-none' => $hidden
+           ]) }}
+        >
     @endif
 
     {{-- label before control --}}
@@ -44,7 +44,9 @@
                     'form-control',
                     'html-editor',
                     'is-invalid' => $hasError($name)
-                ])->whereDoesntStartWith('class-')->except(['label-end', 'id']) }}
+                ])->whereDoesntStartWith('class-')->except(['label-end', 'id'])->merge(
+                    ['data-mlbrgn-html-editor' => true]
+                ) }}
             @else
                 {{ $attributes->exceptWrapperClasses()->class([
                     'form-control',
@@ -149,16 +151,36 @@
     @endif
 @endif
 
+{{--@once--}}
+{{--    <script>--}}
+{{--        // document.addEventListener('DOMContentLoaded', () => {--}}
+{{--            window.mlbHtmlEditorTinymceConfig ??= {};--}}
+{{--            window.mlbHtmlEditorTinymceConfig = @json(config('form-components.html_editor_tinymce_global_config'));--}}
+{{--            console.log('window.mlbHtmlEditorTinymceConfig', window.mlbHtmlEditorTinymceConfig)--}}
+{{--        // })--}}
+{{--    </script>--}}
+{{--    <script src="{{ mlbrgnAsset('js/mlbrgn-html-editor.js') }}"></script>--}}
+{{--    <link rel="stylesheet" href="{{ mlbrgnAsset('css/mlbrgn-form-components.css') }}">--}}
+{{--@endonce--}}
+
+{{-- Automatically include assets once per page --}}
+{{--@once--}}
+{{--    <x-form-components::assets :config="['features' => ['validation' => true, 'htmlEditor' => true]]" />--}}
+{{--@endonce--}}
+{{--@once--}}
+{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
+{{--@endonce--}}
+
+{{-- Automatically include assets once per page --}}
 @once
-    <script>
-        // document.addEventListener('DOMContentLoaded', () => {
-            window.mlbHtmlEditorTinymceConfig ??= {};
-            window.mlbHtmlEditorTinymceConfig = @json(config('form-components.html_editor_tinymce_global_config'));
-            console.log('window.mlbHtmlEditorTinymceConfig', window.mlbHtmlEditorTinymceConfig)
-        // })
-    </script>
-    <script src="{{ mlbrgnAsset('js/mlbrgn-html-editor.js') }}"></script>
-    <link rel="stylesheet" href="{{ mlbrgnAsset('css/mlbrgn-form-components.css') }}">
+    <x-form-components::assets :config="$assetFeatures()" />
 @endonce
+
+{{-- Inline TinyMCE config --}}
+<script>
+    window.mlbHtmlEditorTinymceConfig ??= {};
+    window.mlbHtmlEditorTinymceConfig = @json($tinymceConfig());
+    console.log('window.mlbHtmlEditorTinymceConfig', window.mlbHtmlEditorTinymceConfig);
+</script>
 
 @stack('mfc-html-editor-assets')

@@ -7,3 +7,6 @@
     @endif
 >{{ $slot }}</div>
 {{-- NOTE: No spaces between start and end tag --}}
+@once
+    <x-form-components::assets :config="$assetFeatures()" />
+@endonce

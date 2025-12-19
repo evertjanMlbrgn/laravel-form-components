@@ -24,6 +24,11 @@ abstract class FormBaseComponent extends Component
         };
     }
 
+    public function assetFeatures(): array
+    {
+        return [];
+    }
+
     /**
      * Generates an ID
      */
@@ -66,4 +71,6 @@ abstract class FormBaseComponent extends Component
     {
         return str_replace(['[', ']'], ['.', ''], $name);
     }
+
+
 }

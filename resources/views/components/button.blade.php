@@ -43,3 +43,9 @@
         >{{ $helpText }}</x-mlbrgn-form-text>
     @endif
 @endif
+
+{{-- Automatically include assets once per page --}}
+@once
+    <x-form-components::assets :config="$assetFeatures()" />
+@endonce
+

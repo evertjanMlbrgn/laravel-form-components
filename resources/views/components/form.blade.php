@@ -5,9 +5,18 @@
 --}}
 <form
     method="{{ $spoofMethod ? 'POST' : $method }}"
-    {{ $attributes->class([
-        'needs-validation' => $hasError() || $validationMode === 'client-default' || $validationMode === 'client-custom'
-    ]) }}
+{{--    {{ $attributes->class([--}}
+{{--        'needs-validation' => $hasError() || $validationMode === 'client-default' || $validationMode === 'client-custom'--}}
+{{--    ]) }}--}}
+    {{ $attributes
+       ->class([
+           'needs-validation' => $hasError() || $validationMode === 'client-default' || $validationMode === 'client-custom',
+       ])
+       ->merge([
+           'novalidate' => ($validationMode === 'client-custom' || $validationMode === 'server') ? true : null,
+           'data-mlbrgn-validation' => ($validationMode === 'client-default' || $validationMode === 'client-custom') ? true : null,
+       ])
+   }}
     {{ ($validationMode === 'client-custom' || $validationMode === 'server') ? 'novalidate' : '' }}
     >
 
@@ -23,8 +32,12 @@
 </form>
 
 @if($validationMode === 'client-default' || $validationMode === 'client-custom')
+    {{-- old way --}}
     @once
         <script src="{{ package_asset('form-validation.js') }}"></script>
     @endonce
+    {{--new way--}}
+    @once
+        <x-form-components::assets :config="$assetFeatures()" />
+    @endonce
 @endif
-

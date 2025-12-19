@@ -49,4 +49,15 @@ class Form extends FormBaseComponent
         }
         return false;
     }
+
+    public function assetFeatures(): array
+    {
+        $features = [];
+        if ($this->validationMode === 'client-default' || $this->validationMode === 'client-custom') {
+            $features['validation'] = true;
+        }
+        return ['features' => $features, 'basePath' => asset('vendor/mlbrgn-form-components')];
+    }
+
+
 }

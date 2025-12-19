@@ -162,4 +162,6 @@
     @endif
 
 @endif
-
+@once
+    <x-form-components::assets :config="$assetFeatures()" />
+@endonce
