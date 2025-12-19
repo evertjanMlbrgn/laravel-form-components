@@ -108,6 +108,6 @@
     </div>
     @endif
 @endif
-@once
-    <x-form-components::assets :config="$assetFeatures()" />
-@endonce
+{{--@once--}}
+{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
+{{--@endonce--}}

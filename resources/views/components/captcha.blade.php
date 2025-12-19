@@ -14,6 +14,6 @@
        $attributes->get('class-button', '') => $attributes->has('class-button')
     ])
 >{{ $label }}</x-mlbrgn-form-submit>
-@once
-    <x-form-components::assets :config="$assetFeatures()" />
-@endonce
+{{--@once--}}
+{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
+{{--@endonce--}}

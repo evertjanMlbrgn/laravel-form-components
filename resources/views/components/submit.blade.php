@@ -1,1 +1,1 @@
-@include('form-components::button', ['type' => 'submit'])
+@include('mlbrgn-form-components::button', ['type' => 'submit'])

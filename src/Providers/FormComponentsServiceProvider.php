@@ -158,19 +158,13 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
     protected function registerComponents(): void
     {
-        // Load package views under the configurable view namespace
+        // Load package views under the internal view namespace
         $this->loadViewsFrom(
             realpath(self::PATH_TO_BLADE_COMPONENT_VIEWS),
-            config('form-components.view_namespace')
+            'mlbrgn-form-components' // internal-only namespace, not user-configurable
         );
 
-        // Register namespace for internal package Blade components
-        Blade::componentNamespace(
-            'Mlbrgn\\LaravelFormComponents\\View\\Components',
-            config('form-components.component_namespace')
-        );
-
-        $prefix = config('form-components.tag_prefix');
+        $prefix = config('form-components.tag_prefix', 'form');
 
         foreach (self::$components as $name => $class) {
             // Skip internal-only components like 'assets'
@@ -181,6 +175,28 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             // Register user-facing components with tag prefix
             Blade::component("{$prefix}-{$name}", $class);
         }
+
+        // Explicit Blade component registration for IDE autocompletion
+//        Blade::component('form-input', Mlbrgn\LaravelFormComponents\View\Components\Input::class);
+//        Blade::component('form-captcha', Mlbrgn\LaravelFormComponents\View\Components\Captcha::class);
+//        Blade::component('form-checkbox', Mlbrgn\LaravelFormComponents\View\Components\Checkbox::class);
+//        Blade::component('form-errors', Mlbrgn\LaravelFormComponents\View\Components\Errors::class);
+//        Blade::component('form-form', Mlbrgn\LaravelFormComponents\View\Components\Form::class);
+//        Blade::component('form-group', Mlbrgn\LaravelFormComponents\View\Components\Group::class);
+//        Blade::component('form-html-editor', Mlbrgn\LaravelFormComponents\View\Components\HtmlEditor::class);
+//        Blade::component('form-input-group', Mlbrgn\LaravelFormComponents\View\Components\InputGroup::class);
+//        Blade::component('form-input-group-icon', Mlbrgn\LaravelFormComponents\View\Components\InputGroupIcon::class);
+//        Blade::component('form-input-group-text', Mlbrgn\LaravelFormComponents\View\Components\InputGroupText::class);
+//        Blade::component('form-label', Mlbrgn\LaravelFormComponents\View\Components\Label::class);
+//        Blade::component('form-radio', Mlbrgn\LaravelFormComponents\View\Components\Radio::class);
+//        Blade::component('form-recaptcha-v2', Mlbrgn\LaravelFormComponents\View\Components\RecaptchaV2::class);
+//        Blade::component('form-select', Mlbrgn\LaravelFormComponents\View\Components\Select::class);
+//        Blade::component('form-submit', Mlbrgn\LaravelFormComponents\View\Components\Submit::class);
+//        Blade::component('form-text', Mlbrgn\LaravelFormComponents\View\Components\Text::class);
+//        Blade::component('form-textarea', Mlbrgn\LaravelFormComponents\View\Components\Textarea::class);
+//        Blade::component('form-button', Mlbrgn\LaravelFormComponents\View\Components\Button::class);
+//        Blade::component('form-local-package-badge', Mlbrgn\LaravelFormComponents\View\Components\LocalPackageBadge::class);
+
     }
 
 //    protected function registerComponents(): void

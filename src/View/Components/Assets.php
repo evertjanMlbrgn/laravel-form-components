@@ -23,6 +23,6 @@ class Assets extends Component
 
     public function render(): View
     {
-        return view(config('form-components.view_namespace') . '::components.assets');
+       return view('mlbrgn-form-components::assets');
     }
 }

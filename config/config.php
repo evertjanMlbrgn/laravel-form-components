@@ -5,31 +5,31 @@ return [
     /** which frontend framework to use, only bootstrap 5 is supported (for now) */
     'framework' => env('FORM_COMPONENTS_FRAMEWORK', 'bootstrap-5'),
 
-    /**
-     * The view namespace used when loading Blade views **from within this package**.
-     *
-     * Example:
-     *   If 'view_namespace' is set to 'my-namespace', you can reference views like:
-     *     @include('my-namespace::component-name')
-     *     or
-     *     <x-my-namespace::component-name />
-     *
-     * This is purely for organizing your package's internal views and does not affect
-     * the tag names used by Blade components.
-     */
-    'view_namespace' => env('FORM_COMPONENTS_VIEW_NAMESPACE', 'form-components'),
+//    /**
+//     * The view namespace used when loading Blade views **from within this package**.
+//     *
+//     * Example:
+//     *   If 'view_namespace' is set to 'my-namespace', you can reference views like:
+//     *     @include('my-namespace::component-name')
+//     *     or
+//     *     <x-my-namespace::component-name />
+//     *
+//     * This is purely for organising your package's internal views and does not affect
+//     * the tag names used by Blade components.
+//     */
+//    'view_namespace' => env('FORM_COMPONENTS_VIEW_NAMESPACE', 'mlbrgn-form-components'),
 
-    /**
-     * The component namespace used when registering Blade components **from this package**.
-     *
-     * Example:
-     *   If 'component_namespace' is set to 'my-components', you can reference a component in a view like:
-     *     <x-my-components::input />
-     *
-     * This is separate from the tag prefix and is primarily for namespacing components internally
-     * or for advanced use cases where you want a different namespace than the default 'form'.
-     */
-    'component_namespace' => env('FORM_COMPONENTS_COMPONENT_NAMESPACE', 'form-components'),
+//    /**
+//     * The component namespace used when registering Blade components **from this package**.
+//     *
+//     * Example:
+//     *   If 'component_namespace' is set to 'my-components', you can reference a component in a view like:
+//     *     <x-my-components::input />
+//     *
+//     * This is separate from the tag prefix and is primarily for namespacing components internally
+//     * or for advanced use cases where you want a different namespace than the default 'form'.
+//     */
+//    'component_namespace' => env('FORM_COMPONENTS_COMPONENT_NAMESPACE', 'form-components'),
 
     /**
      * The prefix used before component tags when used in Blade views by the **end user**.

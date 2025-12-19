@@ -20,7 +20,7 @@ abstract class FormBaseComponent extends Component
         return function (array $data) {
             $id = $this->determineId($data['attributes']->get('id'), $data['name'] ?? '');
 
-            return view(config('form-components.view_namespace').'::'.Str::kebab(class_basename($this)), ['id' => $id]);
+            return view('mlbrgn-form-components::'.Str::kebab(class_basename($this)), ['id' => $id]);
         };
     }
 
