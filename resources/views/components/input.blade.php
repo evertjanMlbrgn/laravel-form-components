@@ -2,12 +2,12 @@
 
 {{-- Handle different input types, by using the right component --}}
 @if(in_array($type, ['button', 'reset', 'submit']))
-    @include('form-components::button', [
+    @include('mlbrgn-form-components::button', [
         'type' => $type,
         'slot' => $attributes->get('value')
     ])
 @elseif(in_array($type, ['checkbox', 'radio']))
-    @include('form-components::' . $type, [
+    @include('mlbrgn-form-components::' . $type, [
         'toggle' => $attributes->has('toggle'),
         'checked' => $attributes->has('checked'),
         'labelButton' => ''

@@ -101,62 +101,62 @@ Route::middleware(['web'])->group(function () {
 //        ]);
 //    })->where('path', '.*')->name('package.assets');
 
-    Route::get('package/assets/{name}', function ($name) {
-
-        $allowedAssets = [
-            'preview.css',
-            'preview.js',
-            'main.css',
-            'main.js',
-            'html-editor.js',
-            'form-validation.js',
-            'form-validation.css',
-            'button-image.png',
-            'icon-envelope.png',
-            'sprite.svg',
-        ];
-
-        if (! in_array($name, $allowedAssets, true)) {
-            abort(404);
-        }
-
-        // Anchor paths to Laravel base path (open_basedir safe)
-        $base = base_path('vendor/mlbrgn/laravel-form-components');
-
-        $map = [
-            'preview.css'          => $base . '/dist/css/mlbrgn-preview.css',
-            'preview.js'           => $base . '/dist/js/mlbrgn-preview.js',
-            'main.css'             => $base . '/dist/css/index.css',
-            'main.js'              => $base . '/dist/js/index.js',
-            'html-editor.js'       => $base . '/dist/js/mlbrgn-html-editor.js',
-            'form-validation.js'   => $base . '/dist/js/mlbrgn-form-validation.js',
-            'form-validation.css'  => $base . '/dist/css/mlbrgn-form-validation.css',
-            'button-image.png'     => $base . '/public/images/button-image.png',
-            'icon-envelope.png'    => $base . '/public/images/icon-envelope.png',
-            'sprite.svg'           => $base . '/public/images/sprite.svg',
-        ];
-
-        $file = $map[$name] ?? null;
-
-        if (! $file || ! is_file($file)) {
-            abort(404);
-        }
-
-        $extension = pathinfo($file, PATHINFO_EXTENSION);
-
-        $mimeTypes = [
-            'css' => 'text/css; charset=utf-8',
-            'js'  => 'application/javascript',
-            'png' => 'image/png',
-            'svg' => 'image/svg+xml',
-        ];
-
-        $mimeType = $mimeTypes[$extension] ?? 'application/octet-stream';
-
-        return Response::make(File::get($file), 200, [
-            'Content-Type'  => $mimeType,
-            'Cache-Control' => 'public, max-age=86400',
-        ]);
-    })->name('package.assets');
+//    Route::get('package/assets/{name}', function ($name) {
+//
+//        $allowedAssets = [
+//            'preview.css',
+//            'preview.js',
+//            'main.css',
+//            'main.js',
+//            'html-editor.js',
+//            'form-validation.js',
+//            'form-validation.css',
+//            'button-image.png',
+//            'icon-envelope.png',
+//            'sprite.svg',
+//        ];
+//
+//        if (! in_array($name, $allowedAssets, true)) {
+//            abort(404);
+//        }
+//
+//        // Anchor paths to Laravel base path (open_basedir safe)
+//        $base = base_path('vendor/mlbrgn/laravel-form-components');
+//
+//        $map = [
+//            'preview.css'          => $base . '/dist/css/mlbrgn-preview.css',
+//            'preview.js'           => $base . '/dist/js/mlbrgn-preview.js',
+//            'main.css'             => $base . '/dist/css/index.css',
+//            'main.js'              => $base . '/dist/js/index.js',
+//            'html-editor.js'       => $base . '/dist/js/mlbrgn-html-editor.js',
+//            'form-validation.js'   => $base . '/dist/js/mlbrgn-form-validation.js',
+//            'form-validation.css'  => $base . '/dist/css/mlbrgn-form-validation.css',
+//            'button-image.png'     => $base . '/public/images/button-image.png',
+//            'icon-envelope.png'    => $base . '/public/images/icon-envelope.png',
+//            'sprite.svg'           => $base . '/public/images/sprite.svg',
+//        ];
+//
+//        $file = $map[$name] ?? null;
+//
+//        if (! $file || ! is_file($file)) {
+//            abort(404);
+//        }
+//
+//        $extension = pathinfo($file, PATHINFO_EXTENSION);
+//
+//        $mimeTypes = [
+//            'css' => 'text/css; charset=utf-8',
+//            'js'  => 'application/javascript',
+//            'png' => 'image/png',
+//            'svg' => 'image/svg+xml',
+//        ];
+//
+//        $mimeType = $mimeTypes[$extension] ?? 'application/octet-stream';
+//
+//        return Response::make(File::get($file), 200, [
+//            'Content-Type'  => $mimeType,
+//            'Cache-Control' => 'public, max-age=86400',
+//        ]);
+//    })->name('package.assets');
 
 });

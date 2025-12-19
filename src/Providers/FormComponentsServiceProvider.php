@@ -265,8 +265,8 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         ComponentAttributeBag::macro('onlyWrapperClasses', function () {
 
             if (! config('form-components.use_wrapper_classes')) {
-//                return new static([]);
-                return ComponentAttributeBag::make([]);
+                return new static([]);
+//                return ComponentAttributeBag::make([]);
             }
 
             $classes = $this->get('class', '');
@@ -288,8 +288,8 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $retAttributes = [];
             $retAttributes['class'] = $wrapperClassesString;
 
-//            return new static($retAttributes);
-            return ComponentAttributeBag::make($retAttributes);
+            return new static($retAttributes);
+//            return ComponentAttributeBag::make($retAttributes);
         });
 
         ComponentAttributeBag::macro('exceptWrapperClasses', function () {

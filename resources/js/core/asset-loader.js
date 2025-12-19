@@ -32,7 +32,6 @@ function loadStyle(url) {
 
 // --- main loader ---
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('TEST')
     const configEl = document.getElementById('mlbrgn-asset-config');
     console.log(configEl);
     if (!configEl) {
@@ -58,7 +57,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         await loadScript(`${basePath}/js/index.js`);
 
         // Validation
-        if (features.validation && document.querySelector('[data-mlbrgn-validation]')) {
+        // if (features.validation && document.querySelector('[data-mlbrgn-validation]')) {
+        if (features.validation) {
             await loadStyle(`${basePath}/css/mlbrgn-form-validation.css`);
             await loadScript(`${basePath}/js/mlbrgn-form-validation.js`);
         }

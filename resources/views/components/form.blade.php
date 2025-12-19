@@ -31,15 +31,10 @@
     {{ $slot }}
 </form>
 
-<x-mlbrgn-form-components::assets :config="$assetFeatures()" />
+{{--<x-mlbrgn-form-components::assets :config="$assetFeatures()" />--}}
 
-@if($validationMode === 'client-default' || $validationMode === 'client-custom')
-    {{-- old way --}}
-    @once
-        <script src="{{ package_asset('form-validation.js') }}"></script>
-    @endonce
-    {{--new way--}}
+{{--@if($validationMode === 'client-default' || $validationMode === 'client-custom')--}}
     @once
         <x-mlbrgn-form-components::assets :config="$assetFeatures()" />
     @endonce
-@endif
+{{--@endif--}}

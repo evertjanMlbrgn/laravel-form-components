@@ -5,7 +5,8 @@ use Illuminate\Http\Request;
 it('always gets an id attribute', function () {
     $this->registerTestRoute('bootstrap-input');
 
-    $this->visit('/bootstrap-input')
+    $response = $this->visit('/bootstrap-input');
+    $response
         ->within('#form-input-no-id', function () {
             return $this->seeElement('button[id]')// uses button component
                 ->seeElement('input[id]')

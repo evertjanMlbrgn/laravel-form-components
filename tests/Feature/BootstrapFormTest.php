@@ -34,8 +34,9 @@ it('sets the csrf token to the forms that need it', function () {
 it('handles validation-mode="client-custom"', function () {
     $this->registerTestRoute('bootstrap-form');
 
-    $this->visit('/bootstrap-form')
-        ->within('#form_client_custom_validation', function () {
+    $response = $this->visit('/bootstrap-form');
+//    dd($something);
+        $response->within('#form_client_custom_validation', function () {
             $this->seeElement('form.needs-validation')
                 ->seeElement('form[novalidate]')
                 ->seeElement('div.input-group.has-validation')

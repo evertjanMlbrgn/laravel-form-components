@@ -203,9 +203,14 @@ it('can set value using slot', function () {
         });
 });
 
-it('adds javascript', function () {
+it('enables validation assets when using custom validation mode', function () {
     $this->registerTestRoute('custom-html-editor');
 
     $this->visit('/custom-html-editor')
-        ->seeElement('script[src$="html-editor.js"]');
+        ->seeElement('#mlbrgn-asset-config')
+        ->seeInElement(
+            '#mlbrgn-asset-config',
+            '"htmlEditor":true'
+        )
+        ->seeElement('[data-mlbrgn-html-editor]');
 });

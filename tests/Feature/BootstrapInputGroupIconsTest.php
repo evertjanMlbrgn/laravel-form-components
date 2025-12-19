@@ -3,8 +3,8 @@
 it('can render icons', function () {
     $this->registerTestRoute('bootstrap-input-group-icons');
 
-    $this->visit('/bootstrap-input-group-icons')
-        ->within('#form-input-group-icons', function () {
+    $response = $this->visit('/bootstrap-input-group-icons');
+    $response->within('#form-input-group-icons', function () {
             $this->seeElement('div.input-group span.input-group-text.input-group-icon.input-group-icon-font i.bi-alarm')
                 ->seeElement('div.input-group span.input-group-text.input-group-icon.input-group-icon-img img[alt=""]')
                 ->seeElement('div.input-group span.input-group-text.input-group-icon.input-group-icon-svg svg')
