@@ -56,7 +56,7 @@ class Form extends FormBaseComponent
         if ($this->validationMode === 'client-default' || $this->validationMode === 'client-custom') {
             $features['validation'] = true;
         }
-        return ['features' => $features, 'basePath' => asset('vendor/mlbrgn-form-components')];
+        return ['features' => $features, 'basePath' => asset('vendor/mlbrgn/laravel-form-components')];
     }
 
 

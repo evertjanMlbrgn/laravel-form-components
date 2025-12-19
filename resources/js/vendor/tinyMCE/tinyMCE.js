@@ -151,10 +151,12 @@ const resolveFilePickerCallback = (callback) => {
     return callback;
 };
 
-document.addEventListener('DOMContentLoaded', async () => {
+// document.addEventListener('DOMContentLoaded', async () => {
     const globalHtmlEditorTinymceConfig = window.mlbHtmlEditorTinymceConfig ?? {};
 
-    document.querySelectorAll('.html-editor').forEach(async el => {
+    const allHtmlEditorsOnPage = document.querySelectorAll('[data-mlbrgn-html-editor]');
+    console.log('all html editors on page', allHtmlEditorsOnPage);
+    allHtmlEditorsOnPage.forEach(async el => {
         let elementTinymceConfig = {};
         if (el.dataset.tinymceConfig) {
             try {
@@ -179,4 +181,4 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log('mergedConfig', mergedConfig);
         await tinymce.init(mergedConfig);
     });
-});
+// });

@@ -54,12 +54,11 @@
 
     {{-- Error message --}}
 {{--    @if($shouldShowError($name))--}}
-{{--        <x-mlbrgn-form-errors :name="$name" />--}}
+{{--        <x-mlbrgn-form-components::errors :name="$name" />--}}
 {{--    @endif--}}
 
     {{-- Help text --}}
     @isset($help)
-{{--        <x-mlbrgn-form-text :id="$id">{{ $help }}</x-mlbrgn-form-text>--}}
         <x-mlbrgn-form-components::text
             :id="$id"
             @class([
@@ -69,7 +68,6 @@
     @endif
 
     @if(!empty($helpText) && !isset($help))
-{{--        <x-mlbrgn-form-text :id="$id">{{ $helpText }}</x-mlbrgn-form-text>--}}
         <x-mlbrgn-form-components::text
             :id="$id"
             @class([

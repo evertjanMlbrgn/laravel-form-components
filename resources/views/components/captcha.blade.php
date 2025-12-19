@@ -9,11 +9,11 @@
      data-size="invisible"
      data-callback="{{ $callback }}">
 </div>
-<x-mlbrgn-form-submit
+<x-mlbrgn-form-components::submit
     @class([
        $attributes->get('class-button', '') => $attributes->has('class-button')
     ])
->{{ $label }}</x-mlbrgn-form-submit>
+>{{ $label }}</x-mlbrgn-form-components::submit>
 {{--@once--}}
 {{--    <x-form-components::assets :config="$assetFeatures()" />--}}
 {{--@endonce--}}

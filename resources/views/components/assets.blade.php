@@ -6,7 +6,7 @@
 
     {{-- Load the public asset loader (handles all features: validation, html-editor, etc.) --}}
     <script type="module"
-            src="{{ asset('vendor/mlbrgn-form-components/js/asset-loader.js') }}">
+            src="{{ asset('vendor/mlbrgn/laravel-form-components/js/asset-loader.js') }}">
     </script>
 @endonce
 

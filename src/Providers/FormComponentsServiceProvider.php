@@ -29,9 +29,15 @@ use Mlbrgn\LaravelFormComponents\View\Components\Select;
 use Mlbrgn\LaravelFormComponents\View\Components\Submit;
 use Mlbrgn\LaravelFormComponents\View\Components\Text;
 use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
-use Mlbrgn\LaravelFormComponents\Support\PackageAssetManager;
+//use Mlbrgn\LaravelFormComponents\Support\PackageAssetManager;
 
 
+/**
+ * @bladeComponent mlbrgn-form-components::text
+ * @bladeComponent mlbrgn-form-components::input
+ * @bladeComponent mlbrgn-form-components::group
+ * @bladeComponent mlbrgn-form-components::label
+ */
 class FormComponentsServiceProvider extends BaseServiceProvider
 {
     // TODO consider using https://github.com/spatie/laravel-package-tools, makes installing package easier
@@ -92,8 +98,14 @@ class FormComponentsServiceProvider extends BaseServiceProvider
                 self::CONFIG_FILE => config_path('form-components.php'),
             ], 'mlbrgn-form-components-config');
 
+            // php artisan vendor:publish --tag=mlbrgn-form-components-assets
+//            $this->publishes([
+//                __DIR__.'/../../dist' => public_path('vendor/mlbrgn-form-components'),
+//            ], 'mlbrgn-form-components-assets');
+
+            // publish assets
             $this->publishes([
-                __DIR__.'/../../dist' => public_path('vendor/mlbrgn-form-components'),
+                __DIR__ . '/../../dist' => public_path('vendor/mlbrgn/laravel-form-components'),
             ], 'mlbrgn-form-components-assets');
 
             $this->commands([
@@ -121,10 +133,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             //                self::PATH_HELPERS => base_path('app/Helpers'),
             //            ], 'mlbrgn-form-components-helpers');
 
-            // publish assets
-            $this->publishes([
-                __DIR__ . '/../../dist' => public_path('vendor/mlbrgn/laravel-form-components'),
-            ], 'public');
+
             // publish test page?
             //            $this->publishes([
             //                __DIR__.'/../resources/js' => resource_path('js/vendor/package_name'),
@@ -158,45 +167,69 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
     protected function registerComponents(): void
     {
-        // Load package views under the internal view namespace
+
+        // blade lookup mechanism
+        // Look for a class via componentNamespace()
+        // If not found → look for an anonymous component view
+        // If neither found → error
+
+        // Locate .blade.php files
+        // after this we can use: @include('mlbrgn-form-components::components.label')
+        // does not:
+        // - Register Blade components
+        // - Create <x-mlbrgn-form-components::*>
+        // - Register PHP classes
+        // Use for anonymous blade views
         $this->loadViewsFrom(
             realpath(self::PATH_TO_BLADE_COMPONENT_VIEWS),
             'mlbrgn-form-components' // internal-only namespace, not user-configurable
         );
 
+        // Map <x-foo::bar> → PHP class
+        // Registers a class namespace → Blade tag namespace mapping.
+        // supports subfolders
+        // does not:
+        // - load views
+        // - register aliases
+        // - respect configurable prefixes
+        Blade::componentNamespace(
+            'Mlbrgn\LaravelFormComponents\View\Components',
+            'mlbrgn-form-components'
+        );
+
+        // Public, configurable aliases
         $prefix = config('form-components.tag_prefix', 'form');
 
-        foreach (self::$components as $name => $class) {
-            // Skip internal-only components like 'assets'
-            if ($name === 'assets') {
-                continue;
-            }
-
-            // Register user-facing components with tag prefix
-            Blade::component("{$prefix}-{$name}", $class);
-        }
-
-        // Explicit Blade component registration for IDE autocompletion
-//        Blade::component('form-input', Mlbrgn\LaravelFormComponents\View\Components\Input::class);
-//        Blade::component('form-captcha', Mlbrgn\LaravelFormComponents\View\Components\Captcha::class);
-//        Blade::component('form-checkbox', Mlbrgn\LaravelFormComponents\View\Components\Checkbox::class);
-//        Blade::component('form-errors', Mlbrgn\LaravelFormComponents\View\Components\Errors::class);
-//        Blade::component('form-form', Mlbrgn\LaravelFormComponents\View\Components\Form::class);
-//        Blade::component('form-group', Mlbrgn\LaravelFormComponents\View\Components\Group::class);
-//        Blade::component('form-html-editor', Mlbrgn\LaravelFormComponents\View\Components\HtmlEditor::class);
-//        Blade::component('form-input-group', Mlbrgn\LaravelFormComponents\View\Components\InputGroup::class);
-//        Blade::component('form-input-group-icon', Mlbrgn\LaravelFormComponents\View\Components\InputGroupIcon::class);
-//        Blade::component('form-input-group-text', Mlbrgn\LaravelFormComponents\View\Components\InputGroupText::class);
-//        Blade::component('form-label', Mlbrgn\LaravelFormComponents\View\Components\Label::class);
-//        Blade::component('form-radio', Mlbrgn\LaravelFormComponents\View\Components\Radio::class);
-//        Blade::component('form-recaptcha-v2', Mlbrgn\LaravelFormComponents\View\Components\RecaptchaV2::class);
-//        Blade::component('form-select', Mlbrgn\LaravelFormComponents\View\Components\Select::class);
-//        Blade::component('form-submit', Mlbrgn\LaravelFormComponents\View\Components\Submit::class);
-//        Blade::component('form-text', Mlbrgn\LaravelFormComponents\View\Components\Text::class);
-//        Blade::component('form-textarea', Mlbrgn\LaravelFormComponents\View\Components\Textarea::class);
-//        Blade::component('form-button', Mlbrgn\LaravelFormComponents\View\Components\Button::class);
-//        Blade::component('form-local-package-badge', Mlbrgn\LaravelFormComponents\View\Components\LocalPackageBadge::class);
-
+        // Map <x-foo-bar> → PHP class
+        // (Create a public alias for a component)
+        Blade::component($prefix .'-input', Input::class);
+        Blade::component($prefix .'-captcha', Captcha::class);
+        Blade::component($prefix .'-checkbox', Checkbox::class);
+        Blade::component($prefix .'-errors', Errors::class);
+        Blade::component($prefix .'-form', Form::class);
+        Blade::component($prefix .'-group', Group::class);
+        Blade::component($prefix .'-html-editor', HtmlEditor::class);
+        Blade::component($prefix .'-input-group', InputGroup::class);
+        Blade::component($prefix .'-input-group-icon', InputGroupIcon::class);
+        Blade::component($prefix .'-input-group-text', InputGroupText::class);
+        Blade::component($prefix .'-label', Label::class);
+        Blade::component($prefix .'-radio', Radio::class);
+        Blade::component($prefix .'-recaptcha-v2', RecaptchaV2::class);
+        Blade::component($prefix .'-select', Select::class);
+        Blade::component($prefix .'-submit', Submit::class);
+        Blade::component($prefix .'-text', Text::class);
+        Blade::component($prefix .'-textarea', Textarea::class);
+        Blade::component($prefix .'-button', Button::class);
+        Blade::component($prefix .'-local-package-badge', LocalPackageBadge::class);
+//        foreach (self::$components as $name => $class) {
+//            // Skip internal-only components like 'assets'
+//            if ($name === 'assets') {
+//                continue;
+//            }
+//
+//            // Register user-facing components with tag prefix
+//            Blade::component("{$prefix}-{$name}", $class);
+//        }
     }
 
 //    protected function registerComponents(): void

@@ -107,7 +107,7 @@
 
     {{-- server side feedback messages --}}
     @if($shouldShowError($name))
-        <x-mlbrgn-form-errors :name="$name" />
+        <x-mlbrgn-form-components::errors :name="$name" />
     @endif
 
     {{-- Help text --}}

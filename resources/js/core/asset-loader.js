@@ -5,6 +5,7 @@ function loadScript(url) {
     return new Promise((resolve, reject) => {
         if (loadedAssets.has(url)) return resolve();
 
+        console.log('loadScript', url)
         const script = document.createElement('script');
         script.src = url;
         script.defer = true;
@@ -18,7 +19,10 @@ function loadScript(url) {
 }
 
 function loadStyle(url) {
+
     if (loadedAssets.has(url)) return;
+    console.log('loadStyle', url)
+
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = url;
@@ -28,8 +32,13 @@ function loadStyle(url) {
 
 // --- main loader ---
 document.addEventListener('DOMContentLoaded', async () => {
+    console.log('TEST')
     const configEl = document.getElementById('mlbrgn-asset-config');
-    if (!configEl) return;
+    console.log(configEl);
+    if (!configEl) {
+        console.warn('no config element')
+        return;
+    }
 
     let config;
     try {
@@ -45,8 +54,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         // Core assets
-        await loadStyle(`${basePath}/css/mlbrgn-form-components.css`);
-        await loadScript(`${basePath}/js/mlbrgn-form-components.js`);
+        await loadStyle(`${basePath}/css/index.css`);
+        await loadScript(`${basePath}/js/index.js`);
 
         // Validation
         if (features.validation && document.querySelector('[data-mlbrgn-validation]')) {

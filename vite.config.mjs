@@ -1,19 +1,21 @@
 // vite.config.mjs
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import path from 'path';
 
 export default defineConfig({
     plugins: [
         laravel({
             input: [
                 'resources/js/core/asset-loader.js',
-                'resources/js/main.js',
+
+                'resources/js/index.js',
                 'resources/js/html-editor.js',
                 'resources/js/form-validation.js',
-                'resources/css/main.scss',
+
+                'resources/css/index.scss',
                 'resources/css/form-validation.scss',
                 'resources/css/tinyMCE/tinyMCEContentCSS.scss',
+
                 'resources/js/preview.js',
                 'resources/css/preview.scss',
             ],
@@ -29,7 +31,7 @@ export default defineConfig({
                 entryFileNames: chunk => {
                     const nameMap = {
                         'asset-loader.js': 'js/asset-loader.js',
-                        'main.js': 'js/mlbrgn-form-components.js',
+                        'index.js': 'js/index.js',
                         'html-editor.js': 'js/mlbrgn-html-editor.js',
                         'form-validation.js': 'js/mlbrgn-form-validation.js',
                         'preview.js': 'js/mlbrgn-preview.js',
@@ -40,7 +42,7 @@ export default defineConfig({
                 // CSS filenames
                 assetFileNames: chunk => {
                     const nameMap = {
-                        'main.css': 'css/mlbrgn-form-components.css',
+                        'index.css': 'css/index.css',
                         'form-validation.css': 'css/mlbrgn-form-validation.css',
                         'preview.css': 'css/mlbrgn-preview.css',
                         'tinyMCEContentCSS.css': 'css/tiny-mce-content.css',

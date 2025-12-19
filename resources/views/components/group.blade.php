@@ -12,14 +12,14 @@
         aria-describedby="{{ $id }}-help-text"
     @endif
 >
-    <x-mlbrgn-form-label
+    <x-mlbrgn-form-components::label
         :required="$attributes->has('required')"
 {{--        @class([--}}
 {{--            'col-4' => empty($attributes->get('class-label', '')),--}}
 {{--            $attributes->get('class-label', '')--}}
 {{--         ])--}}
 {{--        :for="$id">--}}
-    >{{ $label }}</x-mlbrgn-form-label>
+    >{{ $label }}</x-mlbrgn-form-components::label>
 
 {{--    @if(config('form-components.detect_validation_classes_in_group'))--}}
 {{--        @php--}}
@@ -66,26 +66,26 @@
 
     {{-- Help text --}}
     @isset($help)
-        <x-mlbrgn-form-text
+        <x-mlbrgn-form-components::text
             :id="$id"
             @class([
                 $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
             ])
-        >{{ $help }}</x-mlbrgn-form-text>
+        >{{ $help }}</x-mlbrgn-form-components::text>
     @endif
 
     @if(!empty($helpText) && !isset($help))
-        <x-mlbrgn-form-text
+        <x-mlbrgn-form-components::text
             :id="$id"
             @class([
                 $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
             ])
-        >{{ $helpText }}</x-mlbrgn-form-text>
+        >{{ $helpText }}</x-mlbrgn-form-components::text>
     @endif
 
     {{-- server side feedback messages --}}
     @if($shouldShowError($name))
-        <x-mlbrgn-form-errors :name="$name" />
+        <x-mlbrgn-form-components::errors :name="$name" />
     @endif
 </div>
 

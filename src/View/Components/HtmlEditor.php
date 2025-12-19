@@ -71,7 +71,7 @@ class HtmlEditor extends FormBaseComponent
     {
         return [
             'features' => ['htmlEditor' => true],
-            'basePath' => asset('vendor/mlbrgn-form-components')
+            'basePath' => asset('vendor/mlbrgn/laravel-form-components')
         ];
     }
 

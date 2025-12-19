@@ -126,8 +126,8 @@ Route::middleware(['web'])->group(function () {
         $map = [
             'preview.css'          => $base . '/dist/css/mlbrgn-preview.css',
             'preview.js'           => $base . '/dist/js/mlbrgn-preview.js',
-            'main.css'             => $base . '/dist/css/mlbrgn-form-components.css',
-            'main.js'              => $base . '/dist/js/mlbrgn-form-components.js',
+            'main.css'             => $base . '/dist/css/index.css',
+            'main.js'              => $base . '/dist/js/index.js',
             'html-editor.js'       => $base . '/dist/js/mlbrgn-html-editor.js',
             'form-validation.js'   => $base . '/dist/js/mlbrgn-form-validation.js',
             'form-validation.css'  => $base . '/dist/css/mlbrgn-form-validation.css',
