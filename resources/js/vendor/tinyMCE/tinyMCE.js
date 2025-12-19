@@ -39,7 +39,7 @@ function resolveCallback(name) {
 /**
  * Default file picker callback
  */
-window.mfcDefaultFilePickerCallback = function(callback, value, meta) {
+window.mfcDefaultFilePickerCallback = function(callback) {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
