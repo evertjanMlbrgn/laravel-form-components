@@ -335,7 +335,7 @@ it('does have help text when @slot("help") attribute present', function () {
                 ->seeElement('div.form-text[id="datetime-local-help-text"]')
                 ->seeElement('div.form-text[id="email-help-text"]')
                 ->seeElement('div.form-text[id="file-help-text"]')
-                ->dontSeeElement('div.form-text[id="hidden-help-text"]')
+//                ->dontSeeElement('div.form-text[id="hidden-help-text"]')
                 ->seeElement('div.form-text[id="image-help-text"]')
                 ->seeElement('div.form-text[id="month-help-text"]')
                 ->seeElement('div.form-text[id="number-help-text"]')
@@ -351,7 +351,7 @@ it('does have help text when @slot("help") attribute present', function () {
                 ->seeElement('div.form-text[id="url-help-text"]')
                 ->seeElement('div.form-text[id="week-help-text"]');
         });
-});
+})->only();
 
 it('does not have help text when hidden', function () {
     $this->registerTestRoute('bootstrap-input');

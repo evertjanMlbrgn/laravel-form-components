@@ -10,8 +10,11 @@
     @endif
 @endif
 
-    @if($attributes->has('default-to-zero'))
-        {{-- Hidden input to handle unchecked state --}}
+{{--            @if($attributes->has('default-to-zero'))--}}
+{{--                --}}{{-- Hidden input to handle unchecked state --}}
+{{--                <input type="hidden" name="{{ $name }}" value="0">--}}
+{{--            @endif--}}
+    @if($defaultToZero)
         <input type="hidden" name="{{ $name }}" value="0">
     @endif
 

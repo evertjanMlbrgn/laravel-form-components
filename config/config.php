@@ -188,6 +188,16 @@ return [
 //        'automatic_uploads' => false,
     ],
 
+    'checkbox' => [
+        /**
+         * Automatically add a hidden input with value=0
+         * so unchecked checkboxes submit a value.
+         *
+         * Can be overridden per component.
+         */
+        'default_to_zero' => false,
+    ],
+
     /*
      |--------------------------------------------------------------------------
      | DEVELOPER ONLY
