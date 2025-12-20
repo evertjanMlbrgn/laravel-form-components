@@ -29,7 +29,6 @@
         :value="$value"
         :label="$label"
         :attributes="$attributes"
-        :help="$attributes->slots()['help']"
     >
 {{--                @slot('help')--}}
 {{--                    fdsafds--}}
