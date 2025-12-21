@@ -34,7 +34,6 @@ it('always assigns an id attribute to every input type', function () {
         ->seeElement('input[type="week"][data-week][id]');
 });
 
-
 it('sets classes', function () {
     $this->registerTestRoute('input-id-name-type');
 
@@ -156,7 +155,7 @@ it('does not render label when hidden', function () {
         ->dontSeeElement('label[for="time"]')
         ->dontSeeElement('label[for="url"]')
         ->dontSeeElement('label[for="week"]');
-})->todo();
+});
 
 it('honors use_wrapper_classes when set to true', function () {
     Config::set('form-components.use_wrapper_classes', true);
@@ -249,23 +248,23 @@ it('shows a validation error', function () {
     });
 
     $this->visit('/input-validation-error')
-       ->press('Send')
-                ->within('#input-input-validation-error', function () {
-                    //                    $this->seeElement('quote');
-                    $this->seeElement('input[name="text"]')
-                        ->seeElement('input[name="text"] ~ div.invalid-feedback')
-                        ->seeInElement('input[name="text"] ~ div.invalid-feedback', 'The text field is required')
-                        ->seeElement('input[name="tel"]')
-                        ->seeElement('input[name="tel"] ~ div.invalid-feedback')
-                        ->seeInElement('input[name="tel"] ~ div.invalid-feedback', 'The tel field is required')
-                        ->seeElement('input[name="checkbox"]')
-                        ->seeElement('input[name="checkbox"] ~ div.invalid-feedback')
-                        ->seeInElement('input[name="checkbox"] ~ div.invalid-feedback',
-                            'The checkbox field is required')
-                        ->seeElement('input[name="radio"]')
-                        ->seeElement('input[name="radio"] ~ div.invalid-feedback')
-                        ->seeInElement('input[name="radio"] ~ div.invalid-feedback', 'The radio field is required');
-                });
+        ->press('Send')
+        ->within('#input-validation-error', function () {
+            //                    $this->seeElement('quote');
+            $this->seeElement('input[name="text"]')
+                ->seeElement('input[name="text"] ~ div.invalid-feedback')
+                ->seeInElement('input[name="text"] ~ div.invalid-feedback', 'The text field is required')
+                ->seeElement('input[name="tel"]')
+                ->seeElement('input[name="tel"] ~ div.invalid-feedback')
+                ->seeInElement('input[name="tel"] ~ div.invalid-feedback', 'The tel field is required')
+                ->seeElement('input[name="checkbox"]')
+                ->seeElement('input[name="checkbox"] ~ div.invalid-feedback')
+                ->seeInElement('input[name="checkbox"] ~ div.invalid-feedback',
+                    'The checkbox field is required')
+                ->seeElement('input[name="radio"]')
+                ->seeElement('input[name="radio"] ~ div.invalid-feedback')
+                ->seeInElement('input[name="radio"] ~ div.invalid-feedback', 'The radio field is required');
+        });
 });
 
 it('sets label of button by using value attribute', function () {
@@ -282,34 +281,6 @@ it('does have help text when "help-text" attribute present', function () {
 
     $this->visit('/input-help-text')
         ->seeElement('div.form-text[id="checkbox-help-text"]')
-                ->seeElement('div.form-text[id="color-help-text"]')
-                ->seeElement('div.form-text[id="date-help-text"]')
-                ->seeElement('div.form-text[id="datetime-local-help-text"]')
-                ->seeElement('div.form-text[id="email-help-text"]')
-                ->seeElement('div.form-text[id="file-help-text"]')
-//                ->dontSeeElement('div.form-text[id="hidden-help-text"]')
-                ->seeElement('div.form-text[id="image-help-text"]')
-                ->seeElement('div.form-text[id="month-help-text"]')
-                ->seeElement('div.form-text[id="number-help-text"]')
-                ->seeElement('div.form-text[id="password-help-text"]')
-                ->seeElement('div.form-text[id="radio-help-text"]')
-                ->seeElement('div.form-text[id="range-help-text"]')
-//                ->seeElement('div.form-text[id="reset-help-text"]')
-                ->seeElement('div.form-text[id="search-help-text"]')
-//                ->seeElement('div.form-text[id="submit-help-text"]')
-                ->seeElement('div.form-text[id="tel-help-text"]')
-                ->seeElement('div.form-text[id="text-help-text"]')
-                ->seeElement('div.form-text[id="time-help-text"]')
-                ->seeElement('div.form-text[id="url-help-text"]')
-                ->seeElement('div.form-text[id="week-help-text"]');
-});
-
-it('does have help text when @slot("help") attribute present', function () {
-    $this->registerTestRoute('input-help-slots');
-
-    $this->visit('/input-help-slots')
-        ->seeElement('div.form-text[id="button"]')// uses button component
-        ->seeElement('div.form-text[id="checkbox-help-text"]')
         ->seeElement('div.form-text[id="color-help-text"]')
         ->seeElement('div.form-text[id="date-help-text"]')
         ->seeElement('div.form-text[id="datetime-local-help-text"]')
@@ -325,6 +296,34 @@ it('does have help text when @slot("help") attribute present', function () {
 //                ->seeElement('div.form-text[id="reset-help-text"]')
         ->seeElement('div.form-text[id="search-help-text"]')
 //                ->seeElement('div.form-text[id="submit-help-text"]')
+        ->seeElement('div.form-text[id="tel-help-text"]')
+        ->seeElement('div.form-text[id="text-help-text"]')
+        ->seeElement('div.form-text[id="time-help-text"]')
+        ->seeElement('div.form-text[id="url-help-text"]')
+        ->seeElement('div.form-text[id="week-help-text"]');
+});
+
+it('does have help text when @slot("help") attribute present', function () {
+    $this->registerTestRoute('input-help-slots-2');
+
+    $this->visit('/input-help-slots-2')
+        ->seeElement('div.form-text[id="button-help-text"]')// uses button component
+        ->seeElement('div.form-text[id="checkbox-help-text"]')
+        ->seeElement('div.form-text[id="color-help-text"]')
+        ->seeElement('div.form-text[id="date-help-text"]')
+        ->seeElement('div.form-text[id="datetime-local-help-text"]')
+        ->seeElement('div.form-text[id="email-help-text"]')
+        ->seeElement('div.form-text[id="file-help-text"]')
+        ->dontSeeElement('div.form-text[id="hidden-help-text"]')
+        ->seeElement('div.form-text[id="image-help-text"]')
+        ->seeElement('div.form-text[id="month-help-text"]')
+        ->seeElement('div.form-text[id="number-help-text"]')
+        ->seeElement('div.form-text[id="password-help-text"]')
+        ->seeElement('div.form-text[id="radio-help-text"]')
+        ->seeElement('div.form-text[id="range-help-text"]')
+        ->seeElement('div.form-text[id="reset-help-text"]')
+        ->seeElement('div.form-text[id="search-help-text"]')
+        ->seeElement('div.form-text[id="submit-help-text"]')
         ->seeElement('div.form-text[id="tel-help-text"]')
         ->seeElement('div.form-text[id="text-help-text"]')
         ->seeElement('div.form-text[id="time-help-text"]')

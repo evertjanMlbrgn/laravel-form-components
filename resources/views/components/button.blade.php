@@ -23,7 +23,7 @@
     @endif
     id="{{ $id }}"
 >
-    {!! $attributes->has('label') ? $attributes->get('label') :
+    {!! filled($attributes->get('label')) ? $attributes->get('label') :
        (isset($value) ? $value :
        (trim($slot) ?: 'Send')) !!}
 </button>

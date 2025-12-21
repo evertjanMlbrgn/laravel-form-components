@@ -11,12 +11,15 @@
         :help-text="$helpText"
         :label="$label"
         :attributes="$attributes"
+        :value="$value"
+        :hidden="$hidden"
     >
+        @isset($help)
+            <x-slot name="help">
+                {{ $help }}
+            </x-slot>
+        @endisset
         {{ $slot }}
-{{--        @slot('help')--}}
-{{--            fdsafds--}}
-{{--           {{ $help }}--}}
-{{--        @endslot--}}
     </x-dynamic-component>
 
 @elseif(in_array($type, ['checkbox', 'radio']))
@@ -29,11 +32,13 @@
         :value="$value"
         :label="$label"
         :attributes="$attributes"
+        :hidden="$hidden"
     >
-{{--                @slot('help')--}}
-{{--                    fdsafds--}}
-{{--                   {{ $help }}--}}
-{{--                @endslot--}}
+        @isset($help)
+            <x-slot name="help">
+                {{ $help }}
+            </x-slot>
+        @endisset
     </x-dynamic-component>
 @else
 

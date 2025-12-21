@@ -66,13 +66,15 @@ it('honors use_wrapper_classes when set to false', function () {
 it('uses old value after submit', function () {
     $this->registerTestRoute('checkbox-validation-old-value', function (Request $request) {
         $request->validate([
-            'checkbox' => 'required',
+            'checkbox-validation' => 'nullable',
+            'other' => 'required', // ← force failure
         ]);
     });
 
     $this->visit('/checkbox-validation-old-value')
-        ->check('checkbox-validation')
+        ->check('checkbox-validation', '1')
         ->press('Send')
+        ->followRedirects()
         ->seeElement('input[name="checkbox-validation"]:checked');
 });
 

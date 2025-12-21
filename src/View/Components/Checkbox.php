@@ -50,7 +50,9 @@ class Checkbox extends FormBaseComponent
         public string $helpText = '',
         public bool $defaultToZero = false,
     ) {
-//        dump($value);
+
+        $this->value = $value ?? '1'; // value in checkbox is deterministic must have value!
+
         $this->showErrors = $showErrors;
 
         $inputName = static::convertBracketsToDots(Str::before($name, '[]'));
@@ -87,6 +89,6 @@ class Checkbox extends FormBaseComponent
      */
     protected function generateIdByName(): string
     {
-        return 'auto_id_'.$this->name.'_'.$this->value;
+        return 'auto_id_'.$this->name.'_'.md5((string) $this->value);
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 
 it('binds a target to the form', function () {
+    $this->withoutExceptionHandling();
     $this->registerTestRoute('bind-target');
 
     $this->visit('/bind-target')

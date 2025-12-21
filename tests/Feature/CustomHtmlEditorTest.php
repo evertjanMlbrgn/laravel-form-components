@@ -179,9 +179,7 @@ it('does not honor floating label', function () {
     $this->visit('/custom-html-editor')
         ->within('#form-html-editor-floating', function () {
             $this->seeElement('textarea') // always make sure node list is not empty when only using dontSeeElement
-                ->dontSeeElement('div.form-text[id="hidden-html-editor-help-text"]')
-                ->seeElement('div.form-text[id="non-hidden-html-editor-help-text"]')
-                ->seeInElement('div.form-text[id="non-hidden-html-editor-help-text"]', 'other help text');
+                ->dontSeeElement('div.form-floating > textarea[id="html-editor"]');
         });
 })->todo();
 

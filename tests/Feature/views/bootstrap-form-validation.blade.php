@@ -2,7 +2,7 @@
     <x-form-input name="input" />
     <x-form-textarea name="textarea" />
     <x-form-select name="select" :options="['' => '', 'c' => 'c']" />
-    <x-form-checkbox name="checkbox" />
+    <x-form-checkbox name="checkbox" value="1" />
     <x-form-radio name="radio" />
     <x-form-submit />
 </x-form-form>

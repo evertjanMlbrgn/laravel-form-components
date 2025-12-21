@@ -34,7 +34,8 @@
            ])->whereDoesntStartWith('class-')->except(['inline', 'switch', 'id', 'default-to-zero']) }}
         @endif
         type="checkbox"
-        value="{{ $value ?? '' }}"
+        {{--  value cannot be empty, Empty-string is worse than missing — it breaks comparisons.--}}
+        value="{{ $value }}"
         @if($name)
         name="{{ $name }}"
         @endif
@@ -47,6 +48,9 @@
         @endif
         @if($hidden)
             hidden
+        @endif
+        @if(old($name))
+            checked
         @endif
         >
 
