@@ -10,8 +10,11 @@
     @endif
 @endif
 
-    @if($attributes->has('default-to-zero'))
-        {{-- Hidden input to handle unchecked state --}}
+{{--            @if($attributes->has('default-to-zero'))--}}
+{{--                --}}{{-- Hidden input to handle unchecked state --}}
+{{--                <input type="hidden" name="{{ $name }}" value="0">--}}
+{{--            @endif--}}
+    @if($defaultToZero)
         <input type="hidden" name="{{ $name }}" value="0">
     @endif
 
@@ -31,7 +34,8 @@
            ])->whereDoesntStartWith('class-')->except(['inline', 'switch', 'id', 'default-to-zero']) }}
         @endif
         type="checkbox"
-        value="{{ $value ?? '' }}"
+        {{--  value cannot be empty, Empty-string is worse than missing — it breaks comparisons.--}}
+        value="{{ $value }}"
         @if($name)
         name="{{ $name }}"
         @endif
@@ -45,12 +49,15 @@
         @if($hidden)
             hidden
         @endif
+        @if(old($name))
+            checked
+        @endif
         >
 
 @if(!$hidden)
 
     {{-- label --}}
-    <x-mlbrgn-form-label
+    <x-mlbrgn-form-components::label
         :parentClasses="$attributes->get('class')"
         :required="$attributes->has('required')"
         @class([
@@ -62,7 +69,7 @@
         :for="$id">
         {{ $label }}
         {{ $slot }}
-    </x-mlbrgn-form-label>
+    </x-mlbrgn-form-components::label>
 
     {{-- client side feedback messages --}}
     @if($showErrors)
@@ -87,26 +94,26 @@
 
     {{-- server side feedback messages --}}
     @if($shouldShowError($name))
-        <x-mlbrgn-form-errors :name="$name" />
+        <x-mlbrgn-form-components::errors :name="$name" />
     @endif
 
     {{-- Help text --}}
     @if(isset($help))
-        <x-mlbrgn-form-text
+        <x-mlbrgn-form-components::text
             :id="$id"
             @class([
                 $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
             ])
-        >{{ $help }}</x-mlbrgn-form-text>
+        >{{ $help }}</x-mlbrgn-form-components::text>
     @endif
 
     @if(!empty($helpText) && !isset($help))
-        <x-mlbrgn-form-text
+        <x-mlbrgn-form-components::text
             :id="$id"
             @class([
                 $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
             ])
-        >{{ $helpText }}</x-mlbrgn-form-text>
+        >{{ $helpText }}</x-mlbrgn-form-components::text>
     @endif
 
     {{-- Close wrapper --}}
@@ -115,4 +122,6 @@
     @endif
 
 @endif
-
+{{--@once--}}
+{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
+{{--@endonce--}}

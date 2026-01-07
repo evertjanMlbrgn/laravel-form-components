@@ -1,11 +1,18 @@
 <?php
 
-it('adds javascript when using attribute validation-mode="client-default" or "client-custom"', function () {
+it('does not enable validation assets when using server validation mode', function () {
     $this->registerTestRoute('bootstrap-form-validation-server');
 
-    $this->visit('/bootstrap-form-validation-server')
-        ->seeElement('form')
-        ->dontSeeElement('script[src$="form-validation.js"]');
+    $response = $this->visit('/bootstrap-form-validation-server');
+//    dd($response);
+
+    $response
+        ->within('#bootstrap-form-validation-server', function () {
+            $this->seeElement('form:not(.needs-validation)[novalidate]')
+                ->seeElement('#mlbrgn-asset-config')
+                ->dontSeeInElement('#mlbrgn-asset-config', '"validation"')
+                ->dontSeeElement('[data-mlbrgn-validation]');
+        });
 });
 
 it('defaults to validation mode "server"', function () {

@@ -53,6 +53,6 @@ class Radio extends FormBaseComponent
      */
     protected function generateIdByName(): string
     {
-        return 'auto_id_'.$this->name.'_'.$this->value;
+        return 'auto_id_'.$this->name.'_'.md5((string) $this->value);
     }
 }

@@ -2,16 +2,44 @@
 
 {{-- Handle different input types, by using the right component --}}
 @if(in_array($type, ['button', 'reset', 'submit']))
-    @include('form-components::button', [
-        'type' => $type,
-        'slot' => $attributes->get('value')
-    ])
+    <x-dynamic-component
+        :component="'form-button'"
+        :name="$name"
+        :type="$type"
+        :id="$id"
+        :hidden="$hidden"
+        :help-text="$helpText"
+        :label="$label"
+        :attributes="$attributes"
+        :value="$value"
+        :hidden="$hidden"
+    >
+        @isset($help)
+            <x-slot name="help">
+                {{ $help }}
+            </x-slot>
+        @endisset
+        {{ $slot }}
+    </x-dynamic-component>
+
 @elseif(in_array($type, ['checkbox', 'radio']))
-    @include('form-components::' . $type, [
-        'toggle' => $attributes->has('toggle'),
-        'checked' => $attributes->has('checked'),
-        'labelButton' => ''
-    ])
+    <x-dynamic-component
+        :component="'form-' . $type"
+        :name="$name"
+        :toggle="$attributes->has('toggle')"
+        :checked="$attributes->has('checked')"
+        :help-text="$helpText"
+        :value="$value"
+        :label="$label"
+        :attributes="$attributes"
+        :hidden="$hidden"
+    >
+        @isset($help)
+            <x-slot name="help">
+                {{ $help }}
+            </x-slot>
+        @endisset
+    </x-dynamic-component>
 @else
 
     {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
@@ -27,7 +55,7 @@
     {{-- label before control --}}
     @if(!$hidden && $type !== 'hidden')
         @if(!$attributes->has('label-end') && (!$floating || $horizontal))
-            <x-mlbrgn-form-label
+            <x-mlbrgn-form-components::label
                 :parentClasses="$attributes->get('class')"
                 :required="$attributes->has('required') && $type !== 'range'"
                 @class([
@@ -37,7 +65,7 @@
                 ])
                 :for="$id">
                 {{ $label }}
-            </x-mlbrgn-form-label>
+            </x-mlbrgn-form-components::label>
         @endif
     @endif
 
@@ -115,7 +143,7 @@
         {{-- label after control --}}
         @if(!$hidden && $type !== 'hidden')
             @if($attributes->has('label-end') || ($floating && !$horizontal))
-                <x-mlbrgn-form-label
+                <x-mlbrgn-form-components::label
                     :parentClasses="$attributes->get('class')"
                     :required="$attributes->has('required')"
                     @class([
@@ -123,7 +151,7 @@
                    ])
                     :for="$id">
                     {{ $label }}
-                </x-mlbrgn-form-label>
+                </x-mlbrgn-form-components::label>
         @endif
     @endif
 
@@ -131,26 +159,26 @@
 
         {{-- server side feedback messages --}}
         @if($shouldShowError($name))
-            <x-mlbrgn-form-errors :name="$name" />
+            <x-mlbrgn-form-components::errors :name="$name" />
         @endif
 
         {{-- Help text --}}
         @isset($help)
-            <x-mlbrgn-form-text
+            <x-mlbrgn-form-components::text
                 :id="$id"
                 @class([
                     $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
                 ])
-            >{{ $help }}</x-mlbrgn-form-text>
+            >{{ $help }}</x-mlbrgn-form-components::text>
         @endif
 
         @if(!empty($helpText) && !isset($help))
-            <x-mlbrgn-form-text
+            <x-mlbrgn-form-components::text
                 :id="$id"
                 @class([
                     $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
                 ])
-            >{{ $helpText }}</x-mlbrgn-form-text>
+            >{{ $helpText }}</x-mlbrgn-form-components::text>
         @endif
     @endif
 
@@ -164,3 +192,6 @@
     </div>
     @endif
 @endif
+{{--@once--}}
+{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
+{{--@endonce--}}

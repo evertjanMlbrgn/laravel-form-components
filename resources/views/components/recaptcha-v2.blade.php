@@ -5,9 +5,9 @@
 @endif
 
 <div class="g-recaptcha" id="{{ $formId . '-captcha-container' }}"></div>
-<x-mlbrgn-form-button class="g-recaptcha-submit-button" type="submit" data-form-id="{{ $formId }}"
+<x-mlbrgn-form-components::button class="g-recaptcha-submit-button" type="submit" data-form-id="{{ $formId }}"
     @class([$classButton])
->{{ $label }}</x-mlbrgn-form-button>
+>{{ $label }}</x-mlbrgn-form-components::button>
 
 @once
     <script>
@@ -48,3 +48,6 @@
 
     <script src="https://www.google.com/recaptcha/api.js?hl={{ config('form-components.recaptcha.language') }}&onload=captchaInitialize&render=explicit" async defer></script>
 @endonce
+{{--@once--}}
+{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
+{{--@endonce--}}

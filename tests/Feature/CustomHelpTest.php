@@ -1,21 +1,19 @@
 <?php
 
 it('adds help text', function () {
-    $this->registerTestRoute('bootstrap-help');
+    $this->registerTestRoute('input-help-slots');
 
-    $this->visit('/bootstrap-help')
-        ->within('#form-help-text', function () {
-            $this->seeInElement('.form-text', 'Your username must be 8-20 characters long.');
-        });
+    $this->visit('/input-help-slots')
+        ->seeInElement('.form-text', 'Your username must be 8-20 characters long.');
 });
 
 // tests if setting validation-mode="client-custom" adds class needs-validation to form and attribute no-validate
 // also tests if input-groups get the class has-validation (needed to fix rounded borders on input-groups with
 // validation
 it('adds aria-describedby to control with help text', function () {
-    $this->registerTestRoute('bootstrap-help');
+    $this->registerTestRoute('input-help-slots');
 
-    $this->visit('/bootstrap-help')
+    $this->visit('/input-help-slots')
         ->within('#form-aria-describedby', function () {
             $this->seeElement('input#input[aria-describedby="input-help-text"]')
                 ->seeElement('input#input ~ div[id="input-help-text"]')
@@ -41,9 +39,9 @@ it('adds aria-describedby to control with help text', function () {
 });
 
 it('adds extra classes to help text', function () {
-    $this->registerTestRoute('bootstrap-help');
+    $this->registerTestRoute('input-help-slots');
 
-    $this->visit('/bootstrap-help')
+    $this->visit('/input-help-slots')
         ->within('#form-help-text-extra-classes', function () {
             $this->seeElement('input#input[aria-describedby="input-help-text"]:not([class-help-text])')
                 ->seeElement('input#input ~ div[id="input-help-text"].text-danger')

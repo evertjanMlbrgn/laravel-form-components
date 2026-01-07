@@ -5,7 +5,12 @@
     ])->class([
         'btn',
         'd-none' => $hidden,
-        ])->except(['required', 'readonly', 'label', 'help-text', 'id'])->whereDoesntStartWith('class-')
+        ])->except([
+            'required',
+            'readonly',
+            'help-text',
+            'id'])
+            ->whereDoesntStartWith('class-')
     }}
     @if(!empty($name))
         name="{{ $name }}"
@@ -18,7 +23,7 @@
     @endif
     id="{{ $id }}"
 >
-    {!! $attributes->has('label') ? $attributes->get('label') :
+    {!! filled($attributes->get('label')) ? $attributes->get('label') :
        (isset($value) ? $value :
        (trim($slot) ?: 'Send')) !!}
 </button>
@@ -26,20 +31,21 @@
 @if(!$hidden)
     {{-- Help text --}}
     @isset($help)
-        <x-mlbrgn-form-text
+        <x-mlbrgn-form-components::text
             :id="$id"
             @class([
                 $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
             ])
-        >{{ $help }}</x-mlbrgn-form-text>
+        >{{ $help }}</x-mlbrgn-form-components::text>
     @endif
 
     @if(!empty($helpText) && !isset($help))
-        <x-mlbrgn-form-text
+        <x-mlbrgn-form-components::text
             :id="$id"
             @class([
                 $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
             ])
-        >{{ $helpText }}</x-mlbrgn-form-text>
+        >{{ $helpText }}
+        </x-mlbrgn-form-components::text>
     @endif
 @endif

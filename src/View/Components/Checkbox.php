@@ -14,11 +14,21 @@ class Checkbox extends FormBaseComponent
     use HandlesBoundValues;
     use HandlesValidationErrors;
 
-    public string $value;
+//    public string $value;
 
     public string $type = 'checkbox';
 
     public bool $checked = false;
+
+
+//    protected $casts = [
+//        'defaultToZero' => 'boolean',
+////        'hidden' => 'boolean',
+////        'default' => 'boolean',
+////        'show_errors' => 'boolean',
+////        'toggle' => 'boolean',
+////        'tooltipFeedback' => 'boolean',
+//    ];
 
     /**
      * Create a new component instance.
@@ -27,7 +37,7 @@ class Checkbox extends FormBaseComponent
      */
     public function __construct(
         public string $name = '',
-        $value = 1,
+        public ?string $value = null,
         $bind = null,
         bool $default = false,
         bool $showErrors = true,
@@ -37,12 +47,20 @@ class Checkbox extends FormBaseComponent
         public string $invalidFeedback = '',
         public bool $hidden = false,
         public bool $tooltipFeedback = false,
-        public string $helpText = ''
+        public string $helpText = '',
+        public bool $defaultToZero = false,
     ) {
-        $this->value = $value;
+
+        $this->value = $value ?? '1'; // value in checkbox is deterministic must have value!
+
         $this->showErrors = $showErrors;
 
         $inputName = static::convertBracketsToDots(Str::before($name, '[]'));
+
+        $this->defaultToZero = $defaultToZero // relies on value not being null / empty string
+            ?? config('form-components.checkbox.default_to_zero', false);
+//        @dump($defaultToZero);
+//        @dump($this->defaultToZero);
 
         if ($oldData = old($inputName)) {
             $this->checked = in_array($value, Arr::wrap($oldData));
@@ -63,6 +81,7 @@ class Checkbox extends FormBaseComponent
 
             $this->checked = is_null($boundValue) ? $default : $boundValue;
         }
+
     }
 
     /**
@@ -70,6 +89,6 @@ class Checkbox extends FormBaseComponent
      */
     protected function generateIdByName(): string
     {
-        return 'auto_id_'.$this->name.'_'.$this->value;
+        return 'auto_id_'.$this->name.'_'.md5((string) $this->value);
     }
 }

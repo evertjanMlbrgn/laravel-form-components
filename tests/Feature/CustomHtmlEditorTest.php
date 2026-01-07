@@ -179,9 +179,7 @@ it('does not honor floating label', function () {
     $this->visit('/custom-html-editor')
         ->within('#form-html-editor-floating', function () {
             $this->seeElement('textarea') // always make sure node list is not empty when only using dontSeeElement
-                ->dontSeeElement('div.form-text[id="hidden-html-editor-help-text"]')
-                ->seeElement('div.form-text[id="non-hidden-html-editor-help-text"]')
-                ->seeInElement('div.form-text[id="non-hidden-html-editor-help-text"]', 'other help text');
+                ->dontSeeElement('div.form-floating > textarea[id="html-editor"]');
         });
 })->todo();
 
@@ -203,9 +201,14 @@ it('can set value using slot', function () {
         });
 });
 
-it('adds javascript', function () {
+it('enables validation assets when using custom validation mode', function () {
     $this->registerTestRoute('custom-html-editor');
 
     $this->visit('/custom-html-editor')
-        ->seeElement('script[src$="html-editor.js"]');
+        ->seeElement('#mlbrgn-asset-config')
+        ->seeInElement(
+            '#mlbrgn-asset-config',
+            '"htmlEditor":true'
+        )
+        ->seeElement('[data-mlbrgn-html-editor]');
 });

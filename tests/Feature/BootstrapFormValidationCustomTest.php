@@ -1,10 +1,15 @@
 <?php
 
-it('adds javascript when using attribute validation-mode="client-default" or "client-custom"', function () {
+it('enables validation assets when using custom validation mode', function () {
     $this->registerTestRoute('bootstrap-form-validation-custom');
 
     $this->visit('/bootstrap-form-validation-custom')
-        ->seeElement('script[src$="form-validation.js"]');
+        ->seeElement('#mlbrgn-asset-config')
+        ->seeInElement(
+            '#mlbrgn-asset-config',
+            '"validation":true'
+        )
+        ->seeElement('[data-mlbrgn-validation]');
 });
 
 it('defaults to validation mode "client-custom"', function () {

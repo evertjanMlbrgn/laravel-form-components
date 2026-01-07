@@ -13,7 +13,7 @@
 
     {{-- label before control --}}
     @if(!$attributes->has('label-end') && (!$floating || $horizontal))
-        <x-mlbrgn-form-label
+        <x-mlbrgn-form-components::label
             :parentClasses="$attributes->get('class')"
             :required="$attributes->has('required')"
             @class([
@@ -23,7 +23,7 @@
              ])
             :for="$id">
             {{ $label }}
-        </x-mlbrgn-form-label>
+        </x-mlbrgn-form-components::label>
     @endif
 
     {{-- horizontal control wrapper --}}
@@ -94,7 +94,7 @@
 
 {{-- label after control --}}
     @if($attributes->has('label-end') || ($floating && !$horizontal))
-        <x-mlbrgn-form-label
+        <x-mlbrgn-form-components::label
             :parentClasses="$attributes->get('class')"
             :required="$attributes->has('required')"
             @class([
@@ -102,31 +102,31 @@
            ])
             :for="$id">
             {{ $label }}
-        </x-mlbrgn-form-label>
+        </x-mlbrgn-form-components::label>
     @endif
 
     {{-- server side feedback messages --}}
     @if($shouldShowError($name))
-        <x-mlbrgn-form-errors :name="$name" />
+        <x-mlbrgn-form-components::errors :name="$name" />
     @endif
 
     {{-- Help text --}}
     @if(isset($help))
-        <x-mlbrgn-form-text
+        <x-mlbrgn-form-components::text
             :id="$id"
             @class([
                 $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
             ])
-        >{{ $help }}</x-mlbrgn-form-text>
+        >{{ $help }}</x-mlbrgn-form-components::text>
     @endif
 
     @if(!empty($helpText) && !isset($help))
-        <x-mlbrgn-form-text
+        <x-mlbrgn-form-components::text
             :id="$id"
             @class([
                 $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
             ])
-        >{{ $helpText }}</x-mlbrgn-form-text>
+        >{{ $helpText }}</x-mlbrgn-form-components::text>
     @endif
 
     {{-- close horizontal control wrapper --}}
@@ -139,3 +139,6 @@
         </div>
     @endif
 @endif
+{{--@once--}}
+{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
+{{--@endonce--}}

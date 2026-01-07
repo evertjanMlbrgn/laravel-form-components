@@ -23,4 +23,4 @@ it('can bind multiple targets', function () {
     $binder->pop();
 
     expect($binder->get())->toBeNull();
-})->todo();
+});
