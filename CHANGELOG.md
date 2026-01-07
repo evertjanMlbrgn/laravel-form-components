@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.112](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.111...1.0.112) (2026-01-07)
+
+
+### Documentation
+
+* wrote docs using Junie AI ([44c9323](https://github.com/evertjanMlbrgn/laravel-form-components/commit/44c9323273609afc1343da2e9db51f49a4ca4b3a))
+
 ## [1.0.111](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.110...1.0.111) (2025-12-14)
 
 
