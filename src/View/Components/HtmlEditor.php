@@ -1,8 +1,10 @@
 <?php
+/** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace Mlbrgn\LaravelFormComponents\View\Components;
 
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\HtmlString;
 use Mlbrgn\LaravelFormComponents\Traits\HandlesDefaultAndOldValue;
 use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;
 use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
@@ -52,18 +54,31 @@ class HtmlEditor extends FormBaseComponent
 //        $this->tinymceConfigJson = e(json_encode($tinymceConfig));
         $this->tinymceConfigJson = json_encode($tinymceConfig);
 
+
         // Push extra scripts from config
+        $nonce = mlbrgn_csp_nonce();
+
         foreach (config('form-components.html_editor_tinymce_global_config.extra_scripts', []) as $script) {
             View::startPush('mfc-html-editor-assets');
-            echo '<script type="module" src="' . e($script) . '"></script>';
+
+            echo '<script type="module" src="' . e($script) . '"' .
+                ($nonce ? ' nonce="' . e($nonce) . '"' : '') .
+                '></script>';
+
             View::stopPush();
         }
 
         foreach (config('form-components.html_editor_tinymce_global_config.extra_styles', []) as $style) {
             View::startPush('mfc-html-editor-assets');
-            echo '<link rel="stylesheet" href="' . e($style) . '">';
+            $attr = $nonce ? ' nonce="'.e($nonce).'"' : '';
+            echo new HtmlString('<script type="module" src="'.e($script).'"'.$attr.'></script>');
             View::stopPush();
         }
+//        foreach (config('form-components.html_editor_tinymce_global_config.extra_scripts', []) as $script) {
+//            View::startPush('mfc-html-editor-assets');
+//            echo '<script type="module" src="' . e($script) . '"></script>';
+//            View::stopPush();
+//        }
 
     }
 

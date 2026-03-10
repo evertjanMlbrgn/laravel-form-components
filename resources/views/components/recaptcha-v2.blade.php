@@ -10,7 +10,10 @@
 >{{ $label }}</x-mlbrgn-form-components::button>
 
 @once
-    <script>
+    @php($nonce = mlbrgn_csp_nonce())
+    <script
+        @if($nonce) nonce="{{ $nonce }}" @endif
+    >
         let theme = '{{ config('form-components.recaptcha.theme') }}'
         let sitekey = '{{ config('form-components.recaptcha.site-key') }}'
         let size = '{{ config('form-components.recaptcha.size') }}'
@@ -46,7 +49,12 @@
 
     </script>
 
-    <script src="https://www.google.com/recaptcha/api.js?hl={{ config('form-components.recaptcha.language') }}&onload=captchaInitialize&render=explicit" async defer></script>
+    <script
+        src="https://www.google.com/recaptcha/api.js?hl={{ config('form-components.recaptcha.language') }}&onload=captchaInitialize&render=explicit"
+        async
+        defer
+        @if($nonce) nonce="{{ $nonce }}" @endif
+    ></script>
 @endonce
 {{--@once--}}
 {{--    <x-form-components::assets :config="$assetFeatures()" />--}}
