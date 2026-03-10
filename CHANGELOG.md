@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.113](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.112...1.0.113) (2026-03-10)
+
+
+### Bug Fixes
+
+* added CSP support by setting callback function in config ([2c3a6b9](https://github.com/evertjanMlbrgn/laravel-form-components/commit/2c3a6b9f0b2ccbe6d663f442a8a8fccc13fde436))
+* added CSP support by setting callback function in config ([9689564](https://github.com/evertjanMlbrgn/laravel-form-components/commit/9689564e5ffb2f3888743f3da36a15d5814bcd7e))
+* removed dumps ([9cd7511](https://github.com/evertjanMlbrgn/laravel-form-components/commit/9cd7511f48b086f8f8b472975fed9b8f83a10086))
+
 ## [1.0.112](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.111...1.0.112) (2026-01-07)
 
 
