@@ -16,11 +16,11 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "passive-events-support": "^1.1.0",
-    "tinymce": "^8.3.0"
+    "tinymce": "^8.3.2"
   },
   "devDependencies": {
-    "laravel-vite-plugin": "^2.0.1",
-    "sass": "^1.97.1",
+    "laravel-vite-plugin": "^2.1.0",
+    "sass": "^1.97.3",
     "vite": "^7.3.0"
   },
   "author": "",
