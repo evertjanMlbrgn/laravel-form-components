@@ -14,3 +14,14 @@ if (! function_exists('mlbrgnAsset')) {
     }
 }
 
+if (! function_exists('mlbrgn_csp_nonce')) {
+    function mlbrgn_csp_nonce()
+    {
+        $resolver = config('form-components.csp_nonce');
+
+        return is_callable($resolver)
+            ? $resolver()
+            : $resolver;
+    }
+}
+
