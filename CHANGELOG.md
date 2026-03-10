@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.114](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.113...1.0.114) (2026-03-10)
+
+
+### Bug Fixes
+
+* added CSP support for html editor and recaptcha-v2.blade.php ([1e53afe](https://github.com/evertjanMlbrgn/laravel-form-components/commit/1e53afeafe3def7621eafe88d24597d2df19e60b))
+* updated dependencies ([e75ca39](https://github.com/evertjanMlbrgn/laravel-form-components/commit/e75ca3925aebb02515a0cb2dd1638a5d2e1c7dda))
+
 ## [1.0.113](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.112...1.0.113) (2026-03-10)
 
 
