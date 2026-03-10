@@ -173,11 +173,14 @@
 
 {{-- Automatically include assets once per page --}}
 @once
+    @php($nonce = mlbrgn_csp_nonce())
     <x-mlbrgn-form-components::assets :config="$assetFeatures()" />
 @endonce
 
 {{-- Inline TinyMCE config --}}
-<script>
+<script
+    @if($nonce) nonce="{{ $nonce }}" @endif
+>
     window.mlbHtmlEditorTinymceConfig ??= {};
     window.mlbHtmlEditorTinymceConfig = @json($tinymceConfig());
     console.log('window.mlbHtmlEditorTinymceConfig', window.mlbHtmlEditorTinymceConfig);
