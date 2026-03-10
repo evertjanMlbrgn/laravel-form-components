@@ -59,8 +59,6 @@ class Checkbox extends FormBaseComponent
 
         $this->defaultToZero = $defaultToZero // relies on value not being null / empty string
             ?? config('form-components.checkbox.default_to_zero', false);
-//        @dump($defaultToZero);
-//        @dump($this->defaultToZero);
 
         if ($oldData = old($inputName)) {
             $this->checked = in_array($value, Arr::wrap($oldData));

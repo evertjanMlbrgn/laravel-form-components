@@ -198,6 +198,13 @@ return [
         'default_to_zero' => false,
     ],
 
+    /**
+     * CSP nonce callback
+     * example: 'csp_nonce' => fn () => app()->bound('csp-nonce') ? app('csp-nonce') : null,
+     */
+
+    'csp_nonce' => fn () => null,
+
     /*
      |--------------------------------------------------------------------------
      | DEVELOPER ONLY
