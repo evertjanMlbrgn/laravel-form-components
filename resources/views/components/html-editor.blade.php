@@ -179,7 +179,7 @@
 
 {{-- Inline TinyMCE config --}}
 <script
-    @if($nonce) nonce="{{ $nonce }}" @endif
+    @isset($nonce) nonce="{{ $nonce }}" @endisset
 >
     window.mlbHtmlEditorTinymceConfig ??= {};
     window.mlbHtmlEditorTinymceConfig = @json($tinymceConfig());
