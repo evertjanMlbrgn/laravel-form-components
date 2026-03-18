@@ -62,7 +62,7 @@ class HtmlEditor extends FormBaseComponent
             View::startPush('mfc-html-editor-assets');
 
             echo '<script type="module" src="' . e($script) . '"' .
-                ($nonce ? ' nonce="' . e($nonce) . '"' : '') .
+                (isset($nonce) ? ' nonce="' . e($nonce) . '"' : '') .
                 '></script>';
 
             View::stopPush();
@@ -70,7 +70,7 @@ class HtmlEditor extends FormBaseComponent
 
         foreach (config('form-components.html_editor_tinymce_global_config.extra_styles', []) as $style) {
             View::startPush('mfc-html-editor-assets');
-            $attr = $nonce ? ' nonce="'.e($nonce).'"' : '';
+            $attr = isset($nonce) ? ' nonce="'.e($nonce).'"' : '';
             echo new HtmlString('<script type="module" src="'.e($script).'"'.$attr.'></script>');
             View::stopPush();
         }
