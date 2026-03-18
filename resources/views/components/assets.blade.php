@@ -5,7 +5,7 @@
             id="mlbrgn-asset-config"
             @isset($nonce) nonce="{{ $nonce }}" @endisset
         >
-        @json($config)
+        @json($assetConfig)
     </script>
 
     {{-- Load the public asset loader (handles all features: validation, html-editor, etc.) --}}

@@ -17,7 +17,7 @@ php artisan vendor:publish --tag=mlbrgn-form-components-assets
 You can include the asset loader yourself and control features:
 
 ```blade
-<x-mlbrgn-form-components::assets :config="[
+<x-mlbrgn-form-components::assets :assetConfig="[
   'basePath' => asset('vendor/mlbrgn/laravel-form-components'),
   'features' => [
     'validation' => true,

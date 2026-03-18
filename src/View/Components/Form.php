@@ -50,7 +50,7 @@ class Form extends FormBaseComponent
         return false;
     }
 
-    public function assetFeatures(): array
+    public function assetConfig(): array
     {
         $features = [];
         if ($this->validationMode === 'client-default' || $this->validationMode === 'client-custom') {

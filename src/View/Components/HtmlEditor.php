@@ -82,7 +82,7 @@ class HtmlEditor extends FormBaseComponent
 
     }
 
-    public function assetFeatures(): array
+    public function assetConfig(): array
     {
         return [
             'features' => ['htmlEditor' => true],

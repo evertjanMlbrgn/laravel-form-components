@@ -152,7 +152,3 @@
     @endif
 
 </x-mlbrgn-form-components::input-group>
-
-{{--@once--}}
-{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
-{{--@endonce--}}

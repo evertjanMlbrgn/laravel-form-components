@@ -56,6 +56,3 @@
         @isset($nonce) nonce="{{ $nonce }}" @endisset
     ></script>
 @endonce
-{{--@once--}}
-{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
-{{--@endonce--}}
