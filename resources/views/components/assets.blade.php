@@ -1,5 +1,5 @@
+@php($nonce = mlbrgn_csp_nonce())
 @once
-    @php($nonce = mlbrgn_csp_nonce())
     {{-- CSP-safe JSON config for JS loader --}}
     <script type="application/json"
             id="mlbrgn-asset-config"
