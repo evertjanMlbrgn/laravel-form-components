@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.118](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.117...1.0.118) (2026-03-21)
+
+
+### Bug Fixes
+
+* fixed issues, prefixed favicon and now working ([2fa72f3](https://github.com/evertjanMlbrgn/laravel-form-components/commit/2fa72f3609bb3a2ee89ee906ac9714a27f7b59d1))
+
 ## [1.0.117](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.116...1.0.117) (2026-03-21)
 
 
