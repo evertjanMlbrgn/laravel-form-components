@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.116](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.115...1.0.116) (2026-03-21)
+
+
+### Bug Fixes
+
+* changed .gitignore, accidentally ignored vendor folder in dist folder ([00750b0](https://github.com/evertjanMlbrgn/laravel-form-components/commit/00750b0d01291dd937990b3d909d0a4422f68a06))
+
 ## [1.0.115](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.114...1.0.115) (2026-03-21)
 
 
