@@ -3,6 +3,3 @@
         {{ $message }}
     </div>
 @enderror
-{{--@once--}}
-{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
-{{--@endonce--}}

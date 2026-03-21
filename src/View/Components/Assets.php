@@ -7,18 +7,16 @@ use Illuminate\View\View;
 
 class Assets extends Component
 {
-    public array $config;
+    public array $assetConfig;
 
-    public function __construct(array $config = [])
+    public function __construct(array $assetConfig = [])
     {
-        $this->config = array_merge([
-            'basePath' => asset('vendor/mlbrgn/laravel-form-components'),
-            'features' => [
+        $this->assetConfig = array_merge([
+            'assets' => [
                 'validation' => false,
                 'htmlEditor' => false,
-//                'preview' => false,
             ],
-        ], $config);
+        ], $assetConfig);
     }
 
     public function render(): View

@@ -1,20 +1,23 @@
-@once
-    @php($nonce = mlbrgn_csp_nonce())
-    {{-- CSP-safe JSON config for JS loader --}}
-    <script type="application/json"
-            id="mlbrgn-asset-config"
-            @if($nonce) nonce="{{ $nonce }}" @endif
-        >
-        @json($config)
-    </script>
+@php
+    $nonce = mlbrgn_csp_nonce();
+@endphp
 
-    {{-- Load the public asset loader (handles all features: validation, html-editor, etc.) --}}
-    <script type="module"
-            src="{{ asset('vendor/mlbrgn/laravel-form-components/js/asset-loader.js') }}"
-            @if($nonce) nonce="{{ $nonce }}" @endif
-    >
-    </script>
+@if(!empty($assetConfig))
+    <script
+        type="application/json"
+        class="mlbrgn-form-components-config"
+        @isset($nonce) nonce="{{ $nonce }}" @endisset
+    >{!! json_encode([
+        ...$assetConfig,
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
+@endif
+
+@once
+    <script
+        type="module"
+        src="{{ asset('vendor/mlbrgn/laravel-form-components/js/core/form-components-loader.js') }}"
+        @isset($nonce) nonce="{{ $nonce }}" @endisset
+    ></script>
 @endonce
 
-{{-- Optional slot for additional content, e.g., inline initialization --}}
 {{ $slot }}

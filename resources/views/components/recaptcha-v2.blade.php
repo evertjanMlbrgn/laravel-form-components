@@ -8,11 +8,12 @@
 <x-mlbrgn-form-components::button class="g-recaptcha-submit-button" type="submit" data-form-id="{{ $formId }}"
     @class([$classButton])
 >{{ $label }}</x-mlbrgn-form-components::button>
-
+@php
+    $nonce = mlbrgn_csp_nonce();
+@endphp
 @once
-    @php($nonce = mlbrgn_csp_nonce())
     <script
-        @if($nonce) nonce="{{ $nonce }}" @endif
+        @isset($nonce) nonce="{{ $nonce }}" @endisset
     >
         let theme = '{{ config('form-components.recaptcha.theme') }}'
         let sitekey = '{{ config('form-components.recaptcha.site-key') }}'
@@ -53,9 +54,6 @@
         src="https://www.google.com/recaptcha/api.js?hl={{ config('form-components.recaptcha.language') }}&onload=captchaInitialize&render=explicit"
         async
         defer
-        @if($nonce) nonce="{{ $nonce }}" @endif
+        @isset($nonce) nonce="{{ $nonce }}" @endisset
     ></script>
 @endonce
-{{--@once--}}
-{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
-{{--@endonce--}}

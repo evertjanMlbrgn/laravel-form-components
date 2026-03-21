@@ -31,10 +31,6 @@
     {{ $slot }}
 </form>
 
-{{--<x-mlbrgn-form-components::assets :config="$assetFeatures()" />--}}
-
-{{--@if($validationMode === 'client-default' || $validationMode === 'client-custom')--}}
-    @once
-        <x-mlbrgn-form-components::assets :config="$assetFeatures()" />
-    @endonce
-{{--@endif--}}
+@once
+    <x-mlbrgn-form-components::assets :assetConfig="$assetConfig()" />
+@endonce

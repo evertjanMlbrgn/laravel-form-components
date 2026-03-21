@@ -151,39 +151,21 @@
     @endif
 @endif
 
-{{--@once--}}
-{{--    <script>--}}
-{{--        // document.addEventListener('DOMContentLoaded', () => {--}}
-{{--            window.mlbHtmlEditorTinymceConfig ??= {};--}}
-{{--            window.mlbHtmlEditorTinymceConfig = @json(config('form-components.html_editor_tinymce_global_config'));--}}
-{{--            console.log('window.mlbHtmlEditorTinymceConfig', window.mlbHtmlEditorTinymceConfig)--}}
-{{--        // })--}}
-{{--    </script>--}}
-{{--    <script src="{{ mlbrgnAsset('js/mlbrgn-html-editor.js') }}"></script>--}}
-{{--    <link rel="stylesheet" href="{{ mlbrgnAsset('css/mlbrgn-form-components.css') }}">--}}
-{{--@endonce--}}
-
 {{-- Automatically include assets once per page --}}
-{{--@once--}}
-{{--    <x-form-components::assets :config="['features' => ['validation' => true, 'htmlEditor' => true]]" />--}}
-{{--@endonce--}}
-{{--@once--}}
-{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
-{{--@endonce--}}
-
-{{-- Automatically include assets once per page --}}
+@php
+    $nonce = mlbrgn_csp_nonce();
+@endphp
 @once
-    @php($nonce = mlbrgn_csp_nonce())
-    <x-mlbrgn-form-components::assets :config="$assetFeatures()" />
+    <x-mlbrgn-form-components::assets :assetConfig="$assetConfig()" />
 @endonce
 
 {{-- Inline TinyMCE config --}}
-<script
-    @if($nonce) nonce="{{ $nonce }}" @endif
->
-    window.mlbHtmlEditorTinymceConfig ??= {};
-    window.mlbHtmlEditorTinymceConfig = @json($tinymceConfig());
-    console.log('window.mlbHtmlEditorTinymceConfig', window.mlbHtmlEditorTinymceConfig);
-</script>
+{{--<script--}}
+{{--    @isset($nonce) nonce="{{ $nonce }}" @endisset--}}
+{{-->--}}
+{{--    window.mlbHtmlEditorTinymceConfig ??= {};--}}
+{{--    window.mlbHtmlEditorTinymceConfig = @json($tinymceConfig());--}}
+{{--    console.log('window.mlbHtmlEditorTinymceConfig', window.mlbHtmlEditorTinymceConfig);--}}
+{{--</script>--}}
 
 @stack('mfc-html-editor-assets')
