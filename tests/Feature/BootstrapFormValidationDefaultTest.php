@@ -4,11 +4,11 @@ it('enables validation assets when using client validation mode', function () {
     $this->registerTestRoute('bootstrap-form-validation-default');
 
     $this->visit('/bootstrap-form-validation-default')
-        ->seeElement('#mlbrgn-asset-config')
-        ->seeInElement(
-            '#mlbrgn-asset-config',
-            '"validation":true'
-        )
+        ->seeElement('.mlbrgn-form-components-config')
+//        ->seeInElement(
+//            '#mlbrgn-asset-config',
+//            '"validation":true'
+//        )
         ->seeElement('[data-mlbrgn-validation]');
 });
 

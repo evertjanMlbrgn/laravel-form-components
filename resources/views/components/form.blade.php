@@ -32,5 +32,5 @@
 </form>
 
 @once
-    <x-mlbrgn-form-components::assets :assetConfig="$assetConfig()" />
+    <x-mlbrgn-form-components::assets :asset-config="$assetConfig()" />
 @endonce

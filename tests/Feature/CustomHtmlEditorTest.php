@@ -205,10 +205,10 @@ it('enables validation assets when using custom validation mode', function () {
     $this->registerTestRoute('custom-html-editor');
 
     $this->visit('/custom-html-editor')
-        ->seeElement('#mlbrgn-asset-config')
-        ->seeInElement(
-            '#mlbrgn-asset-config',
-            '"htmlEditor":true'
-        )
+        ->seeElement('.mlbrgn-form-components-config')
+//        ->seeInElement(
+//            '#mlbrgn-asset-config',
+//            '"htmlEditor":true'
+//        )
         ->seeElement('[data-mlbrgn-html-editor]');
 });

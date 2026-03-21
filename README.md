@@ -113,7 +113,7 @@ Global editor options can be set via `form-components.html_editor_tinymce_global
 The package includes an asset loader published to `public/vendor/mlbrgn/laravel-form-components`. By default, forms/components pull in what they need. You can also include assets manually:
 
 ```blade
-<x-mlbrgn-form-components::assets :assetConfig="['features' => ['validation' => true, 'htmlEditor' => true]]" />
+<x-mlbrgn-form-components::assets :asset-config="['features' => ['validation' => true, 'htmlEditor' => true]]" />
 ```
 
 See docs/assets.md for more options.

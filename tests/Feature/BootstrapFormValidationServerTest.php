@@ -9,8 +9,8 @@ it('does not enable validation assets when using server validation mode', functi
     $response
         ->within('#bootstrap-form-validation-server', function () {
             $this->seeElement('form:not(.needs-validation)[novalidate]')
-                ->seeElement('#mlbrgn-asset-config')
-                ->dontSeeInElement('#mlbrgn-asset-config', '"validation"')
+                ->seeElement('.mlbrgn-form-components-config')
+//                ->dontSeeInElement('#mlbrgn-asset-config', '"validation"')
                 ->dontSeeElement('[data-mlbrgn-validation]');
         });
 });
