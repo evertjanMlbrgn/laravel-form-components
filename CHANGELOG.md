@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.117](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.116...1.0.117) (2026-03-21)
+
+
+### Bug Fixes
+
+* updated dependencies ([d15d108](https://github.com/evertjanMlbrgn/laravel-form-components/commit/d15d1080e8cd2feac045d1c244eb23ad37aac1a6))
+
 ## [1.0.116](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.115...1.0.116) (2026-03-21)
 
 
