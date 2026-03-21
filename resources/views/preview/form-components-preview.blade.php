@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>MLBRGN form components preview page</title>
-        <link rel="stylesheet" href="{{ package_asset('preview.css') }}">
-        <link rel="stylesheet" href="{{ package_asset('main.css') }}">
+
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <script src="{{ package_asset('preview.js') }}"></script>
+        <link rel="icon" type="image/x-icon" href="{{ route('mlbrgn.lfc.favicon') }}">
+
     </head>
-    <body>
+    <body data-mlbrgn>
         <x-form::local-package-badge/>
         <div class="container-fluid p-0">
             <div class="container-md py-1 py-md-3">
@@ -1311,7 +1311,7 @@
                         <x-form-input class="mb-3" name="hidden-1" type="hidden" label="Hidden"/>
                     </div>
                     <x-form-input class="mb-3" name="month-1" type="month" label="Month"/>
-                    <x-form-input class="mb-3 w-auto d-block" name="image-1" type="image" label="Image" src="{{ package_asset('button-image.png') }}" height="40" alt="image button"/>
+{{--                    <x-form-input class="mb-3 w-auto d-block" name="image-1" type="image" label="Image" src="{{ package_asset('button-image.png') }}" height="40" alt="image button"/>--}}
                     <x-form-input class="mb-3" name="number-1" type="number" label="Number"/>
                     <x-form-input class="mb-3" name="password-1" type="password" label="Password" autocomplete="current-password"/>
                     <x-form-input class="mb-3" name="radio-1" type="radio" label="Radio"/>
@@ -1360,11 +1360,11 @@
                         @endslot
                     </x-form-input>
                     <x-form-input class="mb-3" name="month-2" type="month" label="Month" hidden help-text="test"/>
-                    <x-form-input class="mb-3 w-auto" name="image-2" type="image" label="Image" src="{{ package_asset('button-image.png') }}" height="40" hidden>
-                        @slot('help')
-                            help text
-                        @endslot
-                    </x-form-input>
+{{--                    <x-form-input class="mb-3 w-auto" name="image-2" type="image" label="Image" src="{{ package_asset('button-image.png') }}" height="40" hidden>--}}
+{{--                        @slot('help')--}}
+{{--                            help text--}}
+{{--                        @endslot--}}
+{{--                    </x-form-input>--}}
                     <x-form-input class="mb-3" name="number-2" type="number" label="Number" hidden help-text="test"/>
                     <x-form-input class="mb-3" name="password-2" type="password" label="Password" autocomplete="current-password" hidden>
                         @slot('help')
@@ -1741,13 +1741,13 @@
                     <x-form-input-group-icon class="mb-3" icon-position="start" for="image-icon-1">
                         <x-form-input id="image-icon-1" name="input-1" value="test value"></x-form-input>
                         @slot('iconImg')
-                            <img src="{{ package_asset('icon-envelope.png') }}" alt="">
+{{--                            <img src="{{ package_asset('icon-envelope.png') }}" alt="">--}}
                         @endslot
                     </x-form-input-group-icon>
                     <x-form-input-group-icon icon-position="end" for="image-icon-2">
                         <x-form-input id="image-icon-2" name="input-1" value="test value"></x-form-input>
                         @slot('iconImg')
-                            <img src="{{ package_asset('icon-envelope.png') }}" alt="">
+{{--                            <img src="{{ package_asset('icon-envelope.png') }}" alt="">--}}
                         @endslot
                     </x-form-input-group-icon>
 
@@ -1773,14 +1773,18 @@
                     </x-form-input-group-icon>
 
                     <h4>SVG sprite icons</h4>
-                    <x-form-input-group-icon class="mb-3" svg-sprite-href="{{ package_asset('sprite.svg') }}#right" icon-position="start" for="sprite-1">
-                        <x-form-input id="sprite-1" name="input-1" value="test value"></x-form-input>
-                    </x-form-input-group-icon>
-                    <x-form-input-group-icon svg-sprite-href="{{ package_asset('sprite.svg') }}#left" icon-position="end" for="sprite-2">
-                        <x-form-input id="sprite-2" name="input-1" value="test value"></x-form-input>
-                    </x-form-input-group-icon>
+{{--                    <x-form-input-group-icon class="mb-3" svg-sprite-href="{{ package_asset('sprite.svg') }}#right" icon-position="start" for="sprite-1">--}}
+{{--                        <x-form-input id="sprite-1" name="input-1" value="test value"></x-form-input>--}}
+{{--                    </x-form-input-group-icon>--}}
+{{--                    <x-form-input-group-icon svg-sprite-href="{{ package_asset('sprite.svg') }}#left" icon-position="end" for="sprite-2">--}}
+{{--                        <x-form-input id="sprite-2" name="input-1" value="test value"></x-form-input>--}}
+{{--                    </x-form-input-group-icon>--}}
                 </x-form-form>
             </div>
         </div>
     </body>
+
+    @once
+        <x-mlbrgn-form-components::assets :asset-config="$assetConfig"/>
+    @endonce
 </html>

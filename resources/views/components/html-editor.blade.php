@@ -152,9 +152,9 @@
 @endif
 
 {{-- Automatically include assets once per page --}}
-@php
-    $nonce = mlbrgn_csp_nonce();
-@endphp
+{{--@php--}}
+{{--    $nonce = mlbrgn_csp_nonce();--}}
+{{--@endphp--}}
 @once
     <x-mlbrgn-form-components::assets :assetConfig="$assetConfig()" />
 @endonce

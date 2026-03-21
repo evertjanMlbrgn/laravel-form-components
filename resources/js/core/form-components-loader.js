@@ -26,30 +26,12 @@ function loadFormAssets(loader, manifest) {
             if (assets.htmlEditor && document.querySelector('[data-mlbrgn-html-editor]')) {
                 await loadStyle(`css/tinymce-content.css`);
                 await loadScript(`js/html-editor.js`);
-                // await loadScript('js/vendor/tinyMCE/tinyMCE.js');
-                // await loadScript('js/vendor/tinyMCE/langs/nl.js');
             }
 
-            if (assets.preview && document.querySelector('[data-mlbrgn-preview]')) {
+            if (assets.preview) {
                 await loadStyle(`css/preview.css`);
                 await loadScript(`js/preview.js`);
             }
-
-            // if (features.validation) {
-            //     await loadStyle(`${basePath}/css/mlbrgn-form-validation.css`);
-            //     await loadScript(`${basePath}/js/mlbrgn-form-validation.js`);
-            // }
-            //
-            // if (features.htmlEditor && document.querySelector('[data-mlbrgn-html-editor]')) {
-            //     await loadStyle(`${basePath}/css/tinymce-content.css`);
-            //     await loadScript(`${basePath}/js/mlbrgn-html-editor.js`);
-            // }
-            //
-            // if (features.preview && document.querySelector('[data-mlbrgn-preview]')) {
-            //     await loadStyle(`${basePath}/css/mlbrgn-preview.css`);
-            //     await loadScript(`${basePath}/js/mlbrgn-preview.js`);
-            // }
-
 
             document.dispatchEvent(
                 new CustomEvent('mlbrgn:form:assets:loaded', {

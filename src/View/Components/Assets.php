@@ -9,12 +9,15 @@ class Assets extends Component
 {
     public array $assetConfig;
 
-    public function __construct(array $assetConfig = [])
+    public function __construct(
+        array $assetConfig = [],
+    )
     {
-        $this->assetConfig = array_merge([
+        $this->assetConfig = array_replace_recursive([
             'assets' => [
-                'validation' => false,
-                'htmlEditor' => false,
+                'validation' => true,
+                'htmlEditor' => true,
+                'preview' => false,
             ],
         ], $assetConfig);
     }
