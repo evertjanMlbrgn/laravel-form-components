@@ -8,7 +8,9 @@
 <x-mlbrgn-form-components::button class="g-recaptcha-submit-button" type="submit" data-form-id="{{ $formId }}"
     @class([$classButton])
 >{{ $label }}</x-mlbrgn-form-components::button>
-@php($nonce = mlbrgn_csp_nonce())
+@php
+    $nonce = mlbrgn_csp_nonce();
+@endphp
 @once
     <script
         @isset($nonce) nonce="{{ $nonce }}" @endisset
