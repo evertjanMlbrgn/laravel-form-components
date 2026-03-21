@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.115](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.114...1.0.115) (2026-03-21)
+
+
+### Bug Fixes
+
+* fix:  ([a5835ca](https://github.com/evertjanMlbrgn/laravel-form-components/commit/a5835caf290f60681113d4beda079e474decd1b5))
+* moved nonce php outside of [@once](https://github.com/once) directive ([e0254b6](https://github.com/evertjanMlbrgn/laravel-form-components/commit/e0254b644f112455a367860488a82f6fd0467cab))
+* renamed variables, refactored, improved asset loading ([2463931](https://github.com/evertjanMlbrgn/laravel-form-components/commit/24639315bd9d4c42d9656527b5aeec622ee0c036))
+* replaced [@if](https://github.com/if) check with [@isset](https://github.com/isset) check in script nonces ([ece8569](https://github.com/evertjanMlbrgn/laravel-form-components/commit/ece85697377b087770b980991bf174c424abcb55))
+* replaced [@if](https://github.com/if) check with [@isset](https://github.com/isset) check in script nonces ([272fe46](https://github.com/evertjanMlbrgn/laravel-form-components/commit/272fe462e840d25c98bb87c8e214c8ad14674eac))
+
 ## [1.0.114](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.113...1.0.114) (2026-03-10)
 
 
