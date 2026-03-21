@@ -10,9 +10,10 @@ it('does not enable validation assets when using server validation mode', functi
         ->within('#bootstrap-form-validation-server', function () {
             $this->seeElement('form:not(.needs-validation)[novalidate]')
                 ->seeElement('.mlbrgn-form-components-config')
-//                ->dontSeeInElement('#mlbrgn-asset-config', '"validation"')
                 ->dontSeeElement('[data-mlbrgn-validation]');
         });
+
+    expect($response)->toMatchSnapshot();
 });
 
 it('defaults to validation mode "server"', function () {
