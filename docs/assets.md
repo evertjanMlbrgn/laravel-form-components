@@ -29,6 +29,6 @@ You can include the asset loader yourself and control features:
 The loader reads the JSON config from a `<script type="application/json" id="mlbrgn-asset-config">` tag and loads:
 - Core CSS/JS: `css/index.css`, `js/index.js`
 - Validation (when enabled): `css/mlbrgn-form-validation.css`, `js/mlbrgn-form-validation.js`
-- HTML editor (when enabled and an element with `data-mlbrgn-html-editor` exists): `css/tiny-mce-content.css`, `js/mlbrgn-html-editor.js`
+- HTML editor (when enabled and an element with `data-mlbrgn-html-editor` exists): `css/tinymce-content.css`, `js/mlbrgn-html-editor.js`
 
 You normally don’t need to reference these files individually; the loader does it for you.

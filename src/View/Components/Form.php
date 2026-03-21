@@ -52,11 +52,13 @@ class Form extends FormBaseComponent
 
     public function assetConfig(): array
     {
-        $features = [];
+        $assets = [];
         if ($this->validationMode === 'client-default' || $this->validationMode === 'client-custom') {
-            $features['validation'] = true;
+            $assets['validation'] = true;
         }
-        return ['features' => $features, 'basePath' => asset('vendor/mlbrgn/laravel-form-components')];
+        return [
+            'assets' => $assets,
+        ];
     }
 
 

@@ -12,11 +12,9 @@ class Assets extends Component
     public function __construct(array $assetConfig = [])
     {
         $this->assetConfig = array_merge([
-            'basePath' => asset('vendor/mlbrgn/laravel-form-components'),
-            'features' => [
+            'assets' => [
                 'validation' => false,
                 'htmlEditor' => false,
-//                'preview' => false,
             ],
         ], $assetConfig);
     }

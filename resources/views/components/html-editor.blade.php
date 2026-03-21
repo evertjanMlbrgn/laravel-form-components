@@ -158,12 +158,12 @@
 @endonce
 
 {{-- Inline TinyMCE config --}}
-<script
-    @isset($nonce) nonce="{{ $nonce }}" @endisset
->
-    window.mlbHtmlEditorTinymceConfig ??= {};
-    window.mlbHtmlEditorTinymceConfig = @json($tinymceConfig());
-    console.log('window.mlbHtmlEditorTinymceConfig', window.mlbHtmlEditorTinymceConfig);
-</script>
+{{--<script--}}
+{{--    @isset($nonce) nonce="{{ $nonce }}" @endisset--}}
+{{-->--}}
+{{--    window.mlbHtmlEditorTinymceConfig ??= {};--}}
+{{--    window.mlbHtmlEditorTinymceConfig = @json($tinymceConfig());--}}
+{{--    console.log('window.mlbHtmlEditorTinymceConfig', window.mlbHtmlEditorTinymceConfig);--}}
+{{--</script>--}}
 
 @stack('mfc-html-editor-assets')
