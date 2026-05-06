@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.120](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.119...1.0.120) (2026-05-06)
+
+
+### Bug Fixes
+
+* pint fixes ([29bdf7f](https://github.com/evertjanMlbrgn/laravel-form-components/commit/29bdf7fb9e553639c6ba7185baef7c140d1b552b))
+
 ## [1.0.119](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.118...1.0.119) (2026-05-06)
 
 
