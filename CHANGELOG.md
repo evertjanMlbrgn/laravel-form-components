@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.119](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.118...1.0.119) (2026-05-06)
+
+
+### Bug Fixes
+
+* added laravel 13 support ([b0895ef](https://github.com/evertjanMlbrgn/laravel-form-components/commit/b0895ef5439fd612ce55307adbc7ea9aad76b1da))
+
 ## [1.0.118](https://github.com/evertjanMlbrgn/laravel-form-components/compare/1.0.117...1.0.118) (2026-03-21)
 
 
