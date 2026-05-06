@@ -50,7 +50,7 @@ use Mlbrgn\LaravelFormComponents\Http\Controllers\UploadController;
  */
 Route::middleware(['web'])->group(function () {
 
-    Route::get('form-components-preview', [DemoController::class, 'demo']);
+    Route::get('form-components-preview', [DemoController::class, 'demo'])->name('form-components-preview');
 
     Route::post('form-upload-media', [UploadController::class, 'upload']);
 
