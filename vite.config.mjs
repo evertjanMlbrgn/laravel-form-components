@@ -1,54 +1,85 @@
-// vite.config.mjs
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
+import { defineConfig } from 'vite'
+import laravel from 'laravel-vite-plugin'
+import path from 'path'
+import fs from 'fs'
+
+// Paths
+const jsDir = path.resolve(__dirname, 'resources/js')
+const cssDir = path.resolve(__dirname, 'resources/css')
+const faviconPath = path.resolve(__dirname, 'resources/assets/favicon.ico')
+const resourcesDir = path.resolve(__dirname, 'resources')
+
+function getEntriesRecursive(dir, exts = ['.js']) {
+    return fs.readdirSync(dir, { withFileTypes: true }).reduce((entries, entry) => {
+        const fullPath = path.join(dir, entry.name)
+
+        if (entry.isDirectory()) {
+            return { ...entries, ...getEntriesRecursive(fullPath, exts) }
+        }
+
+        if (!exts.some(ext => entry.name.endsWith(ext)) || entry.name.startsWith('_')) {
+            return entries
+        }
+
+        // 🔥 KEY CHANGE: relative to /resources, not js/ or css/
+        let name = path.relative(resourcesDir, fullPath)
+
+        name = name.replace(new RegExp(`${exts.join('|').replace(/\./g,'\\.')}$`), '')
+        name = name.split(path.sep).join('/')
+
+        entries[name] = path.relative(__dirname, fullPath)
+
+        return entries
+    }, {})
+}
+
+// Build entries object
+const entries = {
+    ...getEntriesRecursive(jsDir, ['.js']),
+    ...getEntriesRecursive(cssDir, ['.scss', '.css']),
+    favicon: faviconPath,
+}
+
+// console.log('entries', entries)
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: [
-                'resources/js/core/asset-loader.js',
-
-                'resources/js/index.js',
-                'resources/js/html-editor.js',
-                'resources/js/form-validation.js',
-
-                'resources/css/index.scss',
-                'resources/css/form-validation.scss',
-                'resources/css/tinyMCE/tinyMCEContentCSS.scss',
-
-                'resources/js/preview.js',
-                'resources/css/preview.scss',
-            ],
+            input: entries,
+            publicDirectory: 'public',
             refresh: true, // enables Blade auto-refresh during dev
         }),
     ],
     build: {
         outDir: 'dist',
-        manifest: false, // generates manifest.json at root of dist
+        emptyOutDir: true,
+        manifest: false,
         rollupOptions: {
+            // Keep your external logic if needed
+            // external: (id, importer) => {
+            //     if (!importer) return false
+            //     if (importer.endsWith('/image-editor.js')) return false
+            //     return id === '@mlbrgn/media-library-extensions'
+            // },
             output: {
-                // JS filenames
-                entryFileNames: chunk => {
-                    const nameMap = {
-                        'asset-loader.js': 'js/asset-loader.js',
-                        'index.js': 'js/index.js',
-                        'html-editor.js': 'js/mlbrgn-html-editor.js',
-                        'form-validation.js': 'js/mlbrgn-form-validation.js',
-                        'preview.js': 'js/mlbrgn-preview.js',
-                    };
-                    return Object.entries(nameMap).find(([key]) => chunk.facadeModuleId?.endsWith(key))?.[1]
-                        || 'assets/mlbrgn-[name].[hash].js';
+                entryFileNames: '[name].js',
+                chunkFileNames: '[name].js',
+                assetFileNames: assetInfo => {
+                    if (assetInfo.name?.endsWith('.css')) return '[name][extname]'
+                    return 'assets/[name][extname]'
                 },
-                // CSS filenames
-                assetFileNames: chunk => {
-                    const nameMap = {
-                        'index.css': 'css/index.css',
-                        'form-validation.css': 'css/mlbrgn-form-validation.css',
-                        'preview.css': 'css/mlbrgn-preview.css',
-                        'tinyMCEContentCSS.css': 'css/tiny-mce-content.css',
-                    };
-                    return nameMap[chunk.name] || 'assets/mlbrgn-[name].[hash][extname]';
-                },
+            },
+        },
+    },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                quietDeps: true,
+                silenceDeprecations: [
+                    "color-functions",
+                    "global-builtin",
+                    "import",
+                ],
             },
         },
     },

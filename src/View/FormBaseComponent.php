@@ -24,7 +24,7 @@ abstract class FormBaseComponent extends Component
         };
     }
 
-    public function assetFeatures(): array
+    public function assetConfig(): array
     {
         return [];
     }

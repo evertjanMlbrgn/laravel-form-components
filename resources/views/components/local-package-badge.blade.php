@@ -5,6 +5,3 @@
         <span class="mlbrgn-badge-remote-package">USING REMOTE PACKAGE</span>
     @endif
 @endif
-{{--@once--}}
-{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
-{{--@endonce--}}

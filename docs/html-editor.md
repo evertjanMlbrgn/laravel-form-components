@@ -28,7 +28,7 @@ Props (selected)
 Global configuration
 Set defaults in `config/form-components.php` under `html_editor_tinymce_global_config`. Example keys:
 - `height`, `menubar`, `plugins`, `toolbar`
-- `content_css` (defaults to `vendor/mlbrgn/laravel-form-components/css/tiny-mce-content.css`)
+- `content_css` (defaults to `vendor/mlbrgn/laravel-form-components/css/tinymcecontent.css`)
 - `file_picker_callback`, `images_upload_handler` (hooks)
 
 The view exposes `window.mlbHtmlEditorTinymceConfig` to the page containing the merged global + instance config.

@@ -45,15 +45,17 @@ class HtmlEditor extends FormBaseComponent
 
         $this->setValue($value, $name, $bind, $default, $language);
 
-        // Handle TinyMCE config
+        $globalConfig = $this->tinymceConfig();
+
         if (is_string($tinymceConfig)) {
-            $decoded = json_decode($tinymceConfig, true);
-            $tinymceConfig = $decoded ?? [];
+            $tinymceConfig = json_decode($tinymceConfig, true) ?? [];
         }
 
-//        $this->tinymceConfigJson = e(json_encode($tinymceConfig));
-        $this->tinymceConfigJson = json_encode($tinymceConfig);
+        // Merge global defaults with component-specific config
+        $mergedConfig = array_merge($globalConfig, $tinymceConfig);
 
+        // Encode for frontend
+        $this->tinymceConfigJson = json_encode($mergedConfig);
 
         // Push extra scripts from config
         $nonce = mlbrgn_csp_nonce();
@@ -62,7 +64,7 @@ class HtmlEditor extends FormBaseComponent
             View::startPush('mfc-html-editor-assets');
 
             echo '<script type="module" src="' . e($script) . '"' .
-                ($nonce ? ' nonce="' . e($nonce) . '"' : '') .
+                (isset($nonce) ? ' nonce="' . e($nonce) . '"' : '') .
                 '></script>';
 
             View::stopPush();
@@ -70,26 +72,18 @@ class HtmlEditor extends FormBaseComponent
 
         foreach (config('form-components.html_editor_tinymce_global_config.extra_styles', []) as $style) {
             View::startPush('mfc-html-editor-assets');
-            $attr = $nonce ? ' nonce="'.e($nonce).'"' : '';
+            $attr = isset($nonce) ? ' nonce="'.e($nonce).'"' : '';
             echo new HtmlString('<script type="module" src="'.e($script).'"'.$attr.'></script>');
             View::stopPush();
         }
-//        foreach (config('form-components.html_editor_tinymce_global_config.extra_scripts', []) as $script) {
-//            View::startPush('mfc-html-editor-assets');
-//            echo '<script type="module" src="' . e($script) . '"></script>';
-//            View::stopPush();
-//        }
-
     }
 
-    public function assetFeatures(): array
+    public function assetConfig(): array
     {
         return [
-            'features' => ['htmlEditor' => true],
-            'basePath' => asset('vendor/mlbrgn/laravel-form-components')
+            'assets' => ['htmlEditor' => true],
         ];
     }
-
 
     public function tinymceConfig(): array
     {

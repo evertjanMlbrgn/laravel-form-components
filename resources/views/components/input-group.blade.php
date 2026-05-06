@@ -78,6 +78,3 @@
 
 {{-- Open wrapper--}}
 </div>
-{{--@once--}}
-{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
-{{--@endonce--}}

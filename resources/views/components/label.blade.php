@@ -27,6 +27,3 @@
         {{ $slot }}
     </label>
 @endif
-{{--@once--}}
-{{--    <x-form-components::assets :config="$assetFeatures()" />--}}
-{{--@endonce--}}

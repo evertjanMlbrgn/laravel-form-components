@@ -11,7 +11,6 @@ import 'tinymce/models/dom/model.min.js';
 /* Skin & Translations */
 import 'tinymce/skins/ui/oxide/skin.js';
 import 'tinymce/skins/ui/oxide/content.js';
-import './langs/nl.js';
 
 /* Plugins */
 import 'tinymce/plugins/autoresize'
@@ -144,41 +143,33 @@ function setupEditor(editor) {
 }
 
 // Helper: resolve string callbacks to functions
-const resolveFilePickerCallback = (callback) => {
-    if (typeof callback === 'string') {
-        return resolveCallback(callback);
-    }
-    return callback;
-};
+// const resolveFilePickerCallback = (callback) => {
+//     if (typeof callback === 'string') {
+//         return resolveCallback(callback);
+//     }
+//     return callback;
+// };
 
-// document.addEventListener('DOMContentLoaded', async () => {
-    const globalHtmlEditorTinymceConfig = window.mlbHtmlEditorTinymceConfig ?? {};
+const resolveFilePickerCallback = (callback) => resolveCallback(callback) ?? window.mfcDefaultFilePickerCallback;
 
-    const allHtmlEditorsOnPage = document.querySelectorAll('[data-mlbrgn-html-editor]');
-    console.log('all html editors on page', allHtmlEditorsOnPage);
-    allHtmlEditorsOnPage.forEach(async el => {
-        let elementTinymceConfig = {};
-        if (el.dataset.tinymceConfig) {
-            try {
-                elementTinymceConfig = JSON.parse(el.dataset.tinymceConfig);
-            } catch (e) {
-                console.warn("Invalid JSON in data-tinymce-config", e);
-            }
-        }
+const allHtmlEditorsOnPage = document.querySelectorAll('[data-mlbrgn-html-editor]');
 
-        console.log('globalHtmlEditorTinymceConfig', globalHtmlEditorTinymceConfig);
-        console.log('elementTinymceConfig', elementTinymceConfig);
-        const mergedConfig = {
-            ...globalHtmlEditorTinymceConfig,
-            target: el,
-            setup: setupEditor,
-            ...elementTinymceConfig
-        };
+allHtmlEditorsOnPage.forEach(el => {
+    let config = {};
+    try { config = JSON.parse(el.dataset.tinymceConfig); } catch(e) { console.warn(e); }
 
-        // Resolve string callbacks after merging
-        mergedConfig.file_picker_callback = resolveFilePickerCallback(mergedConfig.file_picker_callback);
+    const defaultSetup = setupEditor;
+    const userSetup = config.setup;
+    const combinedSetup = (editor) => {
+        defaultSetup(editor);
+        if (typeof userSetup === 'function') userSetup(editor);
+    };
 
-        console.log('mergedConfig', mergedConfig);
-        await tinymce.init(mergedConfig);
+    tinymce.init({
+        ...config,
+        target: el,
+        setup: combinedSetup,
+        file_picker_callback: resolveFilePickerCallback(config.file_picker_callback)
+        // file_picker_callback: config.file_picker_callback || window.mfcDefaultFilePickerCallback
     });
-// });
+});
