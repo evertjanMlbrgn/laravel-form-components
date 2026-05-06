@@ -1,5 +1,6 @@
-<?php /** @noinspection Annotator */
+<?php
 
+/** @noinspection Annotator */
 it('sets the id on the label or generates one', function () {
     $this->registerTestRoute('label-for');
 
@@ -60,7 +61,6 @@ it('sets correct "for" attribute on label', function () {
 
     $page = $this->visit('/label-no-id');
     $pageCrawler = $page->crawler()->filter('#label-no-id');
-
 
     $colorId = $pageCrawler->filter('input[type="color"]')->attr('id');
     $dateId = $pageCrawler->filter('input[type="date"]')->attr('id');

@@ -1,4 +1,6 @@
-<?php /** @noinspection Annotator */
+<?php
+
+/** @noinspection Annotator */
 
 use Illuminate\Http\Request;
 
@@ -11,7 +13,7 @@ it('always gets an id attribute', function () {
         });
 });
 
-//it('always gets an id attribute and label refers to it', function () {
+// it('always gets an id attribute and label refers to it', function () {
 //    $this->registerTestRoute('custom-html-editor');
 //
 //    $this->visit('/custom-html-editor')
@@ -25,7 +27,7 @@ it('always gets an id attribute', function () {
 //                ->seeElement('label[for="auto_id_id-using-name"].form-label')
 //                ->seeElement('label[for="' . $randomId . '"].form-label');
 //        });
-//});
+// });
 
 it('sets classes', function () {
     $this->registerTestRoute('custom-html-editor');

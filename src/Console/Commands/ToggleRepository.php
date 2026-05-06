@@ -16,11 +16,17 @@ class ToggleRepository extends Command
 
     // ------------------ Constants ------------------
     protected const COMPOSER_JSON = 'composer.json';
+
     protected const DIST_FOLDER = 'dist';
+
     protected const DEV_VERSION = 'dev-main';
+
     protected const VENDOR_PATH = 'vendor';
+
     protected const VIEWS_PATH = 'views/vendor/laravel-form-components';
+
     protected const PUBLISH_PROVIDER = 'Mlbrgn\\LaravelFormComponents\\Providers\\FormComponentsServiceProvider';
+
     protected const ASSETS_PUBLISH_TAG = 'public';
 
     // ------------------ Packages ------------------
@@ -40,6 +46,7 @@ class ToggleRepository extends Command
 
         if (! file_exists($composerPath)) {
             $this->error('composer.json not found!');
+
             return self::FAILURE;
         }
 
@@ -114,7 +121,7 @@ class ToggleRepository extends Command
                 }
 
                 $composer['require'][$name] = self::DEV_VERSION;
-                $this->info("🔖 Set version for $name to " . self::DEV_VERSION);
+                $this->info("🔖 Set version for $name to ".self::DEV_VERSION);
 
                 if ($targetPath && is_dir($targetPath)) {
                     $this->removePath($linkPath);
@@ -138,8 +145,8 @@ class ToggleRepository extends Command
         file_put_contents($composerPath, json_encode($composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
         if (count($toggled)) {
-            $this->info('📦 Running composer update for: ' . implode(', ', $toggled));
-            $process = Process::fromShellCommandline('composer update ' . implode(' ', $toggled));
+            $this->info('📦 Running composer update for: '.implode(', ', $toggled));
+            $process = Process::fromShellCommandline('composer update '.implode(' ', $toggled));
             $process->setTty(Process::isTtySupported());
             $process->run(function ($type, $buffer) {
                 echo $buffer;
@@ -167,7 +174,7 @@ class ToggleRepository extends Command
 
     protected function cleanVendorPackage(string $name): void
     {
-        $vendorPath = base_path(self::VENDOR_PATH . '/' . str_replace('/', DIRECTORY_SEPARATOR, $name));
+        $vendorPath = base_path(self::VENDOR_PATH.'/'.str_replace('/', DIRECTORY_SEPARATOR, $name));
         if (is_link($vendorPath) || is_dir($vendorPath) || file_exists($vendorPath)) {
             $this->removePath($vendorPath);
             $this->info("🧹 Cleaned vendor package directory: $vendorPath");
@@ -185,7 +192,7 @@ class ToggleRepository extends Command
 
     protected function publishAssets(): void
     {
-        $this->info("📦 Publishing package assets for " . self::PUBLISH_PROVIDER);
+        $this->info('📦 Publishing package assets for '.self::PUBLISH_PROVIDER);
         $this->call('vendor:publish', [
             '--provider' => self::PUBLISH_PROVIDER,
             '--tag' => self::ASSETS_PUBLISH_TAG,
@@ -196,33 +203,35 @@ class ToggleRepository extends Command
     protected function setLocalPackageFlag(bool $usingLocal, string $envKey): void
     {
         $envKey = trim($envKey);
-        if ($envKey === '') return;
+        if ($envKey === '') {
+            return;
+        }
 
         $envLocalPath = base_path('.env');
 
         if (! file_exists($envLocalPath)) {
-            file_put_contents($envLocalPath, "");
+            file_put_contents($envLocalPath, '');
         }
 
         $content = file_get_contents($envLocalPath);
 
-        if (str_contains($content, $envKey . '=')) {
+        if (str_contains($content, $envKey.'=')) {
             $content = preg_replace(
-                '/' . preg_quote($envKey, '/') . '=.*/',
-                $envKey . '=' . ($usingLocal ? 'true' : 'false'),
+                '/'.preg_quote($envKey, '/').'=.*/',
+                $envKey.'='.($usingLocal ? 'true' : 'false'),
                 $content
             );
         } else {
             // Append key/value with a single newline
-            $content .= PHP_EOL . $envKey . '=' . ($usingLocal ? 'true' : 'false');
+            $content .= PHP_EOL.$envKey.'='.($usingLocal ? 'true' : 'false');
         }
 
         // Ensure no extra blank lines at the end
-        $content = trim($content) . PHP_EOL;
+        $content = trim($content).PHP_EOL;
 
         file_put_contents($envLocalPath, $content);
 
-        $this->info('🔖 ' . $envKey . ' set to ' . ($usingLocal ? 'true' : 'false'));
+        $this->info('🔖 '.$envKey.' set to '.($usingLocal ? 'true' : 'false'));
     }
 
     protected function ensureLocalRepositoryExists(string $path, string $gitUrl): bool
@@ -231,6 +240,7 @@ class ToggleRepository extends Command
 
         if (is_dir($absolutePath)) {
             $this->info("📂 Local repository already exists at: $absolutePath");
+
             return true;
         }
 
@@ -256,13 +266,14 @@ class ToggleRepository extends Command
         });
 
         if ($process->getExitCode() !== 0) {
-            $this->error("❌ Failed to clone repository.");
+            $this->error('❌ Failed to clone repository.');
+
             return false;
         }
 
         // Run composer install inside the cloned repo
         $this->info("📦 Running composer install inside $absolutePath");
-        $install = Process::fromShellCommandline("composer install", $absolutePath);
+        $install = Process::fromShellCommandline('composer install', $absolutePath);
         $install->setTty(Process::isTtySupported());
         $install->run(function ($type, $buffer) {
             echo $buffer;
@@ -270,12 +281,13 @@ class ToggleRepository extends Command
 
         if ($install->getExitCode() !== 0) {
             $this->error("❌ Failed to run composer install inside $absolutePath");
+
             return false;
         }
 
         // Run npm install + npm run build
-        $this->info("📦 Installing npm dependencies...");
-        $npmInstall = Process::fromShellCommandline("npm install", $absolutePath);
+        $this->info('📦 Installing npm dependencies...');
+        $npmInstall = Process::fromShellCommandline('npm install', $absolutePath);
         $npmInstall->setTty(Process::isTtySupported());
         $npmInstall->run(function ($type, $buffer) {
             echo $buffer;
@@ -283,11 +295,12 @@ class ToggleRepository extends Command
 
         if ($npmInstall->getExitCode() !== 0) {
             $this->error("❌ npm install failed inside $absolutePath");
+
             return false;
         }
 
-        $this->info("⚙️ Running npm run build to create dist/ folder...");
-        $npmBuild = Process::fromShellCommandline("npm run build", $absolutePath);
+        $this->info('⚙️ Running npm run build to create dist/ folder...');
+        $npmBuild = Process::fromShellCommandline('npm run build', $absolutePath);
         $npmBuild->setTty(Process::isTtySupported());
         $npmBuild->run(function ($type, $buffer) {
             echo $buffer;
@@ -295,6 +308,7 @@ class ToggleRepository extends Command
 
         if ($npmBuild->getExitCode() !== 0) {
             $this->error("❌ npm run build failed inside $absolutePath");
+
             return false;
         }
 
@@ -302,5 +316,4 @@ class ToggleRepository extends Command
 
         return true;
     }
-
 }

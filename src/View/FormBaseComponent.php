@@ -63,14 +63,9 @@ abstract class FormBaseComponent extends Component
 
     /**
      * Converts a bracket-notation to a dotted-notation
-     *
-     * @param  string  $name
-     * @return string
      */
     protected static function convertBracketsToDots(string $name): string
     {
         return str_replace(['[', ']'], ['.', ''], $name);
     }
-
-
 }

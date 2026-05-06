@@ -11,8 +11,7 @@ class Assets extends Component
 
     public function __construct(
         array $assetConfig = [],
-    )
-    {
+    ) {
         $this->assetConfig = array_replace_recursive([
             'assets' => [
                 'validation' => true,
@@ -24,6 +23,6 @@ class Assets extends Component
 
     public function render(): View
     {
-       return view('mlbrgn-form-components::assets');
+        return view('mlbrgn-form-components::assets');
     }
 }

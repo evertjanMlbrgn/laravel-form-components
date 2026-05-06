@@ -1,6 +1,7 @@
-<?php /** @noinspection ALL */
-/** @noinspection SpellCheckingInspection */
+<?php
 
+/** @noinspection ALL */
+/** @noinspection SpellCheckingInspection */
 it('lets buttons default to correct type', function () {
     $this->registerTestRoute('button-no-type');
     $this->visit('/button-no-type')

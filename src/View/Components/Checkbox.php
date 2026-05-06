@@ -14,21 +14,20 @@ class Checkbox extends FormBaseComponent
     use HandlesBoundValues;
     use HandlesValidationErrors;
 
-//    public string $value;
+    //    public string $value;
 
     public string $type = 'checkbox';
 
     public bool $checked = false;
 
-
-//    protected $casts = [
-//        'defaultToZero' => 'boolean',
-////        'hidden' => 'boolean',
-////        'default' => 'boolean',
-////        'show_errors' => 'boolean',
-////        'toggle' => 'boolean',
-////        'tooltipFeedback' => 'boolean',
-//    ];
+    //    protected $casts = [
+    //        'defaultToZero' => 'boolean',
+    // //        'hidden' => 'boolean',
+    // //        'default' => 'boolean',
+    // //        'show_errors' => 'boolean',
+    // //        'toggle' => 'boolean',
+    // //        'tooltipFeedback' => 'boolean',
+    //    ];
 
     /**
      * Create a new component instance.

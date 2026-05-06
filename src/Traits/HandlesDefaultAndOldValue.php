@@ -19,8 +19,7 @@ trait HandlesDefaultAndOldValue
         $bind = null,// from attribute
         $default = null,// from attribute
         $language = null// from attribute
-    ): void
-    {
+    ): void {
         $inputName = static::convertBracketsToDots($name);
 
         if (! $language) {

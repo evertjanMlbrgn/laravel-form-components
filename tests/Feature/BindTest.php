@@ -1,4 +1,6 @@
-<?php /** @noinspection Annotator */
+<?php
+
+/** @noinspection Annotator */
 
 use Illuminate\Http\Request;
 

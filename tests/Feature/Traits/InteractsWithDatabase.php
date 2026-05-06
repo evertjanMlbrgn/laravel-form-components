@@ -1,4 +1,6 @@
-<?php /** @noinspection SpellCheckingInspection */
+<?php
+
+/** @noinspection SpellCheckingInspection */
 
 namespace Mlbrgn\LaravelFormComponents\Tests\Feature\Traits;
 

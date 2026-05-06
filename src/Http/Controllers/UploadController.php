@@ -2,8 +2,8 @@
 
 namespace Mlbrgn\LaravelFormComponents\Http\Controllers;
 
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class UploadController extends Controller
 {
@@ -18,6 +18,6 @@ class UploadController extends Controller
         $path = $request->file('file')->store('uploads', 'public');
 
         // Return the file URL for TinyMCE
-        return response()->json(['url' => '/storage/' . $path]);
+        return response()->json(['url' => '/storage/'.$path]);
     }
 }

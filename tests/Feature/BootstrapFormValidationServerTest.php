@@ -4,7 +4,7 @@ it('does not enable validation assets when using server validation mode', functi
     $this->registerTestRoute('bootstrap-form-validation-server');
 
     $response = $this->visit('/bootstrap-form-validation-server');
-//    dd($response);
+    //    dd($response);
 
     $response
         ->within('#bootstrap-form-validation-server', function () {

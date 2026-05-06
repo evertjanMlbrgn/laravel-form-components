@@ -20,6 +20,7 @@ class CreateCommentPostTable extends Migration
             $table->unsignedBigInteger('comment_id');
         });
     }
+
     /**
      * Reverse the migrations.
      *

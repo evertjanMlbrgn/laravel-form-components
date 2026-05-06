@@ -5,11 +5,11 @@ it('can render icons', function () {
 
     $response = $this->visit('/bootstrap-input-group-icons');
     $response->within('#form-input-group-icons', function () {
-            $this->seeElement('div.input-group span.input-group-text.input-group-icon.input-group-icon-font i.bi-alarm')
-                ->seeElement('div.input-group span.input-group-text.input-group-icon.input-group-icon-img img[alt=""]')
-                ->seeElement('div.input-group span.input-group-text.input-group-icon.input-group-icon-svg svg')
-                ->seeElement('div.input-group span.input-group-text.input-group-icon.input-group-icon-sprite svg use');
-        });
+        $this->seeElement('div.input-group span.input-group-text.input-group-icon.input-group-icon-font i.bi-alarm')
+            ->seeElement('div.input-group span.input-group-text.input-group-icon.input-group-icon-img img[alt=""]')
+            ->seeElement('div.input-group span.input-group-text.input-group-icon.input-group-icon-svg svg')
+            ->seeElement('div.input-group span.input-group-text.input-group-icon.input-group-icon-sprite svg use');
+    });
 });
 
 it('sets extra classes', function () {

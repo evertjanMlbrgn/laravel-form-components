@@ -1,4 +1,6 @@
-<?php /** @noinspection Annotator */
+<?php
+
+/** @noinspection Annotator */
 
 use Illuminate\Http\Request;
 
@@ -96,7 +98,7 @@ it('does have help text when "help-text" attribute present', function () {
 
     $this->visit('/radio-help-text')
         ->seeElement('div.form-text[id="radio-help-text"]')
-                ->seeInElement('div.form-text[id="radio-help-text"]', 'attribute help text');
+        ->seeInElement('div.form-text[id="radio-help-text"]', 'attribute help text');
 });
 
 it('does have help text when @slot("help") attribute present', function () {
@@ -104,7 +106,7 @@ it('does have help text when @slot("help") attribute present', function () {
 
     $this->visit('/radio-help-slot')
         ->seeElement('div.form-text[id="radio-help-text"]')
-                ->seeInElement('div.form-text[id="radio-help-text"]', 'slot help text');
+        ->seeInElement('div.form-text[id="radio-help-text"]', 'slot help text');
 });
 
 it('does not have help text when no @slot("help") or "help-text" attribute', function () {
@@ -119,9 +121,9 @@ it('does not have help text when hidden', function () {
 
     $this->visit('/radio-hidden')
         ->seeElement('input[type="radio"]') // always make sure node list is not empty when only using dontSeeElement
-            ->dontSeeElement('div.form-text[id="hidden-radio-help-text"]')
-                ->seeElement('div.form-text[id="non-hidden-radio-help-text"]')
-                ->seeInElement('div.form-text[id="non-hidden-radio-help-text"]', 'help text');
+        ->dontSeeElement('div.form-text[id="hidden-radio-help-text"]')
+        ->seeElement('div.form-text[id="non-hidden-radio-help-text"]')
+        ->seeInElement('div.form-text[id="non-hidden-radio-help-text"]', 'help text');
 });
 
 // TODO other name
@@ -130,7 +132,7 @@ it('check the right element as default', function () {
 
     $this->visit('/radio-no-id')
         ->seeElement('input[value="1"]:checked')
-                ->seeElement('input[value="0"]:not(:checked)');
+        ->seeElement('input[value="0"]:not(:checked)');
 });
 
 // TODO other name
@@ -139,7 +141,7 @@ it('check radio labels work', function () {
 
     $this->visit('/radio-no-id')
         ->seeElement('input[value="1"] ~ label')
-                ->seeElement('input[value="0"] ~ label');
+        ->seeElement('input[value="0"] ~ label');
 });
 
 it('has correct classes on label', function () {
@@ -147,7 +149,7 @@ it('has correct classes on label', function () {
 
     $this->visit('/radio-no-id')
         ->seeElement('input[value="0"] ~ label.form-check-label')
-                ->seeElement('input[value="1"] ~ label.form-check-label');
+        ->seeElement('input[value="1"] ~ label.form-check-label');
 });
 
 it('sets correct classes on radio labels', function () {
@@ -155,7 +157,7 @@ it('sets correct classes on radio labels', function () {
 
     $this->visit('/radio-no-id')
         ->seeElement('input[value="1"] ~ label.form-check-label')
-                ->seeElement('input[value="0"] ~ label.form-check-label');
+        ->seeElement('input[value="0"] ~ label.form-check-label');
 });
 
 it('checks the right element as default with a bound target', function () {
@@ -163,7 +165,7 @@ it('checks the right element as default with a bound target', function () {
 
     $this->visit('/radio-no-id')
         ->seeElement('input[value="1"]:checked')
-                ->seeElement('input[value="0"]:not(:checked)');
+        ->seeElement('input[value="0"]:not(:checked)');
 });
 
 it('checks the right radio button after a validation error', function () {
@@ -175,9 +177,9 @@ it('checks the right radio button after a validation error', function () {
 
     $this->visit('/radio-validation-error-2')
         ->select('b', 'radio')
-                ->press('Send')
-                ->seeElement('input[value="a"]:not(:checked)')
-                ->seeElement('input[value="b"]:checked');
+        ->press('Send')
+        ->seeElement('input[value="a"]:not(:checked)')
+        ->seeElement('input[value="b"]:checked');
 });
 
 it('checks the right input element after a validation error of another field', function () {
@@ -189,7 +191,7 @@ it('checks the right input element after a validation error of another field', f
 
     $this->visit('/radio-zero-value')
         ->select('0', 'radio')
-                ->press('Send')
-                ->seeElement('input[value="0"]:checked')
-                ->seeElement('input[value="1"]:not(:checked)');
+        ->press('Send')
+        ->seeElement('input[value="0"]:checked')
+        ->seeElement('input[value="1"]:not(:checked)');
 });

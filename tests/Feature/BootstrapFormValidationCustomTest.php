@@ -4,14 +4,14 @@ it('enables validation assets when using custom validation mode', function () {
     $this->registerTestRoute('bootstrap-form-validation-custom');
 
     $response = $this->visit('/bootstrap-form-validation-custom');
-        $response->seeElement('.mlbrgn-form-components-config')
+    $response->seeElement('.mlbrgn-form-components-config')
 //        ->seeInElement(
 //            '.mlbrgn-form-components-config',
 //            '"validation":true'
 //        )
         ->seeElement('[data-mlbrgn-validation]');
 
-        expect($response)->toMatchSnapshot();
+    expect($response)->toMatchSnapshot();
 });
 
 it('defaults to validation mode "client-custom"', function () {

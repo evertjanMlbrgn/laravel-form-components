@@ -13,8 +13,6 @@ class FormDataBinder
 
     /**
      * Bind a target to the current instance
-     *
-     * @param  mixed  $target
      */
     public function bind(mixed $target): void
     {
@@ -23,8 +21,6 @@ class FormDataBinder
 
     /**
      * Get the latest bound target.
-     *
-     * @return mixed
      */
     public function get(): mixed
     {

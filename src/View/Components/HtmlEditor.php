@@ -1,4 +1,5 @@
 <?php
+
 /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace Mlbrgn\LaravelFormComponents\View\Components;
@@ -15,6 +16,7 @@ class HtmlEditor extends FormBaseComponent
     use HandlesValidationErrors;
 
     public $value;
+
     public string $tinymceConfigJson = '{}';
 
     public function __construct(
@@ -63,8 +65,8 @@ class HtmlEditor extends FormBaseComponent
         foreach (config('form-components.html_editor_tinymce_global_config.extra_scripts', []) as $script) {
             View::startPush('mfc-html-editor-assets');
 
-            echo '<script type="module" src="' . e($script) . '"' .
-                (isset($nonce) ? ' nonce="' . e($nonce) . '"' : '') .
+            echo '<script type="module" src="'.e($script).'"'.
+                (isset($nonce) ? ' nonce="'.e($nonce).'"' : '').
                 '></script>';
 
             View::stopPush();
@@ -90,5 +92,4 @@ class HtmlEditor extends FormBaseComponent
         // Merge global config with component-specific settings if needed
         return config('form-components.html_editor_tinymce_global_config', []);
     }
-
 }

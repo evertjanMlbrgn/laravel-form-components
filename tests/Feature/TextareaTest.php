@@ -1,4 +1,6 @@
-<?php /** @noinspection Annotator */
+<?php
+
+/** @noinspection Annotator */
 
 use Illuminate\Http\Request;
 
@@ -94,8 +96,8 @@ it('does have help text when "help-text" attribute present', function () {
     $this->registerTestRoute('textarea-help-text');
 
     $this->visit('/textarea-help-text')
-      ->seeElement('div.form-text[id="textarea-help-text"]')
-                ->seeInElement('div.form-text[id="textarea-help-text"]', 'attribute help text');
+        ->seeElement('div.form-text[id="textarea-help-text"]')
+        ->seeInElement('div.form-text[id="textarea-help-text"]', 'attribute help text');
 });
 
 it('does have help text when @slot("help") attribute present', function () {
@@ -103,25 +105,25 @@ it('does have help text when @slot("help") attribute present', function () {
 
     $this->visit('/textarea-help-slot')
         ->seeElement('div.form-text[id="textarea-help-text"]')
-                ->seeInElement('div.form-text[id="textarea-help-text"]', 'slot help text');
+        ->seeInElement('div.form-text[id="textarea-help-text"]', 'slot help text');
 });
 
 it('does not have help text when no @slot("help") or "help-text" attribute', function () {
     $this->registerTestRoute('textarea-no-help');
 
     $this->visit('/textarea-no-help')
-       ->seeElement('textarea')
-                ->dontSeeElement('div[id="textarea-help-text"]');
+        ->seeElement('textarea')
+        ->dontSeeElement('div[id="textarea-help-text"]');
 });
 
 it('does not have help text when hidden', function () {
     $this->registerTestRoute('textarea-hidden');
 
     $this->visit('/textarea-hidden')
-       ->seeElement('textarea') // always make sure node list is not empty when only using dontSeeElement
-            ->dontSeeElement('div.form-text[id="hidden-textarea-help-text"]')
-                ->seeElement('div.form-text[id="non-hidden-textarea-help-text"]')
-                ->seeInElement('div.form-text[id="non-hidden-textarea-help-text"]', 'textarea help text');
+        ->seeElement('textarea') // always make sure node list is not empty when only using dontSeeElement
+        ->dontSeeElement('div.form-text[id="hidden-textarea-help-text"]')
+        ->seeElement('div.form-text[id="non-hidden-textarea-help-text"]')
+        ->seeInElement('div.form-text[id="non-hidden-textarea-help-text"]', 'textarea help text');
 });
 
 it('can bind data', function () {
@@ -135,6 +137,6 @@ it('can set value using slot', function () {
     $this->registerTestRoute('textarea-value-by-slot');
 
     $this->visit('/textarea-value-by-slot')
-       ->seeElement('textarea')
-                ->seeInElement('textarea[id="value-using-slot"]', 'Value using slot');
+        ->seeElement('textarea')
+        ->seeInElement('textarea[id="value-using-slot"]', 'Value using slot');
 });

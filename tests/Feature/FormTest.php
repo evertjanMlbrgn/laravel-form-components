@@ -36,10 +36,10 @@ it('handles validation-mode="client-custom"', function () {
 
     $response = $this->visit('/form-validation-client-custom')
 //    dd($something);
-       ->seeElement('form.needs-validation')
-                ->seeElement('form[novalidate]')
-                ->seeElement('div.input-group.has-validation')
-                ->seeElement('div.input-group-2.has-validation');
+        ->seeElement('form.needs-validation')
+        ->seeElement('form[novalidate]')
+        ->seeElement('div.input-group.has-validation')
+        ->seeElement('div.input-group-2.has-validation');
 });
 
 it('shows required asterisk when field required', function () {
@@ -51,4 +51,3 @@ it('shows required asterisk when field required', function () {
     //        ->seeElementCount('.form-switch', 1) // fails
     //        ->seeElement('.form-range', ['type' => 'range']);
 });
-

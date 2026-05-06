@@ -27,10 +27,11 @@ trait HandlesValidationErrors
     {
         // sometimes session is not set on request, e.g. session middleware is not being applied to the error pages
         if (request()->hasSession()) {
-            $bags = View::shared('errors', fn() => request()->session()->get('errors', new ViewErrorBag));
+            $bags = View::shared('errors', fn () => request()->session()->get('errors', new ViewErrorBag));
 
             return $bags->getBag($bag);
         }
+
         return null;
     }
 
@@ -45,6 +46,7 @@ trait HandlesValidationErrors
         if ($errorBag) {
             return $errorBag->has($name) || $errorBag->has($name.'.*');
         }
+
         return false;
     }
 }

@@ -4,8 +4,8 @@
 
 namespace Mlbrgn\LaravelFormComponents\Http\Controllers;
 
-use Illuminate\View\View;
 use Illuminate\Routing\Controller;
+use Illuminate\View\View;
 
 class DemoController extends Controller
 {
@@ -17,8 +17,8 @@ class DemoController extends Controller
                     'validation' => true,
                     'htmlEditor' => true,
                     'preview' => true,
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 }

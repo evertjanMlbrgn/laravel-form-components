@@ -5,7 +5,6 @@ namespace Mlbrgn\LaravelFormComponents\Providers;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\View\ComponentAttributeBag;
 use Mlbrgn\LaravelFormComponents\Console\Commands\ToggleRepository;
 use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
@@ -29,8 +28,8 @@ use Mlbrgn\LaravelFormComponents\View\Components\Select;
 use Mlbrgn\LaravelFormComponents\View\Components\Submit;
 use Mlbrgn\LaravelFormComponents\View\Components\Text;
 use Mlbrgn\LaravelFormComponents\View\Components\Textarea;
-//use Mlbrgn\LaravelFormComponents\Support\PackageAssetManager;
 
+// use Mlbrgn\LaravelFormComponents\Support\PackageAssetManager;
 
 /**
  * @bladeComponent mlbrgn-form-components::text
@@ -99,19 +98,18 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             ], 'mlbrgn-form-components-config');
 
             // php artisan vendor:publish --tag=mlbrgn-form-components-assets
-//            $this->publishes([
-//                __DIR__.'/../../dist' => public_path('vendor/mlbrgn-form-components'),
-//            ], 'mlbrgn-form-components-assets');
+            //            $this->publishes([
+            //                __DIR__.'/../../dist' => public_path('vendor/mlbrgn-form-components'),
+            //            ], 'mlbrgn-form-components-assets');
 
             // publish assets
             $this->publishes([
-                __DIR__ . '/../../dist' => public_path('vendor/mlbrgn/laravel-form-components'),
+                __DIR__.'/../../dist' => public_path('vendor/mlbrgn/laravel-form-components'),
             ], 'mlbrgn-form-components-assets');
 
             $this->commands([
                 ToggleRepository::class,
             ]);
-
 
             //            $this->publishes([
             //                self::PATH_TO_BLADE_COMPONENT_VIEWS => base_path('resources/views/components/form'),
@@ -133,7 +131,6 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             //                self::PATH_HELPERS => base_path('app/Helpers'),
             //            ], 'mlbrgn-form-components-helpers');
 
-
             // publish test page?
             //            $this->publishes([
             //                __DIR__.'/../resources/js' => resource_path('js/vendor/package_name'),
@@ -144,13 +141,13 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         $this->registerComponents();
 
         // method 2 of loading view components
-        //$this->loadViewComponentsAs('mlbrgn', $this->viewComponents());
+        // $this->loadViewComponentsAs('mlbrgn', $this->viewComponents());
 
         // method 3 of registering view components
-        //Blade::componentNamespace('Mlbrgn\LaravelFormComponents\View\Components', config('form-components.tag_prefix'));
+        // Blade::componentNamespace('Mlbrgn\LaravelFormComponents\View\Components', config('form-components.tag_prefix'));
 
-//        $this->loadViewsFrom(realpath(self::PATH_TO_OTHER_BLADE_VIEWS), 'preview');
-//        $this->loadViewsFrom(realpath(self::PATH_TO_OTHER_BLADE_VIEWS), 'preview');
+        //        $this->loadViewsFrom(realpath(self::PATH_TO_OTHER_BLADE_VIEWS), 'preview');
+        //        $this->loadViewsFrom(realpath(self::PATH_TO_OTHER_BLADE_VIEWS), 'preview');
         $this->loadViewsFrom(__DIR__.'/../../resources/views', config('form-components.tag_prefix'));
         $this->loadRoutesFrom(self::ROUTES_PATH);
 
@@ -202,56 +199,56 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
         // Map <x-foo-bar> → PHP class
         // (Create a public alias for a component)
-        Blade::component($prefix .'-input', Input::class);
-        Blade::component($prefix .'-captcha', Captcha::class);
-        Blade::component($prefix .'-checkbox', Checkbox::class);
-        Blade::component($prefix .'-errors', Errors::class);
-        Blade::component($prefix .'-form', Form::class);
-        Blade::component($prefix .'-group', Group::class);
-        Blade::component($prefix .'-html-editor', HtmlEditor::class);
-        Blade::component($prefix .'-input-group', InputGroup::class);
-        Blade::component($prefix .'-input-group-icon', InputGroupIcon::class);
-        Blade::component($prefix .'-input-group-text', InputGroupText::class);
-        Blade::component($prefix .'-label', Label::class);
-        Blade::component($prefix .'-radio', Radio::class);
-        Blade::component($prefix .'-recaptcha-v2', RecaptchaV2::class);
-        Blade::component($prefix .'-select', Select::class);
-        Blade::component($prefix .'-submit', Submit::class);
-        Blade::component($prefix .'-text', Text::class);
-        Blade::component($prefix .'-textarea', Textarea::class);
-        Blade::component($prefix .'-button', Button::class);
-        Blade::component($prefix .'-local-package-badge', LocalPackageBadge::class);
-//        foreach (self::$components as $name => $class) {
-//            // Skip internal-only components like 'assets'
-//            if ($name === 'assets') {
-//                continue;
-//            }
-//
-//            // Register user-facing components with tag prefix
-//            Blade::component("{$prefix}-{$name}", $class);
-//        }
+        Blade::component($prefix.'-input', Input::class);
+        Blade::component($prefix.'-captcha', Captcha::class);
+        Blade::component($prefix.'-checkbox', Checkbox::class);
+        Blade::component($prefix.'-errors', Errors::class);
+        Blade::component($prefix.'-form', Form::class);
+        Blade::component($prefix.'-group', Group::class);
+        Blade::component($prefix.'-html-editor', HtmlEditor::class);
+        Blade::component($prefix.'-input-group', InputGroup::class);
+        Blade::component($prefix.'-input-group-icon', InputGroupIcon::class);
+        Blade::component($prefix.'-input-group-text', InputGroupText::class);
+        Blade::component($prefix.'-label', Label::class);
+        Blade::component($prefix.'-radio', Radio::class);
+        Blade::component($prefix.'-recaptcha-v2', RecaptchaV2::class);
+        Blade::component($prefix.'-select', Select::class);
+        Blade::component($prefix.'-submit', Submit::class);
+        Blade::component($prefix.'-text', Text::class);
+        Blade::component($prefix.'-textarea', Textarea::class);
+        Blade::component($prefix.'-button', Button::class);
+        Blade::component($prefix.'-local-package-badge', LocalPackageBadge::class);
+        //        foreach (self::$components as $name => $class) {
+        //            // Skip internal-only components like 'assets'
+        //            if ($name === 'assets') {
+        //                continue;
+        //            }
+        //
+        //            // Register user-facing components with tag prefix
+        //            Blade::component("{$prefix}-{$name}", $class);
+        //        }
     }
 
-//    protected function registerComponents(): void
-//    {
-//        $this->loadViewsFrom(
-//            realpath(self::PATH_TO_BLADE_COMPONENT_VIEWS),
-//            config('form-components.view_namespace')
-//        );
-//
-//        // Register namespace for internal views
-//        Blade::componentNamespace(
-//            'Mlbrgn\\LaravelFormComponents\\View\\Components',
-//            config('form-components.component_namespace')
-//        );
-//
-//        $prefix = config('form-components.tag_prefix');
-//
-//        // Use the static components array
-//        foreach (self::$components as $name => $class) {
-//            Blade::component("{$prefix}-{$name}", $class);
-//        }
-//    }
+    //    protected function registerComponents(): void
+    //    {
+    //        $this->loadViewsFrom(
+    //            realpath(self::PATH_TO_BLADE_COMPONENT_VIEWS),
+    //            config('form-components.view_namespace')
+    //        );
+    //
+    //        // Register namespace for internal views
+    //        Blade::componentNamespace(
+    //            'Mlbrgn\\LaravelFormComponents\\View\\Components',
+    //            config('form-components.component_namespace')
+    //        );
+    //
+    //        $prefix = config('form-components.tag_prefix');
+    //
+    //        // Use the static components array
+    //        foreach (self::$components as $name => $class) {
+    //            Blade::component("{$prefix}-{$name}", $class);
+    //        }
+    //    }
 
     public function register(): void
     {
@@ -266,7 +263,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
             if (! config('form-components.use_wrapper_classes')) {
                 return new static([]);
-//                return ComponentAttributeBag::make([]);
+                //                return ComponentAttributeBag::make([]);
             }
 
             $classes = $this->get('class', '');
@@ -289,7 +286,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             $retAttributes['class'] = $wrapperClassesString;
 
             return new static($retAttributes);
-//            return ComponentAttributeBag::make($retAttributes);
+            //            return ComponentAttributeBag::make($retAttributes);
         });
 
         ComponentAttributeBag::macro('exceptWrapperClasses', function () {
@@ -323,21 +320,21 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
     protected function linkAssetsForDev(): void
     {
-        $files = new Filesystem();
+        $files = new Filesystem;
 
-        $target = __DIR__ . '/../../dist';
+        $target = __DIR__.'/../../dist';
         $link = public_path('vendor/mlbrgn/laravel-form-components');
 
         // Remove old symlink if it exists
-//        if ($files->exists($link)) {
-//            $files->deleteDirectory($link);
-//        }
+        //        if ($files->exists($link)) {
+        //            $files->deleteDirectory($link);
+        //        }
 
-//        try {
-//            $files->link($target, $link);
-//        } catch (\Exception $e) {
-//            // On Windows or if symlink fails, fallback to copy
-//            $files->copyDirectory($target, $link);
-//        }
+        //        try {
+        //            $files->link($target, $link);
+        //        } catch (\Exception $e) {
+        //            // On Windows or if symlink fails, fallback to copy
+        //            $files->copyDirectory($target, $link);
+        //        }
     }
 }

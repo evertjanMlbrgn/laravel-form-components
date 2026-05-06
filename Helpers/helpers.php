@@ -17,4 +17,3 @@ if (! function_exists('mlbrgn_csp_nonce')) {
             : $resolver;
     }
 }
-

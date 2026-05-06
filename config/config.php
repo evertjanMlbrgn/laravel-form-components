@@ -5,31 +5,31 @@ return [
     /** which frontend framework to use, only bootstrap 5 is supported (for now) */
     'framework' => env('FORM_COMPONENTS_FRAMEWORK', 'bootstrap-5'),
 
-//    /**
-//     * The view namespace used when loading Blade views **from within this package**.
-//     *
-//     * Example:
-//     *   If 'view_namespace' is set to 'my-namespace', you can reference views like:
-//     *     @include('my-namespace::component-name')
-//     *     or
-//     *     <x-my-namespace::component-name />
-//     *
-//     * This is purely for organising your package's internal views and does not affect
-//     * the tag names used by Blade components.
-//     */
-//    'view_namespace' => env('FORM_COMPONENTS_VIEW_NAMESPACE', 'mlbrgn-form-components'),
+    //    /**
+    //     * The view namespace used when loading Blade views **from within this package**.
+    //     *
+    //     * Example:
+    //     *   If 'view_namespace' is set to 'my-namespace', you can reference views like:
+    //     *     @include('my-namespace::component-name')
+    //     *     or
+    //     *     <x-my-namespace::component-name />
+    //     *
+    //     * This is purely for organising your package's internal views and does not affect
+    //     * the tag names used by Blade components.
+    //     */
+    //    'view_namespace' => env('FORM_COMPONENTS_VIEW_NAMESPACE', 'mlbrgn-form-components'),
 
-//    /**
-//     * The component namespace used when registering Blade components **from this package**.
-//     *
-//     * Example:
-//     *   If 'component_namespace' is set to 'my-components', you can reference a component in a view like:
-//     *     <x-my-components::input />
-//     *
-//     * This is separate from the tag prefix and is primarily for namespacing components internally
-//     * or for advanced use cases where you want a different namespace than the default 'form'.
-//     */
-//    'component_namespace' => env('FORM_COMPONENTS_COMPONENT_NAMESPACE', 'form-components'),
+    //    /**
+    //     * The component namespace used when registering Blade components **from this package**.
+    //     *
+    //     * Example:
+    //     *   If 'component_namespace' is set to 'my-components', you can reference a component in a view like:
+    //     *     <x-my-components::input />
+    //     *
+    //     * This is separate from the tag prefix and is primarily for namespacing components internally
+    //     * or for advanced use cases where you want a different namespace than the default 'form'.
+    //     */
+    //    'component_namespace' => env('FORM_COMPONENTS_COMPONENT_NAMESPACE', 'form-components'),
 
     /**
      * The prefix used before component tags when used in Blade views by the **end user**.
@@ -42,20 +42,20 @@ return [
      */
     'tag_prefix' => env('FORM_COMPONENTS_TAG_PREFIX', 'form'),
 
-//    /** the component view_namespace is used when accessing views from within this package e.g.
-//     * when view_namespace is set to 'my-namespace', then you can call the view with "my-namespace::component-name"
-//     * **/
-//    'view_namespace' => env('FORM_COMPONENTS_VIEW_NAMESPACE', 'form-components'),
-//
-//    /** the component view_namespace is used when accessing views from within this package e.g.
-//     * when view_namespace is set to 'my-namespace', then you can call the view with "my-namespace::component-name"
-//     * **/
-//    'component_namespace' => env('FORM_COMPONENTS_COMPONENT_NAMESPACE', 'form-components'),
-//
-//    /** the prefix used before the component name
-//     * when prefix === 'something' then the component can be used as <x-something-component-name>
-//     */
-//    'tag_prefix' => env('FORM_COMPONENTS_TAG_PREFIX', 'form'),
+    //    /** the component view_namespace is used when accessing views from within this package e.g.
+    //     * when view_namespace is set to 'my-namespace', then you can call the view with "my-namespace::component-name"
+    //     * **/
+    //    'view_namespace' => env('FORM_COMPONENTS_VIEW_NAMESPACE', 'form-components'),
+    //
+    //    /** the component view_namespace is used when accessing views from within this package e.g.
+    //     * when view_namespace is set to 'my-namespace', then you can call the view with "my-namespace::component-name"
+    //     * **/
+    //    'component_namespace' => env('FORM_COMPONENTS_COMPONENT_NAMESPACE', 'form-components'),
+    //
+    //    /** the prefix used before the component name
+    //     * when prefix === 'something' then the component can be used as <x-something-component-name>
+    //     */
+    //    'tag_prefix' => env('FORM_COMPONENTS_TAG_PREFIX', 'form'),
 
     /**
      * If you use Eloquents Date Casting feature, you can use the date attributes in your forms by setting the
@@ -76,7 +76,6 @@ return [
      **/
     'use_class_instead_of_disabled_in_select_placeholder' => env('FORM_COMPONENTS_USE_CLASS_INSTEAD_OF_DISABLED_IN_SELECT_PLACEHOLDER',
         true),
-
 
     /**
      * TODO how to load custom content css?
@@ -141,7 +140,7 @@ return [
         'image_list' => null,
         'file_picker_callback' => 'mfcDefaultFilePickerCallback',
         'image_uploadtab' => true,   // <-- required
-        'image_caption' => false,// support for caption using figure element wrapper when inserting
+        'image_caption' => false, // support for caption using figure element wrapper when inserting
         'image_advtab' => true, // shows advanced tab in image dialog
         'object_resizing' => true,
         'image_class_list' => [
@@ -185,8 +184,8 @@ return [
             ],
         ],
 
-        'extra_scripts' => []
-//        'automatic_uploads' => false,
+        'extra_scripts' => [],
+        //        'automatic_uploads' => false,
     ],
 
     'checkbox' => [
@@ -203,7 +202,6 @@ return [
      * CSP nonce callback
      * example: 'csp_nonce' => fn () => app()->bound('csp-nonce') ? app('csp-nonce') : null,
      */
-
     'csp_nonce' => fn () => null,
 
     /*

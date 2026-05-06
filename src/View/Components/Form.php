@@ -37,16 +37,15 @@ class Form extends FormBaseComponent
 
     /**
      * Returns a boolean whether the error bag is not empty.
-     *
-     * @param  string  $bag
-     * @return bool
      */
     public function hasError(string $bag = 'default'): bool
     {
         if (request()->hasSession()) {
-            $errors = View::shared('errors', fn() => request()->session()->get('errors', new ViewErrorBag));
+            $errors = View::shared('errors', fn () => request()->session()->get('errors', new ViewErrorBag));
+
             return $errors->getBag($bag)->isNotEmpty();
         }
+
         return false;
     }
 
@@ -56,10 +55,9 @@ class Form extends FormBaseComponent
         if ($this->validationMode === 'client-default' || $this->validationMode === 'client-custom') {
             $assets['validation'] = true;
         }
+
         return [
             'assets' => $assets,
         ];
     }
-
-
 }
