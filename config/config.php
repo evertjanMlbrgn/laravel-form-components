@@ -5,6 +5,17 @@ return [
     /** which frontend framework to use, only bootstrap 5 is supported (for now) */
     'framework' => env('FORM_COMPONENTS_FRAMEWORK', 'bootstrap-5'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Asset path
+    |--------------------------------------------------------------------------
+    |
+    | Path to the assets, like js, css, images, ...
+    |
+    */
+
+    'asset_path' => 'vendor/mlbrgn/laravel-form-components',
+
     //    /**
     //     * The view namespace used when loading Blade views **from within this package**.
     //     *

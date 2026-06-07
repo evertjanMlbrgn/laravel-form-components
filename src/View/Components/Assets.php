@@ -18,6 +18,9 @@ class Assets extends Component
                 'htmlEditor' => true,
                 'preview' => false,
             ],
+            'assetBasePath' => asset(
+                config('form-components.asset_path')
+            ),
         ], $assetConfig);
     }
 

@@ -17,7 +17,7 @@ use Mlbrgn\LaravelFormComponents\Http\Controllers\UploadController;
 */
 
 /*
- * if (config('media-library-extensions.demo_pages_enabled')) {
+ * if (config('medialibrary-extensions.demo_pages_enabled')) {
     Route::group([
         'middleware' => array_merge(
             config('media-library-extensions.route_middleware'),

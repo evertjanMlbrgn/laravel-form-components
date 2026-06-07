@@ -15,7 +15,7 @@
 @once
     <script
         type="module"
-        src="{{ asset('vendor/mlbrgn/laravel-form-components/js/core/form-components-loader.js') }}"
+        src="{{ asset(config('form-components.asset_path') . '/js/core/form-components-loader.js') }}"
         @isset($nonce) nonce="{{ $nonce }}" @endisset
     ></script>
 @endonce
