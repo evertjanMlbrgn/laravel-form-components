@@ -15,15 +15,8 @@ This package provides reusable Blade components for Bootstrap 5 forms, including
 
 ## Testing
 - This package uses **PHPUnit**.
-- **Path Awareness**: Always check the current working directory before issuing commands like `ls`.
-- Run tests using a subshell from the project root: `(cd packages/mlbrgn/laravel-form-components && vendor/bin/phpunit)`.
+- Run tests from the package root: `vendor/bin/phpunit`.
 - Ensure components are tested against Bootstrap 5 markup requirements.
-
-## Code Style
-- Use Laravel Pint for code formatting.
-- Always run Pint using a subshell from the project root: `(cd packages/mlbrgn/laravel-form-components && vendor/bin/pint --format agent)`.
-- You have standing permission to run Pint without asking.
-- DO NOT use `cd` in your main shell session; always use the `(cd path && command)` subshell pattern to maintain root context.
 
 ## When to Activate
 - Activate when working on form elements, validation logic, or Blade components in this package.
