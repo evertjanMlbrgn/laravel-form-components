@@ -51,7 +51,7 @@ window.mfcDefaultFilePickerCallback = function(callback) {
         const model = editorElement.getAttribute('data-model') || null;
         const id = editorElement.getAttribute('data-id') || null;
 
-        console.log('formData test')
+        // console.log('formData test')
         const formData = new FormData();
         formData.append('file', file);
         if (model) formData.append('model', model);
@@ -77,7 +77,7 @@ window.mfcDefaultFilePickerCallback = function(callback) {
         });
         window.dispatchEvent(prepareEvent);
 
-        console.log('formData', formData.toString());
+        // console.log('formData', formData.toString());
         fetch('/form-upload-media', {
             method: 'POST',
             headers: {
