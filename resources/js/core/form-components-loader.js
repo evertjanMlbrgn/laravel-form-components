@@ -53,8 +53,8 @@ function loadFormAssets(loader, manifest) {
 // Boot
 const configs = collectConfigs('.mlbrgn-form-components-config');
 const manifest = mergeConfigs(configs);
-console.log('mfc configs', configs)
-console.log('mfc manifest', manifest)
+// console.log('mfc configs', configs)
+// console.log('mfc manifest', manifest)
 
 if (manifest) {
     loadFormAssets(loader, manifest);

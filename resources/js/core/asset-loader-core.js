@@ -8,7 +8,7 @@ const globalLoadedStyles = new Set();
  * Create a package-scoped loader
  */
 export function createAssetLoader(namespace, { globalDedup = false, basePath = '/vendor/mlbrgn/laravel-form-components' } = {}) {
-    console.log('mfc createAssetLoader')
+    // console.log('mfc createAssetLoader')
 
     const loadedScripts = new Set();
     const loadedStyles = new Set();
@@ -20,7 +20,7 @@ export function createAssetLoader(namespace, { globalDedup = false, basePath = '
     }
 
     function markLoaded(set, globalSet, key, globalKey) {
-        console.log(key, 'loaded')
+        // console.log(key, 'loaded')
 
         set.add(key);
         if (globalDedup) globalSet.add(globalKey);
@@ -36,7 +36,7 @@ export function createAssetLoader(namespace, { globalDedup = false, basePath = '
 
     function loadScript(src, { type = 'module', async = false } = {}) {
         const fullSrc = resolveUrl(src);
-        console.log('mfc: loadScript ', fullSrc)
+        // console.log('mfc: loadScript ', fullSrc)
 
         const key = `${namespace}:${fullSrc}`;
         const globalKey = fullSrc;

@@ -2,11 +2,11 @@
 
 let setupBootstrapClientSideValidation = () =>
 {
-    console.log('setupBootstrapClientSideValidation')
+    // console.log('setupBootstrapClientSideValidation')
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     let forms = document.querySelectorAll('form.needs-validation');
 
-    console.log('forms', forms)
+    // console.log('forms', forms)
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
