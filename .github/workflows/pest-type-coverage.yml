@@ -19,7 +19,7 @@ jobs:
           tools: composer
 
       - name: Cache Composer Dependencies
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: vendor
           key: composer-vendor-${{ hashFiles('**/composer.lock') }}
@@ -58,7 +58,7 @@ jobs:
           tools: composer
 
       - name: Cache Composer Dependencies
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: vendor
           key: composer-vendor-${{ hashFiles('**/composer.lock') }}
@@ -71,14 +71,14 @@ jobs:
         uses: actions/setup-node@v6
         with:
           cache: 'npm'
-          node-version: 20
+          node-version: 24
 
       - name: Install Node dependencies
         run: npm install
 
       - name: Generated JS and CSS cache
         id: js-and-css-cache
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: public/build/**
           key: ${{ runner.os }}-js-and-css-${{ hashFiles('**/package-lock.json', '**/resources/{.js,scss}') }}
