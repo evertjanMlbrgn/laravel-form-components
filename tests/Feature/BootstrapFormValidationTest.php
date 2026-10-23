@@ -13,7 +13,7 @@ it('shows the validation errors for each component', function () {
         ]);
     });
 
-    $this->visit('/bootstrap-form-validation')
+    $this->visitPath('/bootstrap-form-validation')
         ->within('#form-validation-errors', function () {
             $this->press('Send')
                 ->within('#form-validation-errors', function () {
@@ -37,7 +37,7 @@ it('has an option to hide the validation errors', function () {
         ]);
     });
 
-    $this->visit('/bootstrap-form-validation')
+    $this->visitPath('/bootstrap-form-validation')
         ->within('#form-no-validation-errors', function () {
             $this->press('Send')
                 ->within('#form-no-validation-errors', function () {
@@ -62,7 +62,7 @@ it('uses the old values', function () {
         ]);
     });
 
-    $this->visit('/bootstrap-form-validation')
+    $this->visitPath('/bootstrap-form-validation')
         ->within('#form-validation-errors', function () {
             $this->type('a', 'input')
                 ->type('b', 'textarea')

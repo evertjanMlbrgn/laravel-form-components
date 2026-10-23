@@ -43,14 +43,7 @@
 @else
 
     {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
-    @if($floating || $horizontal)
-        <div
-            {{ $attributes->onlyWrapperClasses()->class([
-                'row' => $horizontal,
-                'form-floating' => $floating
-            ]) }}
-        >
-    @endif
+    <x-mlbrgn-form-components::layout.form-group :name="$name" :horizontal="$horizontal" :floating="$floating" :showErrors="$showErrors" :attributes="$attributes">
 
     {{-- label before control --}}
     @if(!$hidden && $type !== 'hidden')
@@ -70,14 +63,7 @@
     @endif
 
     {{-- horizontal control wrapper --}}
-    @if($horizontal)
-        <div
-            @class([
-                'col-8' => empty($attributes->get('class-horizontal-cols-control', '')),
-                $attributes->get('class-horizontal-cols-control', '') => !empty($attributes->get('class-horizontal-cols-control', ''))
-            ])
-        >
-    @endif
+    <x-mlbrgn-form-components::layout.form-input-wrapper :horizontal="$horizontal" :attributes="$attributes">
 
             {{-- Input element --}}
             <input
@@ -141,20 +127,19 @@
         @endif
 
         {{-- label after control --}}
-        @if(!$hidden && $type !== 'hidden')
-            @if($attributes->has('label-end') || ($floating && !$horizontal))
-                <x-mlbrgn-form-components::label
-                    :parentClasses="$attributes->get('class')"
-                    :required="$attributes->has('required')"
-                    @class([
-                       $attributes->get('class-label', '')
-                   ])
-                    :for="$id">
-                    {{ $label }}
-                </x-mlbrgn-form-components::label>
+        @if(!$hidden && $type !== 'hidden' && ($attributes->has('label-end') || ($floating && !$horizontal)))
+            <x-mlbrgn-form-components::label
+                :parentClasses="$attributes->get('class')"
+                :required="$attributes->has('required')"
+                @class([
+                   $attributes->get('class-label', '')
+               ])
+                :for="$id">
+                {{ $label }}
+            </x-mlbrgn-form-components::label>
         @endif
-    @endif
 
+    {{-- close horizontal control wrapper --}}
     @if(!$hidden && $type !== 'hidden')
 
         {{-- server side feedback messages --}}
@@ -170,7 +155,7 @@
                     $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
                 ])
             >{{ $help }}</x-mlbrgn-form-components::text>
-        @endif
+        @endisset
 
         @if(!empty($helpText) && !isset($help))
             <x-mlbrgn-form-components::text
@@ -182,13 +167,8 @@
         @endif
     @endif
 
-    {{-- close horizontal control wrapper --}}
-    @if($horizontal)
-        </div>
-    @endif
+    </x-mlbrgn-form-components::layout.form-input-wrapper>
 
     {{-- Close wrapper for floating or horizontal controls --}}
-    @if($floating || $horizontal)
-    </div>
-    @endif
+    </x-mlbrgn-form-components::layout.form-group>
 @endif

@@ -11,7 +11,7 @@ it('posts all selected options', function () {
         ]);
     });
 
-    $this->visit('/multiple-select-keys?both=yes')
+    $this->visitPath('/multiple-select-keys?both=yes')
         ->seeElement('option[value="be"]:selected')
         ->seeElement('option[value="nl"]:selected')
         ->press('Send')

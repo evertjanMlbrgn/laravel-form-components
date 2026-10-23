@@ -8,7 +8,7 @@ it('binds a target to the form', function () {
     $this->withoutExceptionHandling();
     $this->registerTestRoute('bind-target');
 
-    $this->visit('/bind-target')
+    $this->visitPath('/bind-target')
         ->seeElement('input[name="input"][value="a"]')
         ->seeInElement('textarea[name="textarea"]', 'b')
         ->seeElement('option[value="c"]:selected')
@@ -22,14 +22,14 @@ it('binds a target to the form', function () {
 it('sets the right value if the value is zero', function () {
     $this->registerTestRoute('bind-target-zero-value');
 
-    $this->visit('/bind-target-zero-value')
+    $this->visitPath('/bind-target-zero-value')
         ->seeElement('input[name="input"][value="0"]');
 });
 
 it('binds two targets to the form', function () {
     $this->registerTestRoute('bind-two-targets');
 
-    $this->visit('/bind-two-targets')
+    $this->visitPath('/bind-two-targets')
         ->seeElement('input[name="input"][value="a"]')
         ->seeInElement('textarea[name="textarea"]', 'e')
         ->dontSeeElement('option[value="c"]:selected')
@@ -50,7 +50,7 @@ it('overrides the bound target with the old request data', function () {
         ]);
     });
 
-    $this->visit('/bind-with-validation-errors')
+    $this->visitPath('/bind-with-validation-errors')
         ->type('d', 'input')
         ->type('e', 'textarea')
         ->type('f', 'html-editor')
@@ -78,7 +78,7 @@ it('handles old nested data', function () {
         ]);
     });
 
-    $this->visit('/bind-nested-validation-errors')
+    $this->visitPath('/bind-nested-validation-errors')
         ->type('d', 'input[nested]')
         ->type('e', 'textarea[nested]')
         ->select('f', 'select[nested]')
@@ -96,7 +96,7 @@ it('handles old nested data', function () {
 it('overrides the default value', function () {
     $this->registerTestRoute('bind-default-values-with-bound-target');
 
-    $this->visit('/bind-default-values-with-bound-target')
+    $this->visitPath('/bind-default-values-with-bound-target')
         ->seeElement('input[name="input"][value="a"]')
         ->seeInElement('textarea[name="textarea"]', 'b')
         ->seeElement('option[value="f"]:selected')
@@ -109,7 +109,7 @@ it('overrides the default value', function () {
 it('overrides the default value when nested', function () {
     $this->registerTestRoute('bind-default-values-with-nested-bound-target');
 
-    $this->visit('/bind-default-values-with-nested-bound-target')
+    $this->visitPath('/bind-default-values-with-nested-bound-target')
         ->seeElement('input[name="nested[input]"][value="a"]')
         ->seeInElement('textarea[name="nested[textarea]"]', 'b')
         ->seeElement('select[name="nested[select]"] > option[value="f"]:selected')
@@ -122,7 +122,7 @@ it('overrides the default value when nested', function () {
 it('overrides the global bind with a bind per element', function () {
     $this->registerTestRoute('bind-override');
 
-    $this->visit('/bind-override')
+    $this->visitPath('/bind-override')
         ->seeElement('input[name="input"][value="d"]')
         ->seeInElement('textarea[name="textarea"]', 'e')
         ->seeElement('option[value="f"]:selected')
@@ -135,7 +135,7 @@ it('overrides the global bind with a bind per element', function () {
 it('disables a global bind per element', function () {
     $this->registerTestRoute('undo-bind');
 
-    $this->visit('/undo-bind')
+    $this->visitPath('/undo-bind')
         ->seeElement('input[name="input"][value="a"]')
         ->dontSeeInElement('textarea[name="textarea"]', 'b');
 });

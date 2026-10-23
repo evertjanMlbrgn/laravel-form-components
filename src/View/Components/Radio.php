@@ -20,16 +20,20 @@ class Radio extends FormBaseComponent
         public string $label = '',
         public mixed $value = 1,
         $bind = null,
-        bool $default = false,
-        bool $showErrors = true,
-        public bool $toggle = false,
-        public bool $hidden = false,
+        $default = false,
+        $showErrors = true,
+        public $toggle = false,
+        public $hidden = false,
         public string $validFeedback = '',
         public string $invalidFeedback = '',
-        public bool $tooltipFeedback = false,
+        public $tooltipFeedback = false,
         public string $helpText = ''
     ) {
-        $this->showErrors = $showErrors;
+        $this->showErrors = filter_var($showErrors, FILTER_VALIDATE_BOOLEAN);
+        $this->toggle = filter_var($toggle, FILTER_VALIDATE_BOOLEAN);
+        $this->hidden = filter_var($hidden, FILTER_VALIDATE_BOOLEAN);
+        $this->tooltipFeedback = filter_var($tooltipFeedback, FILTER_VALIDATE_BOOLEAN);
+        $default = filter_var($default, FILTER_VALIDATE_BOOLEAN);
 
         $inputName = static::convertBracketsToDots($name);
 

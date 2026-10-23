@@ -4,7 +4,7 @@
 it('floats labels', function () {
     $this->registerTestRoute('bootstrap-floating-label');
 
-    $this->visit('/bootstrap-floating-label')
+    $this->visitPath('/bootstrap-floating-label')
         ->seeElementCount('label', 8)
         ->seeElementCount('div.form-floating', 6)
         ->seeInElement('label[for="input-1"]', 'Input 1')

@@ -12,7 +12,7 @@
         <x-mlbrgn-form-components::label :required="$attributes->has('required')" :for="$attributes->get('for')">
             {{  $label }}
         </x-mlbrgn-form-components::label>
-    @endif
+    @endisset
 
      <div
          {{ $attributes->exceptWrapperClasses()->class([
@@ -65,7 +65,7 @@
                 $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
             ])
         >{{ $help }}</x-mlbrgn-form-components::text>
-    @endif
+    @endisset
 
     @if(!empty($helpText) && !isset($help))
         <x-mlbrgn-form-components::text

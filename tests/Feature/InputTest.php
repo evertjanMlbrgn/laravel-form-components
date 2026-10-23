@@ -8,7 +8,7 @@ it('always assigns an id attribute to every input type', function () {
     $this->withoutExceptionHandling();
     $this->registerTestRoute('input-no-id');
 
-    $this->visit('/input-no-id')
+    $this->visitPath('/input-no-id')
         // button components
         ->seeElement('button[data-button][id]')
         ->seeElement('button[data-reset][id]')
@@ -39,7 +39,7 @@ it('always assigns an id attribute to every input type', function () {
 it('sets classes', function () {
     $this->registerTestRoute('input-id-name-type');
 
-    $this->visit('input-id-name-type')
+    $this->visitPath('input-id-name-type')
         ->seeElement('button[name="button"].btn')// uses button component
         ->seeElement('button[name="reset"].btn')// uses button component
         ->seeElement('button[name="submit"].btn')// uses button component
@@ -68,7 +68,7 @@ it('sets classes', function () {
 it('sets extra attributes', function () {
     $this->registerTestRoute('input-extra-attributes');
 
-    $this->visit('/input-extra-attributes')
+    $this->visitPath('/input-extra-attributes')
         ->seeElement('button[name="button-name"][id="button"][disabled]:not([required]):not([readonly])')// uses button component
         ->seeElement('button[name="submit-name"][type="submit"][id="submit"][disabled]:not([required]):not([readonly])')// uses button component
         ->seeElement('button[name="reset-name"][type="reset"][id="reset"][disabled]:not([required]):not([readonly])')// uses button component
@@ -97,7 +97,7 @@ it('sets extra attributes', function () {
 it('sets extra classes', function () {
     $this->registerTestRoute('input-extra-classes');
 
-    $this->visit('/input-extra-classes')
+    $this->visitPath('/input-extra-classes')
         ->seeElement('button[name="button"].extra-1.extra-2.form-control-sm')// uses button component
         ->seeElement('button[name="button"].extra-1.extra-2.form-control-sm')// uses button component
         ->seeElement('button[name="reset"].extra-1.extra-2.form-control-sm')// uses button component
@@ -129,14 +129,14 @@ it('sets extra classes', function () {
 it('sets a default value', function () {
     $this->registerTestRoute('input-default');
 
-    $this->visit('/input-default')
+    $this->visitPath('/input-default')
         ->seeElement('input[name="input"][value="a"]');
 });
 
 it('does not render label when hidden', function () {
     $this->registerTestRoute('input-hidden-controls');
 
-    $this->visit('/input-hidden-controls')
+    $this->visitPath('/input-hidden-controls')
         ->seeElement('input') // always make sure the node list is not empty when only using dontSeeElement
         ->dontSeeElement('label[for="checkbox"]')
         ->dontSeeElement('label[for="color"]')
@@ -164,7 +164,7 @@ it('honors use_wrapper_classes when set to true', function () {
 
     $this->registerTestRoute('input-wrapper-classes');
 
-    $this->visit('/input-wrapper-classes')
+    $this->visitPath('/input-wrapper-classes')
         ->seeElement('div.mx-3.my-3.ms-3.mt-3.me-3.mb-3 input[name="checkbox"].form-control-lg.some-other-class')
         ->seeElement('div.mx-3.my-3.ms-3.mt-3.me-3.mb-3 input[name="color"].form-control-lg.some-other-class')
         ->seeElement('div.mx-3.my-3.ms-3.mt-3.me-3.mb-3 input[name="date"].form-control-lg.some-other-class')
@@ -191,7 +191,7 @@ it('honors use_wrapper_classes when set to false', function () {
 
     $this->registerTestRoute('input-wrapper-classes');
 
-    $this->visit('/input-wrapper-classes')
+    $this->visitPath('/input-wrapper-classes')
         ->seeElement('input[name="checkbox"].form-control-lg.some-other-class.mx-3.my-3.ms-3.mt-3.me-3.mb-3')
         ->seeElement('input[name="color"].form-control-lg.some-other-class.mx-3.my-3.ms-3.mt-3.me-3.mb-3')
         ->seeElement('input[name="date"].form-control-lg.some-other-class.mx-3.my-3.ms-3.mt-3.me-3.mb-3')
@@ -226,7 +226,7 @@ it('uses old value after submit', function () {
         ]);
     });
 
-    $this->visit('/input-validation')
+    $this->visitPath('/input-validation')
         ->type('abc', 'text-validation')
         ->type('123', 'tel-validation')
 //        ->check('checkbox-validation')
@@ -249,7 +249,7 @@ it('shows a validation error', function () {
         ]);
     });
 
-    $this->visit('/input-validation-error')
+    $this->visitPath('/input-validation-error')
         ->press('Send')
         ->within('#input-validation-error', function () {
             //                    $this->seeElement('quote');
@@ -272,7 +272,7 @@ it('shows a validation error', function () {
 it('sets label of button by using value attribute', function () {
     $this->registerTestRoute('input-button-label-by-value');
 
-    $this->visit('/input-button-label-by-value')
+    $this->visitPath('/input-button-label-by-value')
         ->seeInElement('button[name="button"]', 'button label')// uses button component
         ->seeInElement('button[name="reset"]', 'button label')// uses button component
         ->seeInElement('button[name="submit"]', 'button label'); // uses button component
@@ -281,7 +281,7 @@ it('sets label of button by using value attribute', function () {
 it('does have help text when "help-text" attribute present', function () {
     $this->registerTestRoute('input-help-text');
 
-    $this->visit('/input-help-text')
+    $this->visitPath('/input-help-text')
         ->seeElement('div.form-text[id="checkbox-help-text"]')
         ->seeElement('div.form-text[id="color-help-text"]')
         ->seeElement('div.form-text[id="date-help-text"]')
@@ -308,7 +308,7 @@ it('does have help text when "help-text" attribute present', function () {
 it('does have help text when @slot("help") attribute present', function () {
     $this->registerTestRoute('input-help-slots-2');
 
-    $this->visit('/input-help-slots-2')
+    $this->visitPath('/input-help-slots-2')
         ->seeElement('div.form-text[id="button-help-text"]')// uses button component
         ->seeElement('div.form-text[id="checkbox-help-text"]')
         ->seeElement('div.form-text[id="color-help-text"]')
@@ -336,7 +336,7 @@ it('does have help text when @slot("help") attribute present', function () {
 it('does not have help text when hidden', function () {
     $this->registerTestRoute('input-hidden-controls');
 
-    $this->visit('/input-hidden-controls')
+    $this->visitPath('/input-hidden-controls')
         ->seeElement('input') // always make sure the node list is not empty when only using dontSeeElement
         ->dontSeeElement('div[id="button-1-help-text"]')// uses button component
         ->dontSeeElement('div[id="checkbox-1-help-text"]')
@@ -365,7 +365,7 @@ it('does not have help text when hidden', function () {
 it('does not have help text when no @slot("help") or "help-text" attribute', function () {
     $this->registerTestRoute('input-no-help');
 
-    $this->visit('/input-no-help')
+    $this->visitPath('/input-no-help')
         ->seeElement('input') // always make sure the node list is not empty when only using dontSeeElement
         ->dontSeeElement('div[id="button-help-text"]')// uses button component
         ->dontSeeElement('div[id="checkbox-help-text"]')
@@ -394,14 +394,14 @@ it('does not have help text when no @slot("help") or "help-text" attribute', fun
 it('sets type to "text" when no type provided to input', function () {
     $this->registerTestRoute('input-no-type');
 
-    $this->visit('/input-no-type')
+    $this->visitPath('/input-no-type')
         ->seeElement('input[name="input-text-1"][type="text"]');
 });
 
 it('honors type attribute', function () {
     $this->registerTestRoute('input-id-name-type');
 
-    $this->visit('/input-id-name-type')
+    $this->visitPath('/input-id-name-type')
         ->seeElement('button[name="button"][type="button"]')// uses button component
         ->seeElement('input[name="checkbox"][type="checkbox"]')
         ->seeElement('input[name="color"][type="color"]')

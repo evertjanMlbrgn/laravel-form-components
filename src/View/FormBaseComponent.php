@@ -34,10 +34,14 @@ abstract class FormBaseComponent extends Component
      */
     public function determineId($id, $name): string
     {
-
         if (! empty($id)) {
-            return $this->attributes->get('id');
+            return $id;
         }
+
+        if (app()->runningUnitTests()) {
+            return 'auto_id_'.md5($name.($this->type ?? ''));
+        }
+
         if (! empty($name)) {
             return 'auto_id_'.$name.Str::random(4);
         }

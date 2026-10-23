@@ -38,26 +38,30 @@ class Checkbox extends FormBaseComponent
         public string $name = '',
         public ?string $value = null,
         $bind = null,
-        bool $default = false,
-        bool $showErrors = true,
+        $default = false,
+        $showErrors = true,
         public string $label = '',
-        public bool $toggle = false,
+        public $toggle = false,
         public string $validFeedback = '',
         public string $invalidFeedback = '',
-        public bool $hidden = false,
-        public bool $tooltipFeedback = false,
+        public $hidden = false,
+        public $tooltipFeedback = false,
         public string $helpText = '',
-        public bool $defaultToZero = false,
+        public $defaultToZero = false,
     ) {
 
         $this->value = $value ?? '1'; // value in checkbox is deterministic must have value!
 
-        $this->showErrors = $showErrors;
+        $this->showErrors = filter_var($showErrors, FILTER_VALIDATE_BOOLEAN);
+        $this->toggle = filter_var($toggle, FILTER_VALIDATE_BOOLEAN);
+        $this->hidden = filter_var($hidden, FILTER_VALIDATE_BOOLEAN);
+        $this->tooltipFeedback = filter_var($tooltipFeedback, FILTER_VALIDATE_BOOLEAN);
+        $this->defaultToZero = filter_var($defaultToZero, FILTER_VALIDATE_BOOLEAN)
+            ?? config('form-components.checkbox.default_to_zero', false);
+
+        $default = filter_var($default, FILTER_VALIDATE_BOOLEAN);
 
         $inputName = static::convertBracketsToDots(Str::before($name, '[]'));
-
-        $this->defaultToZero = $defaultToZero // relies on value not being null / empty string
-            ?? config('form-components.checkbox.default_to_zero', false);
 
         if ($oldData = old($inputName)) {
             $this->checked = in_array($value, Arr::wrap($oldData));

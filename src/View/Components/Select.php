@@ -27,20 +27,26 @@ class Select extends FormBaseComponent
         public mixed $options = [],
         $bind = null,
         $default = null,
-        public bool $multiple = false,
-        bool $showErrors = true,
-        bool $manyRelation = false,
-        public bool $floating = false,
+        public $multiple = false,
+        $showErrors = true,
+        $manyRelation = false,
+        public $floating = false,
         public string $placeholder = '',
         public string $placeholderValue = '',
-        public bool $horizontal = false,
-        public bool $hidden = false,
+        public $horizontal = false,
+        public $hidden = false,
         public string $validFeedback = '',
         public string $invalidFeedback = '',
-        public bool $tooltipFeedback = false,
+        public $tooltipFeedback = false,
         public string $helpText = ''
     ) {
-        $this->manyRelation = $manyRelation;
+        $this->multiple = filter_var($multiple, FILTER_VALIDATE_BOOLEAN);
+        $this->showErrors = filter_var($showErrors, FILTER_VALIDATE_BOOLEAN);
+        $this->manyRelation = filter_var($manyRelation, FILTER_VALIDATE_BOOLEAN);
+        $this->floating = filter_var($floating, FILTER_VALIDATE_BOOLEAN) && ! $this->multiple;
+        $this->horizontal = filter_var($horizontal, FILTER_VALIDATE_BOOLEAN);
+        $this->hidden = filter_var($hidden, FILTER_VALIDATE_BOOLEAN);
+        $this->tooltipFeedback = filter_var($tooltipFeedback, FILTER_VALIDATE_BOOLEAN);
 
         $inputName = static::convertBracketsToDots(Str::before($name, '[]'));
 

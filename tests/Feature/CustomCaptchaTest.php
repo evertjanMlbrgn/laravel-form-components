@@ -3,7 +3,7 @@
 it('renders captcha', function () {
     $this->registerTestRoute('custom-captcha');
 
-    $this->visit('/custom-captcha')
+    $this->visitPath('/custom-captcha')
         ->within('#form-captcha-1', function () {
             /** @noinspection SpellCheckingInspection */
             $this->seeElement('div.g-recaptcha[data-sitekey][data-badge="inline"][data-size="invisible"][data-callback]')
@@ -15,7 +15,7 @@ it('renders captcha', function () {
 it('can add classes to captcha submit button', function () {
     $this->registerTestRoute('custom-captcha');
 
-    $this->visit('/custom-captcha')
+    $this->visitPath('/custom-captcha')
         ->within('#form-captcha-2', function () {
             /** @noinspection SpellCheckingInspection */
             $this->seeElement('div.g-recaptcha[data-sitekey][data-badge="inline"][data-size="invisible"][data-callback]')

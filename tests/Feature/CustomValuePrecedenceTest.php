@@ -3,7 +3,7 @@
 it('sets correct value', function () {
     $this->registerTestRoute('custom-value-precedence');
 
-    $this->visit('/custom-value-precedence')
+    $this->visitPath('/custom-value-precedence')
         ->within('#form-value-precedence', function () {
             $this->seeElement('input[name="input-1"][value="value 1 by default"]')
                 ->seeElement('input[name="input-2"][value="value 2 by value attribute"]')

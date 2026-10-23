@@ -2,7 +2,7 @@
 
 it('spoofs the methods for put patch and delete forms', function () {
     $this->registerTestRoute('forms-spoof')
-        ->visit('forms-spoof')
+        ->visitPath('forms-spoof')
 
         // methods
         ->seeElement('form[id="form_get"][method="GET"]')
@@ -21,7 +21,7 @@ it('spoofs the methods for put patch and delete forms', function () {
 
 it('sets the csrf token to the forms that need it', function () {
     $this->registerTestRoute('forms-spoof')
-        ->visit('/forms-spoof')
+        ->visitPath('/forms-spoof')
 
         // csrf
         ->dontSeeElement('form[id="form_get"] input[name="_token"]')
@@ -34,7 +34,7 @@ it('sets the csrf token to the forms that need it', function () {
 it('handles validation-mode="client-custom"', function () {
     $this->registerTestRoute('form-validation-client-custom');
 
-    $response = $this->visit('/form-validation-client-custom')
+    $response = $this->visitPath('/form-validation-client-custom')
 //    dd($something);
         ->seeElement('form.needs-validation')
         ->seeElement('form[novalidate]')
@@ -45,7 +45,7 @@ it('handles validation-mode="client-custom"', function () {
 it('shows required asterisk when field required', function () {
     $this->registerTestRoute('form-required');
 
-    $this->visit('/form-required')
+    $this->visitPath('/form-required')
         ->seeElement('div.input-required label.required')
         ->seeElement('div.input-not-required label');
     //        ->seeElementCount('.form-switch', 1) // fails

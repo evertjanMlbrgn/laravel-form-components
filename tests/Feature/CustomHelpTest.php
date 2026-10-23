@@ -3,7 +3,7 @@
 it('adds help text', function () {
     $this->registerTestRoute('input-help-slots');
 
-    $this->visit('/input-help-slots')
+    $this->visitPath('/input-help-slots')
         ->seeInElement('.form-text', 'Your username must be 8-20 characters long.');
 });
 
@@ -13,7 +13,7 @@ it('adds help text', function () {
 it('adds aria-describedby to control with help text', function () {
     $this->registerTestRoute('input-help-slots');
 
-    $this->visit('/input-help-slots')
+    $this->visitPath('/input-help-slots')
         ->within('#form-aria-describedby', function () {
             $this->seeElement('input#input[aria-describedby="input-help-text"]')
                 ->seeElement('input#input ~ div[id="input-help-text"]')
@@ -41,7 +41,7 @@ it('adds aria-describedby to control with help text', function () {
 it('adds extra classes to help text', function () {
     $this->registerTestRoute('input-help-slots');
 
-    $this->visit('/input-help-slots')
+    $this->visitPath('/input-help-slots')
         ->within('#form-help-text-extra-classes', function () {
             $this->seeElement('input#input[aria-describedby="input-help-text"]:not([class-help-text])')
                 ->seeElement('input#input ~ div[id="input-help-text"].text-danger')

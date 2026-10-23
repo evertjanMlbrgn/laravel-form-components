@@ -24,19 +24,23 @@ class Input extends FormBaseComponent
         $default = null,
         $language = null,
         $value = null,
-        bool $showErrors = true,
+        $showErrors = true,
         public string $label = '',
         public string $type = 'text',
-        public bool $horizontal = false,
-        public bool $floating = false,
-        public bool $hidden = false,
+        public $horizontal = false,
+        public $floating = false,
+        public $hidden = false,
         public string $validFeedback = '',
         public string $invalidFeedback = '',
-        public bool $tooltipFeedback = false,
+        public $tooltipFeedback = false,
         public string $helpText = '',
     ) {
 
-        $this->showErrors = $showErrors;
+        $this->showErrors = filter_var($showErrors, FILTER_VALIDATE_BOOLEAN);
+        $this->horizontal = filter_var($horizontal, FILTER_VALIDATE_BOOLEAN);
+        $this->floating = filter_var($floating, FILTER_VALIDATE_BOOLEAN);
+        $this->hidden = filter_var($hidden, FILTER_VALIDATE_BOOLEAN);
+        $this->tooltipFeedback = filter_var($tooltipFeedback, FILTER_VALIDATE_BOOLEAN);
 
         if ($language) {
             $this->name = "{$name}[$language]";

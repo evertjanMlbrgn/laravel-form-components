@@ -4,7 +4,7 @@
 it('sets the id on the label or generates one', function () {
     $this->registerTestRoute('label-for');
 
-    $page = $this->visit('/label-for');
+    $page = $this->visitPath('/label-for');
     $pageCrawler = $page->crawler();
 
     $page->seeElement('textarea[id="text_b"]')
@@ -24,7 +24,7 @@ it('Sets label for required control and adds label class "required"', function (
 
     $this->registerTestRoute('label-required-controls');
 
-    $this->visit('/label-required-controls')
+    $this->visitPath('/label-required-controls')
         ->dontSeeElement('label[for="button"]')// uses button component, label is inside button
         ->seeElement('label[for="checkbox"].form-check-label.required:not([required]):not(.form-label)')
         ->seeElement('label[for="color"].form-label.required:not([required])')
@@ -59,7 +59,7 @@ it('sets correct "for" attribute on label', function () {
 
     $this->registerTestRoute('label-no-id');
 
-    $page = $this->visit('/label-no-id');
+    $page = $this->visitPath('/label-no-id');
     $pageCrawler = $page->crawler()->filter('#label-no-id');
 
     $colorId = $pageCrawler->filter('input[type="color"]')->attr('id');

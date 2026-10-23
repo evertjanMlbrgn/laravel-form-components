@@ -7,10 +7,13 @@ namespace Mlbrgn\LaravelFormComponents\Tests;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 use Mlbrgn\LaravelFormComponents\Providers\FormComponentsServiceProvider;
-use Orchestra\Testbench\BrowserKit\TestCase as BaseTestCase;
+use Orchestra\Testbench\TestCase as BaseTestCase;
+use Mlbrgn\LaravelFormComponents\Tests\InteractsWithForms;
 
 abstract class TestCase extends BaseTestCase
 {
+    use InteractsWithForms;
+
     protected $baseUrl = 'http://mlbrgnnet.test';
 
     public static function isLaravel10(): bool

@@ -14,7 +14,7 @@
     }}
     @if(!empty($name))
         name="{{ $name }}"
-    @endempty
+    @endif
     @if($hidden)
         hidden
     @endif
@@ -37,7 +37,7 @@
                 $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
             ])
         >{{ $help }}</x-mlbrgn-form-components::text>
-    @endif
+    @endisset
 
     @if(!empty($helpText) && !isset($help))
         <x-mlbrgn-form-components::text

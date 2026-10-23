@@ -7,40 +7,40 @@ use Illuminate\Http\Request;
 it('always gets an id attribute', function () {
     $this->registerTestRoute('radio-no-id');
 
-    $this->visit('/radio-no-id')
+    $this->visitPath('/radio-no-id')
         ->seeElement('input[value="1"][id]')
         ->seeElement('input[value="0"][id]');
 });
 
 it('sets classes', function () {
     $this->registerTestRoute('radio-classes');
-    $this->visit('/radio-classes')
+    $this->visitPath('/radio-classes')
         ->seeElement('div.form-check input.form-check-input');
 });
 
 it('sets extra attributes', function () {
     $this->registerTestRoute('radio-extra-attributes');
-    $this->visit('/radio-extra-attributes')
+    $this->visitPath('/radio-extra-attributes')
         ->seeElement('input[name="radio"][readonly][disabled]');
 });
 
 it('sets extra classes', function () {
     $this->registerTestRoute('radio-extra-classes');
-    $this->visit('/radio-extra-classes')
+    $this->visitPath('/radio-extra-classes')
         ->seeElement('input[name="radio"].extra-1.extra-2.form-control-lg');
 });
 
 it('sets a default value', function () {
     $this->registerTestRoute('radio-default');
 
-    $this->visit('/radio-default')
+    $this->visitPath('/radio-default')
         ->seeElement('input[name="radio"]:checked');
 });
 
 it('does not render label when hidden', function () {
     $this->registerTestRoute('radio-hidden');
 
-    $this->visit('/radio-hidden')
+    $this->visitPath('/radio-hidden')
         ->dontSeeElement('label[for="hidden-radio"]')
         ->seeElement('label[for="non-hidden-radio"]');
 });
@@ -50,7 +50,7 @@ it('honors use_wrapper_classes when set to true', function () {
 
     $this->registerTestRoute('radio-wrapper-classes');
 
-    $this->visit('/radio-wrapper-classes')
+    $this->visitPath('/radio-wrapper-classes')
         ->seeElement('div.mx-3.my-3.ms-3.mt-3.me-3.mb-3 input[name="radio"].form-control-lg.some-other-class');
 });
 
@@ -59,7 +59,7 @@ it('honors use_wrapper_classes when set to false', function () {
 
     $this->registerTestRoute('radio-wrapper-classes');
 
-    $this->visit('/radio-wrapper-classes')
+    $this->visitPath('/radio-wrapper-classes')
         ->seeElement('input[name="radio"].form-control-lg.some-other-class.mx-3.my-3.ms-3.mt-3.me-3.mb-3');
 
     Config::set('form-components.use_wrapper_classes', true);
@@ -73,7 +73,7 @@ it('uses old value after submit', function () {
         ]);
     });
 
-    $this->visit('/radio-validation')
+    $this->visitPath('/radio-validation')
         ->check('radio-validation')
         ->press('Send')
         ->seeElement('input[name="radio-validation"]:checked');
@@ -86,7 +86,7 @@ it('shows a validation error', function () {
         ]);
     });
 
-    $this->visit('/radio-validation-error')
+    $this->visitPath('/radio-validation-error')
         ->press('Send')
         ->seeElement('input[name="radio"]')
         ->seeElement('input[name="radio"] ~ div.invalid-feedback')
@@ -96,7 +96,7 @@ it('shows a validation error', function () {
 it('does have help text when "help-text" attribute present', function () {
     $this->registerTestRoute('radio-help-text');
 
-    $this->visit('/radio-help-text')
+    $this->visitPath('/radio-help-text')
         ->seeElement('div.form-text[id="radio-help-text"]')
         ->seeInElement('div.form-text[id="radio-help-text"]', 'attribute help text');
 });
@@ -104,7 +104,7 @@ it('does have help text when "help-text" attribute present', function () {
 it('does have help text when @slot("help") attribute present', function () {
     $this->registerTestRoute('radio-help-slot');
 
-    $this->visit('/radio-help-slot')
+    $this->visitPath('/radio-help-slot')
         ->seeElement('div.form-text[id="radio-help-text"]')
         ->seeInElement('div.form-text[id="radio-help-text"]', 'slot help text');
 });
@@ -112,14 +112,14 @@ it('does have help text when @slot("help") attribute present', function () {
 it('does not have help text when no @slot("help") or "help-text" attribute', function () {
     $this->registerTestRoute('radio-no-help');
 
-    $this->visit('/radio-no-help')
+    $this->visitPath('/radio-no-help')
         ->dontSeeElement('div[id="radio-help-text"]');
 });
 
 it('does not have help text when hidden', function () {
     $this->registerTestRoute('radio-hidden');
 
-    $this->visit('/radio-hidden')
+    $this->visitPath('/radio-hidden')
         ->seeElement('input[type="radio"]') // always make sure node list is not empty when only using dontSeeElement
         ->dontSeeElement('div.form-text[id="hidden-radio-help-text"]')
         ->seeElement('div.form-text[id="non-hidden-radio-help-text"]')
@@ -130,7 +130,7 @@ it('does not have help text when hidden', function () {
 it('check the right element as default', function () {
     $this->registerTestRoute('radio-no-id');
 
-    $this->visit('/radio-no-id')
+    $this->visitPath('/radio-no-id')
         ->seeElement('input[value="1"]:checked')
         ->seeElement('input[value="0"]:not(:checked)');
 });
@@ -139,7 +139,7 @@ it('check the right element as default', function () {
 it('check radio labels work', function () {
     $this->registerTestRoute('radio-no-id');
 
-    $this->visit('/radio-no-id')
+    $this->visitPath('/radio-no-id')
         ->seeElement('input[value="1"] ~ label')
         ->seeElement('input[value="0"] ~ label');
 });
@@ -147,7 +147,7 @@ it('check radio labels work', function () {
 it('has correct classes on label', function () {
     $this->registerTestRoute('radio-no-id');
 
-    $this->visit('/radio-no-id')
+    $this->visitPath('/radio-no-id')
         ->seeElement('input[value="0"] ~ label.form-check-label')
         ->seeElement('input[value="1"] ~ label.form-check-label');
 });
@@ -155,7 +155,7 @@ it('has correct classes on label', function () {
 it('sets correct classes on radio labels', function () {
     $this->registerTestRoute('radio-no-id');
 
-    $this->visit('/radio-no-id')
+    $this->visitPath('/radio-no-id')
         ->seeElement('input[value="1"] ~ label.form-check-label')
         ->seeElement('input[value="0"] ~ label.form-check-label');
 });
@@ -163,7 +163,7 @@ it('sets correct classes on radio labels', function () {
 it('checks the right element as default with a bound target', function () {
     $this->registerTestRoute('radio-no-id');
 
-    $this->visit('/radio-no-id')
+    $this->visitPath('/radio-no-id')
         ->seeElement('input[value="1"]:checked')
         ->seeElement('input[value="0"]:not(:checked)');
 });
@@ -175,7 +175,7 @@ it('checks the right radio button after a validation error', function () {
         ]);
     });
 
-    $this->visit('/radio-validation-error-2')
+    $this->visitPath('/radio-validation-error-2')
         ->select('b', 'radio')
         ->press('Send')
         ->seeElement('input[value="a"]:not(:checked)')
@@ -189,7 +189,7 @@ it('checks the right input element after a validation error of another field', f
         ]);
     });
 
-    $this->visit('/radio-zero-value')
+    $this->visitPath('/radio-zero-value')
         ->select('0', 'radio')
         ->press('Send')
         ->seeElement('input[value="0"]:checked')

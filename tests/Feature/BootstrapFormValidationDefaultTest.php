@@ -3,7 +3,7 @@
 it('enables validation assets when using client validation mode', function () {
     $this->registerTestRoute('bootstrap-form-validation-default');
 
-    $response = $this->visit('/bootstrap-form-validation-default');
+    $response = $this->visitPath('/bootstrap-form-validation-default');
     $response
         ->seeElement('.mlbrgn-form-components-config')
 //        ->seeInElement(
@@ -19,7 +19,7 @@ it('defaults to validation mode "client-default"', function () {
     Config::set('form-components.default-form-validation-mode', 'client-default');
     $this->registerTestRoute('bootstrap-form-validation');
 
-    $this->visit('/bootstrap-form-validation')
+    $this->visitPath('/bootstrap-form-validation')
         ->within('#form-validation-mode-fallback', function () {
             $this->seeElement('form.needs-validation:not([novalidate])');
         });

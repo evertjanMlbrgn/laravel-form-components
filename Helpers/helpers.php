@@ -17,3 +17,17 @@ if (! function_exists('mlbrgn_csp_nonce')) {
             : $resolver;
     }
 }
+
+if (! function_exists('theme_class')) {
+    /**
+     * Resolve a theme-specific class or flag.
+     *
+     * @param string $key
+     * @param mixed|null $default
+     * @return mixed
+     */
+    function theme_class(string $key, $default = null): mixed
+    {
+        return \Mlbrgn\LaravelFormComponents\Theme\Theme::resolve($key, $default);
+    }
+}

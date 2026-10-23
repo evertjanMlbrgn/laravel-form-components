@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 it('always gets an id attribute', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-no-id', function () {
             $this->seeElement('textarea[id]');
         });
@@ -16,7 +16,7 @@ it('always gets an id attribute', function () {
 // it('always gets an id attribute and label refers to it', function () {
 //    $this->registerTestRoute('custom-html-editor');
 //
-//    $this->visit('/custom-html-editor')
+//    $this->visitPath('/custom-html-editor')
 //        ->within('#form-html-editor-no-id', function() {
 //            $randomId = $this->crawler()->filter('textarea.html-editor-3')->attr('id');
 //
@@ -32,7 +32,7 @@ it('always gets an id attribute', function () {
 it('sets classes', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('custom-html-editor')
+    $this->visitPath('custom-html-editor')
         ->within('#form-html-editor-classes', function () {
             $this->seeElement('textarea[name="html-editor"].form-control.html-editor');
         });
@@ -41,7 +41,7 @@ it('sets classes', function () {
 it('sets extra classes', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('custom-html-editor')
+    $this->visitPath('custom-html-editor')
         ->within('#form-html-editor-extra-classes', function () {
             $this->seeElement('textarea[name="html-editor"].extra-class.extra-class-2');
         });
@@ -50,7 +50,7 @@ it('sets extra classes', function () {
 it('sets extra attributes', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('custom-html-editor')
+    $this->visitPath('custom-html-editor')
         ->within('#form-html-editor-extra-attributes', function () {
             $this->seeElement('textarea[name="html-editor"][required][disabled][something][readonly]');
         });
@@ -59,7 +59,7 @@ it('sets extra attributes', function () {
 it('sets a default value', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-default', function () {
             $this->seeInElement('textarea[name="textarea"]', 'b');
         });
@@ -68,7 +68,7 @@ it('sets a default value', function () {
 it('does not render label when hidden', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-hidden', function () {
             $this->dontSeeElement('label[for="hidden-html-editor"]')
                 ->seeElement('label[for="non-hidden-html-editor"]');
@@ -80,7 +80,7 @@ it('honors use_wrapper_classes when set to true', function () {
 
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-wrapper-classes', function () {
             $this->seeElement('div.mx-3.my-3.ms-3.mt-3.me-3.mb-3 textarea[name="html-editor"].form-control-lg.some-other-class');
         });
@@ -91,7 +91,7 @@ it('honors use_wrapper_classes when set to false', function () {
 
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-wrapper-classes', function () {
             $this->seeElement('textarea[name="html-editor"].form-control-lg.some-other-class.mx-3.my-3.ms-3.mt-3.me-3.mb-3');
         });
@@ -108,7 +108,7 @@ it('uses old value after submit', function () {
         ]);
     });
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->type('abc', 'html-editor-validation')
         ->press('Send')
         ->within('#form-html-editor-validation', function () {
@@ -124,7 +124,7 @@ it('shows a validation error', function () {
         ]);
     });
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->press('Send')
         ->within('#form-html-editor-validation-error', function () {
             $this->seeElement('textarea[name="html-editor-validation-error"]')
@@ -136,7 +136,7 @@ it('shows a validation error', function () {
 it('does have help text when "help-text" attribute present', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-help-text', function () {
             $this->seeElement('div.form-text[id="html-editor-help-text"]')
                 ->seeInElement('div.form-text[id="html-editor-help-text"]', 'attribute help text');
@@ -146,7 +146,7 @@ it('does have help text when "help-text" attribute present', function () {
 it('does have help text when @slot("help") attribute present', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-help-slot', function () {
             $this->seeElement('div.form-text[id="html-editor-help-text"]')
                 ->seeInElement('div.form-text[id="html-editor-help-text"]', 'slot help text');
@@ -156,7 +156,7 @@ it('does have help text when @slot("help") attribute present', function () {
 it('does not have help text when no @slot("help") or "help-text" attribute', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-no-help', function () {
             $this->seeElement('textarea')
                 ->dontSeeElement('div[id="content-using-slot-help-text"]');
@@ -166,7 +166,7 @@ it('does not have help text when no @slot("help") or "help-text" attribute', fun
 it('does not have help text when hidden', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-hidden', function () {
             $this->seeElement('textarea') // always make sure node list is not empty when only using dontSeeElement
                 ->dontSeeElement('div.form-text[id="hidden-html-editor-help-text"]')
@@ -178,7 +178,7 @@ it('does not have help text when hidden', function () {
 it('does not honor floating label', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-floating', function () {
             $this->seeElement('textarea') // always make sure node list is not empty when only using dontSeeElement
                 ->dontSeeElement('div.form-floating > textarea[id="html-editor"]');
@@ -188,7 +188,7 @@ it('does not honor floating label', function () {
 it('can bind data', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-bind', function () {
             $this->seeInElement('textarea[id="bound-html-editor"]', 'HTML editor bound value');
         });
@@ -197,7 +197,7 @@ it('can bind data', function () {
 it('can set value using slot', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $this->visit('/custom-html-editor')
+    $this->visitPath('/custom-html-editor')
         ->within('#form-html-editor-value-using-slot', function () {
             $this->seeInElement('textarea[id="value-using-slot"]', 'Value using slot');
         });
@@ -206,7 +206,7 @@ it('can set value using slot', function () {
 it('enables validation assets when using custom validation mode', function () {
     $this->registerTestRoute('custom-html-editor');
 
-    $response = $this->visit('/custom-html-editor');
+    $response = $this->visitPath('/custom-html-editor');
 
     $response
         ->seeElement('.mlbrgn-form-components-config')

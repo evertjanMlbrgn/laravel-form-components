@@ -21,6 +21,8 @@ use Mlbrgn\LaravelFormComponents\View\Components\InputGroup;
 use Mlbrgn\LaravelFormComponents\View\Components\InputGroupIcon;
 use Mlbrgn\LaravelFormComponents\View\Components\InputGroupText;
 use Mlbrgn\LaravelFormComponents\View\Components\Label;
+use Mlbrgn\LaravelFormComponents\View\Components\Layout\FormGroup;
+use Mlbrgn\LaravelFormComponents\View\Components\Layout\FormInputWrapper;
 use Mlbrgn\LaravelFormComponents\View\Components\LocalPackageBadge;
 use Mlbrgn\LaravelFormComponents\View\Components\Radio;
 use Mlbrgn\LaravelFormComponents\View\Components\RecaptchaV2;
@@ -68,6 +70,8 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         'textarea' => Textarea::class,
         'button' => Button::class,
         'local-package-badge' => LocalPackageBadge::class,
+        'layout.form-group' => FormGroup::class,
+        'layout.form-input-wrapper' => FormInputWrapper::class,
     ];
 
     private const PATH_TO_BLADE_COMPONENT_VIEWS = __DIR__.'/../../resources/views/components';
@@ -199,34 +203,9 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
         // Map <x-foo-bar> → PHP class
         // (Create a public alias for a component)
-        Blade::component($prefix.'-input', Input::class);
-        Blade::component($prefix.'-captcha', Captcha::class);
-        Blade::component($prefix.'-checkbox', Checkbox::class);
-        Blade::component($prefix.'-errors', Errors::class);
-        Blade::component($prefix.'-form', Form::class);
-        Blade::component($prefix.'-group', Group::class);
-        Blade::component($prefix.'-html-editor', HtmlEditor::class);
-        Blade::component($prefix.'-input-group', InputGroup::class);
-        Blade::component($prefix.'-input-group-icon', InputGroupIcon::class);
-        Blade::component($prefix.'-input-group-text', InputGroupText::class);
-        Blade::component($prefix.'-label', Label::class);
-        Blade::component($prefix.'-radio', Radio::class);
-        Blade::component($prefix.'-recaptcha-v2', RecaptchaV2::class);
-        Blade::component($prefix.'-select', Select::class);
-        Blade::component($prefix.'-submit', Submit::class);
-        Blade::component($prefix.'-text', Text::class);
-        Blade::component($prefix.'-textarea', Textarea::class);
-        Blade::component($prefix.'-button', Button::class);
-        Blade::component($prefix.'-local-package-badge', LocalPackageBadge::class);
-        //        foreach (self::$components as $name => $class) {
-        //            // Skip internal-only components like 'assets'
-        //            if ($name === 'assets') {
-        //                continue;
-        //            }
-        //
-        //            // Register user-facing components with tag prefix
-        //            Blade::component("{$prefix}-{$name}", $class);
-        //        }
+        foreach (self::$components as $name => $class) {
+            Blade::component($prefix.'-'.$name, $class);
+        }
     }
 
     //    protected function registerComponents(): void

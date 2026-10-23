@@ -35,7 +35,7 @@ it('supports date casts and custom casts', function () {
         ]);
     }
 
-    $this->visit('/date-time-casts')
+    $this->visitPath('/date-time-casts')
         ->seeElement('input[name="date_a"][value="2021-11-01T12:00:00.000000Z"]')
         ->seeElement('input[name="date_b"][value="2021-11-01T00:00:00.000000Z"]')
         ->seeElement('input[name="date_c"][value="2021-11-01T12:00:00.000000Z"]')

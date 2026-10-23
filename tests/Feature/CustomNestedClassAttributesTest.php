@@ -14,7 +14,7 @@
 it('accepts "class-horizontal-cols-label", "class-horizontal-cols-control" and "class-label" on components with horizontal attribute', function () {
     $this->registerTestRoute('custom-nested-class-attributes');
 
-    $this->visit('/custom-nested-class-attributes')
+    $this->visitPath('/custom-nested-class-attributes')
         ->within('#form-set-cols-using-attributes', function () {
             $this->seeElement('div.col-10 input[id="email"]')
                 ->seeElement('div.row label.col-2.test-class[for="email"]')
@@ -34,7 +34,7 @@ it('accepts "class-horizontal-cols-label", "class-horizontal-cols-control" and "
 it('accepts "class-label" on control components', function () {
     $this->registerTestRoute('custom-nested-class-attributes');
 
-    $this->visit('/custom-nested-class-attributes')
+    $this->visitPath('/custom-nested-class-attributes')
         ->within('#form-class-label-attribute', function () {
             $this
                 ->seeElement('label[for="email"].test-class:not(.col-4) ~ input[id="email"]')
@@ -53,7 +53,7 @@ it('accepts "class-label" on control components', function () {
 it('accepts "class-toggle-button" on checkboxes and radios"', function () {
     $this->registerTestRoute('custom-nested-class-attributes');
 
-    $this->visit('/custom-nested-class-attributes')
+    $this->visitPath('/custom-nested-class-attributes')
         ->within('#form-class-toggle-button', function () {
             $this->seeElement('input[id="checkbox-using-input"].btn-check ~ label[for="checkbox-using-input"].test-class.btn-first')
                 ->seeElement('input[id="checkbox-using-component"].btn-check ~ label[for="checkbox-using-component"].test-class.btn-second')
@@ -65,7 +65,7 @@ it('accepts "class-toggle-button" on checkboxes and radios"', function () {
 // Also tested in BootstrapGroupTest.php
 it('accepts "class-inline-wrapper" on group"', function () {
     $this->registerTestRoute('custom-nested-class-attributes')
-        ->visit('custom-nested-class-attributes')
+        ->visitPath('custom-nested-class-attributes')
         ->within('#form-group-inline-classes', function () {
             $this->seeElement('div.form-group div.inline-space.gap-3 input[name="email"]')
                 ->seeElement('div.form-group div.inline-space.gap-3 input[name="password"]')

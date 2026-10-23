@@ -3,7 +3,7 @@
 it('does not enable validation assets when using server validation mode', function () {
     $this->registerTestRoute('bootstrap-form-validation-server');
 
-    $response = $this->visit('/bootstrap-form-validation-server');
+    $response = $this->visitPath('/bootstrap-form-validation-server');
     //    dd($response);
 
     $response
@@ -20,7 +20,7 @@ it('defaults to validation mode "server"', function () {
     Config::set('form-components.default-form-validation-mode', 'server');
     $this->registerTestRoute('bootstrap-form-validation');
 
-    $this->visit('/bootstrap-form-validation')
+    $this->visitPath('/bootstrap-form-validation')
         ->within('#form-validation-mode-fallback', function () {
             $this->seeElement('form:not(.needs-validation)[novalidate]');
         });

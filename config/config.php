@@ -204,6 +204,56 @@ return [
      */
     'csp_nonce' => fn () => null,
 
+    /**
+     * Theme definitions for different frameworks.
+     */
+    'themes' => [
+        'bootstrap-5' => [
+            /** CSS Classes */
+            'form_label' => 'form-label',
+            'form_control' => 'form-control',
+            'form_select' => 'form-select',
+            'form_check' => 'form-check',
+            'form_check_input' => 'form-check-input',
+            'form_check_label' => 'form-check-label',
+            'form_range' => 'form-range',
+            'form_text' => 'form-text',
+            'invalid_feedback' => 'invalid-feedback',
+            'valid_feedback' => 'valid-feedback',
+            'wrapper_horizontal' => 'row',
+            'wrapper_horizontal_label' => 'col-sm-2 col-form-label',
+            'wrapper_horizontal_control' => 'col-sm-10',
+            'wrapper_floating' => 'form-floating',
+            'submit' => 'btn btn-primary',
+            'input_group' => 'input-group',
+            'input_group_text' => 'input-group-text',
+            'group' => 'mb-3',
+            'wrapper_class_prefixes' => ['m-', 'ms-', 'mt-', 'me-', 'mb-', 'mx-', 'my-'],
+
+            /** Structural flags */
+            'use_group_wrapper' => false,
+            'use_input_wrapper' => false,
+
+            /** Preview UI theme keys */
+            'preview_body' => 'bg-light',
+            'preview_container' => 'container-fluid py-3 px-4',
+            'preview_row' => 'row',
+            'preview_sidebar_column' => 'col-lg-2 d-none d-lg-block',
+            'preview_content_column' => 'col-lg-10',
+            'preview_sidebar_list' => 'list-group',
+            'preview_sidebar_item' => 'list-group-item list-group-item-action',
+            'preview_sidebar_item_active' => 'active',
+            'preview_section' => 'mb-5',
+            'preview_page_title' => 'h1 mb-4 border-bottom pb-2',
+            'preview_section_title' => 'h2 mt-5 mb-3',
+            'preview_section_description' => 'lead mb-4',
+            'preview_example' => 'card mb-4 shadow-sm',
+            'preview_example_body' => 'card-body',
+            'preview_example_title' => 'card-title h5',
+            'preview_example_code' => 'bg-light p-3 border-top mt-3',
+        ],
+    ],
+
     /*
      |--------------------------------------------------------------------------
      | DEVELOPER ONLY

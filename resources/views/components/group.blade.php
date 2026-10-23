@@ -72,7 +72,7 @@
                 $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
             ])
         >{{ $help }}</x-mlbrgn-form-components::text>
-    @endif
+    @endisset
 
     @if(!empty($helpText) && !isset($help))
         <x-mlbrgn-form-components::text

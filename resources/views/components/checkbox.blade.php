@@ -1,4 +1,3 @@
-{{-- Open wrapper --}}
 @if(!$hidden)
     @if(!$toggle)
         <div {{ $attributes->onlyWrapperClasses()->class([
@@ -8,19 +7,14 @@
            ]) }}
         >
     @endif
-@endif
 
-{{--            @if($attributes->has('default-to-zero'))--}}
-{{--                --}}{{-- Hidden input to handle unchecked state --}}
-{{--                <input type="hidden" name="{{ $name }}" value="0">--}}
-{{--            @endif--}}
     @if($defaultToZero)
         <input type="hidden" name="{{ $name }}" value="0">
     @endif
 
     {{-- Input --}}
     <input
-        @if(!$toggle && !$hidden)
+        @if(!$toggle)
             {{ $attributes->exceptWrapperClasses()->class([
                'form-check-input' => !$toggle,
                'btn-check' => $toggle,
@@ -43,18 +37,13 @@
         @if($checked)
             checked="checked"
         @endif
-        @if(isset($help) && !$hidden)
+        @if(isset($help))
             aria-describedby="{{ $id }}-help-text"
-        @endif
-        @if($hidden)
-            hidden
         @endif
         @if(old($name))
             checked
         @endif
         >
-
-@if(!$hidden)
 
     {{-- label --}}
     <x-mlbrgn-form-components::label
@@ -120,5 +109,4 @@
     @if(!$toggle)
     </div>
     @endif
-
 @endif

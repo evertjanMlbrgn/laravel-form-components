@@ -36,7 +36,7 @@ it('handles belongs to many relationships', function () {
 
     DB::enableQueryLog();
 
-    $this->visit('/select-relation')
+    $this->visitPath('/select-relation')
         ->seeElement('option[value="'.$commentA->getKey().'"]:selected')
         ->seeElement('option[value="'.$commentB->getKey().'"]:not(:selected)')
         ->seeElement('option[value="'.$commentC->getKey().'"]:selected');
@@ -63,7 +63,7 @@ it('handles morph many relationships', function () {
 
     DB::enableQueryLog();
 
-    $this->visit('/select-relation')
+    $this->visitPath('/select-relation')
         ->seeElement('option[value="'.$commentA->getKey().'"]:selected')
         ->seeElement('option[value="'.$commentB->getKey().'"]:not(:selected)')
         ->seeElement('option[value="'.$commentC->getKey().'"]:selected');
@@ -90,7 +90,7 @@ it('handles morph to many relationships', function () {
 
     DB::enableQueryLog();
 
-    $this->visit('/select-relation')
+    $this->visitPath('/select-relation')
         ->seeElement('option[value="'.$commentA->getKey().'"]:selected')
         ->seeElement('option[value="'.$commentB->getKey().'"]:not(:selected)')
         ->seeElement('option[value="'.$commentC->getKey().'"]:selected');

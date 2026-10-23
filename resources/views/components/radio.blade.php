@@ -7,11 +7,10 @@
         ]) }}
     >
     @endif
-@endif
 
     {{-- Input --}}
     <input
-        @if(!$toggle && !$hidden)
+        @if(!$toggle)
             {{ $attributes->exceptWrapperClasses()->class([
                 'form-check-input' => !$toggle,
                 'btn-check' => $toggle,
@@ -33,15 +32,10 @@
         @if($checked)
             checked="checked"
         @endif
-        @if(isset($help) && !$hidden)
+        @if(isset($help))
             aria-describedby="{{ $id }}-help-text"
         @endif
-        @if($hidden)
-            hidden
-        @endif
     >
-
-@if(!$hidden)
 
     {{-- label --}}
     <x-mlbrgn-form-components::label :parentClasses="$attributes->get('class')"

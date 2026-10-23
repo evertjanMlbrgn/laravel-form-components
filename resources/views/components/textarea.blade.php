@@ -2,14 +2,7 @@
 @if(!$hidden)
 
     {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
-    @if($floating || $horizontal)
-        <div
-            {{ $attributes->onlyWrapperClasses()->class([
-                'row' => $horizontal,
-                'form-floating' => $floating,
-               ]) }}
-        >
-    @endif
+    <x-mlbrgn-form-components::layout.form-group :name="$name" :horizontal="$horizontal" :floating="$floating" :showErrors="$showErrors" :attributes="$attributes">
 
     {{-- label before control --}}
     @if(!$attributes->has('label-end') && (!$floating || $horizontal))
@@ -27,15 +20,7 @@
     @endif
 
     {{-- horizontal control wrapper --}}
-    @if($horizontal)
-        <div
-            @class([
-                 'col-8' => empty($attributes->get('class-horizontal-cols-control', '')),
-                 $attributes->get('class-horizontal-cols-control', '') => !empty($attributes->get('class-horizontal-cols-control', ''))
-             ])
-        >
-    @endif
-
+    <x-mlbrgn-form-components::layout.form-input-wrapper :horizontal="$horizontal" :attributes="$attributes">
 @endif
 
         {{-- Textarea element --}}
@@ -105,37 +90,36 @@
         </x-mlbrgn-form-components::label>
     @endif
 
-    {{-- server side feedback messages --}}
-    @if($shouldShowError($name))
-        <x-mlbrgn-form-components::errors :name="$name" />
-    @endif
-
-    {{-- Help text --}}
-    @if(isset($help))
-        <x-mlbrgn-form-components::text
-            :id="$id"
-            @class([
-                $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
-            ])
-        >{{ $help }}</x-mlbrgn-form-components::text>
-    @endif
-
-    @if(!empty($helpText) && !isset($help))
-        <x-mlbrgn-form-components::text
-            :id="$id"
-            @class([
-                $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
-            ])
-        >{{ $helpText }}</x-mlbrgn-form-components::text>
-    @endif
-
     {{-- close horizontal control wrapper --}}
-    @if($horizontal)
-        </div>
+    @if(!$hidden)
+
+        {{-- server side feedback messages --}}
+        @if($shouldShowError($name))
+            <x-mlbrgn-form-components::errors :name="$name" />
+        @endif
+
+        {{-- Help text --}}
+        @if(isset($help))
+            <x-mlbrgn-form-components::text
+                :id="$id"
+                @class([
+                    $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
+                ])
+            >{{ $help }}</x-mlbrgn-form-components::text>
+        @endif
+
+        @if(!empty($helpText) && !isset($help))
+            <x-mlbrgn-form-components::text
+                :id="$id"
+                @class([
+                    $attributes->get('class-help-text', '') => $attributes->has('class-help-text')
+                ])
+            >{{ $helpText }}</x-mlbrgn-form-components::text>
+        @endif
     @endif
+
+    </x-mlbrgn-form-components::layout.form-input-wrapper>
 
     {{-- Close wrapper for floating or horizontal controls --}}
-    @if($floating || $horizontal)
-        </div>
-    @endif
+    </x-mlbrgn-form-components::layout.form-group>
 @endif
