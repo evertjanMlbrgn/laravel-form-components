@@ -2,15 +2,33 @@
     <x-form::preview.components.example title="Default (stacked)">
         <x-slot:code_slot>
             @verbatim
-<x-form-checkbox id="defaultCheck1" label="Default checkbox"/>
-<x-form-checkbox id="defaultCheck2" label="Disabled checkbox" disabled/>
-<x-form-radio name="exampleRadios" id="exampleRadios1" value="option1" label="Default radio" checked/>
+<x-form-checkbox id="defaultCheck1" label="Default checkbox">
+    @slot('help')
+        Just some help text
+    @endslot
+</x-form-checkbox>
+<x-form-checkbox id="defaultCheck2" label="Checked checkbox" checked/>
+<x-form-checkbox id="defaultCheck3" label="Disabled checkbox" disabled/>
+<x-form-radio name="exampleRadios" id="exampleRadios1" value="option1" label="Default radio" checked>
+    @slot('help')
+        Just some help text
+    @endslot
+</x-form-radio>
 <x-form-radio name="exampleRadios" id="exampleRadios2" value="option2" label="Second default radio"/>
             @endverbatim
         </x-slot:code_slot>
-        <x-form-checkbox id="defaultCheck1" label="Default checkbox"/>
-        <x-form-checkbox id="defaultCheck2" label="Disabled checkbox" disabled/>
-        <x-form-radio name="exampleRadios" id="exampleRadios1" value="option1" label="Default radio" checked/>
+        <x-form-checkbox id="defaultCheck1" label="Default checkbox">
+            @slot('help')
+                Just some help text
+            @endslot
+        </x-form-checkbox>
+        <x-form-checkbox id="defaultCheck2" label="Checked checkbox" checked/>
+        <x-form-checkbox id="defaultCheck3" label="Disabled checkbox" disabled/>
+        <x-form-radio name="exampleRadios" id="exampleRadios1" value="option1" label="Default radio" checked>
+            @slot('help')
+                Just some help text
+            @endslot
+        </x-form-radio>
         <x-form-radio name="exampleRadios" id="exampleRadios2" value="option2" label="Second default radio"/>
     </x-form::preview.components.example>
 

@@ -57,8 +57,8 @@ it('overrides the bound target with the old request data', function () {
         ->select('f', 'select')
         ->uncheck('checkbox')
         ->check('radio')
-        ->press('Send')
-        ->seeElement('input[name="input"][value="d"]')
+        ->press('Send');
+    $this->seeElement('input[name="input"][value="d"]')
         ->seeInElement('textarea[name="textarea"]', 'e')
         ->seeInElement('textarea[name="html-editor"]', 'f')
         ->seeElement('option[value="f"]:selected')

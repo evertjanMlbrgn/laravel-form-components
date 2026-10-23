@@ -17,12 +17,33 @@
 <x-form-input type="text" placeholder="Default input"/>
 <x-form-input class="form-control-sm" type="text" placeholder=".form-control-sm"/>
 <x-form-input type="text" placeholder="Disabled input" disabled/>
+<x-form-input type="text" value="Disabled readonly input" disabled readonly/>
             @endverbatim
         </x-slot:code_slot>
         <x-form-input class="form-control-lg mb-3" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example"/>
         <x-form-input class="mb-3" type="text" placeholder="Default input" aria-label="default input example"/>
         <x-form-input class="form-control-sm mb-3" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example"/>
-        <x-form-input type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled/>
+        <x-form-input class="mb-3" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled/>
+        <x-form-input type="text" value="Disabled readonly input" aria-label="Disabled input example" disabled readonly/>
+    </x-form::preview.components.example>
+
+    <x-form::preview.components.example title="Form text">
+        <x-slot:code_slot>
+            @verbatim
+<x-form-input type="password" id="inputPassword5" label="Password" autocomplete="new-password">
+    @slot('help')
+        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+    @endslot
+</x-form-input>
+            @endverbatim
+        </x-slot:code_slot>
+        <x-form-form>
+            <x-form-input type="password" id="inputPassword5" label="Password" autocomplete="new-password">
+                @slot('help')
+                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                @endslot
+            </x-form-input>
+        </x-form-form>
     </x-form::preview.components.example>
 
     <x-form::preview.components.example title="Readonly and Plaintext">

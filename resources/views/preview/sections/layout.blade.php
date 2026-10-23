@@ -183,8 +183,21 @@
     </div>
     <div class="col-auto">
         <x-form-input-group>
-            <x-form-input-group-text>@</x-form-input-group-text>
-            <x-form-input type="text" id="autoSizingInputGroup" label="Username" placeholder="Username" class-label="visually-hidden"/>
+            <x-slot name="slot1">
+                <div class="input-group-text">@</div>
+            </x-slot>
+            <x-slot name="slot2">
+                <x-form-input type="text" id="autoSizingInputGroup" label="Username" placeholder="Username" class-label="visually-hidden"/>
+            </x-slot>
+            <x-slot name="slot3">
+                <div class="input-group-text">$</div>
+            </x-slot>
+            <x-slot name="slot4">
+                <div class="input-group-text">#</div>
+            </x-slot>
+            <x-slot name="slot5">
+                <div class="input-group-text">!</div>
+            </x-slot>
         </x-form-input-group>
     </div>
     <div class="col-auto">
@@ -210,8 +223,21 @@
             </div>
             <div class="col-auto">
                 <x-form-input-group>
-                    <x-form-input-group-text>@</x-form-input-group-text>
-                    <x-form-input type="text" id="autoSizingInputGroup" label="Username" placeholder="Username" class-label="visually-hidden"/>
+                    <x-slot name="slot1">
+                        <div class="input-group-text">@</div>
+                    </x-slot>
+                    <x-slot name="slot2">
+                        <x-form-input type="text" id="autoSizingInputGroup" label="Username" placeholder="Username" class-label="visually-hidden"/>
+                    </x-slot>
+                    <x-slot name="slot3">
+                        <div class="input-group-text">$</div>
+                    </x-slot>
+                    <x-slot name="slot4">
+                        <div class="input-group-text">#</div>
+                    </x-slot>
+                    <x-slot name="slot5">
+                        <div class="input-group-text">!</div>
+                    </x-slot>
                 </x-form-input-group>
             </div>
             <div class="col-auto">
@@ -226,7 +252,7 @@
                 <x-form-checkbox label="Remember me" id="autoSizingCheck"/>
             </div>
             <div class="col-auto">
-                <x-form-submit>Submit</x-form-submit>
+                <x-form-submit class="btn-preview-primary">Submit</x-form-submit>
             </div>
         </form>
     </x-form::preview.components.example>

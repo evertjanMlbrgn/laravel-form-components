@@ -31,6 +31,7 @@
             @endverbatim
         </x-slot:code_slot>
         <x-form-form class="row g-3">
+            <x-form-input type="hidden" name="should_validate" value="1" />
             <div class="col-md-6">
                 <x-form-input label="Email" name="reg_email" type="email" placeholder="email@example.com" required/>
             </div>

@@ -14,11 +14,19 @@
 // use Tests\TestCase;
 
 use Mlbrgn\LaravelFormComponents\Tests\TestCase;
+use Mlbrgn\LaravelFormComponents\Tests\BrowserTestCase;
 use Illuminate\Testing\TestResponse;
 use Symfony\Component\DomCrawler\Crawler;
 use PHPUnit\Framework\Assert;
 
 uses(TestCase::class)->in('Feature', 'Unit');
+uses(BrowserTestCase::class)->group('browser')->in('Browser');
+
+pest()->browser()->timeout(5000); // @ai: do not change the timeout value
+
+if (getenv('PEST_BROWSER_HEADED')) {
+    pest()->browser()->headed();
+}
 
 expect()->extend('toContainElement', function (string $selector, array $attributes = []) {
     $crawler = new Crawler($this->value->getContent());

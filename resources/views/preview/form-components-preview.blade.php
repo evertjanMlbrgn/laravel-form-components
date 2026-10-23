@@ -39,6 +39,16 @@
             <div class="{{ theme_class('preview_content_column') }}">
                 <h1 class="{{ theme_class('preview_page_title') }}">Form Components Preview</h1>
 
+                @if($submittedData)
+                    <div class="alert alert-success alert-dismissible fade show mb-4" role="alert">
+                        <h4 class="alert-heading"><i class="bi bi-check-circle-fill me-2"></i>Form Submitted Successfully!</h4>
+                        <p>Below is the data that was sent to the server:</p>
+                        <hr>
+                        <pre class="bg-dark text-white p-3 rounded"><code>{{ json_encode($submittedData, JSON_PRETTY_PRINT) }}</code></pre>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
                 @foreach($sections as $section)
                     @include('form::preview.sections.' . str_replace('form-', '', $section['id']))
                 @endforeach

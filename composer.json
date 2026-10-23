@@ -16,6 +16,12 @@
     "homepage": "https://github.com/mlbrgn/laravel-form-components",
     "license": "MIT",
     "type": "library",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/homiedopie/pest-plugin-browser"
+        }
+    ],
     "authors": [
         {
             "name": "Nick D.",
@@ -46,7 +52,7 @@
         "nesbot/carbon": "^3.0.0",
         "orchestra/testbench": "^10.0.0",
         "pestphp/pest": "^4.0.0",
-        "pestphp/pest-plugin-browser": "^4.0.0",
+        "pestphp/pest-plugin-browser": "dev-fix/multipart-form-parser",
         "pestphp/pest-plugin-drift": "^4.0.0",
         "pestphp/pest-plugin-type-coverage": "^4.0.0",
         "spatie/laravel-translatable": "^6.0.0",
@@ -66,14 +72,14 @@
         }
     },
     "scripts": {
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "analyse": "vendor/bin/phpstan analyse",
         "test:validate-composer": "composer validate --strict",
         "test:security-composer": "composer audit",
         "test:security-npm": "npm audit --audit-level=moderate",
         "test:lint": "vendor/bin/pint --test",
         "test:types": "vendor/bin/pest --type-coverage --min=80",
         "test:larastan": "vendor/bin/phpstan analyse || true",
-        "test:pest": "vendor/bin/pest",
+        "test:pest": "vendor/bin/pest --exclude-group browser",
         "test-ci-checks": [
             "@test:validate-composer",
             "@test:security-composer",
@@ -89,14 +95,24 @@
             "@test-ci-checks",
             "@test-ci-tests"
         ],
-        "test": [
-            "@putenv XDEBUG_MODE=off",
-            "./vendor/bin/pest"
+        "test": "vendor/bin/pest --exclude-group browser",
+        "test-browser": [
+            "Composer\\Config::disableProcessTimeout",
+            "XDEBUG_MODE=off vendor/bin/pest --group browser"
         ],
-        "quicktest": [
-            "@putenv XDEBUG_MODE=off",
-            "./vendor/bin/pest --parallel"
-        ]
+        "test-browser-headed": [
+            "Composer\\Config::disableProcessTimeout",
+            "XDEBUG_MODE=off PEST_BROWSER_HEADED=true vendor/bin/pest --group browser"
+        ],
+        "test-browser-full": [
+            "Composer\\Config::disableProcessTimeout",
+            "XDEBUG_MODE=off PEST_BROWSER_FULL=true vendor/bin/pest --group browser"
+        ],
+        "test-browser-full-headed": [
+            "Composer\\Config::disableProcessTimeout",
+            "XDEBUG_MODE=off PEST_BROWSER_FULL=true PEST_BROWSER_HEADED=true vendor/bin/pest --group browser"
+        ],
+        "coverage": "XDEBUG_MODE=coverage ./vendor/bin/pest --coverage"
     },
     "config": {
         "sort-packages": true,

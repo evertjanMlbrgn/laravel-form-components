@@ -4,6 +4,8 @@
 
 namespace Mlbrgn\LaravelFormComponents\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\View\View;
 
@@ -26,7 +28,24 @@ class DemoController extends Controller
                 'de' => 'Germany',
                 'fr' => 'France',
             ],
+            'submittedData' => session('submitted_data'),
         ]);
+    }
+
+    public function submit(Request $request): RedirectResponse
+    {
+        if ($request->has('should_validate')) {
+            $request->validate([
+                'reg_email' => 'required|email',
+                'reg_password' => 'required|min:8',
+                'reg_city' => 'required',
+                'reg_state' => 'required',
+                'reg_zip' => 'required',
+                'reg_check' => 'accepted',
+            ]);
+        }
+
+        return redirect()->back()->with('submitted_data', $request->all());
     }
 
     protected function getSections(): array

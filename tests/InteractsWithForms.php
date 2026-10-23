@@ -37,7 +37,7 @@ trait InteractsWithForms
 
     public function uncheck($name)
     {
-        unset($this->inputs[$name]);
+        $this->inputs[$name] = false;
         return $this;
     }
 
@@ -89,6 +89,9 @@ trait InteractsWithForms
 
         $nestedInputs = [];
         foreach ($allValues as $key => $value) {
+            if ($value === false) {
+                continue;
+            }
             $dottedKey = str_replace(['[', ']'], ['.', ''], rtrim($key, '[]'));
             \Illuminate\Support\Arr::set($nestedInputs, $dottedKey, $value);
         }
