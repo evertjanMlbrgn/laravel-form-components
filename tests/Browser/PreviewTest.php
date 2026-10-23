@@ -13,12 +13,11 @@ it('loads the preview page', function () {
 
 it('initializes TinyMCE', function () {
     $this->visit('/form-components-preview')
-        ->waitFor('.tox-tinymce', 5);
-})->skip('Requires Playwright to be installed in CI');
+        ->assertPresent('.tox-tinymce');
+});
 
 it('triggers client-side validation', function () {
     $this->visit('/form-components-preview')
         ->press('Submit form')
-        ->waitFor('.invalid-feedback', 5)
         ->assertSee('Please provide a valid city.');
-})->skip('Requires Playwright to be installed in CI');
+});

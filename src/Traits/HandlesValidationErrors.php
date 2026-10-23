@@ -29,7 +29,13 @@ trait HandlesValidationErrors
         if (request()->hasSession()) {
             $bags = View::shared('errors', fn () => request()->session()->get('errors', new ViewErrorBag));
 
-            return $bags->getBag($bag);
+            if ($bags instanceof ViewErrorBag) {
+                return $bags->getBag($bag);
+            }
+
+            if ($bags instanceof MessageBag) {
+                return $bags;
+            }
         }
 
         return null;

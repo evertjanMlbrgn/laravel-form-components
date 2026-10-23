@@ -87,4 +87,42 @@
             </fieldset>
         </x-form-form>
     </x-form::preview.components.example>
+
+    <x-form::preview.components.example title="Inline text">
+        <x-slot:code_slot>
+            @verbatim
+<x-form-form>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label class="col-form-label">Password</label>
+        </div>
+        <div class="col-auto">
+            <x-form-input type="password" id="inputPassword4" autocomplete="new-password"/>
+        </div>
+        <div class="col-auto">
+            <x-form-text>
+                Must be 8-20 characters long.
+            </x-form-text>
+        </div>
+    </div>
+</x-form-form>
+            @endverbatim
+        </x-slot:code_slot>
+
+        <x-form-form>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label class="col-form-label">Password</label>
+                </div>
+                <div class="col-auto">
+                    <x-form-input type="password" id="inputPassword4" autocomplete="new-password"/>
+                </div>
+                <div class="col-auto">
+                    <x-form-text>
+                        Must be 8-20 characters long.
+                    </x-form-text>
+                </div>
+            </div>
+        </x-form-form>
+    </x-form::preview.components.example>
 </x-form::preview.components.section>

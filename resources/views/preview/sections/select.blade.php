@@ -26,7 +26,16 @@
 <x-form-select size="3" :options="$selectOptions"/>
             @endverbatim
         </x-slot:code_slot>
-        <x-form-select multiple aria-label="multiple select example" :options="$selectOptions"/>
+        <x-form-select multiple aria-label="multiple select example" :options="$selectOptions" class="mb-3"/>
         <x-form-select size="3" aria-label="size 3 select example" :options="$selectOptions"/>
+    </x-form::preview.components.example>
+
+    <x-form::preview.components.example title="Disabled">
+        <x-slot:code_slot>
+            @verbatim
+<x-form-select disabled :options="$selectOptions" placeholder="Open this select menu"/>
+            @endverbatim
+        </x-slot:code_slot>
+        <x-form-select disabled aria-label="Disabled select example" :options="$selectOptions" placeholder="Open this select menu"/>
     </x-form::preview.components.example>
 </x-form::preview.components.section>

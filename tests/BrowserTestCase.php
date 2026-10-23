@@ -17,5 +17,11 @@ abstract class BrowserTestCase extends BaseTestCase
         parent::setUp();
 
         $this->app['config']->set('app.key', 'base64:BOiGLFUC+84Du2o8GYos0kGJaj4zGX9M9BkLsAj04Ik=');
+
+        // Ensure assets are published for the browser tests
+        $this->artisan('vendor:publish', [
+            '--tag' => 'mlbrgn-form-components-assets',
+            '--force' => true,
+        ]);
     }
 }
