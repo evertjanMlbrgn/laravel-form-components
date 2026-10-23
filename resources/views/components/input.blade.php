@@ -67,21 +67,12 @@
 
             {{-- Input element --}}
             <input
-                @if(!$floating && !$horizontal)
-                    {{ $attributes->class([
-                        theme_class('form_control') => $type !== 'range' && $type !== 'image',
-                        theme_class('form_range') => $type === 'range',
-                        theme_class('form_control_color') => ($type === 'color'),
-                        theme_class('invalid_class') => ($hasError($name)),
-                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'alt']) }}
-                @else
-                    {{ $attributes->exceptWrapperClasses()->class([
-                        theme_class('form_control') => $type !== 'range' && $type !== 'image',
-                        theme_class('form_range') => $type === 'range',
-                        theme_class('form_control_color') => ($type === 'color'),
-                        theme_class('invalid_class') => ($hasError($name)),
-                    ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'alt']) }}
-                @endif
+                {{ $attributes->exceptWrapperClasses()->class([
+                    theme_class('form_control') => $type !== 'range' && $type !== 'image',
+                    theme_class('form_range') => $type === 'range',
+                    theme_class('form_control_color') => ($type === 'color'),
+                    theme_class('invalid_class') => ($hasError($name)),
+                ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'alt']) }}
                 type="{{ $type }}"
                 @if(!in_array($type, ['file', 'image']))
                     value="{{ $value ?? ($type === 'color' ? '#000000' : '') }}"
@@ -110,7 +101,7 @@
                 @if(!empty($validFeedback))
                     <div @class([
                         theme_class('valid_feedback') => !$tooltipFeedback,
-                        theme_class('valid_tooltip', 'valid-tooltip') => $tooltipFeedback,
+                        theme_class('valid_tooltip') => $tooltipFeedback,
                     ])>
                         {{ $validFeedback }}
                     </div>
@@ -119,7 +110,7 @@
                 @if(!empty($invalidFeedback))
                     <div @class([
                         theme_class('invalid_feedback') => !$tooltipFeedback,
-                        theme_class('invalid_tooltip', 'invalid-tooltip') => $tooltipFeedback,
+                        theme_class('invalid_tooltip') => $tooltipFeedback,
                     ])>
                         {{ $invalidFeedback }}
                     </div>

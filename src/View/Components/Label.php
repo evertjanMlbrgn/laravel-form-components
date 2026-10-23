@@ -6,5 +6,7 @@ use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class Label extends FormBaseComponent
 {
-    public function __construct() {}
+    public function __construct(
+        public ?bool $withinInputGroupProp = null,
+    ) {}
 }

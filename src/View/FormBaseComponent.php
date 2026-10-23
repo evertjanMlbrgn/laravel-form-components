@@ -7,6 +7,7 @@ use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
+use Mlbrgn\LaravelFormComponents\Theme\Theme;
 
 abstract class FormBaseComponent extends Component
 {
@@ -19,9 +20,24 @@ abstract class FormBaseComponent extends Component
     {
         return function (array $data) {
             $id = $this->determineId($data['attributes']->get('id'), $data['name'] ?? '');
+            $componentName = $this->viewName();
+            $framework = Theme::framework();
 
-            return view('mlbrgn-form-components::'.Str::kebab(class_basename($this)), ['id' => $id]);
+            $view = "mlbrgn-form-components::themes.{$framework}.{$componentName}";
+
+            if (! view()->exists($view)) {
+                $view = "mlbrgn-form-components::{$componentName}";
+            }
+
+            // Laravel re-applies the full component data via View::with() after this closure returns,
+            // so only the generated id needs to be supplied here.
+            return view($view, ['id' => $id]);
         };
+    }
+
+    protected function viewName(): string
+    {
+        return Str::kebab(class_basename($this));
     }
 
     public function assetConfig(): array

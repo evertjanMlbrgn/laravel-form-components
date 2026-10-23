@@ -31,3 +31,15 @@ if (! function_exists('theme_class')) {
         return \Mlbrgn\LaravelFormComponents\Theme\Theme::resolve($key, $default);
     }
 }
+
+if (! function_exists('theme_framework')) {
+    /**
+     * Get the active theme framework.
+     *
+     * @return string
+     */
+    function theme_framework(): string
+    {
+        return \Mlbrgn\LaravelFormComponents\Theme\Theme::framework();
+    }
+}

@@ -12,18 +12,29 @@
         <input type="hidden" name="{{ $name }}" value="0">
     @endif
 
+    @php
+        $inputClass = theme_class('form_check_input');
+        if ($toggle) {
+            $inputClass = theme_class('button_check');
+        } elseif ($attributes->get('switch')) {
+            $inputClass = theme_class('form_switch_input', $inputClass);
+        }
+
+        $invalidClass = $attributes->get('switch')
+            ? theme_class('form_switch_invalid_class', theme_class('invalid_class'))
+            : theme_class('form_check_invalid_class', theme_class('invalid_class'));
+    @endphp
+
     {{-- Input --}}
     <input
         @if(!$toggle)
             {{ $attributes->exceptWrapperClasses()->class([
-               theme_class('form_check_input') => !$toggle,
-               theme_class('button_check') => $toggle,
-               theme_class('invalid_class') => $hasError($name)
+               $inputClass,
+               $invalidClass => $hasError($name),
            ])->whereDoesntStartWith('class-')->except(['inline', 'switch', 'id', 'default-to-zero']) }}
         @else
             {{ $attributes->class([
-               theme_class('form_check_input') => !$toggle,
-               theme_class('button_check') => $toggle,
+               $inputClass,
                theme_class('invalid_class') => $hasError($name)
            ])->whereDoesntStartWith('class-')->except(['inline', 'switch', 'id', 'default-to-zero']) }}
         @endif
@@ -51,7 +62,7 @@
         :required="$attributes->has('required')"
         @class([
             theme_class('form_check_label') => !$toggle,
-            theme_class('button') => $toggle,
+            theme_class('button_toggle', theme_class('button')) => $toggle,
             $attributes->get('class-label', ''),
             $attributes->get('class-toggle-button', '') => $toggle,
         ])
@@ -65,7 +76,7 @@
         @if(!empty($validFeedback))
             <div @class([
                         theme_class('valid_feedback') => !$tooltipFeedback,
-                        theme_class('valid_tooltip', 'valid-tooltip') => $tooltipFeedback,
+                        theme_class('valid_tooltip') => $tooltipFeedback,
                     ])>
                 {{ $validFeedback }}
             </div>
@@ -74,7 +85,7 @@
         @if(!empty($invalidFeedback))
             <div @class([
                         theme_class('invalid_feedback') => !$tooltipFeedback,
-                        theme_class('invalid_tooltip', 'invalid-tooltip') => $tooltipFeedback,
+                        theme_class('invalid_tooltip') => $tooltipFeedback,
                     ])>
                 {{ $invalidFeedback }}
             </div>

@@ -3,8 +3,8 @@
     {{ $attributes->merge([
         'type' => $type ?? 'button'
     ])->class([
-        'btn',
-        'd-none' => $hidden,
+        theme_class('button'),
+        theme_class('hidden') => $hidden,
         ])->except([
             'required',
             'readonly',

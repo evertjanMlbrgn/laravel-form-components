@@ -28,17 +28,10 @@
                 {{-- Select element --}}
                 {{-- NOTE: select element does not support value attribute --}}
                 <select
-                    @if(!$floating && !$horizontal)
-                        {{ $attributes->class([
-                            theme_class('form_select'),
-                            theme_class('invalid_class') => $hasError($name)
-                        ])->whereDoesntStartWith('class-')->except(['placeholder', 'label-end', 'id']) }}
-                    @else
-                        {{ $attributes->exceptWrapperClasses()->class([
-                       theme_class('form_select'),
-                       theme_class('invalid_class') => $hasError($name)
-                   ])->whereDoesntStartWith('class-')->except(['placeholder', 'label-end', 'id']) }}
-                    @endif
+                    {{ $attributes->exceptWrapperClasses()->class([
+                        theme_class('form_select'),
+                        theme_class('form_select_invalid_class', theme_class('invalid_class')) => $hasError($name)
+                    ])->whereDoesntStartWith('class-')->except(['placeholder', 'label-end', 'id']) }}
                     @if($name)
                         name="{{ $name }}"
                     @endif
@@ -80,7 +73,7 @@
             @if(!empty($validFeedback))
                 <div @class([
                     theme_class('valid_feedback') => !$tooltipFeedback,
-                    theme_class('valid_tooltip', 'valid-tooltip') => $tooltipFeedback,
+                    theme_class('valid_tooltip') => $tooltipFeedback,
                 ])>
                     {{ $validFeedback }}
                 </div>
@@ -89,7 +82,7 @@
             @if(!empty($invalidFeedback))
                 <div @class([
                     theme_class('invalid_feedback') => !$tooltipFeedback,
-                    theme_class('invalid_tooltip', 'invalid-tooltip') => $tooltipFeedback,
+                    theme_class('invalid_tooltip') => $tooltipFeedback,
                 ])>
                     {{ $invalidFeedback }}
                 </div>

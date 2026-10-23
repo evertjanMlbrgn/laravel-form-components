@@ -2,8 +2,8 @@
     id="{{ $id }}"
 
     {{ $attributes->onlyWrapperClasses()->class([
-    'form-group',
-    'is-invalid' => $hasError($name),
+    theme_class('group'),
+    theme_class('invalid_class') => $hasError($name),
     'show-errors' => $showErrors,
     'required' => $attributes->has('required')
     ]) }}
@@ -37,7 +37,7 @@
 
     @if($inline)
     <div
-        {{ $attributes->exceptWrapperClasses()->only('class')->class(['d-flex flex-row flex-wrap inline-space', $attributes->get('class-inline-wrapper', '')]) }}
+        {{ $attributes->exceptWrapperClasses()->only('class')->class([theme_class('group_inline_wrapper'), $attributes->get('class-inline-wrapper', '')]) }}
     >{{ $slot }}</div>
     @else
         {{ $slot }}
@@ -47,8 +47,8 @@
     @if($showErrors)
         @if(!empty($validFeedback))
             <div @class([
-                        'valid-feedback' => !$tooltipFeedback,
-                        'valid-tooltip' => $tooltipFeedback,
+                        theme_class('valid_feedback') => !$tooltipFeedback,
+                        theme_class('valid_tooltip') => $tooltipFeedback,
                     ])>
                 {{ $validFeedback }}
             </div>
@@ -56,8 +56,8 @@
 
         @if(!empty($invalidFeedback))
             <div @class([
-                        'invalid-feedback' => !$tooltipFeedback,
-                        'invalid-tooltip' => $tooltipFeedback,
+                        theme_class('invalid_feedback') => !$tooltipFeedback,
+                        theme_class('invalid_tooltip') => $tooltipFeedback,
                     ])>
                 {{ $invalidFeedback }}
             </div>

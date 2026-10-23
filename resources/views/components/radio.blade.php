@@ -12,13 +12,13 @@
     <input
         @if(!$toggle)
             {{ $attributes->exceptWrapperClasses()->class([
-                theme_class('form_check_input') => !$toggle,
+                theme_class('form_radio_input', theme_class('form_check_input')) => !$toggle,
                 theme_class('button_check') => $toggle,
-                theme_class('invalid_class') => $hasError($name),
+                theme_class('form_radio_invalid_class', theme_class('invalid_class')) => $hasError($name),
             ])->whereDoesntStartWith('class-')->except(['inline', 'id']) }}
         @else
             {{ $attributes->class([
-                theme_class('form_check_input') => !$toggle,
+                theme_class('form_radio_input', theme_class('form_check_input')) => !$toggle,
                 theme_class('button_check') => $toggle,
                 theme_class('invalid_class') => $hasError($name),
             ])->whereDoesntStartWith('class-')->except(['inline', 'id']) }}
@@ -41,7 +41,7 @@
     <x-mlbrgn-form-components::label :parentClasses="$attributes->get('class')"
         @class([
             theme_class('form_check_label') => !$toggle,
-            theme_class('button') => $toggle,
+            theme_class('button_toggle', theme_class('button')) => $toggle,
             $attributes->get('class-label', ''),
             $attributes->get('class-toggle-button', '') => $toggle
         ])
@@ -57,7 +57,7 @@
         @if(!empty($validFeedback))
             <div @class([
                     theme_class('valid_feedback') => !$tooltipFeedback,
-                    theme_class('valid_tooltip', 'valid-tooltip') => $tooltipFeedback,
+                    theme_class('valid_tooltip') => $tooltipFeedback,
                 ])>
                 {{ $validFeedback }}
             </div>
@@ -66,7 +66,7 @@
         @if(!empty($invalidFeedback))
             <div @class([
                     theme_class('invalid_feedback') => !$tooltipFeedback,
-                    theme_class('invalid_tooltip', 'invalid-tooltip') => $tooltipFeedback,
+                    theme_class('invalid_tooltip') => $tooltipFeedback,
                 ])>
                 {{ $invalidFeedback }}
             </div>

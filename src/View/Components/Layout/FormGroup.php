@@ -2,10 +2,10 @@
 
 namespace Mlbrgn\LaravelFormComponents\View\Components\Layout;
 
-use Illuminate\View\Component;
+use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;
 
-class FormGroup extends Component
+class FormGroup extends FormBaseComponent
 {
     use HandlesValidationErrors;
 
@@ -20,8 +20,8 @@ class FormGroup extends Component
         $this->showErrors = filter_var($showErrors, FILTER_VALIDATE_BOOLEAN);
     }
 
-    public function render()
+    protected function viewName(): string
     {
-        return view('form::components.layout.form-group');
+        return 'layout.form-group';
     }
 }

@@ -23,21 +23,12 @@
 @endif
         {{-- Textarea element --}}
         <textarea
-            @if(!$floating && !$horizontal)
-                {{ $attributes->class([
-                    theme_class('form_control'),
-                    'html-editor',
-                    theme_class('invalid_class') => $hasError($name)
-                ])->whereDoesntStartWith('class-')->except(['label-end', 'id'])->merge(
-                    ['data-mlbrgn-html-editor' => true]
-                ) }}
-            @else
-                {{ $attributes->exceptWrapperClasses()->class([
-                    theme_class('form_control'),
-                    'html-editor',
-                    theme_class('invalid_class') => $hasError($name)
-                ])->whereDoesntStartWith('class-')->except(['label-end', 'id']) }}
-            @endif
+            {{ $attributes->exceptWrapperClasses()->class([
+                theme_class('form_control'),
+                'html-editor',
+                theme_class('invalid_class') => $hasError($name)
+            ])->whereDoesntStartWith('class-')->except(['label-end', 'id'])
+            ->merge(['data-mlbrgn-html-editor' => (!$floating && !$horizontal)]) }}
             @if($name)
                 name="{{ $name }}"
             @endif
@@ -66,12 +57,12 @@
 @if(!$hidden)
 
     {{-- client side feedback messages --}}
-    @if($showErrors)
+        @if($showErrors)
         @if(!empty($validFeedback))
             <div
                 @class([
                     theme_class('valid_feedback') => !$tooltipFeedback,
-                    theme_class('valid_tooltip', 'valid-tooltip') => $tooltipFeedback,
+                    theme_class('valid_tooltip') => $tooltipFeedback,
                 ])>
                 {{ $validFeedback }}
             </div>
@@ -80,7 +71,7 @@
         @if(!empty($invalidFeedback))
             <div @class([
             theme_class('invalid_feedback') => !$tooltipFeedback,
-            theme_class('invalid_tooltip', 'invalid-tooltip') => $tooltipFeedback,
+            theme_class('invalid_tooltip') => $tooltipFeedback,
         ])>
                 {{ $invalidFeedback }}
             </div>

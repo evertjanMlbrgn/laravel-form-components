@@ -10,12 +10,12 @@
             @if ($attributes->has('for'))
                 <label
                     for="{{ $attributes->get('for') }}"
-                    @class(['input-group-text', 'input-group-icon', 'input-group-icon-font'])
+                    @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-font'])
                 >
                     <i @class([$attributes->get('class-font-icon')])></i>
                 </label>
             @else
-                <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-font'])>
+                <span @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-font'])>
                     <i @class([$attributes->get('class-font-icon')])></i>
                 </span>
             @endif
@@ -26,12 +26,12 @@
             @if ($attributes->has('for'))
                 <label
                     for="{{ $attributes->get('for') }}"
-                    @class(['input-group-text', 'input-group-icon', 'input-group-icon-svg'])
+                    @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-svg'])
                 >
                     {{ $iconSvg }}
                 </label>
             @else
-                <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-svg'])>
+                <span @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-svg'])>
                     {{ $iconSvg }}
                 </span>
             @endif
@@ -42,12 +42,12 @@
             @if ($attributes->has('for'))
                 <label
                     for="{{ $attributes->get('for') }}"
-                    @class(['input-group-text', 'input-group-icon', 'input-group-icon-img'])
+                    @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-img'])
                 >
                     {{ $iconImg }}
                 </label>
             @else
-                <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-img'])>
+                <span @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-img'])>
                     {{ $iconImg }}
                 </span>
             @endif
@@ -58,14 +58,14 @@
             @if ($attributes->has('for'))
                 <label
                     for="{{ $attributes->get('for') }}"
-                    @class(['input-group-text', 'input-group-icon', 'input-group-icon-sprite'])
+                    @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-sprite'])
                 >
                     <svg class="svg-icon">
                         <use href="{{ $attributes->get('svg-sprite-href') }}"></use>
                     </svg>
                 </label>
             @else
-                <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-sprite'])>
+                <span @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-sprite'])>
                     <svg class="svg-icon">
                         <use href="{{ $attributes->get('svg-sprite-href') }}"></use>
                     </svg>
@@ -86,12 +86,12 @@
             @if ($attributes->has('for'))
                 <label
                     for="{{ $attributes->get('for') }}"
-                    @class(['input-group-text', 'input-group-icon', 'input-group-icon-font'])
+                    @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-font'])
                 >
                     <i @class([$attributes->get('class-font-icon')])></i>
                 </label>
             @else
-                <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-font'])>
+                <span @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-font'])>
                     <i @class([$attributes->get('class-font-icon')])></i>
                 </span>
             @endif
@@ -102,12 +102,12 @@
             @if ($attributes->has('for'))
                 <label
                     for="{{ $attributes->get('for') }}"
-                    @class(['input-group-text', 'input-group-icon', 'input-group-icon-svg'])
+                    @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-svg'])
                 >
                     {{ $iconSvg }}
                 </label>
             @else
-                <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-svg'])>
+                <span @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-svg'])>
                     {{ $iconSvg }}
                 </span>
             @endif
@@ -118,12 +118,12 @@
             @if ($attributes->has('for'))
                 <label
                     for="{{ $attributes->get('for') }}"
-                    @class(['input-group-text', 'input-group-icon', 'input-group-icon-img'])
+                    @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-img'])
                 >
                     {{ $iconImg }}
                 </label>
             @else
-                <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-img'])>
+                <span @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-img'])>
                     {{ $iconImg }}
                 </span>
             @endif
@@ -134,14 +134,14 @@
             @if ($attributes->has('for'))
                 <label
                     for="{{ $attributes->get('for') }}"
-                    @class(['input-group-text', 'input-group-icon', 'input-group-icon-sprite'])
+                    @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-sprite'])
                 >
                     <svg class="svg-icon">
                         <use href="{{ $attributes->get('svg-sprite-href') }}"></use>
                     </svg>
                 </label>
             @else
-                <span @class(['input-group-text', 'input-group-icon', 'input-group-icon-sprite'])>
+                <span @class([theme_class('input_group_text'), 'input-group-icon', 'input-group-icon-sprite'])>
                     <svg class="svg-icon">
                         <use href="{{ $attributes->get('svg-sprite-href') }}"></use>
                     </svg>

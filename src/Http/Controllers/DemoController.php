@@ -11,8 +11,14 @@ use Illuminate\View\View;
 
 class DemoController extends Controller
 {
-    public function demo(): View
+    public function demo(Request $request): View
     {
+        $framework = $request->query('framework');
+
+        if (is_string($framework) && array_key_exists($framework, config('form-components.themes', []))) {
+            config(['form-components.framework' => $framework]);
+        }
+
         return view('form::preview.form-components-preview', [
             'assetConfig' => [
                 'assets' => [

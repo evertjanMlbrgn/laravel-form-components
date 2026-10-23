@@ -1,5 +1,5 @@
 @if(empty($formId))
-    <div class="badge bg-danger">
+    <div class="{{ theme_class('badge_error') }}">
         No form-id provided! This is needed for recaptcha to work!
     </div>
 @endif

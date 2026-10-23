@@ -1,9 +1,9 @@
 ### Upgrading from protonemedia/laravel-form-components
 
-This package is a streamlined fork that focuses on Bootstrap 5 and introduces a few differences.
+This package is a streamlined fork that introduces multi-framework support and a few key differences.
 
 Key differences
-- Only Bootstrap 5 views are included (no Tailwind/other frameworks).
+- Supports multiple frameworks: `plain` (default), `bootstrap-5`, `bootstrap-6` (provisional), `tailwind`, and `daisyui`.
 - Public component tags are configurable via `config('form-components.tag_prefix')`. The default is `form` (e.g., `<x-form-input />`).
 - Assets are bundled with an auto-loader component (`<x-mlbrgn-form-components::assets />`) and are auto-included in relevant components.
 - HTML editor is powered by TinyMCE with a simplified configuration surface.

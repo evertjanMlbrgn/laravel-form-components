@@ -5,20 +5,20 @@
 
 {{-- Open wrapper--}}
 <div
-    {{ $attributes->onlyWrapperClasses()->class(['d-none' => $hidden ])->except(['required', 'for']) }}
+    {{ $attributes->onlyWrapperClasses()->class([theme_class('hidden') => $hidden ])->except(['required', 'for']) }}
 >
 
     @isset($label)
-        <x-mlbrgn-form-components::label :required="$attributes->has('required')" :for="$attributes->get('for')">
+        <x-mlbrgn-form-components::label :required="$attributes->has('required')" :for="$attributes->get('for')" :withinInputGroupProp="false">
             {{  $label }}
         </x-mlbrgn-form-components::label>
     @endisset
 
      <div
          {{ $attributes->exceptWrapperClasses()->class([
-            'input-group',
-            'has-validation' => $validationMode === 'client-default' || $validationMode === 'client-custom',// needs to be added for rounded border when validation messages show
-            'is-invalid' => ($hasError($name) ? ' is-invalid' : '')
+            theme_class('input_group'),
+            theme_class('input_group_has_validation') => $validationMode === 'client-default' || $validationMode === 'client-custom',// needs to be added for rounded border when validation messages show
+            theme_class('invalid_class') => $hasError($name)
            ])->except(['required', 'for']) }}
          @if(isset($help) || !empty($helpText) && !$hidden)
              aria-describedby="{{ $id }}-help-text"
@@ -41,15 +41,7 @@
             {{ $slot5 }}
         @endif
 
-        @if(config('form-components.modify_label_class'))
-            @php
-                // Modify the slot content if it has a label or labels add class input-group-text
-                $slotContent = Str::replace('form-label', 'input-group-text', trim($slot));
-            @endphp
-            {!! $slotContent !!}
-        @else
-            {{ $slot }}
-        @endif
+        {{ $slot }}
     </div>
 
     {{-- Error message --}}

@@ -7,8 +7,31 @@ php artisan vendor:publish --tag=mlbrgn-form-components-config
 
 This creates `config/form-components.php` (source: `config/config.php` in the package). Key options:
 
-- `framework` (string)
-  - Frontend framework. Only `bootstrap-5` is supported by this fork.
+- `framework` (string, default `plain`, set via `FORM_COMPONENTS_FRAMEWORK`)
+  - Frontend framework / theme. Supported values:
+    - `plain` (default): semantic `mfc-*` classes, no CSS framework assumed.
+    - `bootstrap-5`: Bootstrap 5 classes.
+    - `bootstrap-6`: **provisional** placeholder. Bootstrap 6 is unreleased, so this theme is `array_replace($bootstrap5, [...])` in `config/config.php` and currently inherits every Bootstrap 5 class. Put Bootstrap 6 specific overrides in that array once they are known.
+    - `tailwind`: Tailwind CSS utility classes. The provided classes expect the `@tailwindcss/forms` plugin to be enabled in your Tailwind configuration.
+    - `daisyui`: DaisyUI (v4) component classes.
+  - Bulma is not supported.
+
+### Multi-framework Preview
+
+The package includes a built-in preview UI accessible at `/form-components-preview`. You can switch between different frameworks in the preview by using the `framework` query parameter:
+
+- `/form-components-preview?framework=plain`
+- `/form-components-preview?framework=tailwind`
+- `/form-components-preview?framework=daisyui`
+- `/form-components-preview?framework=bootstrap-5`
+- `/form-components-preview?framework=bootstrap-6`
+
+The preview page automatically loads the necessary CSS/JS for each framework via CDN. 
+- For `tailwind`, it loads the Tailwind Play CDN with the `forms` plugin enabled.
+- For `bootstrap-6`, it currently uses the Bootstrap 5.3.3 CSS.
+- For `plain` mode, it uses a minimal preview-only stylesheet so the UI remains usable while the components themselves stay truly plain.
+
+**Important:** When using these themes in your own application, you are responsible for including the appropriate CSS framework assets (Tailwind, Bootstrap, etc.) in your layout. For Tailwind CSS, ensure you have the `@tailwindcss/forms` plugin installed and configured.
 
 - `tag_prefix` (string)
   - Blade tag prefix for public components. Default: `form`.

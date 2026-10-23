@@ -76,6 +76,8 @@ class FormComponentsServiceProvider extends BaseServiceProvider
 
     private const PATH_TO_BLADE_COMPONENT_VIEWS = __DIR__.'/../../resources/views/components';
 
+    private const PATH_TO_VIEWS = __DIR__.'/../../resources/views';
+
     private const PATH_TO_OTHER_BLADE_VIEWS = __DIR__.'/../../resources/views/preview';
 
     //    private const PATH_VIEW_CLASSES = __DIR__.'../View/';
@@ -186,6 +188,11 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             'mlbrgn-form-components' // internal-only namespace, not user-configurable
         );
 
+        $this->loadViewsFrom(
+            realpath(self::PATH_TO_VIEWS),
+            'mlbrgn-form-components'
+        );
+
         // Map <x-foo::bar> → PHP class
         // Registers a class namespace → Blade tag namespace mapping.
         // supports subfolders
@@ -239,55 +246,57 @@ class FormComponentsServiceProvider extends BaseServiceProvider
     private function registerMacro(): void
     {
         ComponentAttributeBag::macro('onlyWrapperClasses', function () {
-
             if (! config('form-components.use_wrapper_classes')) {
                 return new static([]);
-                //                return ComponentAttributeBag::make([]);
             }
 
             $classes = $this->get('class', '');
+            $prefixes = \Mlbrgn\LaravelFormComponents\Theme\Theme::resolve('wrapper_class_prefixes', []);
 
-            // Filter classes starting with 'm-', 'ms-', 'mt-', 'me-', 'mb-'
-            $wrapperClasses = array_filter(explode(' ', $classes), function ($value) {
-                return str_starts_with($value, 'm-') ||
-                    str_starts_with($value, 'ms-') ||
-                    str_starts_with($value, 'mt-') ||
-                    str_starts_with($value, 'me-') ||
-                    str_starts_with($value, 'mb-') ||
-                    str_starts_with($value, 'mx-') ||
-                    str_starts_with($value, 'my-');
+            $wrapperClasses = array_filter(explode(' ', $classes), function ($value) use ($prefixes) {
+                if (empty($prefixes)) {
+                    return false;
+                }
+
+                foreach ($prefixes as $prefix) {
+                    if (str_starts_with($value, $prefix)) {
+                        return true;
+                    }
+                }
+
+                return false;
             });
 
-            // Join the filtered margin classes back into a string
             $wrapperClassesString = implode(' ', $wrapperClasses);
 
             $retAttributes = [];
             $retAttributes['class'] = $wrapperClassesString;
 
             return new static($retAttributes);
-            //            return ComponentAttributeBag::make($retAttributes);
         });
 
         ComponentAttributeBag::macro('exceptWrapperClasses', function () {
-
             if (! config('form-components.use_wrapper_classes')) {
                 return $this;
             }
 
             $classes = $this->get('class', '');
+            $prefixes = \Mlbrgn\LaravelFormComponents\Theme\Theme::resolve('wrapper_class_prefixes', []);
 
-            // Filter classes starting with 'm-', 'ms-', 'mt-', 'me-', 'mb-'
-            $nonWrapperClasses = array_filter(explode(' ', $classes), function ($value) {
-                return ! str_starts_with($value, 'm-') &&
-                    ! str_starts_with($value, 'ms-') &&
-                    ! str_starts_with($value, 'mt-') &&
-                    ! str_starts_with($value, 'me-') &&
-                    ! str_starts_with($value, 'mb-') &&
-                    ! str_starts_with($value, 'mx-') &&
-                    ! str_starts_with($value, 'my-');
+            $nonWrapperClasses = array_filter(explode(' ', $classes), function ($value) use ($prefixes) {
+                if (empty($prefixes)) {
+                    return true;
+                }
+
+                foreach ($prefixes as $prefix) {
+                    if (str_starts_with($value, $prefix)) {
+                        return false;
+                    }
+                }
+
+                return true;
             });
 
-            // Join the filtered margin classes back into a string
             $nonWrapperClasses = implode(' ', $nonWrapperClasses);
 
             $retAttributes = $this->getAttributes();

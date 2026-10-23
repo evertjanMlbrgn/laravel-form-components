@@ -9,6 +9,8 @@ class InputGroup extends FormBaseComponent
 {
     use HandlesValidationErrors;
 
+    public bool $withinInputGroup = true;
+
     /**
      * Create a new component instance.
      *

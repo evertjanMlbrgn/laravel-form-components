@@ -2,9 +2,9 @@
 
 namespace Mlbrgn\LaravelFormComponents\View\Components\Layout;
 
-use Illuminate\View\Component;
+use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
-class FormInputWrapper extends Component
+class FormInputWrapper extends FormBaseComponent
 {
     public function __construct(
         public $horizontal = false,
@@ -12,8 +12,8 @@ class FormInputWrapper extends Component
         $this->horizontal = filter_var($horizontal, FILTER_VALIDATE_BOOLEAN);
     }
 
-    public function render()
+    protected function viewName(): string
     {
-        return view('form::components.layout.form-input-wrapper');
+        return 'layout.form-input-wrapper';
     }
 }

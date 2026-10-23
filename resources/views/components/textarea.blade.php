@@ -25,18 +25,11 @@
 
         {{-- Textarea element --}}
         <textarea
-        @if(!$floating && !$horizontal)
-            {{ $attributes->class([
-                theme_class('form_control'),
-                theme_class('invalid_class') => $hasError($name)
-            ])->whereDoesntStartWith('class-')->except(['value', 'label-end', 'id']) }}
-        @else
             {{ $attributes->exceptWrapperClasses()->class([
-               theme_class('form_control'),
-               theme_class('invalid_class') => $hasError($name)
-           ])->whereDoesntStartWith('class-')->except(['value', 'label-end', 'id']) }}
-        @endif
-        @if($name)
+                theme_class('form_textarea', theme_class('form_control')),
+                theme_class('form_textarea_invalid_class', theme_class('invalid_class')) => $hasError($name)
+            ])->whereDoesntStartWith('class-')->except(['value', 'label-end', 'id']) }}
+            @if($name)
             name="{{ $name }}"
         @endif
         {{-- Placeholder is required as of writing --}}
@@ -61,7 +54,7 @@
             <div
                 @class([
                     theme_class('valid_feedback') => !$tooltipFeedback,
-                    theme_class('valid_tooltip', 'valid-tooltip') => $tooltipFeedback,
+                    theme_class('valid_tooltip') => $tooltipFeedback,
                 ])>
                 {{ $validFeedback }}
             </div>
@@ -70,7 +63,7 @@
         @if(!empty($invalidFeedback))
             <div @class([
                     theme_class('invalid_feedback') => !$tooltipFeedback,
-                    theme_class('invalid_tooltip', 'invalid-tooltip') => $tooltipFeedback,
+                    theme_class('invalid_tooltip') => $tooltipFeedback,
                 ])>
                 {{ $invalidFeedback }}
             </div>
