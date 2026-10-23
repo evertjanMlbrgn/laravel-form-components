@@ -13,7 +13,7 @@ class Theme
      */
     public static function resolve(string $key, $default = null): mixed
     {
-        $framework = config('form-components.framework', 'bootstrap-5');
+        $framework = config('form-components.framework') ?: 'bootstrap-5';
         $theme = config("form-components.themes.{$framework}", []);
 
         return data_get($theme, $key, $default);

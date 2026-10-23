@@ -1,15 +1,7 @@
 @if(!$hidden)
 
-    {{-- Wrapper for floating, hidden or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
-    @if($floating || $hidden || $horizontal)
-        <div
-            {{ $attributes->onlyWrapperClasses()->class([
-                'row' => $horizontal,
-                'form-floating' => $floating,
-                'd-none' => $hidden
-           ]) }}
-        >
-    @endif
+    {{-- Wrapper for floating or horizontal controls, classes go on the wrapper, other attributes on control itself --}}
+    <x-mlbrgn-form-components::layout.form-group :name="$name" :horizontal="$horizontal" :floating="$floating" :showErrors="$showErrors" :attributes="$attributes">
 
     {{-- label before control --}}
     @if(!$attributes->has('label-end') && (!$floating || $horizontal))
@@ -18,7 +10,7 @@
             :required="$attributes->has('required')"
             @class([
                 $attributes->get('class-label', ''),
-                'col-4' => $horizontal && empty($attributes->get('class-horizontal-cols-label', '')),
+                theme_class('wrapper_horizontal_label') => $horizontal && empty($attributes->get('class-horizontal-cols-label', '')),
                 $attributes->get('class-horizontal-cols-label', '')
              ])
             :for="$id">
@@ -27,31 +19,23 @@
     @endif
 
     {{-- horizontal control wrapper --}}
-    @if($horizontal)
-        <div
-            @class([
-                 'col-8' => empty($attributes->get('class-horizontal-cols-control', '')),
-                 $attributes->get('class-horizontal-cols-control', '') => !empty($attributes->get('class-horizontal-cols-control', ''))
-             ])
-        >
-    @endif
-
+    <x-mlbrgn-form-components::layout.form-input-wrapper :horizontal="$horizontal" :attributes="$attributes">
 @endif
         {{-- Textarea element --}}
         <textarea
             @if(!$floating && !$horizontal)
                 {{ $attributes->class([
-                    'form-control',
+                    theme_class('form_control'),
                     'html-editor',
-                    'is-invalid' => $hasError($name)
+                    theme_class('invalid_class') => $hasError($name)
                 ])->whereDoesntStartWith('class-')->except(['label-end', 'id'])->merge(
                     ['data-mlbrgn-html-editor' => true]
                 ) }}
             @else
                 {{ $attributes->exceptWrapperClasses()->class([
-                    'form-control',
+                    theme_class('form_control'),
                     'html-editor',
-                    'is-invalid' => $hasError($name)
+                    theme_class('invalid_class') => $hasError($name)
                 ])->whereDoesntStartWith('class-')->except(['label-end', 'id']) }}
             @endif
             @if($name)
@@ -63,8 +47,8 @@
             @if($floating && !$attributes->get('placeholder'))
                 placeholder="&nbsp;"
             @endif
-            @if(isset($help) && !$hidden)
-                aria-describedby="{{ $id }}-help-text"
+            @if((isset($help) || !empty($helpText) || $hasError($name)) && !$hidden)
+                aria-describedby="{{ trim(((isset($help) || !empty($helpText)) ? $id . '-help-text ' : '') . ($hasError($name) ? $id . '-error' : '')) }}"
             @endif
             @if(!empty($extraFormData))
                 data-extra-form-data="{{ json_encode($extraFormData) }}"
@@ -86,8 +70,8 @@
         @if(!empty($validFeedback))
             <div
                 @class([
-                    'valid-feedback' => !$tooltipFeedback,
-                    'valid-tooltip' => $tooltipFeedback,
+                    theme_class('valid_feedback') => !$tooltipFeedback,
+                    theme_class('valid_tooltip', 'valid-tooltip') => $tooltipFeedback,
                 ])>
                 {{ $validFeedback }}
             </div>
@@ -95,8 +79,8 @@
 
         @if(!empty($invalidFeedback))
             <div @class([
-            'invalid-feedback' => !$tooltipFeedback,
-            'invalid-tooltip' => $tooltipFeedback,
+            theme_class('invalid_feedback') => !$tooltipFeedback,
+            theme_class('invalid_tooltip', 'invalid-tooltip') => $tooltipFeedback,
         ])>
                 {{ $invalidFeedback }}
             </div>
@@ -118,7 +102,7 @@
 
     {{-- server side feedback messages --}}
     @if($shouldShowError($name))
-        <x-mlbrgn-form-components::errors :name="$name" />
+        <x-mlbrgn-form-components::errors :name="$name" :id="$id . '-error'" />
     @endif
 
     {{-- Help text --}}
@@ -141,14 +125,10 @@
     @endif
 
     {{-- close horizontal control wrapper --}}
-    @if($horizontal)
-        </div>
-    @endif
+    </x-mlbrgn-form-components::layout.form-input-wrapper>
 
-    {{-- Close wrapper for floating, hidden or horizontal controls --}}
-    @if($floating || $hidden || $horizontal)
-        </div>
-    @endif
+    {{-- Close wrapper for floating or horizontal controls --}}
+    </x-mlbrgn-form-components::layout.form-group>
 @endif
 
 {{-- Automatically include assets once per page --}}

@@ -1,7 +1,7 @@
 @props(
     ['id' =>'no-id']
 )
-<div {{ $attributes->class('form-text') }}
+<div {{ $attributes->class(theme_class('form_text')) }}
     @if(isset($id))
         id="{{ $id }}-help-text"
     @endif

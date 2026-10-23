@@ -4,6 +4,7 @@ namespace Mlbrgn\LaravelFormComponents\View\Components;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ViewErrorBag;
+use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
 use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class Form extends FormBaseComponent
@@ -21,6 +22,8 @@ class Form extends FormBaseComponent
 
     public string $validationMode = 'client-default';
 
+    public $bind;
+
     /**
      * Create a new component instance.
      *
@@ -28,11 +31,17 @@ class Form extends FormBaseComponent
      */
     public function __construct(
         string $method = 'POST',
-        ?string $validationMode = null
+        ?string $validationMode = null,
+        $bind = null
     ) {
         $this->method = strtoupper($method);
         $this->spoofMethod = in_array($this->method, ['PUT', 'PATCH', 'DELETE']);
         $this->validationMode = ! is_null($validationMode) ? $validationMode : config('form-components.default-form-validation-mode');
+        $this->bind = $bind;
+
+        if ($bind) {
+            app(FormDataBinder::class)->bind($bind);
+        }
     }
 
     /**

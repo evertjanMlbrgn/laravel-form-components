@@ -29,6 +29,10 @@
     @endif
 
     {{ $slot }}
+
+    @if($bind)
+        @endbind
+    @endif
 </form>
 
 @once

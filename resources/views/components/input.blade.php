@@ -53,7 +53,7 @@
                 :required="$attributes->has('required') && $type !== 'range'"
                 @class([
                     $attributes->get('class-label', ''),
-                    'col-4' => $horizontal && empty($attributes->get('class-horizontal-cols-label', '')),
+                    theme_class('wrapper_horizontal_label') => $horizontal && empty($attributes->get('class-horizontal-cols-label', '')),
                     $attributes->get('class-horizontal-cols-label', '')
                 ])
                 :for="$id">
@@ -69,17 +69,17 @@
             <input
                 @if(!$floating && !$horizontal)
                     {{ $attributes->class([
-                        'form-control' => $type !== 'range' && $type !== 'image',
-                        'form-range' => $type === 'range',
-                        'form-control-color' => ($type === 'color'),
-                        'is-invalid' => ($hasError($name)),
+                        theme_class('form_control') => $type !== 'range' && $type !== 'image',
+                        theme_class('form_range') => $type === 'range',
+                        theme_class('form_control_color') => ($type === 'color'),
+                        theme_class('invalid_class') => ($hasError($name)),
                     ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'alt']) }}
                 @else
                     {{ $attributes->exceptWrapperClasses()->class([
-                        'form-control' => $type !== 'range' && $type !== 'image',
-                        'form-range' => $type === 'range',
-                        'form-control-color' => ($type === 'color'),
-                        'is-invalid' => ($hasError($name)),
+                        theme_class('form_control') => $type !== 'range' && $type !== 'image',
+                        theme_class('form_range') => $type === 'range',
+                        theme_class('form_control_color') => ($type === 'color'),
+                        theme_class('invalid_class') => ($hasError($name)),
                     ])->whereDoesntStartWith('class-')->except(['label-end', 'id', 'alt']) }}
                 @endif
                 type="{{ $type }}"
@@ -97,8 +97,8 @@
                     {{-- image button must have alt attribute --}}
                     alt="{{ $attributes->get('alt', '&nbsp;') }}"
                 @endif
-                @if((isset($help) || !empty($helpText)) && !$hidden && $type !== 'hidden')
-                    aria-describedby="{{ $id }}-help-text"
+                @if((isset($help) || !empty($helpText) || $hasError($name)) && !$hidden && $type !== 'hidden')
+                    aria-describedby="{{ trim(((isset($help) || !empty($helpText)) ? $id . '-help-text ' : '') . ($hasError($name) ? $id . '-error' : '')) }}"
                 @endif
                 {{-- floating labels won't work without placeholder, yet they never display placeholder either --}}
                 @if($floating && !$attributes->has('placeholder')) placeholder="&nbsp;"@endif
@@ -109,8 +109,8 @@
                 {{-- Feedback messages --}}
                 @if(!empty($validFeedback))
                     <div @class([
-                        'valid-feedback' => !$tooltipFeedback,
-                        'valid-tooltip' => $tooltipFeedback,
+                        theme_class('valid_feedback') => !$tooltipFeedback,
+                        theme_class('valid_tooltip', 'valid-tooltip') => $tooltipFeedback,
                     ])>
                         {{ $validFeedback }}
                     </div>
@@ -118,8 +118,8 @@
 
                 @if(!empty($invalidFeedback))
                     <div @class([
-                        'invalid-feedback' => !$tooltipFeedback,
-                        'invalid-tooltip' => $tooltipFeedback,
+                        theme_class('invalid_feedback') => !$tooltipFeedback,
+                        theme_class('invalid_tooltip', 'invalid-tooltip') => $tooltipFeedback,
                     ])>
                         {{ $invalidFeedback }}
                     </div>
@@ -144,7 +144,7 @@
 
         {{-- server side feedback messages --}}
         @if($shouldShowError($name))
-            <x-mlbrgn-form-components::errors :name="$name" />
+            <x-mlbrgn-form-components::errors :name="$name" :id="$id . '-error'" />
         @endif
 
         {{-- Help text --}}
