@@ -8,6 +8,8 @@
 {{-- Don't want attribute required to be added to label, so using prop --}}
 @props([
     'required' => false,
+    'horizontal' => false,
+    'toggle' => false,
 ])
 
 @php

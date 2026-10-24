@@ -58,20 +58,46 @@ class DemoController extends Controller
     {
         return [
             ['id' => 'form-overview', 'title' => 'Overview'],
-            ['id' => 'form-controls', 'title' => 'Form controls'],
-            ['id' => 'form-html-editor', 'title' => 'HTML Editor'],
-            ['id' => 'form-buttons', 'title' => 'Buttons'],
-            ['id' => 'form-select', 'title' => 'Select'],
-            ['id' => 'form-checks-and-radios', 'title' => 'Checks and radios'],
-            ['id' => 'form-range', 'title' => 'Range'],
-            ['id' => 'form-input-group', 'title' => 'Input group'],
-            ['id' => 'form-floating-label', 'title' => 'Floating labels'],
-            ['id' => 'form-layout', 'title' => 'Layout'],
-            ['id' => 'form-group', 'title' => 'Form Group'],
-            ['id' => 'form-validation', 'title' => 'Validation'],
-            ['id' => 'form-precedence', 'title' => 'Binding & Precedence'],
-            ['id' => 'form-real-world', 'title' => 'Real world example'],
-            ['id' => 'form-custom-tests', 'title' => 'Custom tests'],
+            [
+                'id' => 'form-inputs',
+                'title' => 'Inputs',
+                'subsections' => [
+                    ['id' => 'form-controls', 'title' => 'Form controls'],
+                    ['id' => 'form-html-editor', 'title' => 'HTML Editor'],
+                    ['id' => 'form-buttons', 'title' => 'Buttons'],
+                    ['id' => 'form-select', 'title' => 'Select'],
+                    ['id' => 'form-checks-and-radios', 'title' => 'Checks and radios'],
+                    ['id' => 'form-range', 'title' => 'Range'],
+                    ['id' => 'form-input-group', 'title' => 'Input group'],
+                    ['id' => 'form-floating-label', 'title' => 'Floating labels'],
+                ],
+            ],
+            [
+                'id' => 'form-layout-group',
+                'title' => 'Layout & Structure',
+                'subsections' => [
+                    ['id' => 'form-layout', 'title' => 'Layout'],
+                    ['id' => 'form-group', 'title' => 'Form Group'],
+                ],
+            ],
+            [
+                'id' => 'form-features',
+                'title' => 'Advanced Features',
+                'subsections' => [
+                    ['id' => 'form-validation', 'title' => 'Validation'],
+                    ['id' => 'form-precedence', 'title' => 'Binding & Precedence'],
+                    ['id' => 'form-captcha', 'title' => 'Captcha'],
+                    ['id' => 'form-errors-and-labels', 'title' => 'Errors & Labels'],
+                ],
+            ],
+            [
+                'id' => 'form-examples',
+                'title' => 'Examples',
+                'subsections' => [
+                    ['id' => 'form-real-world', 'title' => 'Real world example'],
+                    ['id' => 'form-customization', 'title' => 'Customization'],
+                ],
+            ],
         ];
     }
 }

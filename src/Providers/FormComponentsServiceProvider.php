@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Illuminate\View\ComponentAttributeBag;
 use Mlbrgn\LaravelFormComponents\Console\Commands\ToggleRepository;
 use Mlbrgn\LaravelFormComponents\Helpers\FormDataBinder;
+use Mlbrgn\LaravelFormComponents\Theme\Theme;
 use Mlbrgn\LaravelFormComponents\View\Components\Assets;
 use Mlbrgn\LaravelFormComponents\View\Components\Button;
 use Mlbrgn\LaravelFormComponents\View\Components\Captcha;
@@ -101,6 +102,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 self::CONFIG_FILE => config_path('form-components.php'),
+                __DIR__.'/../../config/themes' => config_path('themes'),
             ], 'mlbrgn-form-components-config');
 
             // php artisan vendor:publish --tag=mlbrgn-form-components-assets
@@ -251,7 +253,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             }
 
             $classes = $this->get('class', '');
-            $prefixes = \Mlbrgn\LaravelFormComponents\Theme\Theme::resolve('wrapper_class_prefixes', []);
+            $prefixes = Theme::resolve('wrapper_class_prefixes', []);
 
             $wrapperClasses = array_filter(explode(' ', $classes), function ($value) use ($prefixes) {
                 if (empty($prefixes)) {
@@ -281,7 +283,7 @@ class FormComponentsServiceProvider extends BaseServiceProvider
             }
 
             $classes = $this->get('class', '');
-            $prefixes = \Mlbrgn\LaravelFormComponents\Theme\Theme::resolve('wrapper_class_prefixes', []);
+            $prefixes = Theme::resolve('wrapper_class_prefixes', []);
 
             $nonWrapperClasses = array_filter(explode(' ', $classes), function ($value) use ($prefixes) {
                 if (empty($prefixes)) {

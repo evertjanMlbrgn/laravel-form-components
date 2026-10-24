@@ -1,4 +1,4 @@
-<x-form::preview.components.section id="form-floating-label" title="Floating labels" description="Examples taken from <a href='https://getbootstrap.com/docs/5.3/forms/floating-labels/' target='_blank'>Bootstrap documentation on form controls</a>. Adjusted to use our form-components.">
+<x-form::preview.components.section id="form-floating-label" title="Floating labels" description="Floating labels provide a modern and interactive way to display labels inside form inputs." support="floating_labels">
     <x-form::preview.components.example title="Basic example">
         <x-slot:code_slot>
             @verbatim
@@ -15,10 +15,10 @@
     <x-form::preview.components.example title="Validation styles">
         <x-slot:code_slot>
             @verbatim
-<x-form-input floating class="is-invalid" id="floatingInputInvalid" label="Invalid input" placeholder="name@example.com" value="test@example.com"/>
+<x-form-input floating class="invalid-custom" id="floatingInputInvalid" label="Invalid input" placeholder="name@example.com" value="test@example.com"/>
             @endverbatim
         </x-slot:code_slot>
-        <x-form-input floating class="is-invalid" id="floatingInputInvalid" label="Invalid input" placeholder="name@example.com" value="test@example.com"/>
+        <x-form-input floating :class="theme_class('invalid_class')" id="floatingInputInvalid" label="Invalid input" placeholder="name@example.com" value="test@example.com"/>
     </x-form::preview.components.example>
 
     <x-form::preview.components.example title="Textareas">
@@ -44,21 +44,15 @@
     <x-form::preview.components.example title="Layout">
         <x-slot:code_slot>
             @verbatim
-<div class="row g-2">
-    <div class="col-md">
-        <x-form-input floating id="floatingInputGrid" label="Email address" placeholder="name@example.com" value="mdo@example.com"/>
-    </div>
-    <div class="col-md">
-        <x-form-select floating id="floatingSelectGrid" label="Works with selects" :options="$selectOptions" placeholder="Open this select menu"/>
-    </div>
-</div>
+<x-form-input floating id="floatingInputGrid" label="Email address" placeholder="name@example.com" value="mdo@example.com"/>
+<x-form-select floating id="floatingSelectGrid" label="Works with selects" :options="$selectOptions" placeholder="Open this select menu"/>
             @endverbatim
         </x-slot:code_slot>
-        <div class="row g-2">
-            <div class="col-md">
+        <div class="mfc-demo-grid">
+            <div class="mfc-demo-col">
                 <x-form-input floating id="floatingInputGrid" label="Email address" placeholder="name@example.com" value="mdo@example.com"/>
             </div>
-            <div class="col-md">
+            <div class="mfc-demo-col">
                 <x-form-select floating id="floatingSelectGrid" label="Works with selects" :options="$selectOptions" placeholder="Open this select menu"/>
             </div>
         </div>

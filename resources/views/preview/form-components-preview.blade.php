@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Form Components Preview</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
     @php
         $framework = theme_framework();
         $themes = array_keys(config('form-components.themes'));
     @endphp
 
-    @if(in_array($framework, ['bootstrap-5', 'bootstrap-6']))
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    @elseif($framework === 'tailwind')
+    @if($framework === 'tailwind')
         <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     @elseif($framework === 'daisyui')
         <script src="https://cdn.tailwindcss.com"></script>
@@ -29,83 +28,136 @@
         pre { margin: 0; }
         .copy-code i { pointer-events: none; }
 
-        /* Minimal Preview styling for Plain theme */
-        .mfc-preview-body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.5; color: #1a202c; background: #f7fafc; margin: 0; padding: 0; }
-        .mfc-preview-container { max-width: 1280px; margin: 0 auto; padding: 2rem; }
-        .mfc-preview-row { display: flex; flex-wrap: wrap; margin: 0 -1rem; }
-        .mfc-preview-sidebar-column { width: 100%; padding: 0 1rem; margin-bottom: 2rem; }
-        @media (min-width: 1024px) { .mfc-preview-sidebar-column { width: 25%; margin-bottom: 0; } }
-        .mfc-preview-content-column { width: 100%; padding: 0 1rem; }
-        @media (min-width: 1024px) { .mfc-preview-content-column { width: 75%; } }
-        .mfc-preview-sidebar-list { list-style: none; padding: 0; margin: 0; }
-        .mfc-preview-sidebar-item { display: block; padding: 0.5rem 0.75rem; color: #4a5568; text-decoration: none; border-radius: 0.375rem; }
-        .mfc-preview-sidebar-item:hover { background: #edf2f7; color: #2d3748; }
-        .mfc-preview-sidebar-item.mfc-active { background: #e2e8f0; color: #1a202c; font-weight: 600; }
-        .mfc-preview-section { margin-bottom: 3rem; background: #fff; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); }
-        .mfc-preview-page-title { font-size: 1.875rem; font-weight: 700; margin-bottom: 2rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem; }
-        .mfc-preview-section-title { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
-        .mfc-preview-example { border: 1px solid #e2e8f0; border-radius: 0.5rem; margin-bottom: 1.5rem; overflow: hidden; }
-        .mfc-preview-example-body { padding: 1.5rem; }
-        .mfc-preview-example-code { background: #2d3748; color: #edf2f7; padding: 1rem; overflow-x: auto; }
-        
-        .mfc-framework-switcher { margin-bottom: 2rem; padding: 1rem; background: #fff; border-radius: 0.5rem; border: 1px solid #e2e8f0; }
-        .mfc-framework-switcher label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #718096; margin-bottom: 0.5rem; }
-        .mfc-framework-switcher select { width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; background-color: #fff; }
+        /* MFC Shell specific classes to avoid collisions with DaisyUI/Tailwind */
+        .mfc-shell-card { position: relative; display: flex; flex-direction: column; min-width: 0; word-wrap: break-word; background-color: #fff; background-clip: border-box; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem; }
+        .mfc-shell-card-body { flex: 1 1 auto; padding: 1.25rem; }
+        .mfc-shell-card-title { margin-bottom: .75rem; font-weight: 500; line-height: 1.2; }
+        .mfc-shell-alert { position: relative; padding: .75rem 1.25rem; margin-bottom: 1rem; border: 1px solid transparent; border-radius: .25rem; }
+        .mfc-shell-alert-success { color: #155724; background-color: #d4edda; border-color: #c3e6cb; }
+        .mfc-shell-alert-warning { color: #856404; background-color: #fff3cd; border-color: #ffeeba; }
+        .mfc-shell-alert-heading { color: inherit; margin-top: 0; }
+        .mfc-shell-btn { display: inline-block; font-weight: 400; text-align: center; vertical-align: middle; cursor: pointer; user-select: none; border: 1px solid transparent; padding: .375rem .75rem; font-size: 1rem; line-height: 1.5; border-radius: .25rem; transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out; }
+        .mfc-shell-btn-sm { padding: .25rem .5rem; font-size: .875rem; line-height: 1.5; border-radius: .2rem; }
+        .mfc-shell-btn-outline-secondary { color: #6c757d; border-color: #6c757d; }
+        .mfc-shell-btn-outline-secondary:hover { color: #fff; background-color: #6c757d; border-color: #6c757d; }
+
+        /* Button variants for demo purpose */
+        .btn-preview-primary { color: #fff; background-color: #0d6efd; border-color: #0d6efd; }
+        .btn-preview-secondary { color: #fff; background-color: #6c757d; border-color: #6c757d; }
+        .btn-preview-success { color: #fff; background-color: #198754; border-color: #198754; }
+        .btn-preview-outline-primary { color: #0d6efd; border-color: #0d6efd; }
+        .btn-preview-outline-primary:hover { color: #fff; background-color: #0d6efd; }
+        .btn-preview-outline-secondary { color: #6c757d; border-color: #6c757d; }
+        .btn-preview-outline-secondary:hover { color: #fff; background-color: #6c757d; }
+
+        /* Demo grid helpers - mapped to Bootstrap grid for consistent preview */
+        .mfc-demo-grid { display: flex; flex-wrap: wrap; margin-right: -0.75rem; margin-left: -0.75rem; }
+        .mfc-demo-grid > * { flex-shrink: 0; width: 100%; max-width: 100%; padding-right: 0.75rem; padding-left: 0.75rem; margin-top: 1rem; }
+        @media (min-width: 768px) {
+            .mfc-demo-col-md-6 { flex: 0 0 auto; width: 50%; }
+            .mfc-demo-col-md-4 { flex: 0 0 auto; width: 33.33333333%; }
+            .mfc-demo-col-md-2 { flex: 0 0 auto; width: 16.66666667%; }
+        }
+        .mfc-demo-col-12 { flex: 0 0 auto; width: 100%; }
+        .mfc-demo-col-auto { flex: 0 0 auto; width: auto; }
+        .mfc-demo-stack > * + * { margin-top: 1rem; }
+
+        /* Minimal Preview styling for Plain theme - only applied to demo content */
+        .preview-content.mfc-preview-body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.5; color: #1a202c; background: #f7fafc; }
+
+        /* Sidebar active state */
+        #preview-sidebar .nav-link.active {
+            color: #0d6efd !important;
+            background-color: #f8f9fa;
+        }
+        #preview-sidebar .nav-link:hover {
+            background-color: #f8f9fa;
+        }
     </style>
 </head>
-<body class="{{ theme_class('preview_body') }}">
+<body class="bg-light" data-bs-spy="scroll" data-bs-target="#preview-sidebar" data-bs-offset="0" tabindex="0">
     <x-form-assets />
     <x-form::local-package-badge/>
 
-    <div class="{{ theme_class('preview_container') }}">
-        <div class="mfc-framework-switcher">
-            <label for="mfc-framework-switcher">Framework</label>
-            <select id="mfc-framework-switcher" onchange="window.location.href = '?framework=' + this.value">
-                @foreach($themes as $t)
-                    <option value="{{ $t }}" {{ $framework === $t ? 'selected' : '' }}>{{ ucfirst($t) }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="{{ theme_class('preview_row') }}">
-            <!-- Sidebar -->
-            <div class="{{ theme_class('preview_sidebar_column') }}">
-                <div class="preview-sidebar">
-                    <div class="{{ theme_class('preview_sidebar_list') }}">
-                        @foreach($sections as $section)
-                            <a href="#{{ $section['id'] }}" class="{{ theme_class('preview_sidebar_item') }}">
-                                {{ $section['title'] }}
-                            </a>
-                        @endforeach
+    <div class="container-fluid py-3 px-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="mfc-shell-card shadow-sm">
+                    <div class="mfc-shell-card-body d-flex justify-content-between align-items-center">
+                        <h5 class="mfc-shell-card-title mb-0">Form Components Preview</h5>
+                        <div class="d-flex align-items-center">
+                            <label for="mfc-framework-switcher" class="me-2 text-muted small fw-bold text-uppercase">Framework:</label>
+                            <select id="mfc-framework-switcher" class="form-select form-select-sm w-auto" onchange="window.location.href = '?framework=' + this.value">
+                                @foreach($themes as $t)
+                                    <option value="{{ $t }}" {{ $framework === $t ? 'selected' : '' }}>{{ \Mlbrgn\LaravelFormComponents\Theme\Theme::frameworkName($t) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 d-none d-lg-block">
+                <nav id="preview-sidebar" class="nav flex-column sticky-top preview-sidebar shadow-sm bg-white rounded" style="top: 1rem;">
+                    @foreach($sections as $section)
+                        <a href="#{{ $section['id'] }}" class="nav-link fw-bold text-dark border-bottom">
+                            {{ $section['title'] }}
+                        </a>
+                        @if(isset($section['subsections']))
+                            <nav class="nav flex-column ps-3">
+                                @foreach($section['subsections'] as $sub)
+                                    <a href="#{{ $sub['id'] }}" class="nav-link small py-1 text-muted">
+                                        {{ $sub['title'] }}
+                                    </a>
+                                @endforeach
+                            </nav>
+                        @endif
+                    @endforeach
+                </nav>
+            </div>
 
             <!-- Main Content -->
-            <div class="{{ theme_class('preview_content_column') }}">
-                <h1 class="{{ theme_class('preview_page_title') }}">Form Components Preview</h1>
-
+            <div class="col-lg-9">
                 @if($submittedData)
-                    <div class="mfc-alert-success mfc-alert mb-4" role="alert" style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 1.25rem; border-radius: 0.25rem;">
-                        <h4 style="margin-top: 0; color: inherit;"><i class="bi bi-check-circle-fill me-2"></i>Form Submitted Successfully!</h4>
+                    <div class="mfc-shell-alert mfc-shell-alert-success mb-4 shadow-sm" role="alert">
+                        <h4 class="mfc-shell-alert-heading"><i class="bi bi-check-circle-fill me-2"></i>Form Submitted Successfully!</h4>
                         <p>Below is the data that was sent to the server:</p>
-                        <hr style="border-top: 1px solid #c3e6cb;">
-                        <pre style="background: #2d3748; color: #fff; padding: 1rem; border-radius: 0.25rem;"><code>{{ json_encode($submittedData, JSON_PRETTY_PRINT) }}</code></pre>
+                        <hr>
+                        <pre class="bg-dark text-light p-3 rounded shadow-inner"><code>{{ json_encode($submittedData, JSON_PRETTY_PRINT) }}</code></pre>
                     </div>
                 @endif
 
-                @foreach($sections as $section)
-                    @include('form::preview.sections.' . str_replace('form-', '', $section['id']))
-                @endforeach
+                <div class="preview-content {{ $framework === 'plain' ? 'mfc-preview-body' : '' }} p-4 rounded shadow-sm border">
+                    @foreach($sections as $section)
+                        @if(!isset($section['subsections']))
+                            <div class="mb-5">
+                                @include('form::preview.sections.' . str_replace('form-', '', $section['id']))
+                            </div>
+                        @else
+                            <div class="mb-5">
+                                <h2 class="h2 border-bottom pb-2" id="{{ $section['id'] }}">{{ $section['title'] }}</h2>
+                                @foreach($section['subsections'] as $sub)
+                                    <div class="mb-4">
+                                        @include('form::preview.sections.' . str_replace('form-', '', $sub['id']))
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>
         hljs.highlightAll();
         function copyToClipboard(btn) {
-            const code = btn.closest('.preview-example-code').querySelector('code').innerText;
+            const code = btn.closest('.preview-example-code-wrapper').querySelector('code').innerText;
             navigator.clipboard.writeText(code).then(() => {
                 const icon = btn.querySelector('i');
                 icon.classList.replace('bi-clipboard', 'bi-check-lg');

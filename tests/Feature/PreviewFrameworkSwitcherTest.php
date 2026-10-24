@@ -7,7 +7,6 @@ it('renders the preview page with the plain framework', function () {
     $response->assertStatus(200);
     $response->assertSee('value="plain" selected', false);
     $response->assertSee('mfc-preview-body', false);
-    $response->assertDontSee('bootstrap@5.3.3');
     $response->assertDontSee('cdn.tailwindcss.com');
     
     expect(config('form-components.framework'))->toBe('plain');
@@ -36,7 +35,6 @@ it('switches to tailwind framework via query parameter', function () {
     $this->get(route('form-components-preview', ['framework' => 'tailwind']))
         ->assertStatus(200)
         ->assertSee('cdn.tailwindcss.com?plugins=forms')
-        ->assertDontSee('bootstrap@5.3.3')
         ->assertSee('value="tailwind" selected', false);
     
     expect(config('form-components.framework'))->toBe('tailwind');
@@ -48,7 +46,6 @@ it('switches to daisyui framework via query parameter', function () {
         ->assertSee('cdn.tailwindcss.com')
         ->assertDontSee('cdn.tailwindcss.com?plugins=forms')
         ->assertSee('daisyui@4.10.2/dist/full.min.css')
-        ->assertDontSee('bootstrap@5.3.3')
         ->assertSee('value="daisyui" selected', false);
     
     expect(config('form-components.framework'))->toBe('daisyui');
@@ -80,7 +77,6 @@ it('reverts to default if an unknown framework is provided', function () {
         ->assertStatus(200)
         ->assertSee('value="plain" selected', false)
         ->assertSee('mfc-preview-body', false)
-        ->assertDontSee('bootstrap@5.3.3')
         ->assertDontSee('cdn.tailwindcss.com')
         ->assertDontSee('daisyui@');
     
@@ -93,7 +89,6 @@ it('handles array framework parameter without crashing', function () {
         ->assertStatus(200)
         ->assertSee('value="plain" selected', false)
         ->assertSee('mfc-preview-body', false)
-        ->assertDontSee('bootstrap@5.3.3')
         ->assertDontSee('cdn.tailwindcss.com')
         ->assertDontSee('daisyui@');
     
@@ -107,7 +102,73 @@ it('uses plain by default when no framework is configured or requested', functio
         ->assertOk()
         ->assertSee('value="plain" selected', false)
         ->assertSee('mfc-preview-body', false)
-        ->assertDontSee('bootstrap@5.3.3')
         ->assertDontSee('cdn.tailwindcss.com')
         ->assertDontSee('daisyui@');
+});
+
+it('always loads bootstrap 5 assets for shell chrome', function ($framework) {
+    $this->get(route('form-components-preview', ['framework' => $framework]))
+        ->assertOk()
+        ->assertSee('bootstrap@5.3.3/dist/css/bootstrap.min.css')
+        ->assertSee('bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js');
+})->with(['plain', 'bootstrap-5', 'bootstrap-6', 'tailwind', 'daisyui']);
+
+it('contains unique IDs that match sidebar navigation anchors', function () {
+    $response = $this->get(route('form-components-preview'));
+    $html = $response->getContent();
+    
+    $document = new DOMDocument();
+    @$document->loadHTML($html);
+    $xpath = new DOMXPath($document);
+    
+    $navLinks = $xpath->query('//*[@id="preview-sidebar"]//a[@href]');
+    expect($navLinks->length)->toBeGreaterThan(0);
+    
+    foreach ($navLinks as $link) {
+        $href = $link->getAttribute('href');
+        if (str_starts_with($href, '#')) {
+            $id = substr($href, 1);
+            $targets = $xpath->query("//*[@id='$id']");
+            expect($targets->length)->toBe(1, "Target ID '$id' should exist exactly once.");
+        }
+    }
+});
+
+it('configures scrollspy on the body', function () {
+    $this->get(route('form-components-preview'))
+        ->assertSee('data-bs-spy="scroll"', false)
+        ->assertSee('data-bs-target="#preview-sidebar"', false);
+});
+
+it('shows compatibility alerts only for unsupported frameworks', function ($framework, $shouldSeeAlert) {
+    $response = $this->get(route('form-components-preview', ['framework' => $framework]));
+    
+    if ($shouldSeeAlert) {
+        $response->assertSee('mfc-shell-alert-warning', false);
+        $response->assertSee('This feature is not natively supported', false);
+        $response->assertSee('role="note"', false);
+    } else {
+        $response->assertDontSee('This feature is not natively supported');
+        $response->assertDontSee('role="note"');
+    }
+})->with([
+    ['plain', false],
+    ['bootstrap-5', false],
+    ['bootstrap-6', false],
+    ['tailwind', true],
+    ['daisyui', true],
+]);
+
+it('switches frameworks consecutively without errors', function () {
+    // Start with tailwind
+    $this->get(route('form-components-preview', ['framework' => 'tailwind']))
+        ->assertOk();
+        
+    // Switch to daisyui in the same session (simulated)
+    $this->get(route('form-components-preview', ['framework' => 'daisyui']))
+        ->assertOk();
+        
+    // Switch back to bootstrap-5
+    $this->get(route('form-components-preview', ['framework' => 'bootstrap-5']))
+        ->assertOk();
 });

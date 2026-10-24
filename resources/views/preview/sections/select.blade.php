@@ -1,4 +1,4 @@
-<x-form::preview.components.section id="form-select" title="Select" description="Examples taken from <a href='https://getbootstrap.com/docs/5.3/forms/select/' target='_blank'>Bootstrap documentation on form controls</a>. Adjusted to use our form-components.">
+<x-form::preview.components.section id="form-select" title="Select" description="Select components for choosing options from a dropdown menu.">
     <x-form::preview.components.example title="Default">
         <x-slot:code_slot>
             @verbatim
@@ -11,12 +11,12 @@
     <x-form::preview.components.example title="Sizing">
         <x-slot:code_slot>
             @verbatim
-<x-form-select class="form-select-lg" :options="$selectOptions"/>
-<x-form-select class="form-select-sm" :options="$selectOptions"/>
+<x-form-select class="form-select-lg-custom" :options="$selectOptions"/>
+<x-form-select class="form-select-sm-custom" :options="$selectOptions"/>
             @endverbatim
         </x-slot:code_slot>
-        <x-form-select class="form-select-lg" aria-label=".form-select-lg example" :options="$selectOptions" placeholder="Open this select menu"/>
-        <x-form-select class="form-select-sm" aria-label=".form-select-sm example" :options="$selectOptions" placeholder="Open this select menu"/>
+        <x-form-select :class="theme_class('form_select_lg')" class="mb-3" aria-label="Large select example" :options="$selectOptions" placeholder="Open this select menu"/>
+        <x-form-select :class="theme_class('form_select_sm')" aria-label="Small select example" :options="$selectOptions" placeholder="Open this select menu"/>
     </x-form::preview.components.example>
 
     <x-form::preview.components.example title="Multiple and Size">

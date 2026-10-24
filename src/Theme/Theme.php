@@ -15,6 +15,27 @@ class Theme
     }
 
     /**
+     * Get the display name for a framework.
+     *
+     * @param string|null $framework
+     * @return string
+     */
+    public static function frameworkName(?string $framework = null): string
+    {
+        $framework = $framework ?: static::framework();
+
+        $names = [
+            'bootstrap-5' => 'Bootstrap 5',
+            'bootstrap-6' => 'Bootstrap 6',
+            'tailwind' => 'Tailwind CSS',
+            'daisyui' => 'DaisyUI',
+            'plain' => 'Plain',
+        ];
+
+        return $names[$framework] ?? ucfirst($framework);
+    }
+
+    /**
      * Resolve a theme-specific class or flag.
      *
      * @param string $key
@@ -82,6 +103,18 @@ class Theme
         }
 
         return array_replace_recursive($plain, $active);
+    }
+
+    /**
+     * Check if the active theme supports a specific feature.
+     *
+     * @param string $feature
+     * @return bool
+     */
+    public static function supports(string $feature): bool
+    {
+        // Default to true unless explicitly disabled in the theme or its fallback
+        return (bool) static::resolve("supports.$feature", true);
     }
 
     /**

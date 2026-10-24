@@ -1,4 +1,4 @@
-<x-form::preview.components.section id="form-range" title="Range" description="Examples taken from <a href='https://getbootstrap.com/docs/5.3/forms/range/' target='_blank'>Bootstrap documentation on form controls</a>. Adjusted to use our form-components.">
+<x-form::preview.components.section id="form-range" title="Range" description="Range inputs for selecting a value from a specific range.">
     <x-form::preview.components.example title="Default">
         <x-slot:code_slot>
             @verbatim

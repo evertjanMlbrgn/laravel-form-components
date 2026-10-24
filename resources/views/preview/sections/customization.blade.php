@@ -1,4 +1,4 @@
-<x-form::preview.components.section id="form-custom-tests" title="Custom tests">
+<x-form::preview.components.section id="form-customization" title="Customization">
     <p>Additional custom tests and debug scenarios.</p>
 
     <x-form::preview.components.example title="Hidden attributes">
