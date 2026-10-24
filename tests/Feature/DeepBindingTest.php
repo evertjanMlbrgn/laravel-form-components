@@ -1,7 +1,5 @@
 <?php
 
-use Mlbrgn\LaravelFormComponents\Tests\TestCase;
-
 it('can bind to nested arrays automatically', function () {
     $data = [
         'user' => [
@@ -43,7 +41,7 @@ it('can bind to nested objects automatically', function () {
 
 it('prioritizes old data in deep binding automatically', function () {
     $data = ['user' => ['name' => 'John']];
-    
+
     $this->app['request']->setLaravelSession($this->app['session']->driver());
     session()->flashInput(['user' => ['name' => 'Jane']]);
 

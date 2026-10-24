@@ -2,6 +2,8 @@
 
 namespace Mlbrgn\LaravelFormComponents\Tests;
 
+use Illuminate\Http\Response;
+use Illuminate\Support\Arr;
 use Illuminate\Testing\TestResponse;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -20,30 +22,35 @@ trait InteractsWithForms
         }
         $this->response = $this->get($uri);
         $this->inputs = [];
+
         return $this;
     }
 
     public function type($value, $name)
     {
         $this->inputs[$name] = $value;
+
         return $this;
     }
 
     public function check($name)
     {
         $this->inputs[$name] = '1';
+
         return $this;
     }
 
     public function uncheck($name)
     {
         $this->inputs[$name] = false;
+
         return $this;
     }
 
     public function select($value, $name)
     {
         $this->inputs[$name] = $value;
+
         return $this;
     }
 
@@ -93,7 +100,7 @@ trait InteractsWithForms
                 continue;
             }
             $dottedKey = str_replace(['[', ']'], ['.', ''], rtrim($key, '[]'));
-            \Illuminate\Support\Arr::set($nestedInputs, $dottedKey, $value);
+            Arr::set($nestedInputs, $dottedKey, $value);
         }
 
         $this->response = $this->post($uri, $nestedInputs);
@@ -108,66 +115,77 @@ trait InteractsWithForms
     protected function followRedirect($response)
     {
         $this->response = $this->get($response->headers->get('Location'));
+
         return $this->response;
     }
 
     public function followRedirects($response = null)
     {
         $this->followingRedirects();
+
         return $this;
     }
 
     public function see($text)
     {
         $this->response->assertSee($text, false);
+
         return $this;
     }
 
     public function dontSee($text)
     {
         $this->response->assertDontSee($text, false);
+
         return $this;
     }
 
     public function seeElement($selector, array $attributes = [])
     {
         $this->response->assertSeeElement($selector, $attributes);
+
         return $this;
     }
 
     public function seeElementCount($selector, $count)
     {
         $this->response->assertSeeElementCount($selector, $count);
+
         return $this;
     }
 
     public function dontSeeElement($selector, array $attributes = [])
     {
         $this->response->assertDontSeeElement($selector, $attributes);
+
         return $this;
     }
 
     public function seeInElement($selector, $text)
     {
         $this->response->assertSeeInElement($selector, $text);
+
         return $this;
     }
 
     public function dontSeeInElement($selector, $text)
     {
         $this->response->assertDontSeeInElement($selector, $text);
+
         return $this;
     }
 
     public function seeText($text)
     {
         $this->response->assertSeeText($text);
+
         return $this;
     }
 
     public function dontSeeText($text)
     {
         $this->response->assertDontSeeText($text);
+
         return $this;
     }
 
@@ -187,9 +205,11 @@ trait InteractsWithForms
             throw new \InvalidArgumentException("Element [{$selector}] not found.");
         }
 
-        $subResponse = new class($subCrawler->outerHtml()) extends TestResponse {
-            public function __construct($content) {
-                $this->baseResponse = new \Illuminate\Http\Response($content);
+        $subResponse = new class($subCrawler->outerHtml()) extends TestResponse
+        {
+            public function __construct($content)
+            {
+                $this->baseResponse = new Response($content);
             }
         };
 

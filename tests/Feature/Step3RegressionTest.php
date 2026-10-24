@@ -1,6 +1,6 @@
 <?php
 
-use Mlbrgn\LaravelFormComponents\Theme\Theme;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
@@ -164,7 +164,7 @@ it('passes generated id, public props and attributes to a theme view override', 
         $view->assertSee('id=auto_id_', false);
         $view->assertSee('name=email|type=email', false);
     } finally {
-        \Illuminate\Support\Facades\File::deleteDirectory($path);
+        File::deleteDirectory($path);
     }
 });
 

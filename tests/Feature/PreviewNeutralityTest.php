@@ -1,4 +1,5 @@
 <?php
+
 // tests/Feature/PreviewNeutralityTest.php
 
 use Illuminate\Support\Str;

@@ -6,8 +6,6 @@ class Theme
 {
     /**
      * Get the active framework.
-     *
-     * @return string
      */
     public static function framework(): string
     {
@@ -16,9 +14,6 @@ class Theme
 
     /**
      * Get the display name for a framework.
-     *
-     * @param string|null $framework
-     * @return string
      */
     public static function frameworkName(?string $framework = null): string
     {
@@ -38,9 +33,7 @@ class Theme
     /**
      * Resolve a theme-specific class or flag.
      *
-     * @param string $key
-     * @param mixed|null $default
-     * @return mixed
+     * @param  mixed|null  $default
      */
     public static function resolve(string $key, $default = null): mixed
     {
@@ -65,9 +58,6 @@ class Theme
 
     /**
      * Check if a theme has a specific key.
-     *
-     * @param string $key
-     * @return bool
      */
     public static function has(string $key): bool
     {
@@ -87,8 +77,6 @@ class Theme
 
     /**
      * Get all values for the active theme (including fallbacks).
-     *
-     * @return array
      */
     public static function all(): array
     {
@@ -107,9 +95,6 @@ class Theme
 
     /**
      * Check if the active theme supports a specific feature.
-     *
-     * @param string $feature
-     * @return bool
      */
     public static function supports(string $feature): bool
     {
@@ -119,10 +104,6 @@ class Theme
 
     /**
      * Internal helper to check if a key exists in a theme array (supporting dot notation).
-     *
-     * @param array $theme
-     * @param string $key
-     * @return bool
      */
     protected static function hasInTheme(array $theme, string $key): bool
     {

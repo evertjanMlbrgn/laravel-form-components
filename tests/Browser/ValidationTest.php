@@ -1,7 +1,5 @@
 <?php
 
-use Mlbrgn\LaravelFormComponents\Tests\BrowserTestCase;
-
 it('shows server-side validation errors', function () {
     $this->visit('/form-components-preview')
         ->press('Register')

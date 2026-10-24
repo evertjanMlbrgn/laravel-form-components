@@ -1,7 +1,5 @@
 <?php
 
-use Mlbrgn\LaravelFormComponents\Tests\TestCase;
-
 it('renders inputs with different sizes', function () {
     $viewLg = $this->blade('<x-form-input name="test" class="form-control-lg" />');
     $viewLg->assertSee('form-control-lg');
@@ -39,7 +37,7 @@ it('respects custom IDs when provided', function () {
 it('generates deterministic IDs in tests', function () {
     $view1 = $this->blade('<x-form-input name="test" />');
     $view2 = $this->blade('<x-form-input name="test" />');
-    
+
     // In Unit Tests, IDs should be deterministic based on name
     expect((string) $view1)->toBe((string) $view2);
 });

@@ -1,5 +1,7 @@
 <?php
 
+use Mlbrgn\LaravelFormComponents\Theme\Theme;
+
 if (! function_exists('mlbrgnAsset')) {
     function mlbrgnAsset(string $path): string
     {
@@ -22,24 +24,20 @@ if (! function_exists('theme_class')) {
     /**
      * Resolve a theme-specific class or flag.
      *
-     * @param string $key
-     * @param mixed|null $default
-     * @return mixed
+     * @param  mixed|null  $default
      */
     function theme_class(string $key, $default = null): mixed
     {
-        return \Mlbrgn\LaravelFormComponents\Theme\Theme::resolve($key, $default);
+        return Theme::resolve($key, $default);
     }
 }
 
 if (! function_exists('theme_framework')) {
     /**
      * Get the active theme framework.
-     *
-     * @return string
      */
     function theme_framework(): string
     {
-        return \Mlbrgn\LaravelFormComponents\Theme\Theme::framework();
+        return Theme::framework();
     }
 }

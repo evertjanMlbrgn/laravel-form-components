@@ -1,8 +1,5 @@
 <?php
 
-use Mlbrgn\LaravelFormComponents\Tests\BrowserTestCase;
-use function Pest\Laravel\get;
-
 it('loads the preview page', function () {
     $this->visit('/form-components-preview')
         ->assertSee('Form Components Preview')

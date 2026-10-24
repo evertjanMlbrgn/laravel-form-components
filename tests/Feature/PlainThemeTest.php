@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\ViewErrorBag;
 use Mlbrgn\LaravelFormComponents\Theme\Theme;
 
 it('uses plain theme by default', function () {
@@ -84,10 +87,10 @@ it('renders error message with mfc-error class when there is a validation error'
     config(['form-components.framework' => 'plain']);
 
     // Simulate validation error
-    $errors = new \Illuminate\Support\MessageBag(['test' => ['The test field is required.']]);
-    $viewErrorBag = new \Illuminate\Support\ViewErrorBag;
+    $errors = new MessageBag(['test' => ['The test field is required.']]);
+    $viewErrorBag = new ViewErrorBag;
     $viewErrorBag->put('default', $errors);
-    \Illuminate\Support\Facades\View::share('errors', $viewErrorBag);
+    View::share('errors', $viewErrorBag);
 
     $view = $this->blade('<x-form-input name="test" />');
 

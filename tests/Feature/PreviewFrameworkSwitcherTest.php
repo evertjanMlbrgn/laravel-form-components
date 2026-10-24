@@ -1,4 +1,5 @@
 <?php
+
 // tests/Feature/PreviewFrameworkSwitcherTest.php
 
 it('renders the preview page with the plain framework', function () {
@@ -8,7 +9,7 @@ it('renders the preview page with the plain framework', function () {
     $response->assertSee('value="plain" selected', false);
     $response->assertSee('mfc-preview-body', false);
     $response->assertDontSee('cdn.tailwindcss.com');
-    
+
     expect(config('form-components.framework'))->toBe('plain');
 });
 
@@ -36,7 +37,7 @@ it('switches to tailwind framework via query parameter', function () {
         ->assertStatus(200)
         ->assertSee('cdn.tailwindcss.com?plugins=forms')
         ->assertSee('value="tailwind" selected', false);
-    
+
     expect(config('form-components.framework'))->toBe('tailwind');
 });
 
@@ -47,7 +48,7 @@ it('switches to daisyui framework via query parameter', function () {
         ->assertDontSee('cdn.tailwindcss.com?plugins=forms')
         ->assertSee('daisyui@4.10.2/dist/full.min.css')
         ->assertSee('value="daisyui" selected', false);
-    
+
     expect(config('form-components.framework'))->toBe('daisyui');
 });
 
@@ -57,7 +58,7 @@ it('switches to bootstrap-5 framework via query parameter', function () {
         ->assertSee('bootstrap@5.3.3/dist/css/bootstrap.min.css')
         ->assertDontSee('cdn.tailwindcss.com')
         ->assertSee('value="bootstrap-5" selected', false);
-    
+
     expect(config('form-components.framework'))->toBe('bootstrap-5');
 });
 
@@ -67,7 +68,7 @@ it('switches to bootstrap-6 framework and uses bootstrap 5 assets', function () 
         ->assertSee('bootstrap@5.3.3/dist/css/bootstrap.min.css')
         ->assertDontSee('cdn.tailwindcss.com')
         ->assertSee('value="bootstrap-6" selected', false);
-    
+
     expect(config('form-components.framework'))->toBe('bootstrap-6');
 });
 
@@ -79,19 +80,19 @@ it('reverts to default if an unknown framework is provided', function () {
         ->assertSee('mfc-preview-body', false)
         ->assertDontSee('cdn.tailwindcss.com')
         ->assertDontSee('daisyui@');
-    
+
     expect(config('form-components.framework'))->toBe('plain');
 });
 
 it('handles array framework parameter without crashing', function () {
     config(['form-components.framework' => 'plain']);
-    $this->get(route('form-components-preview') . '?framework[]=tailwind')
+    $this->get(route('form-components-preview').'?framework[]=tailwind')
         ->assertStatus(200)
         ->assertSee('value="plain" selected', false)
         ->assertSee('mfc-preview-body', false)
         ->assertDontSee('cdn.tailwindcss.com')
         ->assertDontSee('daisyui@');
-    
+
     expect(config('form-components.framework'))->toBe('plain');
 });
 
@@ -116,14 +117,14 @@ it('always loads bootstrap 5 assets for shell chrome', function ($framework) {
 it('contains unique IDs that match sidebar navigation anchors', function () {
     $response = $this->get(route('form-components-preview'));
     $html = $response->getContent();
-    
-    $document = new DOMDocument();
+
+    $document = new DOMDocument;
     @$document->loadHTML($html);
     $xpath = new DOMXPath($document);
-    
+
     $navLinks = $xpath->query('//*[@id="preview-sidebar"]//a[@href]');
     expect($navLinks->length)->toBeGreaterThan(0);
-    
+
     foreach ($navLinks as $link) {
         $href = $link->getAttribute('href');
         if (str_starts_with($href, '#')) {
@@ -142,7 +143,7 @@ it('configures scrollspy on the body', function () {
 
 it('shows compatibility alerts only for unsupported frameworks', function ($framework, $shouldSeeAlert) {
     $response = $this->get(route('form-components-preview', ['framework' => $framework]));
-    
+
     if ($shouldSeeAlert) {
         $response->assertSee('mfc-shell-alert-warning', false);
         $response->assertSee('This feature is not natively supported', false);
@@ -163,11 +164,11 @@ it('switches frameworks consecutively without errors', function () {
     // Start with tailwind
     $this->get(route('form-components-preview', ['framework' => 'tailwind']))
         ->assertOk();
-        
+
     // Switch to daisyui in the same session (simulated)
     $this->get(route('form-components-preview', ['framework' => 'daisyui']))
         ->assertOk();
-        
+
     // Switch back to bootstrap-5
     $this->get(route('form-components-preview', ['framework' => 'bootstrap-5']))
         ->assertOk();

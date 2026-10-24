@@ -1,12 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
 
 function bootstrap6ClassTokens(string $html): array
 {
-    $dom = new DOMDocument();
+    $dom = new DOMDocument;
     @$dom->loadHTML($html);
     $xpath = new DOMXPath($dom);
 
@@ -36,7 +37,7 @@ it('renders bootstrap-6 theme classes correctly using provisional config', funct
     config(['form-components.framework' => 'bootstrap-6']);
 
     $view = (string) $this->blade('<x-form-input name="test" label="My Label" />');
-    $dom = new DOMDocument();
+    $dom = new DOMDocument;
     @$dom->loadHTML($view);
     $xpath = new DOMXPath($dom);
 
@@ -95,6 +96,6 @@ it('can use a bootstrap-6 specific template override', function () {
         expect($view)->toContain('name="override-test"');
         expect($view)->toContain('data-foo="bar"');
     } finally {
-        \Illuminate\Support\Facades\File::deleteDirectory($path);
+        File::deleteDirectory($path);
     }
 });

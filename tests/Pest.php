@@ -13,11 +13,12 @@
 
 // use Tests\TestCase;
 
-use Mlbrgn\LaravelFormComponents\Tests\TestCase;
-use Mlbrgn\LaravelFormComponents\Tests\BrowserTestCase;
+use Illuminate\Http\Response;
 use Illuminate\Testing\TestResponse;
-use Symfony\Component\DomCrawler\Crawler;
+use Mlbrgn\LaravelFormComponents\Tests\BrowserTestCase;
+use Mlbrgn\LaravelFormComponents\Tests\TestCase;
 use PHPUnit\Framework\Assert;
+use Symfony\Component\DomCrawler\Crawler;
 
 uses(TestCase::class)->in('Feature', 'Unit');
 uses(BrowserTestCase::class)->group('browser')->in('Browser');
@@ -86,11 +87,13 @@ TestResponse::macro('assertDontSeeInElement', function (string $selector, string
 
 TestResponse::macro('assertSeeText', function (string $text) {
     Assert::assertStringContainsString($text, strip_tags($this->getContent()), "Text [{$text}] not found in page.");
+
     return $this;
 });
 
 TestResponse::macro('assertDontSeeText', function (string $text) {
     Assert::assertStringNotContainsString($text, strip_tags($this->getContent()), "Text [{$text}] was found in page.");
+
     return $this;
 });
 
@@ -101,6 +104,7 @@ TestResponse::macro('crawler', function () {
 TestResponse::macro('assertSeeElementCount', function (string $selector, int $count) {
     $crawler = new Crawler($this->getContent());
     Assert::assertEquals($count, $crawler->filter($selector)->count(), "Element [{$selector}] count [{$count}] does not match.");
+
     return $this;
 });
 
@@ -111,6 +115,7 @@ TestResponse::macro('assertDontSeeElement', function (string $selector, array $a
     $effectiveSelector = preg_replace('/:checked\b/', '[checked]', $effectiveSelector);
 
     Assert::assertEquals(0, $crawler->filter($effectiveSelector)->count(), "Element [{$selector}] was found.");
+
     return $this;
 });
 
@@ -120,9 +125,11 @@ TestResponse::macro('within', function (string $selector, callable $callback) {
 
     Assert::assertGreaterThan(0, $subCrawler->count(), "Element [{$selector}] not found.");
 
-    $callback(new class($subCrawler->outerHtml()) extends TestResponse {
-        public function __construct($content) {
-            $this->baseResponse = new \Illuminate\Http\Response($content);
+    $callback(new class($subCrawler->outerHtml()) extends TestResponse
+    {
+        public function __construct($content)
+        {
+            $this->baseResponse = new Response($content);
         }
     });
 

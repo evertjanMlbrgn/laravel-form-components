@@ -2,8 +2,8 @@
 
 namespace Mlbrgn\LaravelFormComponents\View\Components\Layout;
 
-use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 use Mlbrgn\LaravelFormComponents\Traits\HandlesValidationErrors;
+use Mlbrgn\LaravelFormComponents\View\FormBaseComponent;
 
 class FormGroup extends FormBaseComponent
 {

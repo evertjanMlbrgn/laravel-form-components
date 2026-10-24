@@ -1,8 +1,8 @@
 <?php
 
-use Mlbrgn\LaravelFormComponents\Tests\TestCase;
-use Illuminate\Support\ViewErrorBag;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\ViewErrorBag;
 
 it('links labels to inputs using the "for" attribute', function () {
     $view = $this->blade('<x-form-input name="email" label="Email Address" id="email-field" />');
@@ -19,8 +19,8 @@ it('links help text via aria-describedby', function () {
 it('links error messages via aria-describedby', function () {
     $errors = new ViewErrorBag;
     $errors->put('default', new MessageBag(['test_field' => ['The field is invalid.']]));
-    \Illuminate\Support\Facades\View::share('errors', $errors);
-    
+    View::share('errors', $errors);
+
     $view = $this->blade(
         '<x-form-input name="test_field" id="test-input" />'
     );
@@ -33,8 +33,8 @@ it('links error messages via aria-describedby', function () {
 it('includes both help text and error message in aria-describedby', function () {
     $errors = new ViewErrorBag;
     $errors->put('default', new MessageBag(['test_field' => ['Error here']]));
-    \Illuminate\Support\Facades\View::share('errors', $errors);
-    
+    View::share('errors', $errors);
+
     $view = $this->blade(
         '<x-form-input name="test_field" help-text="Help here" id="test-input" />'
     );
